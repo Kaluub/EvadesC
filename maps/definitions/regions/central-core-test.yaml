@@ -1,0 +1,340 @@
+share_to_drive: false
+name: Central Core
+properties:
+  friction: 0.75
+areas:
+- x: var x
+  y: var y
+  zones:
+  - type: safe
+    x: 0
+    y: 0
+    width: 320
+    height: 2880
+  - type: active
+    x: last_right
+    y: 0
+    width: 2880
+    height: last_height
+    spawner:
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - wall
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - normal
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - homing
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - dasher
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - slowing
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - draining
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - gravity
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - repelling
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - turning
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - sizing
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - sniper
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - freezing
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - teleporting
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - wavy
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - zigzag
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - zoning
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - spiral
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - oscillating
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - switch
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - liquid
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - icicle
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - slippery
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - ice_sniper
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - disabling
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - experience_drain
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - enlarging
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - speed_sniper
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - regen_sniper
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - radiating_bullets
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - immune
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - pumpkin
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - fake_pumpkin
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - tree
+    - count: 2
+      radius: 50
+      shot_interval: 200
+      turn_speed: 60
+      pattern: spiral
+      types:
+      - frost_giant
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - snowman
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - corrosive
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - toxic
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - corrosive_sniper
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - poison_sniper
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - magnetic_reduction
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - magnetic_nullification
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - positive_magnetic_sniper
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - negative_magnetic_sniper
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - residue
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - fire_trail
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - ice_ghost
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - poison_ghost
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - positive_magnetic_ghost
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - negative_magnetic_ghost
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - wind_ghost
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - lunging
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - lava
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - gravity_ghost
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - repelling_ghost
+    - count: 2
+      radius: 18
+      speed: 150
+      types:
+      - star
+  - height: last_height
+    type: safe
+    width: 320
+    x: last_right
+    y: 0
+  - type: exit
+    x: last_right
+    y: last_y
+    width: 64
+    height: last_height
+- x: last_right
+  y: last_y
+  zones:
+  - type: safe
+    x: 0
+    y: 0
+    width: 320
+    height: 600
+  - type: active
+    x: last_right
+    y: last_y
+    width: 2880
+    height: last_height
+    patterns:
+    - name: slowing_sniper
+      spawner:
+      - count: 1
+        radius: 10
+        speed: 90
+        types:
+        - slowing
+      - count: 1
+        radius: 10
+        speed: 90
+        types:
+        - sniper
+    spawner:
+    - pattern: true
+      types: slowing_sniper
+  - type: safe
+    x: last_right
+    y: last_y
+    width: 320
+    height: last_height
