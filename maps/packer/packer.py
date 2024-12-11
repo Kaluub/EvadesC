@@ -19,6 +19,16 @@ def parse_variable(definition: str, state: dict[str, int]) -> int:
         value = int(value)
     return value + offset
 
+zone_types = {
+    "safe": 1,
+    "active": 2,
+    "exit": 3,
+    "teleport": 4,
+    "victory": 5,
+    "removal": 6,
+    "dummy": 7,
+}
+
 out = open("maps/world.bin", "wb")
 with open("maps/definitions/world.yaml") as world_file:
     world = yaml.load(world_file, yaml.CLoader)
@@ -48,11 +58,13 @@ with open("maps/definitions/world.yaml") as world_file:
                 out.write(len(area["zones"]).to_bytes(2, "big"))
                 zone_state = {}
                 for zone in area["zones"]:
+                    zone_type = zone_types[zone["type"]]
                     zone_x = parse_variable(zone["x"], zone_state)
                     zone_y = parse_variable(zone["y"], zone_state)
                     zone_width = parse_variable(zone["width"], zone_state)
                     zone_height = parse_variable(zone["height"], zone_state)
                     # Write out zone absolute dimensions
+                    out.write(zone_type.to_bytes(1, "big"))
                     out.write((area_x + zone_x).to_bytes(4, "big", signed=True))
                     out.write((area_y + zone_y).to_bytes(4, "big", signed=True))
                     out.write(zone_width.to_bytes(4, "big", signed=True))
