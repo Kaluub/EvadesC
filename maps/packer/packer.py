@@ -32,19 +32,21 @@ zone_types = {
 out = open("maps/world.bin", "wb")
 with open("maps/definitions/world.yaml") as world_file:
     world = yaml.load(world_file, yaml.CLoader)
-    spawn_name: str = world["spawn"]
-    
-    out.write(f"{spawn_name}\0".encode("ascii"))
-    out.write(len(world["regions"]).to_bytes(2, "big"))
+    spawn_name = f"{world['spawn']}\0".encode("ascii")
+    out.write(len(spawn_name).to_bytes(1, "little"))
+    out.write(spawn_name)
+    out.write(len(world["regions"]).to_bytes(2, "little"))
 
     for region_meta in world["regions"]:
         region_x = region_meta["x"]
         region_y = region_meta["y"]
         with open(f"maps/definitions/{region_meta['file']}") as region_file:
             region = yaml.load(region_file, yaml.CLoader)
-            out.write(f"{region['name']}\0".encode("ascii"))
+            region_name = f"{region['name']}\0".encode("ascii")
+            out.write(len(region_name).to_bytes(1, "little"))
+            out.write(region_name)
             # Write out areas
-            out.write(len(region["areas"]).to_bytes(2, "big"))
+            out.write(len(region["areas"]).to_bytes(2, "little"))
             area_state = {"var x": region_x, "var y": region_y}
             for area in region["areas"]:
                 # Write out area absolute position
@@ -52,10 +54,10 @@ with open("maps/definitions/world.yaml") as world_file:
                 area_y = parse_variable(area["y"], area_state)
                 area_width = 0
                 area_height = 0
-                out.write(area_x.to_bytes(4, "big", signed=True))
-                out.write(area_y.to_bytes(4, "big", signed=True))
+                out.write(area_x.to_bytes(4, "little", signed=True))
+                out.write(area_y.to_bytes(4, "little", signed=True))
                 # Write out zones
-                out.write(len(area["zones"]).to_bytes(2, "big"))
+                out.write(len(area["zones"]).to_bytes(2, "little"))
                 zone_state = {}
                 for zone in area["zones"]:
                     zone_type = zone_types[zone["type"]]
@@ -64,11 +66,11 @@ with open("maps/definitions/world.yaml") as world_file:
                     zone_width = parse_variable(zone["width"], zone_state)
                     zone_height = parse_variable(zone["height"], zone_state)
                     # Write out zone absolute dimensions
-                    out.write(zone_type.to_bytes(1, "big"))
-                    out.write((area_x + zone_x).to_bytes(4, "big", signed=True))
-                    out.write((area_y + zone_y).to_bytes(4, "big", signed=True))
-                    out.write(zone_width.to_bytes(4, "big", signed=True))
-                    out.write(zone_height.to_bytes(4, "big", signed=True))
+                    out.write(zone_type.to_bytes(1, "little"))
+                    out.write((area_x + zone_x).to_bytes(4, "little", signed=True))
+                    out.write((area_y + zone_y).to_bytes(4, "little", signed=True))
+                    out.write(zone_width.to_bytes(4, "little", signed=True))
+                    out.write(zone_height.to_bytes(4, "little", signed=True))
                     # Update area size
                     if zone_x + zone_width > area_width:
                         area_width = zone_x + zone_width
