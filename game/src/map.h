@@ -5,33 +5,33 @@
 
 #define STRING_MAX 64
 
-struct BinaryMap {
+typedef struct Map {
     uint8_t spawn_region_length;
     char* spawn_region;
     uint16_t region_count;
-    struct BinaryRegion* regions;
-};
+    struct Region* regions;
+} Map;
 
-struct BinaryRegion {
+typedef struct Region {
     uint8_t region_name_length;
     char* region_name;
     uint16_t area_count;
-    struct BinaryArea* areas;
-};
+    struct Area* areas;
+} Region;
 
-struct BinaryArea {
+typedef struct Area {
     int32_t x;
     int32_t y;
     uint16_t zone_count;
-    struct BinaryZone* zones;
-};
+    struct Zone* zones;
+} Area;
 
-struct BinaryZone {
+typedef struct Zone {
     uint8_t type;
     int32_t x;
     int32_t y;
     int32_t width;
     int32_t height;
-};
+} Zone;
 
-void load_map(struct BinaryMap* map, FILE* file);
+void load_map(struct Map* map, FILE* file);
