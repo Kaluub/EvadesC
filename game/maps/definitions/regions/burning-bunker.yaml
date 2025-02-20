@@ -2128,7 +2128,10 @@ areas:
       - switch
       count: 1
       radius: 159
-      speed: .1 
+      speed: .1
+      randomize_state: False
+      switch_interval: 3000
+      switch_time: 250
   - type: safe
     x: 0
     y: 64 
@@ -2315,6 +2318,9 @@ areas:
       count: 1
       radius: 1919
       speed: .1
+      randomize_state: False
+      switch_interval: 5500
+      switch_time: 2000
     - types:
       - sizing
       count: 35
@@ -4790,7 +4796,10 @@ areas:
       - switch
       count: 1
       radius: 159
-      speed: .1 
+      speed: .1
+      randomize_state: False
+      switch_interval: 3000
+      switch_time: 250
   - type: safe
     x: 0
     y: 64 
@@ -5569,7 +5578,10 @@ areas:
       - switch
       count: 1
       radius: 159
-      speed: .1 
+      speed: .1
+      randomize_state: False
+      switch_interval: 3000
+      switch_time: 250
   - type: safe
     x: 0
     y: 64 
@@ -6639,7 +6651,10 @@ areas:
       - switch
       count: 1
       radius: 159
-      speed: .1 
+      speed: .1
+      randomize_state: False
+      switch_interval: 3000
+      switch_time: 250
   - type: safe
     x: 0
     y: 64 
@@ -7953,7 +7968,10 @@ areas:
       - switch
       count: 1
       radius: 159
-      speed: .1 
+      speed: .1
+      randomize_state: False
+      switch_interval: 3000
+      switch_time: 250
   - type: safe
     x: 0
     y: 64 
@@ -9275,6 +9293,9 @@ areas:
       count: 1
       radius: 1919
       speed: .1
+      randomize_state: False
+      switch_interval: 5500
+      switch_time: 2000
     - types:
       - fire_trail
       count: 5
@@ -13280,6 +13301,9 @@ areas:
       count: 1
       radius: 1919
       speed: .1
+      randomize_state: False
+      switch_interval: 5500
+      switch_time: 2000
     - types:
       - slowing
       count: 20
@@ -17583,6 +17607,9 @@ areas:
       count: 1
       radius: 1919
       speed: .1
+      randomize_state: False
+      switch_interval: 5500
+      switch_time: 2000
     - types:
       - fire_trail
       count: 6

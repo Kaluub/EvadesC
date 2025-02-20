@@ -8471,7 +8471,7 @@ areas:
       x: 336
       y: 240
       angle: 0
-      draining_radius: 240
+      effect_radius: 240
     - types:
       - draining
       count: 1
@@ -8480,7 +8480,7 @@ areas:
       x: 1648
       y: 1904
       angle: 270
-      draining_radius: 240
+      effect_radius: 240
     - types:
       - draining
       count: 1
@@ -8489,7 +8489,7 @@ areas:
       x: 1648
       y: 16
       angle: 90
-      draining_radius: 240
+      effect_radius: 240
     - types:
       - draining
       count: 1
@@ -8498,7 +8498,7 @@ areas:
       x: 336
       y: 1680
       angle: 0
-      draining_radius: 240
+      effect_radius: 240
   - type: exit
     x: 0
     y: 0
@@ -8868,7 +8868,7 @@ areas:
       x: 1552
       y: 240
       angle: 180
-      draining_radius: 240
+      effect_radius: 240
     - types:
       - draining
       count: 1
@@ -8877,7 +8877,7 @@ areas:
       x: 240
       y: 1904
       angle: 270
-      draining_radius: 240
+      effect_radius: 240
     - types:
       - draining
       count: 1
@@ -8886,7 +8886,7 @@ areas:
       x: 240
       y: 16
       angle: 90
-      draining_radius: 240
+      effect_radius: 240
     - types:
       - draining
       count: 1
@@ -8895,7 +8895,7 @@ areas:
       x: 1552
       y: 1680
       angle: 180
-      draining_radius: 240
+      effect_radius: 240
   - type: safe
     x: 1568
     y: 0
@@ -10429,7 +10429,7 @@ areas:
       x: 336
       y: 240
       angle: 0
-      draining_radius: 240
+      effect_radius: 240
     - types:
       - draining
       count: 1
@@ -10438,7 +10438,7 @@ areas:
       x: 1648
       y: 1904
       angle: 270
-      draining_radius: 240
+      effect_radius: 240
     - types:
       - draining
       count: 1
@@ -10447,7 +10447,7 @@ areas:
       x: 1648
       y: 16
       angle: 90
-      draining_radius: 240
+      effect_radius: 240
     - types:
       - draining
       count: 1
@@ -10456,7 +10456,7 @@ areas:
       x: 336
       y: 1680
       angle: 0
-      draining_radius: 240
+      effect_radius: 240
   - type: exit
     x: 0
     y: 256
@@ -10746,7 +10746,7 @@ areas:
       x: 1552
       y: 240
       angle: 180
-      draining_radius: 240
+      effect_radius: 240
     - types:
       - draining
       count: 1
@@ -10755,7 +10755,7 @@ areas:
       x: 240
       y: 1904
       angle: 270
-      draining_radius: 240
+      effect_radius: 240
     - types:
       - draining
       count: 1
@@ -10764,7 +10764,7 @@ areas:
       x: 240
       y: 16
       angle: 90
-      draining_radius: 240
+      effect_radius: 240
     - types:
       - draining
       count: 1
@@ -10773,7 +10773,7 @@ areas:
       x: 1552
       y: 1680
       angle: 180
-      draining_radius: 240
+      effect_radius: 240
   - type: safe
     x: 1568
     y: 0
@@ -11085,7 +11085,7 @@ areas:
       speed: 180
       x: 336
       y: 240
-      draining_radius: 240
+      effect_radius: 240
       angle: 0
     - types:
       - draining
@@ -11095,7 +11095,7 @@ areas:
       x: 3120
       y: 240
       angle: 180
-      draining_radius: 240
+      effect_radius: 240
     - types:
       - wall
       count: 9
@@ -11204,7 +11204,7 @@ areas:
       speed: 198
       x: 336
       y: 240
-      draining_radius: 240
+      effect_radius: 240
       angle: 0
     - types:
       - draining
@@ -11214,7 +11214,7 @@ areas:
       x: 3120
       y: 240
       angle: 180
-      draining_radius: 240
+      effect_radius: 240
     - types:
       - lava
       count: 8
@@ -13549,7 +13549,7 @@ areas:
       x: 1552
       y: 240
       angle: 180
-      draining_radius: 240
+      effect_radius: 240
     - types:
       - draining
       count: 1
@@ -13558,7 +13558,7 @@ areas:
       x: 240
       y: 1904
       angle: 270
-      draining_radius: 240
+      effect_radius: 240
     - types:
       - draining
       count: 1
@@ -13567,7 +13567,7 @@ areas:
       x: 240
       y: 16
       angle: 90
-      draining_radius: 240
+      effect_radius: 240
     - types:
       - draining
       count: 1
@@ -13576,7 +13576,7 @@ areas:
       x: 1552
       y: 1680
       angle: 180
-      draining_radius: 240
+      effect_radius: 240
   - type: safe
     x: 1568
     y: 0
@@ -13883,7 +13883,7 @@ areas:
       speed: 120
       x: 336
       y: 240
-      draining_radius: 240
+      effect_radius: 240
       angle: 0
     - types:
       - draining
@@ -13893,7 +13893,7 @@ areas:
       x: 3120
       y: 240
       angle: 180
-      draining_radius: 240
+      effect_radius: 240
     - types:
       - immune
       count: 32

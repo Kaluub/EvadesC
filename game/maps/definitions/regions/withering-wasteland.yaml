@@ -25,7 +25,7 @@ areas:
     type: teleport
     translate:
       x: 0
-      y: -174072
+      y: 1120
   - x: 0
     y: 64
     width: 320
@@ -46,7 +46,7 @@ areas:
     - count: 1
       radius: 18
       speed: 180
-      experience_drain_radius: 100
+      effect_radius: 100
       types:
       - experience_drain
     type: active
@@ -143,7 +143,7 @@ areas:
     - count: 2
       radius: 25
       speed: 90
-      experience_drain_radius: 100
+      effect_radius: 100
       types:
       - experience_drain
     - count: 7
@@ -200,13 +200,13 @@ areas:
     - count: 2
       radius: 6
       speed: 90
-      experience_drain_radius: 100
+      effect_radius: 100
       types:
       - experience_drain
     - count: 2
       radius: 36
       speed: 90
-      experience_drain_radius: 100
+      effect_radius: 100
       types:
       - experience_drain
     - count: 7
@@ -268,7 +268,7 @@ areas:
     - count: 1
       radius: 8
       speed: 60
-      experience_drain_radius: 100
+      effect_radius: 100
       types:
       - experience_drain
     - count: 7
@@ -626,7 +626,7 @@ areas:
     - count: 1
       radius: 24
       speed: 60
-      blocking_radius: 1500
+      effect_radius: 1500
       types:
       - blocking
     - count: 7
@@ -683,7 +683,7 @@ areas:
     - count: 25
       radius: 6
       speed: 75
-      blocking_radius: 188
+      effect_radius: 188
       types:
       - blocking
     - count: 7
@@ -740,7 +740,7 @@ areas:
     - count: 16
       radius: 30
       speed: 120
-      blocking_radius: 188
+      effect_radius: 188
       types:
       - blocking
     - count: 7
@@ -802,7 +802,7 @@ areas:
     - count: 8
       radius: 18
       speed: 150
-      blocking_radius: 200
+      effect_radius: 200
       types:
       - blocking
     - count: 7
@@ -864,7 +864,7 @@ areas:
     - count: 9
       radius: 18
       speed: 180
-      blocking_radius: 200
+      effect_radius: 200
       types:
       - blocking
     - count: 7
@@ -921,7 +921,7 @@ areas:
     - count: 6
       radius: 12
       speed: 30
-      blocking_radius: 300
+      effect_radius: 300
       types:
       - blocking
     - count: 7
@@ -973,7 +973,7 @@ areas:
     - count: 15
       radius: 24
       speed: 240
-      blocking_radius: 200
+      effect_radius: 200
       types:
       - blocking
     - count: 7
@@ -1025,19 +1025,19 @@ areas:
     - count: 7
       radius: 20
       speed: 60
-      blocking_radius: 188
+      effect_radius: 188
       types:
       - blocking
     - count: 6
       radius: 28
       speed: 60
-      blocking_radius: 188
+      effect_radius: 188
       types:
       - blocking
     - count: 6
       radius: 48
       speed: 90
-      blocking_radius: 188
+      effect_radius: 188
       types:
       - blocking
     - count: 7
@@ -1104,7 +1104,7 @@ areas:
     - count: 10
       radius: 18
       speed: 150
-      blocking_radius: 188
+      effect_radius: 188
       types:
       - blocking
     - count: 7
@@ -1497,7 +1497,7 @@ areas:
     - count: 14
       radius: 24
       speed: 180
-      blocking_radius: 200
+      effect_radius: 200
       types:
       - blocking
     - count: 4
@@ -1559,7 +1559,7 @@ areas:
     - count: 14
       radius: 24
       speed: 150
-      blocking_radius: 200
+      effect_radius: 200
       types:
       - blocking
     - count: 5
@@ -1687,7 +1687,7 @@ areas:
     - count: 10
       radius: 24
       speed: 180
-      blocking_radius: 200
+      effect_radius: 200
       types:
       - blocking
     - count: 15
@@ -1989,7 +1989,7 @@ areas:
     - count: 9
       radius: 24
       speed: 120
-      blocking_radius: 250
+      effect_radius: 250
       types:
       - blocking
     - count: 2
@@ -2229,7 +2229,7 @@ areas:
     - count: 10
       radius: 18
       speed: 150
-      blocking_radius: 250
+      effect_radius: 250
       types:
       - blocking
     - count: 4

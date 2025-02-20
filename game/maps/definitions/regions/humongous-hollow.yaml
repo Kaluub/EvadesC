@@ -164,7 +164,7 @@ areas:
       types: [normal]
     - count: 2
       radius: 32
-      slowing_radius: 190.0
+      effect_radius: 190.0
       speed: 45
       types: [slowing]
     - count: 6
@@ -204,7 +204,7 @@ areas:
       types: [normal]
     - count: 2
       radius: 32
-      slowing_radius: 190.0
+      effect_radius: 190.0
       speed: 45
       types: [slowing]
     - count: 6
@@ -244,7 +244,7 @@ areas:
       types: [normal]
     - count: 2
       radius: 32
-      slowing_radius: 190.0
+      effect_radius: 190.0
       speed: 210
       types: [slowing]
     - count: 6
@@ -288,7 +288,7 @@ areas:
       types: [normal]
     - count: 4
       radius: 32
-      slowing_radius: 190.0
+      effect_radius: 190.0
       speed: 150
       types: [slowing]
     - count: 6
@@ -328,7 +328,7 @@ areas:
       types: [normal]
     - count: 8
       radius: 32
-      slowing_radius: 190.0
+      effect_radius: 190.0
       speed: 30
       types: [slowing]
     - count: 6
@@ -369,7 +369,7 @@ areas:
       types: [normal]
     - count: 12
       radius: 64
-      slowing_radius: 190.0
+      effect_radius: 190.0
       speed: 60
       types: [slowing]
     - count: 6
@@ -560,7 +560,7 @@ areas:
       speed: 30
       types: [liquid]
     - count: 2
-      draining_radius: 190.0
+      effect_radius: 190.0
       radius: 32
       speed: 150
       types: [draining]
@@ -601,7 +601,7 @@ areas:
       speed: 27
       types: [liquid]
     - count: 3
-      draining_radius: 190.0
+      effect_radius: 190.0
       radius: 32
       speed: 150
       types: [draining]
@@ -642,7 +642,7 @@ areas:
       speed: 33
       types: [liquid]
     - count: 1
-      draining_radius: 190.0
+      effect_radius: 190.0
       radius: 32
       speed: 300
       types: [draining]
@@ -688,7 +688,7 @@ areas:
       speed: 21
       types: [liquid]
     - count: 4
-      draining_radius: 190.0
+      effect_radius: 190.0
       radius: 32
       speed: 30
       types: [draining]
@@ -729,7 +729,7 @@ areas:
       speed: 9
       types: [liquid]
     - count: 4
-      draining_radius: 190.0
+      effect_radius: 190.0
       radius: 32
       speed: 120
       types: [draining]
@@ -772,7 +772,7 @@ areas:
       speed: 24
       types: [liquid]
     - count: 12
-      draining_radius: 190.0
+      effect_radius: 190.0
       radius: 64
       speed: 60
       types: [draining]
@@ -974,7 +974,7 @@ areas:
       speed: 45
       types: [turning]
     - count: 4
-      freezing_radius: 126.66666666666666
+      effect_radius: 126.66666666666666
       radius: 32
       speed: 30
       types: [freezing]
@@ -1015,7 +1015,7 @@ areas:
       speed: 105
       types: [turning]
     - count: 8
-      freezing_radius: 126.66666666666666
+      effect_radius: 126.66666666666666
       radius: 32
       speed: 60
       types: [freezing]
@@ -1061,7 +1061,7 @@ areas:
       speed: 90
       types: [turning]
     - count: 7
-      freezing_radius: 126.66666666666666
+      effect_radius: 126.66666666666666
       radius: 32
       speed: 75
       types: [freezing]
@@ -1102,7 +1102,7 @@ areas:
       speed: 150
       types: [turning]
     - count: 10
-      freezing_radius: 126.66666666666666
+      effect_radius: 126.66666666666666
       radius: 32
       speed: 15
       types: [freezing]
@@ -1143,7 +1143,7 @@ areas:
       speed: 45
       types: [turning]
     - count: 18
-      freezing_radius: 126.66666666666666
+      effect_radius: 126.66666666666666
       radius: 32
       speed: 15
       types: [freezing]
@@ -1186,7 +1186,7 @@ areas:
       speed: 75
       types: [turning]
     - count: 12
-      freezing_radius: 126.66666666666666
+      effect_radius: 126.66666666666666
       radius: 64
       speed: 45
       types: [freezing]
@@ -1219,7 +1219,7 @@ areas:
     spawner:
     - count: 6
       radius: 64
-      speed: 768
+      speed: 36.57142857142857
       types: [teleporting]
     - count: 6
       radius: 76
@@ -1250,7 +1250,7 @@ areas:
     spawner:
     - count: 5
       radius: 114
-      speed: 1440
+      speed: 68.57142857142857
       types: [teleporting]
     - count: 6
       radius: 76
@@ -1285,7 +1285,7 @@ areas:
       types: [normal]
     - count: 4
       radius: 64
-      speed: 3360
+      speed: 160
       types: [teleporting]
     - count: 6
       radius: 76
@@ -1320,7 +1320,7 @@ areas:
       types: [normal]
     - count: 24
       radius: 19
-      speed: 960
+      speed: 45.71428571428571
       types: [teleporting]
     - count: 6
       radius: 76
@@ -1351,10 +1351,10 @@ areas:
     spawner:
     - count: 11
       radius: 51
-      speed: 1536
+      speed: 73.14285714285714
       types: [teleporting]
     - count: 3
-      disabling_radius: 190.0
+      effect_radius: 190.0
       radius: 32
       speed: 210
       types: [disabling]
@@ -1391,22 +1391,22 @@ areas:
       types: [normal]
     - count: 1
       radius: 102
-      speed: 1344
+      speed: 64
       types: [teleporting]
     - count: 2
       radius: 76
-      speed: 1344
+      speed: 64
       types: [teleporting]
     - count: 3
       radius: 51
-      speed: 1344
+      speed: 64
       types: [teleporting]
     - count: 4
       radius: 26
-      speed: 1344
+      speed: 64
       types: [teleporting]
     - count: 4
-      disabling_radius: 190.0
+      effect_radius: 190.0
       radius: 32
       speed: 225
       types: [disabling]
@@ -1455,22 +1455,22 @@ areas:
       types: [normal]
     - count: 3
       radius: 45
-      speed: 1728
+      speed: 82.28571428571429
       types: [teleporting]
     - count: 3
       radius: 38
-      speed: 1728
+      speed: 82.28571428571429
       types: [teleporting]
     - count: 3
       radius: 32
-      speed: 1728
+      speed: 82.28571428571429
       types: [teleporting]
     - count: 3
       radius: 26
-      speed: 1728
+      speed: 82.28571428571429
       types: [teleporting]
     - count: 7
-      disabling_radius: 190.0
+      effect_radius: 190.0
       radius: 32
       speed: 195
       types: [disabling]
@@ -1507,10 +1507,10 @@ areas:
       types: [normal]
     - count: 10
       radius: 51
-      speed: 1440
+      speed: 68.57142857142857
       types: [teleporting]
     - count: 6
-      disabling_radius: 190.0
+      effect_radius: 190.0
       radius: 32
       speed: 60
       types: [disabling]
@@ -1547,10 +1547,10 @@ areas:
       types: [normal]
     - count: 6
       radius: 102
-      speed: 1920
+      speed: 91.42857142857143
       types: [teleporting]
     - count: 8
-      disabling_radius: 190.0
+      effect_radius: 190.0
       radius: 32
       speed: 75
       types: [disabling]
@@ -1584,14 +1584,14 @@ areas:
     spawner:
     - count: 16
       radius: 32
-      speed: 1920
+      speed: 91.42857142857143
       types: [teleporting]
     - count: 2
       radius: 127
-      speed: 1920
+      speed: 91.42857142857143
       types: [teleporting]
     - count: 16
-      disabling_radius: 190.0
+      effect_radius: 190.0
       radius: 64
       speed: 60
       types: [disabling]
@@ -1746,7 +1746,7 @@ areas:
       types: [normal]
     - count: 4
       radius: 57
-      slowing_radius: 190.0
+      effect_radius: 190.0
       speed: 105
       types: [slowing]
     - count: 8
@@ -1786,7 +1786,7 @@ areas:
       types: [normal]
     - count: 4
       radius: 57
-      slowing_radius: 190.0
+      effect_radius: 190.0
       speed: 105
       types: [slowing]
     - count: 8
@@ -1826,7 +1826,7 @@ areas:
       types: [normal]
     - count: 4
       radius: 57
-      slowing_radius: 190.0
+      effect_radius: 190.0
       speed: 270
       types: [slowing]
     - count: 8
@@ -1870,7 +1870,7 @@ areas:
       types: [normal]
     - count: 6
       radius: 57
-      slowing_radius: 190.0
+      effect_radius: 190.0
       speed: 210
       types: [slowing]
     - count: 8
@@ -1910,7 +1910,7 @@ areas:
       types: [normal]
     - count: 10
       radius: 45
-      slowing_radius: 190.0
+      effect_radius: 190.0
       speed: 90
       types: [slowing]
     - count: 8
@@ -1951,7 +1951,7 @@ areas:
       types: [normal]
     - count: 14
       radius: 76
-      slowing_radius: 190.0
+      effect_radius: 190.0
       speed: 120
       types: [slowing]
     - count: 8
@@ -2142,7 +2142,7 @@ areas:
       speed: 90
       types: [liquid]
     - count: 4
-      draining_radius: 190.0
+      effect_radius: 190.0
       radius: 57
       speed: 180
       types: [draining]
@@ -2183,7 +2183,7 @@ areas:
       speed: 90
       types: [liquid]
     - count: 5
-      draining_radius: 190.0
+      effect_radius: 190.0
       radius: 32
       speed: 210
       types: [draining]
@@ -2224,7 +2224,7 @@ areas:
       speed: 93
       types: [liquid]
     - count: 3
-      draining_radius: 190.0
+      effect_radius: 190.0
       radius: 32
       speed: 360
       types: [draining]
@@ -2270,7 +2270,7 @@ areas:
       speed: 111
       types: [liquid]
     - count: 4
-      draining_radius: 190.0
+      effect_radius: 190.0
       radius: 32
       speed: 30
       types: [draining]
@@ -2311,7 +2311,7 @@ areas:
       speed: 99
       types: [liquid]
     - count: 6
-      draining_radius: 190.0
+      effect_radius: 190.0
       radius: 32
       speed: 180
       types: [draining]
@@ -2354,7 +2354,7 @@ areas:
       speed: 114
       types: [liquid]
     - count: 14
-      draining_radius: 190.0
+      effect_radius: 190.0
       radius: 64
       speed: 120
       types: [draining]
@@ -2556,7 +2556,7 @@ areas:
       speed: 105
       types: [turning]
     - count: 6
-      freezing_radius: 126.66666666666666
+      effect_radius: 126.66666666666666
       radius: 45
       speed: 90
       types: [freezing]
@@ -2597,7 +2597,7 @@ areas:
       speed: 150
       types: [turning]
     - count: 10
-      freezing_radius: 126.66666666666666
+      effect_radius: 126.66666666666666
       radius: 32
       speed: 120
       types: [freezing]
@@ -2643,7 +2643,7 @@ areas:
       speed: 150
       types: [turning]
     - count: 9
-      freezing_radius: 126.66666666666666
+      effect_radius: 126.66666666666666
       radius: 32
       speed: 120
       types: [freezing]
@@ -2684,7 +2684,7 @@ areas:
       speed: 210
       types: [turning]
     - count: 12
-      freezing_radius: 126.66666666666666
+      effect_radius: 126.66666666666666
       radius: 32
       speed: 75
       types: [freezing]
@@ -2725,7 +2725,7 @@ areas:
       speed: 90
       types: [turning]
     - count: 20
-      freezing_radius: 126.66666666666666
+      effect_radius: 126.66666666666666
       radius: 32
       speed: 90
       types: [freezing]
@@ -2768,7 +2768,7 @@ areas:
       speed: 120
       types: [turning]
     - count: 14
-      freezing_radius: 126.66666666666666
+      effect_radius: 126.66666666666666
       radius: 64
       speed: 90
       types: [freezing]
@@ -2801,7 +2801,7 @@ areas:
     spawner:
     - count: 8
       radius: 64
-      speed: 810
+      speed: 38.57142857142857
       types: [teleporting]
     - count: 8
       radius: 101
@@ -2832,7 +2832,7 @@ areas:
     spawner:
     - count: 8
       radius: 114
-      speed: 1500
+      speed: 71.42857142857143
       types: [teleporting]
     - count: 8
       radius: 101
@@ -2867,7 +2867,7 @@ areas:
       types: [normal]
     - count: 6
       radius: 64
-      speed: 3420
+      speed: 162.8571428571429
       types: [teleporting]
     - count: 8
       radius: 101
@@ -2902,7 +2902,7 @@ areas:
       types: [normal]
     - count: 26
       radius: 19
-      speed: 1020
+      speed: 48.57142857142857
       types: [teleporting]
     - count: 8
       radius: 101
@@ -2933,10 +2933,10 @@ areas:
     spawner:
     - count: 13
       radius: 51
-      speed: 1620
+      speed: 77.14285714285714
       types: [teleporting]
     - count: 5
-      disabling_radius: 190.0
+      effect_radius: 190.0
       radius: 32
       speed: 270
       types: [disabling]
@@ -2973,22 +2973,22 @@ areas:
       types: [normal]
     - count: 3
       radius: 102
-      speed: 1380
+      speed: 65.71428571428571
       types: [teleporting]
     - count: 4
       radius: 76
-      speed: 1380
+      speed: 65.71428571428571
       types: [teleporting]
     - count: 5
       radius: 51
-      speed: 1380
+      speed: 65.71428571428571
       types: [teleporting]
     - count: 6
       radius: 26
-      speed: 1380
+      speed: 65.71428571428571
       types: [teleporting]
     - count: 6
-      disabling_radius: 190.0
+      effect_radius: 190.0
       radius: 32
       speed: 270
       types: [disabling]
@@ -3037,22 +3037,22 @@ areas:
       types: [normal]
     - count: 5
       radius: 45
-      speed: 1770
+      speed: 84.28571428571429
       types: [teleporting]
     - count: 5
       radius: 38
-      speed: 1770
+      speed: 84.28571428571429
       types: [teleporting]
     - count: 5
       radius: 32
-      speed: 1770
+      speed: 84.28571428571429
       types: [teleporting]
     - count: 5
       radius: 26
-      speed: 1770
+      speed: 84.28571428571429
       types: [teleporting]
     - count: 9
-      disabling_radius: 190.0
+      effect_radius: 190.0
       radius: 32
       speed: 240
       types: [disabling]
@@ -3089,10 +3089,10 @@ areas:
       types: [normal]
     - count: 12
       radius: 51
-      speed: 1500
+      speed: 71.42857142857143
       types: [teleporting]
     - count: 8
-      disabling_radius: 190.0
+      effect_radius: 190.0
       radius: 32
       speed: 120
       types: [disabling]
@@ -3129,10 +3129,10 @@ areas:
       types: [normal]
     - count: 8
       radius: 102
-      speed: 1980
+      speed: 94.28571428571429
       types: [teleporting]
     - count: 10
-      disabling_radius: 190.0
+      effect_radius: 190.0
       radius: 32
       speed: 120
       types: [disabling]
@@ -3166,14 +3166,14 @@ areas:
     spawner:
     - count: 18
       radius: 32
-      speed: 1980
+      speed: 94.28571428571429
       types: [teleporting]
     - count: 4
       radius: 127
-      speed: 1980
+      speed: 94.28571428571429
       types: [teleporting]
     - count: 18
-      disabling_radius: 190.0
+      effect_radius: 190.0
       radius: 64
       speed: 120
       types: [disabling]

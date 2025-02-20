@@ -639,12 +639,12 @@ areas:
     spawner:
     - count: 10
       radius: 15
-      speed: 360
+      speed: 17.14285714285714
       types:
       - teleporting
     - count: 3
       radius: 25
-      speed: 450
+      speed: 21.42857142857143
       types:
       - teleporting
     - count: 4
@@ -760,7 +760,7 @@ areas:
       - repelling
     - count: 14
       radius: 15
-      speed: 1200
+      speed: 57.14285714285714
       types:
       - teleporting
     - count: 12
@@ -819,7 +819,7 @@ areas:
       - repelling
     - count: 2
       radius: 85
-      speed: 1650
+      speed: 78.57142857142857
       types:
       - teleporting
     - count: 4

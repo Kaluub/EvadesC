@@ -36,7 +36,7 @@ areas:
     spawner:
     - count: 8
       radius: 20
-      speed: 900
+      speed: 42.85714285714286
       types:
       - star
     type: active
@@ -76,7 +76,7 @@ areas:
     spawner:
     - count: 15
       radius: 20
-      speed: 900
+      speed: 42.85714285714286
       types:
       - star
     type: active
@@ -116,7 +116,7 @@ areas:
     spawner:
     - count: 8
       radius: 20
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - star
     - count: 6
@@ -161,7 +161,7 @@ areas:
     spawner:
     - count: 15
       radius: 20
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - star
     - count: 6
@@ -206,7 +206,7 @@ areas:
     spawner:
     - count: 9
       radius: 35
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - star
     - count: 6
@@ -251,7 +251,7 @@ areas:
     spawner:
     - count: 18
       radius: 35
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - star
     - count: 6
@@ -296,17 +296,17 @@ areas:
     spawner:
     - count: 8
       radius: 12
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - star
     - count: 8
       radius: 20
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - star
     - count: 8
       radius: 35
-      speed: 900
+      speed: 42.85714285714286
       types:
       - star
     - count: 6
@@ -351,17 +351,17 @@ areas:
     spawner:
     - count: 12
       radius: 12
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - star
     - count: 12
       radius: 20
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - star
     - count: 12
       radius: 35
-      speed: 900
+      speed: 42.85714285714286
       types:
       - star
     - count: 6
@@ -406,7 +406,7 @@ areas:
     spawner:
     - count: 27
       radius: 35
-      speed: 3150
+      speed: 150
       types:
       - star
     - count: 6
@@ -451,12 +451,12 @@ areas:
     spawner:
     - count: 45
       radius: 25
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - star
     - count: 2
       radius: 90
-      speed: 900
+      speed: 42.85714285714286
       types:
       - star
     - count: 5
@@ -602,7 +602,7 @@ areas:
       - gravity
     - count: 6
       radius: 18
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - star
     - count: 6
@@ -652,7 +652,7 @@ areas:
       - gravity
     - count: 9
       radius: 18
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - star
     - count: 6
@@ -812,7 +812,7 @@ areas:
       - gravity
     - count: 10
       radius: 18
-      speed: 3150
+      speed: 150
       types:
       - star
     - count: 6
@@ -877,7 +877,7 @@ areas:
       - homing
     - count: 10
       radius: 18
-      speed: 3150
+      speed: 150
       types:
       - star
     - count: 6
@@ -927,7 +927,7 @@ areas:
       - gravity
     - count: 10
       radius: 12
-      speed: 3600
+      speed: 171.4285714285714
       types:
       - star
     - count: 6
@@ -972,7 +972,7 @@ areas:
     spawner:
     - count: 25
       radius: 18
-      speed: 2250
+      speed: 107.1428571428571
       types:
       - star
     - count: 8
@@ -1133,7 +1133,7 @@ areas:
       - homing
     - count: 5
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - star
     - count: 9
@@ -1188,7 +1188,7 @@ areas:
       - homing
     - count: 5
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - star
     - count: 9
@@ -1243,7 +1243,7 @@ areas:
       - homing
     - count: 10
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - star
     - count: 9
@@ -1293,7 +1293,7 @@ areas:
       - repelling
     - count: 20
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - star
     - count: 9
@@ -1348,7 +1348,7 @@ areas:
       - slowing
     - count: 25
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - star
     - count: 9
@@ -1518,7 +1518,7 @@ areas:
       - repelling_ghost
     - count: 8
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - star
     - count: 9
@@ -1674,7 +1674,7 @@ areas:
       - repelling
     - count: 6
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - star
     - count: 9
@@ -1729,7 +1729,7 @@ areas:
       - repelling
     - count: 6
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - star
     - count: 9
@@ -1784,12 +1784,12 @@ areas:
       - repelling
     - count: 4
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - star
     - count: 6
       radius: 12
-      speed: 900
+      speed: 42.85714285714286
       types:
       - star
     - count: 5
@@ -1849,12 +1849,12 @@ areas:
       - repelling
     - count: 4
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - star
     - count: 6
       radius: 12
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - star
     - count: 5
@@ -1914,12 +1914,12 @@ areas:
       - repelling
     - count: 4
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - star
     - count: 6
       radius: 12
-      speed: 3600
+      speed: 171.4285714285714
       types:
       - star
     - count: 5
@@ -1979,7 +1979,7 @@ areas:
       - repelling
     - count: 8
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - star
     - count: 6
@@ -2039,12 +2039,12 @@ areas:
       - repelling
     - count: 4
       radius: 12
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - star
     - count: 4
       radius: 18
-      speed: 3150
+      speed: 150
       types:
       - star
     - count: 4
@@ -2119,7 +2119,7 @@ areas:
       - repelling_ghost
     - count: 20
       radius: 14
-      speed: 3600
+      speed: 171.4285714285714
       types:
       - star
     - count: 9
@@ -2189,12 +2189,12 @@ areas:
     spawner:
     - count: 15
       radius: 20
-      speed: 900
+      speed: 42.85714285714286
       types:
       - teleporting
     - count: 15
       radius: 20
-      speed: 900
+      speed: 42.85714285714286
       types:
       - star
     type: active
@@ -2234,12 +2234,12 @@ areas:
     spawner:
     - count: 8
       radius: 20
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - teleporting
     - count: 8
       radius: 20
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - star
     - count: 6
@@ -2284,12 +2284,12 @@ areas:
     spawner:
     - count: 15
       radius: 20
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - teleporting
     - count: 15
       radius: 20
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - star
     - count: 6
@@ -2334,12 +2334,12 @@ areas:
     spawner:
     - count: 9
       radius: 35
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - teleporting
     - count: 9
       radius: 35
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - star
     - count: 6
@@ -2384,12 +2384,12 @@ areas:
     spawner:
     - count: 16
       radius: 35
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - teleporting
     - count: 16
       radius: 35
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - star
     - count: 6
@@ -2434,32 +2434,32 @@ areas:
     spawner:
     - count: 7
       radius: 12
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - teleporting
     - count: 7
       radius: 20
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - teleporting
     - count: 7
       radius: 35
-      speed: 900
+      speed: 42.85714285714286
       types:
       - teleporting
     - count: 7
       radius: 12
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - star
     - count: 7
       radius: 20
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - star
     - count: 7
       radius: 35
-      speed: 900
+      speed: 42.85714285714286
       types:
       - star
     - count: 6
@@ -2504,32 +2504,32 @@ areas:
     spawner:
     - count: 9
       radius: 12
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - teleporting
     - count: 9
       radius: 20
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - teleporting
     - count: 9
       radius: 35
-      speed: 900
+      speed: 42.85714285714286
       types:
       - teleporting
     - count: 9
       radius: 12
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - star
     - count: 9
       radius: 20
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - star
     - count: 9
       radius: 35
-      speed: 900
+      speed: 42.85714285714286
       types:
       - star
     - count: 6
@@ -2574,12 +2574,12 @@ areas:
     spawner:
     - count: 20
       radius: 35
-      speed: 3150
+      speed: 150
       types:
       - teleporting
     - count: 20
       radius: 35
-      speed: 3150
+      speed: 150
       types:
       - star
     - count: 6
@@ -2624,22 +2624,22 @@ areas:
     spawner:
     - count: 25
       radius: 25
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - teleporting
     - count: 1
       radius: 90
-      speed: 900
+      speed: 42.85714285714286
       types:
       - teleporting
     - count: 25
       radius: 25
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - star
     - count: 1
       radius: 90
-      speed: 900
+      speed: 42.85714285714286
       types:
       - star
     - count: 6
@@ -2650,13 +2650,13 @@ areas:
     - count: 1
       radius: 12
       speed: 180
-      slowing_radius: 64
+      effect_radius: 64
       types:
       - slowing
     - count: 1
       radius: 12
       speed: 180
-      slowing_radius: 288
+      effect_radius: 288
       types:
       - slowing
     - count: 6
@@ -2704,7 +2704,7 @@ areas:
       radius: 18
       speed: 180
       gravity: 360
-      gravity_radius: 256
+      effect_radius: 256
       types:
       - gravity
     - count: 6
@@ -2751,7 +2751,7 @@ areas:
       radius: 18
       speed: 180
       gravity: 360
-      gravity_radius: 256
+      effect_radius: 256
       types:
       - gravity
     - count: 6
@@ -2798,17 +2798,17 @@ areas:
       radius: 18
       speed: 270
       gravity: 360
-      gravity_radius: 256
+      effect_radius: 256
       types:
       - gravity
     - count: 5
       radius: 18
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - teleporting
     - count: 5
       radius: 18
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - star
     - count: 6
@@ -2855,17 +2855,17 @@ areas:
       radius: 18
       speed: 270
       gravity: 360
-      gravity_radius: 256
+      effect_radius: 256
       types:
       - gravity
     - count: 7
       radius: 18
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - teleporting
     - count: 7
       radius: 18
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - star
     - count: 6
@@ -2912,7 +2912,7 @@ areas:
       radius: 18
       speed: 360
       gravity: 360
-      gravity_radius: 256
+      effect_radius: 256
       types:
       - gravity
     - count: 6
@@ -2964,7 +2964,7 @@ areas:
       radius: 30
       speed: 450
       gravity: 360
-      gravity_radius: 256
+      effect_radius: 256
       types:
       - gravity
     - count: 7
@@ -3016,31 +3016,31 @@ areas:
       radius: 30
       speed: 180
       gravity: 270
-      gravity_radius: 256
+      effect_radius: 256
       types:
       - gravity
     - count: 5
       radius: 24
       speed: 270
       gravity: 270
-      gravity_radius: 256
+      effect_radius: 256
       types:
       - gravity
     - count: 5
       radius: 18
       speed: 360
       gravity: 270
-      gravity_radius: 256
+      effect_radius: 256
       types:
       - gravity
     - count: 7
       radius: 18
-      speed: 3150
+      speed: 150
       types:
       - teleporting
     - count: 7
       radius: 18
-      speed: 3150
+      speed: 150
       types:
       - star
     - count: 6
@@ -3087,21 +3087,21 @@ areas:
       radius: 30
       speed: 270
       gravity: 270
-      gravity_radius: 256
+      effect_radius: 256
       types:
       - gravity
     - count: 4
       radius: 24
       speed: 360
       gravity: 270
-      gravity_radius: 256
+      effect_radius: 256
       types:
       - gravity
     - count: 4
       radius: 18
       speed: 450
       gravity: 270
-      gravity_radius: 256
+      effect_radius: 256
       types:
       - gravity
     - count: 6
@@ -3111,12 +3111,12 @@ areas:
       - homing
     - count: 7
       radius: 18
-      speed: 3150
+      speed: 150
       types:
       - teleporting
     - count: 7
       radius: 18
-      speed: 3150
+      speed: 150
       types:
       - star
     - count: 6
@@ -3163,17 +3163,17 @@ areas:
       radius: 18
       speed: 210
       gravity: 270
-      gravity_radius: 256
+      effect_radius: 256
       types:
       - gravity
     - count: 8
       radius: 12
-      speed: 3600
+      speed: 171.4285714285714
       types:
       - teleporting
     - count: 8
       radius: 12
-      speed: 3600
+      speed: 171.4285714285714
       types:
       - star
     - count: 6
@@ -3218,22 +3218,22 @@ areas:
     spawner:
     - count: 15
       radius: 18
-      speed: 2250
+      speed: 107.1428571428571
       types:
       - teleporting
     - count: 15
       radius: 18
-      speed: 2250
+      speed: 107.1428571428571
       types:
       - star
     - count: 1
       radius: 90
-      speed: 2250
+      speed: 107.1428571428571
       types:
       - teleporting
     - count: 1
       radius: 90
-      speed: 2250
+      speed: 107.1428571428571
       types:
       - star
     - count: 2
@@ -3301,7 +3301,7 @@ areas:
       radius: 18
       speed: 270
       repulsion: 360
-      repelling_radius: 256
+      effect_radius: 256
       types:
       - repelling
     - count: 9
@@ -3348,7 +3348,7 @@ areas:
       radius: 18
       speed: 270
       repulsion: 360
-      repelling_radius: 256
+      effect_radius: 256
       types:
       - repelling
     - count: 9
@@ -3395,7 +3395,7 @@ areas:
       radius: 18
       speed: 270
       repulsion: 360
-      repelling_radius: 256
+      effect_radius: 256
       types:
       - repelling
     - count: 8
@@ -3405,12 +3405,12 @@ areas:
       - homing
     - count: 4
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - teleporting
     - count: 4
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - star
     - count: 9
@@ -3457,7 +3457,7 @@ areas:
       radius: 18
       speed: 180
       repulsion: 360
-      repelling_radius: 256
+      effect_radius: 256
       types:
       - repelling
     - count: 15
@@ -3467,12 +3467,12 @@ areas:
       - homing
     - count: 4
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - teleporting
     - count: 4
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - star
     - count: 9
@@ -3519,7 +3519,7 @@ areas:
       radius: 18
       speed: 90
       repulsion: 360
-      repelling_radius: 256
+      effect_radius: 256
       types:
       - repelling
     - count: 9
@@ -3529,12 +3529,12 @@ areas:
       - homing
     - count: 8
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - teleporting
     - count: 8
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - star
     - count: 9
@@ -3581,17 +3581,17 @@ areas:
       radius: 18
       speed: 180
       repulsion: 360
-      repelling_radius: 256
+      effect_radius: 256
       types:
       - repelling
     - count: 15
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - teleporting
     - count: 15
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - star
     - count: 9
@@ -3638,23 +3638,23 @@ areas:
       radius: 18
       speed: 180
       repulsion: 360
-      repelling_radius: 256
+      effect_radius: 256
       types:
       - repelling
     - count: 6
       radius: 12
       speed: 90
-      slowing_radius: 192
+      effect_radius: 192
       types:
       - slowing
     - count: 19
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - teleporting
     - count: 19
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - star
     - count: 9
@@ -3701,19 +3701,19 @@ areas:
       radius: 18
       speed: 270
       repulsion: 360
-      repelling_radius: 256
+      effect_radius: 256
       types:
       - repelling
     - count: 10
       radius: 12
       speed: 270
-      slowing_radius: 192
+      effect_radius: 192
       types:
       - slowing
     - count: 10
       radius: 12
       speed: 270
-      draining_radius: 192
+      effect_radius: 192
       types:
       - draining
     - count: 9
@@ -3760,19 +3760,19 @@ areas:
       radius: 18
       speed: 360
       repulsion: 360
-      repelling_radius: 256
+      effect_radius: 256
       types:
       - repelling
     - count: 8
       radius: 12
       speed: 360
-      slowing_radius: 192
+      effect_radius: 192
       types:
       - slowing
     - count: 8
       radius: 12
       speed: 360
-      draining_radius: 192
+      effect_radius: 192
       types:
       - draining
     - count: 9
@@ -3832,22 +3832,22 @@ areas:
       - repelling_ghost
     - count: 1
       radius: 90
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - teleporting
     - count: 1
       radius: 90
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - star
     - count: 15
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - teleporting
     - count: 15
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - star
     - count: 2
@@ -3900,14 +3900,14 @@ areas:
       radius: 12
       speed: 180
       gravity: 360
-      gravity_radius: 256
+      effect_radius: 256
       types:
       - gravity
     - count: 6
       radius: 12
       speed: 180
       repulsion: 360
-      repelling_radius: 256
+      effect_radius: 256
       types:
       - repelling
     - count: 9
@@ -3954,14 +3954,14 @@ areas:
       radius: 12
       speed: 180
       gravity: 360
-      gravity_radius: 256
+      effect_radius: 256
       types:
       - gravity
     - count: 9
       radius: 12
       speed: 180
       repulsion: 360
-      repelling_radius: 256
+      effect_radius: 256
       types:
       - repelling
     - count: 9
@@ -4007,23 +4007,23 @@ areas:
     - count: 9
       radius: 18
       speed: 270
-      gravity_radius: 256
+      effect_radius: 256
       types:
       - gravity
     - count: 9
       radius: 18
       speed: 270
-      repelling_radius: 256
+      effect_radius: 256
       types:
       - repelling
     - count: 5
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - teleporting
     - count: 5
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - star
     - count: 9
@@ -4069,23 +4069,23 @@ areas:
     - count: 14
       radius: 18
       speed: 270
-      gravity_radius: 256
+      effect_radius: 256
       types:
       - gravity
     - count: 14
       radius: 18
       speed: 270
-      repelling_radius: 256
+      effect_radius: 256
       types:
       - repelling
     - count: 5
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - teleporting
     - count: 5
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - star
     - count: 9
@@ -4131,33 +4131,33 @@ areas:
     - count: 8
       radius: 18
       speed: 270
-      gravity_radius: 256
+      effect_radius: 256
       types:
       - gravity
     - count: 8
       radius: 18
       speed: 270
-      repelling_radius: 256
+      effect_radius: 256
       types:
       - repelling
     - count: 3
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - teleporting
     - count: 5
       radius: 12
-      speed: 900
+      speed: 42.85714285714286
       types:
       - teleporting
     - count: 3
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - star
     - count: 5
       radius: 12
-      speed: 900
+      speed: 42.85714285714286
       types:
       - star
     - count: 6
@@ -4208,33 +4208,33 @@ areas:
     - count: 13
       radius: 18
       speed: 270
-      gravity_radius: 256
+      effect_radius: 256
       types:
       - gravity
     - count: 13
       radius: 18
       speed: 270
-      repelling_radius: 256
+      effect_radius: 256
       types:
       - repelling
     - count: 3
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - teleporting
     - count: 5
       radius: 12
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - teleporting
     - count: 3
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - star
     - count: 5
       radius: 12
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - star
     - count: 6
@@ -4285,33 +4285,33 @@ areas:
     - count: 11
       radius: 18
       speed: 360
-      gravity_radius: 256
+      effect_radius: 256
       types:
       - gravity
     - count: 11
       radius: 18
       speed: 360
-      repelling_radius: 256
+      effect_radius: 256
       types:
       - repelling
     - count: 3
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - teleporting
     - count: 5
       radius: 12
-      speed: 3600
+      speed: 171.4285714285714
       types:
       - teleporting
     - count: 3
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - star
     - count: 5
       radius: 12
-      speed: 3600
+      speed: 171.4285714285714
       types:
       - star
     - count: 6
@@ -4362,29 +4362,29 @@ areas:
     - count: 11
       radius: 18
       speed: 360
-      gravity_radius: 256
+      effect_radius: 256
       types:
       - gravity
     - count: 11
       radius: 18
       speed: 360
-      repelling_radius: 256
+      effect_radius: 256
       types:
       - repelling
     - count: 6
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - teleporting
     - count: 6
       radius: 18
-      speed: 2700
+      speed: 128.5714285714286
       types:
       - star
     - count: 6
       radius: 12
       speed: 360
-      draining_radius: 192
+      effect_radius: 192
       types:
       - draining
     - count: 9
@@ -4430,39 +4430,39 @@ areas:
     - count: 6
       radius: 18
       speed: 450
-      gravity_radius: 256
+      effect_radius: 256
       types:
       - gravity
     - count: 6
       radius: 18
       speed: 450
-      repelling_radius: 256
+      effect_radius: 256
       types:
       - repelling
     - count: 3
       radius: 12
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - teleporting
     - count: 3
       radius: 18
-      speed: 3150
+      speed: 150
       types:
       - teleporting
     - count: 3
       radius: 12
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - star
     - count: 3
       radius: 18
-      speed: 3150
+      speed: 150
       types:
       - star
     - count: 4
       radius: 12
       speed: 450
-      draining_radius: 192
+      effect_radius: 192
       types:
       - draining
     - count: 4
@@ -4542,42 +4542,42 @@ areas:
       - repelling_ghost
     - count: 5
       radius: 14
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - teleporting
     - count: 5
       radius: 18
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - teleporting
     - count: 5
       radius: 26
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - teleporting
     - count: 1
       radius: 90
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - teleporting
     - count: 5
       radius: 14
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - star
     - count: 5
       radius: 18
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - star
     - count: 5
       radius: 26
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - star
     - count: 1
       radius: 90
-      speed: 1800
+      speed: 85.71428571428571
       types:
       - star
     - count: 2

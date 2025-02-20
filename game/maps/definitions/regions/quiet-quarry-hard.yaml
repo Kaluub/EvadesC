@@ -1532,7 +1532,7 @@ areas:
       - repelling_ghost
     - count: 2
       radius: 0
-      slowing_radius: 300
+      effect_radius: 300
       speed: 300
       types:
       - slowing   
@@ -2836,7 +2836,7 @@ areas:
     spawner:
     - count: 50
       radius: 0
-      slowing_radius: 80
+      effect_radius: 80
       speed: 300
       types:
       - slowing
@@ -2931,7 +2931,7 @@ areas:
     spawner:
     - count: 50
       radius: 0
-      draining_radius: 80
+      effect_radius: 80
       speed: 300
       types:
       - draining
@@ -3026,7 +3026,7 @@ areas:
     spawner:
     - count: 50
       radius: 0
-      gravity_radius: 80
+      effect_radius: 80
       speed: 300
       types:
       - gravity

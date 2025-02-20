@@ -1,5 +1,5 @@
-SRC = src/*.c src/**/*.c
-HEADERS = src/*.h src/**/*.h
+SRC = src/*.c
+HEADERS = src/*.h
 LIB = -L lib/ -I include/ -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
 OUT = evades
 

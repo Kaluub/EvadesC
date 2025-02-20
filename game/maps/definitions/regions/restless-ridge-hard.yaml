@@ -7276,7 +7276,7 @@ areas:
       - types:
         - teleporting
         radius: 18
-        speed: 2250
+        speed: 107.1428571428571
         count: 25
       - types:
         - spiral
@@ -16286,7 +16286,7 @@ areas:
         - teleporting
         count: 1
         radius: 12
-        speed: 7860
+        speed: 374.2857142857143
       - types:
         - wall
         radius: 240

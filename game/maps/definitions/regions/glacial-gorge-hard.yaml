@@ -1165,7 +1165,7 @@ areas:
     - types:
       - slippery
       count: 6
-      slippery_radius: 100
+      effect_radius: 100
       radius: 18
       speed: 300
     - types:
@@ -1218,7 +1218,7 @@ areas:
     - types:
       - slippery
       count: 8
-      slippery_radius: 100
+      effect_radius: 100
       radius: 25
       speed: 360
     - types:
@@ -1271,13 +1271,13 @@ areas:
     - types:
       - slippery
       count: 8
-      slippery_radius: 100
+      effect_radius: 100
       radius: 5
       speed: 450
     - types:
       - slippery
       count: 2
-      slippery_radius: 140
+      effect_radius: 140
       radius: 25
       speed: 315
     - types:
@@ -1330,13 +1330,13 @@ areas:
     - types:
       - slippery
       count: 8
-      slippery_radius: 100
+      effect_radius: 100
       radius: 5
       speed: 360
     - types:
       - slippery
       count: 4
-      slippery_radius: 140
+      effect_radius: 140
       radius: 25
       speed: 300
     - types:
@@ -1389,25 +1389,25 @@ areas:
     - types:
       - slippery
       count: 5
-      slippery_radius: 100
+      effect_radius: 100
       radius: 5
       speed: 330
     - types:
       - slippery
       count: 5
-      slippery_radius: 50
+      effect_radius: 50
       radius: 15
       speed: 390
     - types:
       - slippery
       count: 2
-      slippery_radius: 140
+      effect_radius: 140
       radius: 20
       speed: 240
     - types:
       - slippery
       count: 2
-      slippery_radius: 180
+      effect_radius: 180
       radius: 30
       speed: 240
     - types:
@@ -1460,25 +1460,25 @@ areas:
     - types:
       - slippery
       count: 6
-      slippery_radius: 100
+      effect_radius: 100
       radius: 5
       speed: 270
     - types:
       - slippery
       count: 12
-      slippery_radius: 50
+      effect_radius: 50
       radius: 15
       speed: 330
     - types:
       - slippery
       count: 3
-      slippery_radius: 140
+      effect_radius: 140
       radius: 20
       speed: 270
     - types:
       - slippery
       count: 2
-      slippery_radius: 160
+      effect_radius: 160
       radius: 25
       speed: 180
     - types:
@@ -1531,13 +1531,13 @@ areas:
     - types:
       - slippery
       count: 6
-      slippery_radius: 100
+      effect_radius: 100
       radius: 5
       speed: 330
     - types:
       - slippery
       count: 6
-      slippery_radius: 80
+      effect_radius: 80
       radius: 15
       speed: 330
     - types:
@@ -1595,13 +1595,13 @@ areas:
     - types:
       - slippery
       count: 4
-      slippery_radius: 100
+      effect_radius: 100
       radius: 15
       speed: 240
     - types:
       - slippery
       count: 8
-      slippery_radius: 80
+      effect_radius: 80
       radius: 5
       speed: 270
     - types:
@@ -1669,19 +1669,19 @@ areas:
     - types:
       - slippery
       count: 6
-      slippery_radius: 100
+      effect_radius: 100
       radius: 20
       speed: 240
     - types:
       - slippery
       count: 10
-      slippery_radius: 80
+      effect_radius: 80
       radius: 5
       speed: 240
     - types:
       - slippery
       count: 8
-      slippery_radius: 50
+      effect_radius: 50
       radius: 5
       speed: 270
     - types:
@@ -1739,25 +1739,25 @@ areas:
     - types:
       - slippery
       count: 4
-      slippery_radius: 135
+      effect_radius: 135
       radius: 30
       speed: 60
     - types:
       - slippery
       count: 6
-      slippery_radius: 100
+      effect_radius: 100
       radius: 10
       speed: 180
     - types:
       - slippery
       count: 8
-      slippery_radius: 80
+      effect_radius: 80
       radius: 15
       speed: 240
     - types:
       - slippery
       count: 10
-      slippery_radius: 50
+      effect_radius: 50
       radius: 25
       speed: 300
     - types:

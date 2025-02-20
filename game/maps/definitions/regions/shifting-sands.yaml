@@ -21,7 +21,7 @@ areas:
       speed: 0
       types: [cactus]
     - count: 1
-      quicksand_radius: 5504
+      effect_radius: 5504
       quicksand_strength: 150
       radius: 0
       speed: 0
@@ -518,7 +518,7 @@ areas:
       speed: 120
       types: [sand]
     - count: 2
-      quicksand_radius: 350
+      effect_radius: 350
       radius: 12
       speed: 90
       types: [quicksand]
@@ -813,7 +813,7 @@ areas:
   - height: 480
     spawner:
     - count: 3
-      quicksand_radius: 200
+      effect_radius: 200
       radius: 54
       speed: 90
       types: [quicksand]
@@ -1049,7 +1049,7 @@ areas:
       speed: 120
       types: [sand]
     - count: 2
-      quicksand_radius: 450
+      effect_radius: 450
       radius: 12
       speed: 90
       types: [quicksand]
@@ -1628,7 +1628,7 @@ areas:
       types: [wall]
     - angle: 0
       count: 1
-      quicksand_radius: 300
+      effect_radius: 300
       radius: 18
       speed: 240
       types: [quicksand]
@@ -1636,7 +1636,7 @@ areas:
       y: 240
     - angle: 180
       count: 1
-      quicksand_radius: 300
+      effect_radius: 300
       radius: 18
       speed: 240
       types: [quicksand]
@@ -1704,7 +1704,7 @@ areas:
     spawner:
     - count: 3
       radius: 38
-      slowing_radius: 350
+      effect_radius: 350
       speed: 30
       types: [slowing]
     - count: 50
@@ -1749,21 +1749,21 @@ areas:
     spawner:
     - count: 3
       radius: 40
-      slowing_radius: 300
+      effect_radius: 300
       speed: 30
       types: [slowing]
     - count: 20
       radius: 20
-      slowing_radius: 100
+      effect_radius: 100
       speed: 60
       types: [slowing]
     - count: 12
       radius: 12
-      slowing_radius: 50
+      effect_radius: 50
       speed: 240
       types: [slowing]
     - count: 2
-      quicksand_radius: 200
+      effect_radius: 200
       radius: 20
       speed: 150
       types: [quicksand]
@@ -1811,21 +1811,21 @@ areas:
     spawner:
     - count: 2
       radius: 40
-      slowing_radius: 250
+      effect_radius: 250
       speed: 30
       types: [slowing]
     - count: 12
       radius: 20
-      slowing_radius: 80
+      effect_radius: 80
       speed: 180
       types: [slowing]
     - count: 12
       radius: 12
-      slowing_radius: 50
+      effect_radius: 50
       speed: 270
       types: [slowing]
     - count: 3
-      quicksand_radius: 250
+      effect_radius: 250
       radius: 20
       speed: 150
       types: [quicksand]
@@ -1863,26 +1863,26 @@ areas:
     spawner:
     - count: 3
       radius: 40
-      slowing_radius: 200
+      effect_radius: 200
       speed: 30
       types: [slowing]
     - count: 12
       radius: 8
-      slowing_radius: 60
+      effect_radius: 60
       speed: 210
       types: [slowing]
     - count: 5
       radius: 4
-      slowing_radius: 40
+      effect_radius: 40
       speed: 300
       types: [slowing]
     - count: 4
-      quicksand_radius: 300
+      effect_radius: 300
       radius: 20
       speed: 150
       types: [quicksand]
     - count: 7
-      quicksand_radius: 60
+      effect_radius: 60
       radius: 8
       speed: 210
       types: [quicksand]
@@ -1923,7 +1923,7 @@ areas:
       speed: 60
       types: [slowing]
     - count: 5
-      quicksand_radius: 350
+      effect_radius: 350
       quicksand_strength: 75
       radius: 20
       speed: 30
@@ -1966,7 +1966,7 @@ areas:
   - height: 480
     spawner:
     - count: 6
-      quicksand_radius: 350
+      effect_radius: 350
       quicksand_strength: 60
       radius: 50
       speed: 15
@@ -2013,7 +2013,7 @@ areas:
   - height: 480
     spawner:
     - count: 7
-      quicksand_radius: 350
+      effect_radius: 350
       quicksand_strength: 45
       radius: 50
       speed: 30
@@ -2060,7 +2060,7 @@ areas:
   - height: 480
     spawner:
     - count: 8
-      quicksand_radius: 350
+      effect_radius: 350
       quicksand_strength: 120
       radius: 50
       speed: 15
@@ -2103,7 +2103,7 @@ areas:
   - height: 480
     spawner:
     - count: 9
-      quicksand_radius: 350
+      effect_radius: 350
       quicksand_strength: 135
       radius: 50
       speed: 15
@@ -2152,7 +2152,7 @@ areas:
     spawner:
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2160,7 +2160,7 @@ areas:
       y: 75
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2168,7 +2168,7 @@ areas:
       y: 405
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2176,7 +2176,7 @@ areas:
       y: 75
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2184,7 +2184,7 @@ areas:
       y: 405
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2192,7 +2192,7 @@ areas:
       y: 405
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2200,7 +2200,7 @@ areas:
       y: 75
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2208,7 +2208,7 @@ areas:
       y: 405
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2216,7 +2216,7 @@ areas:
       y: 75
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2224,7 +2224,7 @@ areas:
       y: 75
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2232,7 +2232,7 @@ areas:
       y: 405
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2240,7 +2240,7 @@ areas:
       y: 405
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2248,7 +2248,7 @@ areas:
       y: 75
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2256,7 +2256,7 @@ areas:
       y: 75
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2264,7 +2264,7 @@ areas:
       y: 405
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2272,7 +2272,7 @@ areas:
       y: 405
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2280,7 +2280,7 @@ areas:
       y: 75
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2288,7 +2288,7 @@ areas:
       y: 75
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2296,7 +2296,7 @@ areas:
       y: 405
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2304,7 +2304,7 @@ areas:
       y: 75
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2312,7 +2312,7 @@ areas:
       y: 405
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2320,7 +2320,7 @@ areas:
       y: 405
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2328,7 +2328,7 @@ areas:
       y: 75
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2336,7 +2336,7 @@ areas:
       y: 405
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2344,7 +2344,7 @@ areas:
       y: 75
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2352,7 +2352,7 @@ areas:
       y: 75
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2360,7 +2360,7 @@ areas:
       y: 405
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2368,7 +2368,7 @@ areas:
       y: 75
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2376,7 +2376,7 @@ areas:
       y: 405
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2384,7 +2384,7 @@ areas:
       y: 75
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2392,7 +2392,7 @@ areas:
       y: 405
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2400,7 +2400,7 @@ areas:
       y: 75
     - count: 1
       quicksand_strength: 240
-      quicksand_radius: 165
+      effect_radius: 165
       radius: 0
       speed: 0
       types: [quicksand]
@@ -2408,7 +2408,7 @@ areas:
       y: 405
     - count: 35
       radius: 20
-      slowing_radius: 175
+      effect_radius: 175
       speed: 30
       types: [slowing]
     - count: 15

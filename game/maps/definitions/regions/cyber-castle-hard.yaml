@@ -60,7 +60,7 @@ areas:
     spawner:
     - angle: 0
       count: 1
-      radar_radius: 288
+      effect_radius: 288
       radius: 18
       speed: 450
       types:
@@ -69,7 +69,7 @@ areas:
       y: 240
     - angle: 0
       count: 1
-      radar_radius: 192
+      effect_radius: 192
       radius: 14
       speed: 240
       types:
@@ -78,7 +78,7 @@ areas:
       y: 160
     - angle: 0
       count: 1
-      radar_radius: 192
+      effect_radius: 192
       radius: 14
       speed: 240
       types:
@@ -87,7 +87,7 @@ areas:
       y: 320
     - angle: 180
       count: 1
-      radar_radius: 160
+      effect_radius: 160
       radius: 10
       speed: 150
       types:
@@ -96,7 +96,7 @@ areas:
       y: 10
     - angle: 180
       count: 1
-      radar_radius: 160
+      effect_radius: 160
       radius: 10
       speed: 150
       types:
@@ -105,7 +105,7 @@ areas:
       y: 212
     - angle: 180
       count: 1
-      radar_radius: 160
+      effect_radius: 160
       radius: 10
       speed: 150
       types:
@@ -114,7 +114,7 @@ areas:
       y: 268
     - angle: 180
       count: 1
-      radar_radius: 160
+      effect_radius: 160
       radius: 10
       speed: 150
       types:
@@ -123,7 +123,7 @@ areas:
       y: 470
     - angle: 0
       count: 1
-      radar_radius: 144
+      effect_radius: 144
       radius: 12
       speed: 450
       types:
@@ -132,7 +132,7 @@ areas:
       y: 60
     - angle: 180
       count: 1
-      radar_radius: 144
+      effect_radius: 144
       radius: 12
       speed: 450
       types:
@@ -156,8 +156,7 @@ areas:
       - 227
       - 150
     requirements:
-    - cybot_castle_defeated
-    - ten_hard_variants
+    - defeat_everything
     translate:
       x: 160
       y: 0
@@ -186,18 +185,18 @@ areas:
     spawner:
     - count: 30
       radius: 4
-      slowing_radius: 50
+      effect_radius: 50
       speed: 330
       types:
       - slowing
     - count: 30
-      draining_radius: 50
+      effect_radius: 50
       radius: 4
       speed: 330
       types:
       - draining
     - angle: 90
-      barrier_radius: 80
+      effect_radius: 80
       count: 1
       radius: 8
       speed: 90
@@ -206,7 +205,7 @@ areas:
       x: 240
       y: 2720
     - angle: 270
-      barrier_radius: 80
+      effect_radius: 80
       count: 1
       radius: 8
       speed: 90
@@ -322,7 +321,7 @@ areas:
       types:
       - ice_ghost
     - count: 4
-      freezing_radius: 120
+      effect_radius: 120
       radius: 18
       speed: 150
       types:
@@ -586,7 +585,7 @@ areas:
       y: 448
     - angle: 0
       count: 1
-      radar_radius: 200
+      effect_radius: 200
       radius: 32
       speed: 240
       types:
@@ -595,7 +594,7 @@ areas:
       y: 496
     - angle: 180
       count: 1
-      radar_radius: 200
+      effect_radius: 200
       radius: 32
       speed: 240
       types:
@@ -604,7 +603,7 @@ areas:
       y: 816
     - angle: 0
       count: 1
-      radar_radius: 200
+      effect_radius: 200
       radius: 32
       speed: 240
       types:
@@ -613,7 +612,7 @@ areas:
       y: 1136
     - angle: 180
       count: 1
-      radar_radius: 200
+      effect_radius: 200
       radius: 32
       speed: 240
       types:
@@ -622,7 +621,7 @@ areas:
       y: 1456
     - angle: 0
       count: 1
-      radar_radius: 200
+      effect_radius: 200
       radius: 32
       speed: 240
       types:
@@ -631,7 +630,7 @@ areas:
       y: 1776
     - angle: 180
       count: 1
-      radar_radius: 200
+      effect_radius: 200
       radius: 32
       speed: 240
       types:
@@ -640,7 +639,7 @@ areas:
       y: 2096
     - angle: 0
       count: 1
-      radar_radius: 200
+      effect_radius: 200
       radius: 32
       speed: 240
       types:
@@ -649,7 +648,7 @@ areas:
       y: 2416
     - angle: 180
       count: 1
-      radar_radius: 200
+      effect_radius: 200
       radius: 32
       speed: 240
       types:
@@ -704,7 +703,7 @@ areas:
     spawner:
     - angle: 0
       count: 1
-      radar_radius: 360
+      effect_radius: 360
       radius: 48
       speed: 120
       types:
@@ -713,7 +712,7 @@ areas:
       y: 880
     - angle: 180
       count: 1
-      radar_radius: 360
+      effect_radius: 360
       radius: 48
       speed: 120
       types:
@@ -722,7 +721,7 @@ areas:
       y: 1360
     - angle: 0
       count: 1
-      radar_radius: 360
+      effect_radius: 360
       radius: 48
       speed: 120
       types:
@@ -731,7 +730,7 @@ areas:
       y: 1840
     - angle: 180
       count: 1
-      radar_radius: 360
+      effect_radius: 360
       radius: 48
       speed: 120
       types:
@@ -1340,7 +1339,7 @@ areas:
     spawner:
     - count: 28
       radius: 28
-      speed: 1440
+      speed: 68.57142857142857
       types:
       - teleporting
     - count: 16

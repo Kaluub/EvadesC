@@ -2,6 +2,7 @@ name: Central Core Hard
 properties:
   friction: 0.75
 areas:
+# 1
 - x: var x
   y: var y
   zones:
@@ -78,6 +79,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 2
 - x: last_right
   y: last_y
   zones:
@@ -118,6 +120,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 3
 - x: last_right
   y: last_y
   zones:
@@ -163,6 +166,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 4
 - x: last_right
   y: last_y
   zones:
@@ -208,6 +212,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 5
 - x: last_right
   y: last_y
   zones:
@@ -258,6 +263,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 6
 - x: last_right
   y: last_y
   zones:
@@ -303,6 +309,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 7
 - x: last_right
   y: last_y
   zones:
@@ -363,6 +370,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 8
 - x: last_right
   y: last_y
   zones:
@@ -418,6 +426,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 9
 - x: last_right
   y: last_y
   zones:
@@ -463,6 +472,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 10
 - x: last_right
   y: last_y
   zones:
@@ -514,6 +524,7 @@ areas:
     x: last_right
     y: 0
   boss: true
+# 11
 - x: last_right
   y: last_y
   zones:
@@ -559,6 +570,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 12
 - x: last_right
   y: last_y
   zones:
@@ -609,6 +621,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 13
 - x: last_right
   y: last_y
   zones:
@@ -664,6 +677,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 14
 - x: last_right
   y: last_y
   zones:
@@ -720,6 +734,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 15
 - x: last_right
   y: last_y
   zones:
@@ -775,6 +790,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 16
 - x: last_right
   y: last_y
   zones:
@@ -841,6 +857,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 17
 - x: last_right
   y: last_y
   zones:
@@ -891,6 +908,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 18
 - x: last_right
   y: last_y
   zones:
@@ -951,6 +969,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 19
 - x: last_right
   y: last_y
   zones:
@@ -1002,6 +1021,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 20
 - x: last_right
   y: last_y
   zones:
@@ -1058,6 +1078,7 @@ areas:
     x: last_right
     y: 0
   boss: true
+# 21
 - x: last_right
   y: last_y
   zones:
@@ -1108,6 +1129,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 22
 - x: last_right
   y: last_y
   zones:
@@ -1158,6 +1180,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 23
 - x: last_right
   y: last_y
   zones:
@@ -1208,6 +1231,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 24
 - x: last_right
   y: last_y
   zones:
@@ -1258,6 +1282,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 25
 - x: last_right
   y: last_y
   zones:
@@ -1314,6 +1339,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 26
 - x: last_right
   y: last_y
   zones:
@@ -1364,6 +1390,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 27
 - x: last_right
   y: last_y
   zones:
@@ -1430,6 +1457,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 28
 - x: last_right
   y: last_y
   zones:
@@ -1475,6 +1503,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 29
 - x: last_right
   y: last_y
   zones:
@@ -1526,6 +1555,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 30
 - x: last_right
   y: last_y
   zones:
@@ -1582,6 +1612,7 @@ areas:
     x: last_right
     y: 0
   boss: true
+# 31
 - x: last_right
   y: last_y
   zones:
@@ -1627,6 +1658,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 32
 - x: last_right
   y: last_y
   zones:
@@ -1677,6 +1709,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 33
 - x: last_right
   y: last_y
   zones:
@@ -1727,6 +1760,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 34
 - x: last_right
   y: last_y
   zones:
@@ -1777,6 +1811,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 35
 - x: last_right
   y: last_y
   zones:
@@ -1827,6 +1862,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 36
 - x: last_right
   y: last_y
   zones:
@@ -1882,6 +1918,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 37
 - x: last_right
   y: last_y
   zones:
@@ -1937,6 +1974,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 38
 - x: last_right
   y: last_y
   zones:
@@ -1992,6 +2030,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 39
 - x: last_right
   y: last_y
   zones:
@@ -2047,6 +2086,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+# 40
 - x: last_right
   y: last_y
   zones:
@@ -2098,6 +2138,7 @@ areas:
     x: last_right
     y: 0
   boss: true
+# 41
 - x: last_right
   y: last_y
   zones:

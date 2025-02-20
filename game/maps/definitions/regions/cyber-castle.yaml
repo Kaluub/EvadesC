@@ -14,7 +14,7 @@ areas:
     width: 32
     height: 192
     translate:
-      x: 3776
+      x: 3840
       y: 0
     properties:
       background_color:
@@ -71,7 +71,7 @@ areas:
       x: 332
       y: 48
       angle: 0
-      radar_radius: 160
+      effect_radius: 160
       types:
       - radar
     - count: 1
@@ -80,7 +80,7 @@ areas:
       x: 332
       y: 240
       angle: 0
-      radar_radius: 160
+      effect_radius: 160
       types:
       - radar
     - count: 1
@@ -89,7 +89,7 @@ areas:
       x: 332
       y: 432
       angle: 0
-      radar_radius: 160
+      effect_radius: 160
       types:
       - radar
     - count: 1
@@ -98,7 +98,7 @@ areas:
       x: 2868
       y: 192
       angle: 180
-      radar_radius: 192
+      effect_radius: 192
       types:
       - radar
     - count: 1
@@ -107,7 +107,7 @@ areas:
       x: 2868
       y: 288
       angle: 180
-      radar_radius: 192
+      effect_radius: 192
       types:
       - radar
     type: active
@@ -145,13 +145,13 @@ areas:
     - count: 25
       radius: 4
       speed: 270
-      slowing_radius: 50
+      effect_radius: 50
       types:
       - slowing
     - count: 25
       radius: 4
       speed: 270
-      draining_radius: 50
+      effect_radius: 50
       types:
       - draining
     - count: 1
@@ -499,7 +499,7 @@ areas:
     - count: 1
       radius: 32
       speed: 180
-      radar_radius: 200
+      effect_radius: 200
       x: 240
       y: 496
       angle: 0
@@ -508,7 +508,7 @@ areas:
     - count: 1
       radius: 32
       speed: 180
-      radar_radius: 200
+      effect_radius: 200
       x: 240
       y: 816
       angle: 0
@@ -517,7 +517,7 @@ areas:
     - count: 1
       radius: 32
       speed: 180
-      radar_radius: 200
+      effect_radius: 200
       x: 240
       y: 1136
       angle: 0
@@ -526,7 +526,7 @@ areas:
     - count: 1
       radius: 32
       speed: 180
-      radar_radius: 200
+      effect_radius: 200
       x: 240
       y: 1456
       angle: 0
@@ -535,7 +535,7 @@ areas:
     - count: 1
       radius: 32
       speed: 180
-      radar_radius: 200
+      effect_radius: 200
       x: 240
       y: 1776
       angle: 0
@@ -544,7 +544,7 @@ areas:
     - count: 1
       radius: 32
       speed: 180
-      radar_radius: 200
+      effect_radius: 200
       x: 240
       y: 2096
       angle: 0
@@ -553,7 +553,7 @@ areas:
     - count: 1
       radius: 32
       speed: 180
-      radar_radius: 200
+      effect_radius: 200
       x: 240
       y: 2416
       angle: 0
@@ -562,7 +562,7 @@ areas:
     - count: 1
       radius: 32
       speed: 180
-      radar_radius: 200
+      effect_radius: 200
       x: 240
       y: 2736
       angle: 0
@@ -597,7 +597,7 @@ areas:
     - count: 1
       radius: 48
       speed: 90
-      radar_radius: 360
+      effect_radius: 360
       x: 240
       y: 880
       angle: 0
@@ -606,7 +606,7 @@ areas:
     - count: 1
       radius: 48
       speed: 90
-      radar_radius: 360
+      effect_radius: 360
       x: 240
       y: 1360
       angle: 0
@@ -615,7 +615,7 @@ areas:
     - count: 1
       radius: 48
       speed: 90
-      radar_radius: 360
+      effect_radius: 360
       x: 240
       y: 1840
       angle: 0
@@ -624,7 +624,7 @@ areas:
     - count: 1
       radius: 48
       speed: 90
-      radar_radius: 360
+      effect_radius: 360
       x: 240
       y: 2320
       angle: 0
@@ -826,7 +826,7 @@ areas:
     - count: 1
       radius: 30
       speed: 240
-      quicksand_radius: 1000
+      effect_radius: 1000
       types:
       - quicksand
     - count: 7
@@ -887,7 +887,7 @@ areas:
     - count: 1
       radius: 30
       speed: 240
-      lava_radius: 1000
+      effect_radius: 1000
       types:
       - lava
     - count: 7

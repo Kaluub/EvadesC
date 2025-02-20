@@ -607,7 +607,7 @@ areas:
     spawner:
     - count: 15
       radius: 18
-      speed: 1500
+      speed: 71.42857142857143
       types: [teleporting]
     - count: 5
       radius: 18
@@ -645,7 +645,7 @@ areas:
     spawner:
     - count: 45
       radius: 18
-      speed: 1500
+      speed: 71.42857142857143
       types: [teleporting]
     - count: 15
       radius: 18
