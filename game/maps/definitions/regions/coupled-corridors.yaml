@@ -10,7 +10,7 @@ properties:
   friction: 0.75
 areas:
   # Northern Corridor
-  - name: '1' # Northern 1
+  - name: '1 North' # Northern 1
     x: var x
     y: var y
     zones:
@@ -24,6 +24,14 @@ areas:
         translate:
           x: -22720
           y: 0
+      - type: teleport
+        x: 0
+        y: 0
+        width: 64
+        height: 480
+        translate:
+          x: -28000
+          y: -1600
       - type: safe
         x: last_right
         y: last_y
@@ -58,7 +66,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '2' # Northern 2
+  - name: '2 North' # Northern 2
     x: last_right
     y: last_y
     zones:
@@ -104,7 +112,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '3' # Northern 3
+  - name: '3 North' # Northern 3
     x: last_right
     y: last_y
     zones:
@@ -150,7 +158,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '4' # Northern 4
+  - name: '4 North' # Northern 4
     x: last_right
     y: last_y
     zones:
@@ -201,7 +209,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '5' # Northern 5
+  - name: '5 North' # Northern 5
     x: last_right
     y: last_y
     zones:
@@ -257,7 +265,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '6' # Northern 6
+  - name: '6 North' # Northern 6
     x: last_right
     y: last_y
     zones:
@@ -308,7 +316,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '7' # Northern 7
+  - name: '7 North' # Northern 7
     x: last_right
     y: last_y
     zones:
@@ -359,7 +367,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '8' # Northern 8
+  - name: '8 North' # Northern 8
     x: last_right
     y: last_y
     zones:
@@ -410,7 +418,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '9' # Northern 9
+  - name: '9 North' # Northern 9
     x: last_right
     y: last_y
     zones:
@@ -461,7 +469,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '10' # Northern 10
+  - name: '10 North' # Northern 10
     x: last_right
     y: last_y
     zones:
@@ -527,7 +535,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '11' # Northern 11
+  - name: '11 North' # Northern 11
     x: last_right
     y: last_y
     zones:
@@ -578,7 +586,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '12' # Northern 12
+  - name: '12 North' # Northern 12
     x: last_right
     y: last_y
     zones:
@@ -629,7 +637,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '13' # Northern 13
+  - name: '13 North' # Northern 13
     x: last_right
     y: last_y
     zones:
@@ -680,7 +688,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '14' # Northern 14
+  - name: '14 North' # Northern 14
     x: last_right
     y: last_y
     zones:
@@ -731,7 +739,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '15' # Northern 15
+  - name: '15 North' # Northern 15
     x: last_right
     y: last_y
     zones:
@@ -797,7 +805,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '16' # Northern 16
+  - name: '16 North' # Northern 16
     x: last_right
     y: last_y
     zones:
@@ -853,7 +861,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '17' # Northern 17
+  - name: '17 North' # Northern 17
     x: last_right
     y: last_y
     zones:
@@ -909,7 +917,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '18' # Northern 18
+  - name: '18 North' # Northern 18
     x: last_right
     y: last_y
     zones:
@@ -965,7 +973,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '19' # Northern 19
+  - name: '19 North' # Northern 19
     x: last_right
     y: last_y
     zones:
@@ -1021,7 +1029,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '20' # Northern 20
+  - name: '20 North' # Northern 20
     x: last_right
     y: last_y
     zones:
@@ -1127,7 +1135,7 @@ areas:
           x: 0
           y: 160
   # Southern Corridor
-  - name: '1' # Southern 1
+  - name: '1 South' # Southern 1
     x: var x
     y: var y + 10848
     zones:
@@ -1141,6 +1149,14 @@ areas:
         translate:
           x: -11392
           y: 0
+      - type: teleport
+        x: 0
+        y: 0
+        width: 64
+        height: 480
+        translate:
+          x: -28000
+          y: -12448
       - type: safe
         x: last_right
         y: 0
@@ -1175,7 +1191,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '2' # Southern 2
+  - name: '2 South' # Southern 2
     x: last_right
     y: last_y
     zones:
@@ -1226,7 +1242,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '3' # Southern 3
+  - name: '3 South' # Southern 3
     x: last_right
     y: last_y
     zones:
@@ -1277,7 +1293,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '4' # Southern 4
+  - name: '4 South' # Southern 4
     x: last_right
     y: last_y
     zones:
@@ -1328,7 +1344,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '5' # Southern 5
+  - name: '5 South' # Southern 5
     x: last_right
     y: last_y
     zones:
@@ -1379,7 +1395,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '6' # Southern 6
+  - name: '6 South' # Southern 6
     x: last_right
     y: last_y
     zones:
@@ -1430,7 +1446,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '7' # Southern 7
+  - name: '7 South' # Southern 7
     x: last_right
     y: last_y
     zones:
@@ -1486,7 +1502,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '8' # Southern 8
+  - name: '8 South' # Southern 8
     x: last_right
     y: last_y
     zones:
@@ -1537,7 +1553,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '9' # Southern 9
+  - name: '9 South' # Southern 9
     x: last_right
     y: last_y
     zones:
@@ -1588,7 +1604,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '10' # Southern 10
+  - name: '10 South' # Southern 10
     x: last_right
     y: last_y
     zones:
@@ -1640,7 +1656,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '11' # Southern 11
+  - name: '11 South' # Southern 11
     x: last_right
     y: last_y
     zones:
@@ -1691,7 +1707,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '12' # Southern 12
+  - name: '12 South' # Southern 12
     x: last_right
     y: last_y
     zones:
@@ -1742,7 +1758,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '13' # Southern 13
+  - name: '13 South' # Southern 13
     x: last_right
     y: last_y
     zones:
@@ -1793,7 +1809,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '14' # Southern 14
+  - name: '14 South' # Southern 14
     x: last_right
     y: last_y
     zones:
@@ -1844,7 +1860,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '15' # Southern 15
+  - name: '15 South' # Southern 15
     x: last_right
     y: last_y
     zones:
@@ -1906,7 +1922,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '16' # Southern 16
+  - name: '16 South' # Southern 16
     x: last_right
     y: last_y
     zones:
@@ -1958,7 +1974,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '17' # Southern 17
+  - name: '17 South' # Southern 17
     x: last_right
     y: last_y
     zones:
@@ -2015,7 +2031,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '18' # Southern 18
+  - name: '18 South' # Southern 18
     x: last_right
     y: last_y
     zones:
@@ -2066,7 +2082,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '19' # Southern 19
+  - name: '19 South' # Southern 19
     x: last_right
     y: last_y
     zones:
@@ -2117,7 +2133,7 @@ areas:
         translate:
           x: 160
           y: 0
-  - name: '20' # Southern 20
+  - name: '20 South' # Southern 20
     x: last_right
     y: last_y
     zones:
@@ -2214,7 +2230,7 @@ areas:
         translate:
           x: -160
           y: 0
-  - name: '21 N' # Northern connecting corridor
+  - name: '21 North' # Northern connecting corridor
     x: last_x
     y: var y + 2240
     zones:
@@ -2254,7 +2270,7 @@ areas:
         translate:
           x: 0
           y: 160
-  - name: '21 S' # Southern connecting corridor
+  - name: '21 South' # Southern connecting corridor
     x: last_x
     y: last_bottom + 480
     zones:

@@ -1,5 +1,6 @@
 name: Research Lab
 properties:
+  friction: 0.75
   warping_disabled: True
   background_color: [38, 92, 255, 125]
 areas:
@@ -410,7 +411,7 @@ areas:
     width: 64
     height: 480
     translate:
-      x: -8224
+      x: 160
       y: 0
   - height: 32
     translate: {x: -512, y: -6944}
@@ -437,22 +438,19 @@ areas:
   - height: last_height
     spawner:
     - count: 9
-      radius: 15
-      speed: 174.4
+      radius: 20
+      speed: 168
       types:
-      - normal
       - infectious
     - count: 9
-      radius: 14
-      speed: 166.1
+      radius: 10
+      speed: 142
       types:
-      - normal
       - infectious
     - count: 7
-      radius: 16
-      speed: 189.9
+      radius: 30
+      speed: 194
       types:
-      - normal
       - infectious
     type: active
     width: 2560
@@ -491,17 +489,21 @@ areas:
   - height: last_height
     spawner:
     - count: 9
-      radius: 15
-      speed: 245.6
+      radius: 25
+      speed: 231
       types:
-      - normal
       - infectious
     - count: 8
-      radius: 14
-      speed: 254.1
+      radius: 15
+      speed: 258
       types:
-      - normal
       - infectious
+    - count: 2
+      radius: 4
+      speed: 188
+      effect_radius: 50
+      types:
+      - slowing
     type: active
     width: 2560
     x: last_right
@@ -539,31 +541,28 @@ areas:
   - height: last_height
     spawner:
     - count: 8
-      radius: 16
-      speed: 193.7
+      radius: 10
+      speed: 305
       types:
-      - normal
       - infectious
     - count: 6
-      radius: 16
-      speed: 238.4
+      radius: 10
+      speed: 366
       types:
-      - normal
       - infectious
     - count: 5
-      radius: 25
-      speed: 170.9
+      radius: 35
+      speed: 259
       types:
-      - normal
       - infectious
     - count: 3
       radius: 15
-      speed: 135
+      speed: 206
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 135
+      speed: 206
       move_clockwise: False
       types:
       - wall
@@ -604,25 +603,29 @@ areas:
   - height: last_height
     spawner:
     - count: 13
-      radius: 15
-      speed: 194.9
+      radius: 20
+      speed: 305
       types:
-      - normal
       - infectious
     - count: 8
-      radius: 25
-      speed: 174.9
+      radius: 30
+      speed: 259
       types:
-      - normal
       - infectious
+    - count: 2
+      radius: 4
+      speed: 325
+      effect_radius: 50
+      types:
+      - draining
     - count: 3
       radius: 15
-      speed: 135
+      speed: 201
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 135
+      speed: 201
       move_clockwise: False
       types:
       - wall
@@ -663,31 +666,28 @@ areas:
   - height: last_height
     spawner:
     - count: 11
-      radius: 14
-      speed: 178.8
+      radius: 12
+      speed: 254
       types:
-      - normal
       - infectious
     - count: 6
-      radius: 15
-      speed: 259.7
+      radius: 18
+      speed: 367
       types:
-      - normal
       - infectious
     - count: 6
-      radius: 21
-      speed: 208.4
+      radius: 24
+      speed: 297
       types:
-      - normal
       - infectious
     - count: 3
       radius: 15
-      speed: 135
+      speed: 192
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 135
+      speed: 192
       move_clockwise: False
       types:
       - wall
@@ -727,20 +727,25 @@ areas:
     y: 0
   - height: last_height
     spawner:
-    - count: 19
-      radius: 15
-      speed: 267.8
+    - count: 17
+      radius: 45
+      speed: 338
       types:
-      - normal
       - infectious
     - count: 3
+      radius: 4
+      speed: 288
+      effect_radius: 50
+      types:
+      - slowing
+    - count: 3
       radius: 15
-      speed: 135
+      speed: 141
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 135
+      speed: 141
       move_clockwise: False
       types:
       - wall
@@ -781,25 +786,23 @@ areas:
   - height: last_height
     spawner:
     - count: 10
-      radius: 23
-      speed: 198.7
+      radius: 15
+      speed: 463
       types:
-      - normal
       - infectious
     - count: 8
-      radius: 25
-      speed: 191.5
+      radius: 30
+      speed: 400
       types:
-      - normal
       - infectious
     - count: 3
       radius: 15
-      speed: 135
+      speed: 285
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 135
+      speed: 285
       move_clockwise: False
       types:
       - wall
@@ -839,32 +842,35 @@ areas:
     y: 0
   - height: last_height
     spawner:
-    - count: 10
-      radius: 15
-      speed: 211.4
+    - count: 9
+      radius: 32
+      speed: 380
       types:
-      - normal
       - infectious
     - count: 6
-      radius: 14
-      speed: 292.8
+      radius: 22
+      speed: 506
       types:
-      - normal
       - infectious
-    - count: 6
-      radius: 14
-      speed: 295.2
+    - count: 5
+      radius: 22
+      speed: 561
       types:
-      - normal
       - infectious
     - count: 3
+      radius: 4
+      speed: 433
+      effect_radius: 50
+      types:
+      - draining
+    - count: 3
       radius: 15
-      speed: 135
+      speed: 246
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 135
+      speed: 246
       move_clockwise: False
       types:
       - wall
@@ -904,26 +910,24 @@ areas:
     y: 0
   - height: last_height
     spawner:
-    - count: 15
-      radius: 15
-      speed: 213.3
+    - count: 13
+      radius: 10
+      speed: 535
       types:
-      - normal
       - infectious
-    - count: 10
-      radius: 23
-      speed: 208.4
+    - count: 9
+      radius: 40
+      speed: 468
       types:
-      - normal
       - infectious
     - count: 3
       radius: 15
-      speed: 135
+      speed: 301
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 135
+      speed: 301
       move_clockwise: False
       types:
       - wall
@@ -963,20 +967,31 @@ areas:
     y: 0
   - height: last_height
     spawner:
-    - count: 23
-      radius: 16
-      speed: 273.4
+    - count: 20
+      radius: 15
+      speed: 572
       types:
-      - normal
       - infectious
     - count: 3
+      radius: 4
+      speed: 520
+      effect_radius: 50
+      types:
+      - slowing
+    - count: 3
+      radius: 4
+      speed: 520
+      effect_radius: 50
+      types:
+      - draining
+    - count: 3
       radius: 15
-      speed: 135
+      speed: 281
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 135
+      speed: 281
       move_clockwise: False
       types:
       - wall
@@ -997,6 +1012,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+  boss: True
 - name: ​11th Test
   x: last_right
   y: last_y
@@ -1016,20 +1032,19 @@ areas:
     y: 0
   - height: last_height
     spawner:
-    - count: 22
-      radius: 16
-      speed: 280.1
+    - count: 17
+      radius: 10
+      speed: 307
       types:
       - corrosive
-      - normal
     - count: 3
       radius: 15
-      speed: 202.5
+      speed: 224
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 202.5
+      speed: 224
       move_clockwise: False
       types:
       - wall
@@ -1070,19 +1085,24 @@ areas:
   - height: last_height
     spawner:
     - count: 31
-      radius: 15
-      speed: 233.0
+      radius: 30
+      speed: 221
       types:
       - corrosive
-      - normal
+    - count: 4
+      radius: 4
+      speed: 245
+      effect_radius: 50
+      types:
+      - slowing
     - count: 3
       radius: 15
-      speed: 202.5
+      speed: 159
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 202.5
+      speed: 159
       move_clockwise: False
       types:
       - wall
@@ -1123,25 +1143,23 @@ areas:
   - height: last_height
     spawner:
     - count: 11
-      radius: 15
-      speed: 300.5
+      radius: 20
+      speed: 331
       types:
       - corrosive
-      - normal
     - count: 16
-      radius: 15
-      speed: 230.7
+      radius: 20
+      speed: 254
       types:
       - corrosive
-      - normal
     - count: 3
       radius: 15
-      speed: 202.5
+      speed: 224
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 202.5
+      speed: 224
       move_clockwise: False
       types:
       - wall
@@ -1182,19 +1200,24 @@ areas:
   - height: last_height
     spawner:
     - count: 31
-      radius: 16
-      speed: 248.8
+      radius: 40
+      speed: 227
       types:
       - corrosive
-      - normal
+    - count: 4
+      radius: 4
+      speed: 245
+      effect_radius: 50
+      types:
+      - draining
     - count: 3
       radius: 15
-      speed: 202.5
+      speed: 184
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 202.5
+      speed: 184
       move_clockwise: False
       types:
       - wall
@@ -1235,19 +1258,18 @@ areas:
   - height: last_height
     spawner:
     - count: 22
-      radius: 15
-      speed: 320.2
+      radius: 12
+      speed: 437
       types:
       - corrosive
-      - normal
     - count: 3
       radius: 15
-      speed: 202.5
+      speed: 277
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 202.5
+      speed: 277
       move_clockwise: False
       types:
       - wall
@@ -1288,19 +1310,24 @@ areas:
   - height: last_height
     spawner:
     - count: 22
-      radius: 14
-      speed: 337.4
+      radius: 18
+      speed: 367
       types:
       - corrosive
-      - normal
+    - count: 5
+      radius: 4
+      speed: 307
+      effect_radius: 50
+      types:
+      - slowing
     - count: 3
       radius: 15
-      speed: 202.5
+      speed: 223
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 202.5
+      speed: 223
       move_clockwise: False
       types:
       - wall
@@ -1341,19 +1368,18 @@ areas:
   - height: last_height
     spawner:
     - count: 22
-      radius: 14
-      speed: 341.9
+      radius: 50
+      speed: 340
       types:
       - corrosive
-      - normal
     - count: 3
       radius: 15
-      speed: 202.5
+      speed: 203
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 202.5
+      speed: 203
       move_clockwise: False
       types:
       - wall
@@ -1394,25 +1420,29 @@ areas:
   - height: last_height
     spawner:
     - count: 11
-      radius: 13
-      speed: 361.2
+      radius: 8
+      speed: 489
       types:
       - corrosive
-      - normal
     - count: 12
-      radius: 22
-      speed: 254.0
+      radius: 25
+      speed: 348
       types:
       - corrosive
-      - normal
+    - count: 5
+      radius: 4
+      speed: 393
+      effect_radius: 50
+      types:
+      - draining
     - count: 3
       radius: 15
-      speed: 202.5
+      speed: 276
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 202.5
+      speed: 276
       move_clockwise: False
       types:
       - wall
@@ -1453,19 +1483,18 @@ areas:
   - height: last_height
     spawner:
     - count: 23
-      radius: 24
-      speed: 246.4
+      radius: 40
+      speed: 415
       types:
       - corrosive
-      - normal
     - count: 3
       radius: 15
-      speed: 202.5
+      speed: 345
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 202.5
+      speed: 345
       move_clockwise: False
       types:
       - wall
@@ -1506,31 +1535,40 @@ areas:
   - height: last_height
     spawner:
     - count: 8
-      radius: 15
-      speed: 353.9
+      radius: 6
+      speed: 533
       types:
       - corrosive
-      - normal
     - count: 7
-      radius: 13
-      speed: 379.7
+      radius: 4
+      speed: 578
       types:
       - corrosive
-      - normal
     - count: 13
-      radius: 14
-      speed: 247.6
+      radius: 5
+      speed: 375
       types:
       - corrosive
-      - normal
+    - count: 5
+      radius: 4
+      speed: 450
+      effect_radius: 50
+      types:
+      - slowing
+    - count: 5
+      radius: 4
+      speed: 450
+      effect_radius: 50
+      types:
+      - draining
     - count: 3
       radius: 15
-      speed: 202.5
+      speed: 305
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 202.5
+      speed: 305
       move_clockwise: False
       types:
       - wall
@@ -1551,6 +1589,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+  boss: True
 - name: ​21st Test
   x: last_right
   y: last_y
@@ -1571,31 +1610,28 @@ areas:
   - height: last_height
     spawner:
     - count: 9
-      radius: 21
-      speed: 281.0
+      radius: 40
+      speed: 237
       types:
       - immune
-      - normal
     - count: 12
-      radius: 15
-      speed: 272.1
+      radius: 20
+      speed: 214
       types:
       - immune
-      - normal
     - count: 8
-      radius: 14
-      speed: 361.3
+      radius: 10
+      speed: 285
       types:
       - immune
-      - normal
     - count: 3
       radius: 15
-      speed: 270
+      speed: 214
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 270
+      speed: 214
       move_clockwise: False
       types:
       - wall
@@ -1636,19 +1672,24 @@ areas:
   - height: last_height
     spawner:
     - count: 39
-      radius: 15
-      speed: 285018750
+      radius: 30
+      speed: 223
       types:
       - immune
-      - normal
+    - count: 6
+      radius: 4
+      speed: 242
+      effect_radius: 50
+      types:
+      - slowing
     - count: 3
       radius: 15
-      speed: 270
+      speed: 211
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 270
+      speed: 211
       move_clockwise: False
       types:
       - wall
@@ -1689,31 +1730,28 @@ areas:
   - height: last_height
     spawner:
     - count: 13
-      radius: 15
-      speed: 282.3
+      radius: 22
+      speed: 237
       types:
       - immune
-      - normal
     - count: 7
-      radius: 13
-      speed: 390.7
+      radius: 14
+      speed: 331
       types:
       - immune
-      - normal
     - count: 9
-      radius: 16
-      speed: 350.8
+      radius: 30
+      speed: 297
       types:
       - immune
-      - normal
     - count: 3
       radius: 15
-      speed: 270
+      speed: 229
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 270
+      speed: 229
       move_clockwise: False
       types:
       - wall
@@ -1754,31 +1792,34 @@ areas:
   - height: last_height
     spawner:
     - count: 8
-      radius: 14
-      speed: 393.7
+      radius: 16
+      speed: 397
       types:
       - immune
-      - normal
     - count: 8
-      radius: 26
-      speed: 247.9
+      radius: 46
+      speed: 251
       types:
       - immune
-      - normal
     - count: 12
-      radius: 15
-      speed: 280.3
+      radius: 26
+      speed: 281
       types:
       - immune
-      - normal
+    - count: 6
+      radius: 4
+      speed: 322
+      effect_radius: 50
+      types:
+      - draining
     - count: 3
       radius: 15
-      speed: 270
+      speed: 271
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 270
+      speed: 271
       move_clockwise: False
       types:
       - wall
@@ -1819,31 +1860,28 @@ areas:
   - height: last_height
     spawner:
     - count: 9
-      radius: 21
-      speed: 294.5
+      radius: 16
+      speed: 346
       types:
       - immune
-      - normal
     - count: 8
-      radius: 26
-      speed: 253.4
+      radius: 35
+      speed: 299
       types:
       - immune
-      - normal
     - count: 7
-      radius: 13
-      speed: 409.7
+      radius: 8
+      speed: 480
       types:
       - immune
-      - normal
     - count: 3
       radius: 15
-      speed: 270
+      speed: 316
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 270
+      speed: 316
       move_clockwise: False
       types:
       - wall
@@ -1884,31 +1922,34 @@ areas:
   - height: last_height
     spawner:
     - count: 15
-      radius: 14
-      speed: 293118750
+      radius: 15
+      speed: 307
       types:
       - immune
-      - normal
     - count: 12
-      radius: 16
-      speed: 304.1
+      radius: 20
+      speed: 338
       types:
       - immune
-      - normal
     - count: 9
-      radius: 14
-      speed: 390.9
+      radius: 15
+      speed: 406
       types:
       - immune
-      - normal
+    - count: 7
+      radius: 4
+      speed: 344
+      effect_radius: 50
+      types:
+      - slowing
     - count: 3
       radius: 15
-      speed: 270
+      speed: 281
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 270
+      speed: 281
       move_clockwise: False
       types:
       - wall
@@ -1949,31 +1990,28 @@ areas:
   - height: last_height
     spawner:
     - count: 8
-      radius: 13
-      speed: 424.0
+      radius: 12
+      speed: 481
       types:
       - immune
-      - normal
     - count: 8
-      radius: 25
-      speed: 269.7
+      radius: 55
+      speed: 299
       types:
       - immune
-      - normal
     - count: 8
-      radius: 14
-      speed: 403.6
+      radius: 20
+      speed: 449
       types:
       - immune
-      - normal
     - count: 3
       radius: 15
-      speed: 270
+      speed: 299
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 270
+      speed: 299
       move_clockwise: False
       types:
       - wall
@@ -2014,31 +2052,34 @@ areas:
   - height: last_height
     spawner:
     - count: 9
-      radius: 14
-      speed: 414.8
+      radius: 20
+      speed: 449
       types:
       - immune
-      - normal
     - count: 8
-      radius: 13
-      speed: 423.4
-      types:
-      - immune
-      - normal
-    - count: 9
       radius: 15
-      speed: 394.2
+      speed: 480
       types:
       - immune
-      - normal
+    - count: 9
+      radius: 25
+      speed: 418
+      types:
+      - immune
+    - count: 7
+      radius: 4
+      speed: 359
+      effect_radius: 50
+      types:
+      - draining
     - count: 3
       radius: 15
-      speed: 270
+      speed: 285
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 270
+      speed: 285
       move_clockwise: False
       types:
       - wall
@@ -2079,31 +2120,28 @@ areas:
   - height: last_height
     spawner:
     - count: 16
-      radius: 14
-      speed: 282.9
+      radius: 8
+      speed: 377
       types:
       - immune
-      - normal
     - count: 8
-      radius: 25
-      speed: 276.0
+      radius: 35
+      speed: 341
       types:
       - immune
-      - normal
     - count: 9
-      radius: 15
-      speed: 398.2
+      radius: 18
+      speed: 494
       types:
       - immune
-      - normal
     - count: 3
       radius: 15
-      speed: 270
+      speed: 335
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 270
+      speed: 335
       move_clockwise: False
       types:
       - wall
@@ -2143,26 +2181,36 @@ areas:
     y: 0
   - height: last_height
     spawner:
-    - count: 14
-      radius: 25
-      speed: 283.5
-      types:
-      - immune
-      - normal
     - count: 12
-      radius: 13
-      speed: 439.4
+      radius: 40
+      speed: 371
       types:
       - immune
-      - normal
+    - count: 11
+      radius: 20
+      speed: 572
+      types:
+      - immune
+    - count: 7
+      radius: 4
+      speed: 455
+      effect_radius: 50
+      types:
+      - slowing
+    - count: 7
+      radius: 4
+      speed: 455
+      effect_radius: 50
+      types:
+      - draining
     - count: 3
       radius: 15
-      speed: 270
+      speed: 351
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 270
+      speed: 351
       move_clockwise: False
       types:
       - wall
@@ -2183,6 +2231,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+  boss: True
 - name: ​31st Test
   x: last_right
   y: last_y
@@ -2202,35 +2251,44 @@ areas:
     y: 0
   - height: last_height
     spawner:
-    - count: 13
+    - count: 6
+      radius: 14
+      speed: 224
+      types:
+      - corrosive
+    - count: 7
       radius: 16
-      speed: 330.7
+      speed: 205
       types:
       - corrosive
-      - immune
+    - count: 4
+      radius: 35
+      speed: 192
+      types:
+      - corrosive
+    - count: 7
+      radius: 14
+      speed: 224
+      types:
       - infectious
-    - count: 14
+    - count: 7
       radius: 16
-      speed: 328.9
+      speed: 205
       types:
-      - corrosive
-      - immune
       - infectious
-    - count: 8
-      radius: 24
-      speed: 292.9
+    - count: 4
+      radius: 35
+      speed: 192
       types:
-      - corrosive
-      - immune
       - infectious
     - count: 3
       radius: 15
-      speed: 337.5
+      speed: 219
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 337.5
+      speed: 219
       move_clockwise: False
       types:
       - wall
@@ -2270,21 +2328,30 @@ areas:
     y: 0
   - height: last_height
     spawner:
-    - count: 30
-      radius: 16
-      speed: 400.9
+    - count: 15
+      radius: 22
+      speed: 250
       types:
       - corrosive
-      - immune
+    - count: 15
+      radius: 22
+      speed: 250
+      types:
       - infectious
+    - count: 8
+      radius: 4
+      speed: 225
+      effect_radius: 50
+      types:
+      - slowing
     - count: 3
       radius: 15
-      speed: 337.5
+      speed: 211
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 337.5
+      speed: 211
       move_clockwise: False
       types:
       - wall
@@ -2324,21 +2391,24 @@ areas:
     y: 0
   - height: last_height
     spawner:
-    - count: 27
-      radius: 25
-      speed: 295.7
+    - count: 14
+      radius: 45
+      speed: 225
       types:
       - corrosive
-      - immune
+    - count: 13
+      radius: 45
+      speed: 225
+      types:
       - infectious
     - count: 3
       radius: 15
-      speed: 337.5
+      speed: 258
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 337.5
+      speed: 258
       move_clockwise: False
       types:
       - wall
@@ -2378,21 +2448,30 @@ areas:
     y: 0
   - height: last_height
     spawner:
-    - count: 27
-      radius: 26
-      speed: 284.7
+    - count: 13
+      radius: 60
+      speed: 182
       types:
       - corrosive
+    - count: 14
+      radius: 60
+      speed: 182
+      types:
       - immune
-      - infectious
+    - count: 8
+      radius: 4
+      speed: 237
+      effect_radius: 50
+      types:
+      - draining
     - count: 3
       radius: 15
-      speed: 337.5
+      speed: 216
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 337.5
+      speed: 216
       move_clockwise: False
       types:
       - wall
@@ -2432,21 +2511,24 @@ areas:
     y: 0
   - height: last_height
     spawner:
-    - count: 31
-      radius: 21
-      speed: 347.4
+    - count: 21
+      radius: 15
+      speed: 305
       types:
       - corrosive
+    - count: 20
+      radius: 15
+      speed: 305
+      types:
       - immune
-      - infectious
     - count: 3
       radius: 15
-      speed: 337.5
+      speed: 297
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 337.5
+      speed: 297
       move_clockwise: False
       types:
       - wall
@@ -2486,21 +2568,30 @@ areas:
     y: 0
   - height: last_height
     spawner:
-    - count: 53
-      radius: 13
-      speed: 296.3
+    - count: 34
+      radius: 10
+      speed: 216
       types:
       - corrosive
+    - count: 35
+      radius: 10
+      speed: 216
+      types:
       - immune
-      - infectious
+    - count: 9
+      radius: 4
+      speed: 277
+      effect_radius: 50
+      types:
+      - slowing
     - count: 3
       radius: 15
-      speed: 337.5
+      speed: 247
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 337.5
+      speed: 247
       move_clockwise: False
       types:
       - wall
@@ -2540,21 +2631,24 @@ areas:
     y: 0
   - height: last_height
     spawner:
-    - count: 32
-      radius: 23
-      speed: 333.3
+    - count: 19
+      radius: 30
+      speed: 335
       types:
-      - corrosive
       - immune
+    - count: 19
+      radius: 30
+      speed: 335
+      types:
       - infectious
     - count: 3
       radius: 15
-      speed: 337.5
+      speed: 337
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 337.5
+      speed: 337
       move_clockwise: False
       types:
       - wall
@@ -2594,21 +2688,30 @@ areas:
     y: 0
   - height: last_height
     spawner:
-    - count: 48
-      radius: 15
-      speed: 345.5
+    - count: 29
+      radius: 20
+      speed: 284
       types:
-      - corrosive
       - immune
+    - count: 29
+      radius: 20
+      speed: 284
+      types:
       - infectious
+    - count: 9
+      radius: 4
+      speed: 320
+      effect_radius: 50
+      types:
+      - draining
     - count: 3
       radius: 15
-      speed: 337.5
+      speed: 279
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 337.5
+      speed: 279
       move_clockwise: False
       types:
       - wall
@@ -2648,28 +2751,34 @@ areas:
     y: 0
   - height: last_height
     spawner:
-    - count: 29
-      radius: 13
-      speed: 304.0
+    - count: 22
+      radius: 8
+      speed: 227
       types:
-      - corrosive
       - immune
+    - count: 6
+      radius: 70
+      speed: 264
+      types:
+      - immune
+    - count: 23
+      radius: 8
+      speed: 227
+      types:
       - infectious
-    - count: 16
-      radius: 22
-      speed: 353.9
+    - count: 6
+      radius: 70
+      speed: 264
       types:
-      - corrosive
-      - immune
       - infectious
     - count: 3
       radius: 15
-      speed: 337.5
+      speed: 251
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 337.5
+      speed: 251
       move_clockwise: False
       types:
       - wall
@@ -2709,28 +2818,56 @@ areas:
     y: 0
   - height: last_height
     spawner:
-    - count: 23
-      radius: 16
-      speed: 368.6
+    - count: 9
+      radius: 12
+      speed: 383
       types:
       - corrosive
-      - immune
-      - infectious
-    - count: 17
-      radius: 21
-      speed: 360.5
+    - count: 7
+      radius: 18
+      speed: 372
       types:
       - corrosive
+    - count: 9
+      radius: 12
+      speed: 383
+      types:
       - immune
+    - count: 7
+      radius: 18
+      speed: 372
+      types:
+      - immune
+    - count: 9
+      radius: 12
+      speed: 383
+      types:
       - infectious
+    - count: 7
+      radius: 18
+      speed: 372
+      types:
+      - infectious
+    - count: 9
+      radius: 4
+      speed: 413
+      effect_radius: 50
+      types:
+      - slowing
+    - count: 9
+      radius: 4
+      speed: 413
+      effect_radius: 50
+      types:
+      - draining
     - count: 3
       radius: 15
-      speed: 337.5
+      speed: 349
       types:
       - wall
     - count: 3
       radius: 15
-      speed: 337.5
+      speed: 349
       move_clockwise: False
       types:
       - wall
@@ -2751,6 +2888,7 @@ areas:
     width: 64
     x: last_right
     y: 0
+  boss: True
 - x: last_right
   y: last_y
   zones:

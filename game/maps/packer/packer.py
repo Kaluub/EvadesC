@@ -1,3 +1,4 @@
+import os.path
 import yaml
 
 def parse_variable(definition: str, state: dict[str, int]) -> int:
@@ -90,3 +91,5 @@ with open("maps/definitions/world.yaml") as world_file:
                 area_state["last_height"] = area_height
                 area_state["last_right"] = area_x + area_width
                 area_state["last_bottom"] = area_y + area_height
+out.close()
+print(f"Wrote world.bin -> {os.path.getsize("maps/world.bin") / 1024:.3f} KiB.")

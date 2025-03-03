@@ -61,9 +61,6 @@ regions:
   - file: regions/endless-echo.yaml
     x: 1952
     y: 23200
-  - file: regions/endless-echo-hard.yaml
-    x: -1248
-    y: 23200
   - file: regions/dangerous-district.yaml
     x: 1952
     y: 24640
@@ -166,3 +163,6 @@ regions:
   - file: regions/withering-wasteland.yaml
     x: 1952
     y: 173712
+  - file: regions/terrifying-temple.yaml
+    x: 1952
+    y: 175152
