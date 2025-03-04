@@ -3,8 +3,8 @@
 #include <time.h>
 
 #define BACKGROUND_COLOR (Color) {0x33, 0x33, 0x33, 0xFF}
-#define WINDOW_WIDTH 1920
-#define WINDOW_HEIGHT 1080
+#define WINDOW_WIDTH 1280
+#define WINDOW_HEIGHT 720
 
 const Color ZONE_COLORS[] = {
     (Color) {0, 0, 0, 255},
