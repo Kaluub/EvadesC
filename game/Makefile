@@ -1,15 +1,17 @@
 SRC = src/*.c
 HEADERS = src/*.h
 LIB = -L lib/ -I include/ -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
-OUT = evades
 
-default: $(OUT)
+default: evades
 
 debug:
-	make $(OUT) EXTRA=-DDEBUG
+	make evades EXTRA=-DDEBUG
 
-$(OUT): $(SRC) $(HEADERS)
-	gcc $(SRC) -Wall -o $(OUT) $(LIB) $(EXTRA)
+evades: targets/evades.c $(SRC) $(HEADERS) 
+	gcc -o evades targets/evades.c $(SRC) -Wall $(LIB) $(EXTRA)
+
+memory_test: targets/memory_test.c $(SRC) $(HEADERS)
+	gcc -o memory_test targets/memory_test.c $(SRC) -g -Wall $(LIB) $(EXTRA)
 
 clean:
-	rm -f $(OUT)
+	rm -f evades memory_test

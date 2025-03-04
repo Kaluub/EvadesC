@@ -1,4 +1,4 @@
-#include "state.h"
+#include "../src/state.h"
 #include <stdlib.h>
 #include <time.h>
 
@@ -32,11 +32,7 @@ int is_zone_on_screen(Camera2D camera, const Zone zone) {
 
 int main() {
     GameState state;
-    FILE* file = fopen("maps/world.bin", "rb");
-
-    load_map(&state.map, file);
-    fclose(file);
-    printf("Loaded spawn region name: %s\nLoaded regions: %d\n", state.map.spawn_region, state.map.region_count);
+    open_map(&state);
 
     InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Evades");
 
@@ -85,6 +81,12 @@ int main() {
         if (IsKeyDown(KEY_B)) {
             DrawRectangleLinesEx((Rectangle) {WINDOW_WIDTH/4, WINDOW_HEIGHT/4, WINDOW_WIDTH/2, WINDOW_HEIGHT/2}, 5, ColorAlpha(RED, 0.7));
         }
+
+        if (IsKeyPressed(KEY_L)) {
+            Map old_map = state.map;
+            open_map(&state);
+            destroy_map(&old_map);
+        }
 #endif
 
         BeginMode2D(state.camera);
@@ -98,6 +100,9 @@ int main() {
                         continue;
                     }
                     DrawTextureNPatch(tile_texture, tile_n_patch, (Rectangle) {zone.x, zone.y, zone.width, zone.height}, (Vector2) {0, 0}, 0, ZONE_COLORS[zone.type]);
+                    if (zone.background_color != 0) {
+                        DrawRectangle(zone.x, zone.y, zone.width, zone.height, GetColor(zone.background_color));
+                    }
                 }
             }
         }
@@ -109,5 +114,6 @@ int main() {
     }
 
     CloseWindow();
+    destroy_map(&state.map);
     return 0;
 }

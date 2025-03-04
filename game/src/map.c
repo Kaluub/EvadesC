@@ -15,7 +15,7 @@ void load_map(Map* map, FILE* file) {
     }
     map->regions = (Region*) malloc(sizeof(Region) * map->region_count);
 
-    for (int region_index = 0; region_index < map->region_count; region_index += 1) {
+    for (int region_index = 0; region_index < map->region_count; region_index++) {
         Region* region = map->regions + region_index;
         // Region name.
         fread(&region->region_name_length, sizeof(region->region_name_length), 1, file);
@@ -30,7 +30,7 @@ void load_map(Map* map, FILE* file) {
         }
         region->areas = (Area*) malloc(sizeof(Area) * region->area_count);
 
-        for (int area_index = 0; area_index < region->area_count; area_index += 1) {
+        for (int area_index = 0; area_index < region->area_count; area_index++) {
             Area* area = region->areas + area_index;
             fread(&area->x, sizeof(area->x), 1, file);
             fread(&area->y, sizeof(area->y), 1, file);
@@ -42,14 +42,46 @@ void load_map(Map* map, FILE* file) {
                 continue;
             }
             area->zones = (Zone*) malloc(sizeof(Zone) * area->zone_count);
-            for (int zone_index = 0; zone_index < area->zone_count; zone_index += 1) {
+            for (int zone_index = 0; zone_index < area->zone_count; zone_index++) {
                 Zone* zone = area->zones + zone_index;
-                fread(&zone->type, sizeof(zone->type), 1, file);
                 fread(&zone->x, sizeof(zone->x), 1, file);
                 fread(&zone->y, sizeof(zone->y), 1, file);
                 fread(&zone->width, sizeof(zone->width), 1, file);
                 fread(&zone->height, sizeof(zone->height), 1, file);
+                fread(&zone->background_color, sizeof(zone->background_color), 1, file);
+                fread(&zone->type, sizeof(zone->type), 1, file);
             }
         }
     }
+}
+
+void destroy_map(Map* map) {
+    if (map->spawn_region != NULL) {
+        free(map->spawn_region);
+    }
+    if (map->regions == NULL) {
+        return;
+    }
+    for (int region_index = 0; region_index < map->region_count; region_index++) {
+        Region* region = map->regions + region_index;
+        if (region->region_name != NULL) {
+            free(region->region_name);
+        }
+        if (region->areas == NULL) {
+            continue;
+        }
+        for (int area_index = 0; area_index < region->area_count; area_index++) {
+            Area* area = region->areas + area_index;
+            if (area->zones == NULL) {
+                continue;
+            }
+            free(area->zones);
+        }
+        free(region->areas);
+    }
+    free(map->regions);
+    map->spawn_region = NULL;
+    map->spawn_region_length = 0;
+    map->regions = NULL;
+    map->region_count = 0;
 }

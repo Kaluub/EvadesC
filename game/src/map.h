@@ -27,11 +27,13 @@ typedef struct Area {
 } Area;
 
 typedef struct Zone {
-    uint8_t type;
     int32_t x;
     int32_t y;
     int32_t width;
     int32_t height;
+    uint32_t background_color;
+    uint8_t type;
 } Zone;
 
-void load_map(struct Map* map, FILE* file);
+void load_map(Map* map, FILE* file);
+void destroy_map(Map* map);

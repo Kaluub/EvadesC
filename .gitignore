@@ -1,3 +1,4 @@
 .vscode/
 maps/world.bin
 game/evades
+game/memory_test

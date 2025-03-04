@@ -66,12 +66,20 @@ with open("maps/definitions/world.yaml") as world_file:
                     zone_y = parse_variable(zone["y"], zone_state)
                     zone_width = parse_variable(zone["width"], zone_state)
                     zone_height = parse_variable(zone["height"], zone_state)
+                    properties = zone.get("properties", area.get("properties", region.get("properties", None)))
+                    background_color = 0
+                    if properties is not None:
+                        # Consider zone properties from here.
+                        if "background_color" in properties:
+                            vec = properties["background_color"]
+                            background_color = vec[0] << 24 | vec[1] << 16 | vec[2] << 8 | vec[3]
                     # Write out zone absolute dimensions
-                    out.write(zone_type.to_bytes(1, "little"))
                     out.write((area_x + zone_x).to_bytes(4, "little", signed=True))
                     out.write((area_y + zone_y).to_bytes(4, "little", signed=True))
                     out.write(zone_width.to_bytes(4, "little", signed=True))
                     out.write(zone_height.to_bytes(4, "little", signed=True))
+                    out.write(background_color.to_bytes(4, "little"))
+                    out.write(zone_type.to_bytes(1, "little"))
                     # Update area size
                     if zone_x + zone_width > area_width:
                         area_width = zone_x + zone_width
@@ -92,4 +100,4 @@ with open("maps/definitions/world.yaml") as world_file:
                 area_state["last_right"] = area_x + area_width
                 area_state["last_bottom"] = area_y + area_height
 out.close()
-print(f"Wrote world.bin -> {os.path.getsize("maps/world.bin") / 1024:.3f} KiB.")
+print(f"Wrote world.bin -> {os.path.getsize('maps/world.bin') / 1024:.3f} KiB.")
