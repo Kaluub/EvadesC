@@ -20,7 +20,6 @@ const Color ZONE_COLORS[] = {
 int is_zone_on_screen(Camera2D camera, const Zone zone) {
 #ifdef DEBUG
     if (IsKeyDown(KEY_B)) {
-        camera.offset = (Vector2) {-WINDOW_WIDTH/2, -WINDOW_HEIGHT/2};
         camera.zoom *= 2;
     }
 #endif
@@ -36,20 +35,14 @@ int main() {
 
     InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Evades");
 
-    state.camera.offset = (Vector2) {0, 0};
+    state.camera.offset = (Vector2) {-WINDOW_WIDTH/2, -WINDOW_WIDTH/2};
     state.camera.rotation = 0;
     state.camera.target = (Vector2) {0, 0};
     state.camera.zoom = 1;
 
     float speed = 500 / state.camera.zoom;
 
-    Image tile_image = GenImageColor(32, 32, WHITE);
-    ImageDrawRectangle(&tile_image, 0, 0, 1, 32, ColorBrightness(WHITE, -0.1f));
-    ImageDrawRectangle(&tile_image, 31, 0, 1, 32, ColorBrightness(WHITE, -0.1f));
-    ImageDrawRectangle(&tile_image, 1, 0, 30, 2, ColorBrightness(WHITE, -0.1f));
-    ImageDrawRectangle(&tile_image, 1, 31, 30, 2, ColorBrightness(WHITE, -0.1f));
-    Texture2D tile_texture = LoadTextureFromImage(tile_image);
-    UnloadImage(tile_image);
+    Texture2D tile_texture = LoadTexture("assets/tile.png");
 
     const NPatchInfo tile_n_patch = {(Rectangle) {0, 0, tile_texture.width, tile_texture.height}, 2, 2, 2, 2, NPATCH_NINE_PATCH};
 
@@ -94,6 +87,12 @@ int main() {
             const Region region = state.map.regions[region_index];
             for (int area_index = 0; area_index < region.area_count; area_index++) {
                 const Area area = region.areas[area_index];
+                Vector2 area_screen_location = GetWorldToScreen2D((Vector2) {area.x, area.y}, state.camera);
+                Vector2 area_screen_edge = GetWorldToScreen2D((Vector2) {area.x + area.width, area.y + area.height}, state.camera);
+                if (area_screen_location.x > WINDOW_WIDTH || area_screen_edge.x < 0
+                    || area_screen_location.y > WINDOW_HEIGHT || area_screen_edge.y < 0) {
+                    continue;
+                }
                 for (int zone_index = 0; zone_index < area.zone_count; zone_index++) {
                     const Zone zone = area.zones[zone_index];
                     if (!is_zone_on_screen(state.camera, zone)) {

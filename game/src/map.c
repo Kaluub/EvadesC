@@ -3,9 +3,10 @@
 
 void load_map(Map* map, FILE* file) {
     // Spawn region name.
-    fread(&map->spawn_region_length, sizeof(map->spawn_region_length), 1, file);
-    map->spawn_region = (char *) malloc(map->spawn_region_length);
-    fread(map->spawn_region, 1, map->spawn_region_length, file);
+    uint8_t spawn_region_length = 0;
+    fread(&spawn_region_length, sizeof(spawn_region_length), 1, file);
+    map->spawn_region = (char *) malloc(spawn_region_length);
+    fread(map->spawn_region, 1, spawn_region_length, file);
 
     // Regions.
     fread(&map->region_count, sizeof(map->region_count), 1, file);
@@ -18,9 +19,10 @@ void load_map(Map* map, FILE* file) {
     for (int region_index = 0; region_index < map->region_count; region_index++) {
         Region* region = map->regions + region_index;
         // Region name.
-        fread(&region->region_name_length, sizeof(region->region_name_length), 1, file);
-        region->region_name = (char *) malloc(region->region_name_length);
-        fread(region->region_name, 1, region->region_name_length, file);
+        uint8_t region_name_length = 0;
+        fread(&region_name_length, sizeof(region_name_length), 1, file);
+        region->region_name = (char *) malloc(region_name_length);
+        fread(region->region_name, 1, region_name_length, file);
 
         // Areas.
         fread(&region->area_count, sizeof(region->area_count), 1, file);
@@ -34,6 +36,8 @@ void load_map(Map* map, FILE* file) {
             Area* area = region->areas + area_index;
             fread(&area->x, sizeof(area->x), 1, file);
             fread(&area->y, sizeof(area->y), 1, file);
+            area->width = 0;
+            area->height = 0;
             
             // Zones.
             fread(&area->zone_count, sizeof(area->zone_count), 1, file);
@@ -50,6 +54,13 @@ void load_map(Map* map, FILE* file) {
                 fread(&zone->height, sizeof(zone->height), 1, file);
                 fread(&zone->background_color, sizeof(zone->background_color), 1, file);
                 fread(&zone->type, sizeof(zone->type), 1, file);
+
+                if (area->width < (zone->x - area->x) + zone->width) {
+                    area->width = (zone->x - area->x) + zone->width;
+                }
+                if (area->height < (zone->y - area->y) + zone->height) {
+                    area->height = (zone->y - area->y) + zone->height;
+                }
             }
         }
     }
@@ -81,7 +92,6 @@ void destroy_map(Map* map) {
     }
     free(map->regions);
     map->spawn_region = NULL;
-    map->spawn_region_length = 0;
     map->regions = NULL;
     map->region_count = 0;
 }

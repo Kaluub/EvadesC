@@ -6,24 +6,28 @@
 #define STRING_MAX 64
 
 typedef struct Map {
-    uint8_t spawn_region_length;
     char* spawn_region;
-    uint16_t region_count;
     struct Region* regions;
+    uint16_t region_count;
 } Map;
 
 typedef struct Region {
-    uint8_t region_name_length;
     char* region_name;
-    uint16_t area_count;
     struct Area* areas;
+    int32_t left_bound;
+    int32_t right_bound;
+    int32_t top_bound;
+    int32_t bottom_bound;
+    uint16_t area_count;
 } Region;
 
 typedef struct Area {
+    struct Zone* zones;
     int32_t x;
     int32_t y;
+    int32_t width;
+    int32_t height;
     uint16_t zone_count;
-    struct Zone* zones;
 } Area;
 
 typedef struct Zone {

@@ -1,5 +1,10 @@
 import os.path
 import yaml
+from enum import IntEnum
+
+class RegionFlags(IntEnum):
+    HAS_BACKGROUND_COLOR = 0
+    HAS_TEXTURE = 1
 
 def parse_variable(definition: str, state: dict[str, int]) -> int:
     value = definition
@@ -20,6 +25,10 @@ def parse_variable(definition: str, state: dict[str, int]) -> int:
         value = int(value)
     return value + offset
 
+def get_color(properties: dict) -> int:
+    vec: list[int] = properties["background_color"]
+    return vec[0] << 24 | vec[1] << 16 | vec[2] << 8 | vec[3]
+
 zone_types = {
     "safe": 1,
     "active": 2,
@@ -28,6 +37,10 @@ zone_types = {
     "victory": 5,
     "removal": 6,
     "dummy": 7,
+}
+
+textures = {
+    "leaves": 1,
 }
 
 out = open("maps/world.bin", "wb")
@@ -46,6 +59,16 @@ with open("maps/definitions/world.yaml") as world_file:
             region_name = f"{region['name']}\0".encode("ascii")
             out.write(len(region_name).to_bytes(1, "little"))
             out.write(region_name)
+            region_flags = 0
+            region_background_color = 0
+            region_properties = region.get("properties", None)
+            if region_properties is not None:
+                if "background_color" in region_properties:
+                    region_flags |= 1 << RegionFlags.HAS_BACKGROUND_COLOR
+                    region_background_color = get_color(region_properties)
+                if "texture" in region_properties:
+                    region_flags |= 1 << RegionFlags.HAS_TEXTURE
+                
             # Write out areas
             out.write(len(region["areas"]).to_bytes(2, "little"))
             area_state = {"var x": region_x, "var y": region_y}
@@ -66,7 +89,7 @@ with open("maps/definitions/world.yaml") as world_file:
                     zone_y = parse_variable(zone["y"], zone_state)
                     zone_width = parse_variable(zone["width"], zone_state)
                     zone_height = parse_variable(zone["height"], zone_state)
-                    properties = zone.get("properties", area.get("properties", region.get("properties", None)))
+                    properties = zone.get("properties", area.get("properties", ))
                     background_color = 0
                     if properties is not None:
                         # Consider zone properties from here.
