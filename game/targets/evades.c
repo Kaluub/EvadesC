@@ -1,4 +1,5 @@
 #include "../src/state.h"
+#include <math.h>
 #include <stdlib.h>
 #include <time.h>
 
@@ -44,8 +45,11 @@ int main() {
 
     float speed = 500 / state.camera.zoom;
 
-    Texture2D tile_texture = LoadTexture("assets/tile.png");
-    SetTextureWrap(tile_texture, TEXTURE_WRAP_REPEAT);
+    Texture2D tiles[2];
+    tiles[TEXTURE_NONE] = LoadTexture("assets/tile.png");
+    SetTextureFilter(tiles[TEXTURE_NONE], TEXTURE_FILTER_ANISOTROPIC_16X);
+    tiles[TEXTURE_LEAVES] = LoadTexture("assets/leaves.png");
+    SetTextureFilter(tiles[TEXTURE_LEAVES], TEXTURE_FILTER_ANISOTROPIC_16X);
 
     while (!WindowShouldClose()) {
         if (current_monitor != GetCurrentMonitor()) {
@@ -89,6 +93,7 @@ int main() {
 #endif
 
         BeginMode2D(state.camera);
+        Texture2D tile_texture;
         for (int region_index = 0; region_index < state.map.region_count; region_index++) {
             const Region region = state.map.regions[region_index];
             for (int area_index = 0; area_index < region.area_count; area_index++) {
@@ -104,7 +109,21 @@ int main() {
                     if (!is_zone_on_screen(state.camera, zone)) {
                         continue;
                     }
-                    DrawTexturePro(tile_texture, (Rectangle) {0, 0, tile_texture.width, tile_texture.height}, (Rectangle) {zone.x, zone.y, zone.width, zone.height}, (Vector2) {0}, 0, ZONE_COLORS[zone.type]);
+                    tile_texture = tiles[zone.texture];
+                    if (state.camera.zoom > 0.4) {
+                        for (int x_off = 0; x_off <= zone.width; x_off += tile_texture.width) {
+                            for (int y_off = 0; y_off <= zone.height; y_off += tile_texture.height) {
+                                DrawTexturePro(
+                                    tile_texture,
+                                    (Rectangle) {0, 0, fmin(tile_texture.width, zone.width - x_off), fmin(tile_texture.height, zone.height - y_off)},
+                                    (Rectangle) {zone.x + x_off, zone.y + y_off, fmin(tile_texture.width, zone.width - x_off), fmin(tile_texture.height, zone.height - y_off)},
+                                    (Vector2) {0}, 0, ZONE_COLORS[zone.type]
+                                );
+                            }
+                        }
+                    } else {
+                        DrawRectangle(zone.x, zone.y, zone.width, zone.height, ZONE_COLORS[zone.type]);
+                    }
                     if (zone.background_color != 0) {
                         DrawRectangle(zone.x, zone.y, zone.width, zone.height, GetColor(zone.background_color));
                     }
