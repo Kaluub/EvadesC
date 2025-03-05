@@ -24,6 +24,18 @@ void load_map(Map* map, FILE* file) {
         region->region_name = (char *) malloc(region_name_length);
         fread(region->region_name, 1, region_name_length, file);
 
+        // Region properties.
+        uint8_t region_flags = 0;
+        region->background_color = 0;
+        region->texture = 0;
+        fread(&region_flags, sizeof(region_flags), 1, file);
+        if (region_flags & (1 << HAS_BACKGROUND_COLOR)) {
+            fread(&region->background_color, sizeof(region->background_color), 1, file);
+        }
+        if (region_flags & (1 << HAS_TEXTURE)) {
+            fread(&region->texture, sizeof(region->texture), 1, file);
+        }
+
         // Areas.
         fread(&region->area_count, sizeof(region->area_count), 1, file);
         if (region->area_count <= 0) {
@@ -38,6 +50,18 @@ void load_map(Map* map, FILE* file) {
             fread(&area->y, sizeof(area->y), 1, file);
             area->width = 0;
             area->height = 0;
+
+            // Area properties.
+            uint8_t area_flags = 0;
+            area->background_color = region->background_color;
+            area->texture = region->texture;
+            fread(&area_flags, sizeof(area_flags), 1, file);
+            if (area_flags & (1 << HAS_BACKGROUND_COLOR)) {
+                fread(&area->background_color, sizeof(area->background_color), 1, file);
+            }
+            if (area_flags & (1 << HAS_TEXTURE)) {
+                fread(&area->texture, sizeof(area->texture), 1, file);
+            }
             
             // Zones.
             fread(&area->zone_count, sizeof(area->zone_count), 1, file);
@@ -48,12 +72,23 @@ void load_map(Map* map, FILE* file) {
             area->zones = (Zone*) malloc(sizeof(Zone) * area->zone_count);
             for (int zone_index = 0; zone_index < area->zone_count; zone_index++) {
                 Zone* zone = area->zones + zone_index;
+                fread(&zone->type, sizeof(zone->type), 1, file);
                 fread(&zone->x, sizeof(zone->x), 1, file);
                 fread(&zone->y, sizeof(zone->y), 1, file);
                 fread(&zone->width, sizeof(zone->width), 1, file);
                 fread(&zone->height, sizeof(zone->height), 1, file);
-                fread(&zone->background_color, sizeof(zone->background_color), 1, file);
-                fread(&zone->type, sizeof(zone->type), 1, file);
+                
+                // Zone properties.
+                uint8_t zone_flags = 0;
+                zone->background_color = area->background_color;
+                zone->texture = area->texture;
+                fread(&zone_flags, sizeof(zone_flags), 1, file);
+                if (zone_flags & (1 << HAS_BACKGROUND_COLOR)) {
+                    fread(&zone->background_color, sizeof(zone->background_color), 1, file);
+                }
+                if (zone_flags & (1 << HAS_TEXTURE)) {
+                    fread(&zone->texture, sizeof(zone->texture), 1, file);
+                }
 
                 if (area->width < (zone->x - area->x) + zone->width) {
                     area->width = (zone->x - area->x) + zone->width;

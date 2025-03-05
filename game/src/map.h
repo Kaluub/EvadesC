@@ -5,6 +5,16 @@
 
 #define STRING_MAX 64
 
+enum ComponentProperties {
+    HAS_BACKGROUND_COLOR = 0,
+    HAS_TEXTURE = 1,
+};
+
+enum TextureType {
+    TEXTURE_NONE = 0,
+    TEXTURE_LEAVES = 1,
+};
+
 typedef struct Map {
     char* spawn_region;
     struct Region* regions;
@@ -14,11 +24,9 @@ typedef struct Map {
 typedef struct Region {
     char* region_name;
     struct Area* areas;
-    int32_t left_bound;
-    int32_t right_bound;
-    int32_t top_bound;
-    int32_t bottom_bound;
+    uint32_t background_color;
     uint16_t area_count;
+    uint8_t texture;
 } Region;
 
 typedef struct Area {
@@ -27,7 +35,9 @@ typedef struct Area {
     int32_t y;
     int32_t width;
     int32_t height;
+    uint32_t background_color;
     uint16_t zone_count;
+    uint8_t texture;
 } Area;
 
 typedef struct Zone {
@@ -37,6 +47,7 @@ typedef struct Zone {
     int32_t height;
     uint32_t background_color;
     uint8_t type;
+    uint8_t texture;
 } Zone;
 
 void load_map(Map* map, FILE* file);

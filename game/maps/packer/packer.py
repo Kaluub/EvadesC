@@ -2,7 +2,7 @@ import os.path
 import yaml
 from enum import IntEnum
 
-class RegionFlags(IntEnum):
+class ComponentFlags(IntEnum):
     HAS_BACKGROUND_COLOR = 0
     HAS_TEXTURE = 1
 
@@ -28,6 +28,26 @@ def parse_variable(definition: str, state: dict[str, int]) -> int:
 def get_color(properties: dict) -> int:
     vec: list[int] = properties["background_color"]
     return vec[0] << 24 | vec[1] << 16 | vec[2] << 8 | vec[3]
+
+def handle_common_properties(properties: dict | None, previous_properties: dict | None, out):
+    flags = 0
+    background_color = 0
+    texture = None
+    if properties is not None:
+        if "background_color" in properties:
+            background_color = get_color(properties)
+            if previous_properties is None or previous_properties["background_color"] != background_color:
+                flags |= 1 << ComponentFlags.HAS_BACKGROUND_COLOR
+        if "texture" in properties:
+            texture = textures[properties["texture"]]
+            if previous_properties is None or previous_properties["texture"] != texture:
+                flags |= 1 << ComponentFlags.HAS_TEXTURE
+    out.write(flags.to_bytes(1, "little"))
+    if flags & (1 << ComponentFlags.HAS_BACKGROUND_COLOR):
+        out.write(background_color.to_bytes(4, "little"))
+    if flags & (1 << ComponentFlags.HAS_TEXTURE):
+        out.write(texture.to_bytes(1, "little"))
+    return {"background_color": background_color, "texture": texture}
 
 zone_types = {
     "safe": 1,
@@ -59,16 +79,9 @@ with open("maps/definitions/world.yaml") as world_file:
             region_name = f"{region['name']}\0".encode("ascii")
             out.write(len(region_name).to_bytes(1, "little"))
             out.write(region_name)
-            region_flags = 0
-            region_background_color = 0
-            region_properties = region.get("properties", None)
-            if region_properties is not None:
-                if "background_color" in region_properties:
-                    region_flags |= 1 << RegionFlags.HAS_BACKGROUND_COLOR
-                    region_background_color = get_color(region_properties)
-                if "texture" in region_properties:
-                    region_flags |= 1 << RegionFlags.HAS_TEXTURE
-                
+
+            region_properties = handle_common_properties(region.get("properties", None), None, out)
+
             # Write out areas
             out.write(len(region["areas"]).to_bytes(2, "little"))
             area_state = {"var x": region_x, "var y": region_y}
@@ -80,6 +93,9 @@ with open("maps/definitions/world.yaml") as world_file:
                 area_height = 0
                 out.write(area_x.to_bytes(4, "little", signed=True))
                 out.write(area_y.to_bytes(4, "little", signed=True))
+
+                area_properties = handle_common_properties(area.get("properties", None), region_properties, out)
+
                 # Write out zones
                 out.write(len(area["zones"]).to_bytes(2, "little"))
                 zone_state = {}
@@ -89,20 +105,16 @@ with open("maps/definitions/world.yaml") as world_file:
                     zone_y = parse_variable(zone["y"], zone_state)
                     zone_width = parse_variable(zone["width"], zone_state)
                     zone_height = parse_variable(zone["height"], zone_state)
-                    properties = zone.get("properties", area.get("properties", ))
-                    background_color = 0
-                    if properties is not None:
-                        # Consider zone properties from here.
-                        if "background_color" in properties:
-                            vec = properties["background_color"]
-                            background_color = vec[0] << 24 | vec[1] << 16 | vec[2] << 8 | vec[3]
+
                     # Write out zone absolute dimensions
+                    out.write(zone_type.to_bytes(1, "little"))
                     out.write((area_x + zone_x).to_bytes(4, "little", signed=True))
                     out.write((area_y + zone_y).to_bytes(4, "little", signed=True))
                     out.write(zone_width.to_bytes(4, "little", signed=True))
                     out.write(zone_height.to_bytes(4, "little", signed=True))
-                    out.write(background_color.to_bytes(4, "little"))
-                    out.write(zone_type.to_bytes(1, "little"))
+
+                    handle_common_properties(zone.get("properties", None), area_properties, out)
+
                     # Update area size
                     if zone_x + zone_width > area_width:
                         area_width = zone_x + zone_width
@@ -122,5 +134,6 @@ with open("maps/definitions/world.yaml") as world_file:
                 area_state["last_height"] = area_height
                 area_state["last_right"] = area_x + area_width
                 area_state["last_bottom"] = area_y + area_height
+
 out.close()
 print(f"Wrote world.bin -> {os.path.getsize('maps/world.bin') / 1024:.3f} KiB.")

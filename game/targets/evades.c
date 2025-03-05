@@ -34,8 +34,10 @@ int main() {
     open_map(&state);
 
     InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Evades");
+    int current_monitor = GetCurrentMonitor();
+    SetTargetFPS(GetMonitorRefreshRate(current_monitor));
 
-    state.camera.offset = (Vector2) {-WINDOW_WIDTH/2, -WINDOW_WIDTH/2};
+    state.camera.offset = (Vector2) {WINDOW_WIDTH/2, WINDOW_HEIGHT/2};
     state.camera.rotation = 0;
     state.camera.target = (Vector2) {0, 0};
     state.camera.zoom = 1;
@@ -43,10 +45,14 @@ int main() {
     float speed = 500 / state.camera.zoom;
 
     Texture2D tile_texture = LoadTexture("assets/tile.png");
-
-    const NPatchInfo tile_n_patch = {(Rectangle) {0, 0, tile_texture.width, tile_texture.height}, 2, 2, 2, 2, NPATCH_NINE_PATCH};
+    SetTextureWrap(tile_texture, TEXTURE_WRAP_REPEAT);
 
     while (!WindowShouldClose()) {
+        if (current_monitor != GetCurrentMonitor()) {
+            current_monitor = GetCurrentMonitor();
+            SetTargetFPS(GetMonitorRefreshRate(current_monitor));
+        }
+
         if (IsKeyDown(KEY_W)) {
             state.camera.target.y -= GetFrameTime() * speed;
         }
@@ -98,7 +104,7 @@ int main() {
                     if (!is_zone_on_screen(state.camera, zone)) {
                         continue;
                     }
-                    DrawTextureNPatch(tile_texture, tile_n_patch, (Rectangle) {zone.x, zone.y, zone.width, zone.height}, (Vector2) {0, 0}, 0, ZONE_COLORS[zone.type]);
+                    DrawTexturePro(tile_texture, (Rectangle) {0, 0, tile_texture.width, tile_texture.height}, (Rectangle) {zone.x, zone.y, zone.width, zone.height}, (Vector2) {0}, 0, ZONE_COLORS[zone.type]);
                     if (zone.background_color != 0) {
                         DrawRectangle(zone.x, zone.y, zone.width, zone.height, GetColor(zone.background_color));
                     }
