@@ -2,7 +2,10 @@ SRC = src/*.c
 HEADERS = src/*.h
 LIB = -L lib/ -I include/ -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
 
-default: evades
+default: maps/world.bin evades
+
+maps/world.bin: maps/definitions/regions/*.yaml maps/definitions/world.yaml maps/packer/packer.py
+	python3 maps/packer/packer.py
 
 debug:
 	make evades EXTRA=-DDEBUG

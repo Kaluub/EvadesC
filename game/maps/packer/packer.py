@@ -110,8 +110,8 @@ with open("maps/definitions/world.yaml") as world_file:
                     out.write(zone_type.to_bytes(1, "little"))
                     out.write((area_x + zone_x).to_bytes(4, "little", signed=True))
                     out.write((area_y + zone_y).to_bytes(4, "little", signed=True))
-                    out.write(zone_width.to_bytes(4, "little", signed=True))
-                    out.write(zone_height.to_bytes(4, "little", signed=True))
+                    out.write(zone_width.to_bytes(4, "little"))
+                    out.write(zone_height.to_bytes(4, "little"))
 
                     handle_common_properties(zone.get("properties", None), area_properties, out)
 

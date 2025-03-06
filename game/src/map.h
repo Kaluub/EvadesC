@@ -33,8 +33,8 @@ typedef struct Area {
     struct Zone* zones;
     int32_t x;
     int32_t y;
-    int32_t width;
-    int32_t height;
+    uint32_t width;
+    uint32_t height;
     uint32_t background_color;
     uint16_t zone_count;
     uint8_t texture;
@@ -43,8 +43,8 @@ typedef struct Area {
 typedef struct Zone {
     int32_t x;
     int32_t y;
-    int32_t width;
-    int32_t height;
+    uint32_t width;
+    uint32_t height;
     uint32_t background_color;
     uint8_t type;
     uint8_t texture;
