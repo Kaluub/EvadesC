@@ -4,3 +4,7 @@ game/lib/
 game/maps/world.bin
 game/evades
 game/memory_test
+game/evades.data
+game/evades.html
+game/evades.js
+game/evades.wasm

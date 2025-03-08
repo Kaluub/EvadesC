@@ -57,6 +57,29 @@ int main() {
             SetTargetFPS(GetMonitorRefreshRate(current_monitor));
         }
 
+        const float frame_time = GetFrameTime();
+
+        state.camera.zoom += GetMouseWheelMoveV().y * 0.05f * state.camera.zoom;
+
+        if (IsKeyDown(KEY_I)) {
+            state.camera.zoom += 2 * frame_time * state.camera.zoom;
+        }
+        if (IsKeyDown(KEY_O)) {
+            state.camera.zoom -= 2 * frame_time * state.camera.zoom;
+        }
+
+        if (state.camera.zoom < 0.005f) {
+            state.camera.zoom = 0.005f;
+        }
+        if (state.camera.zoom > 25.0f) {
+            state.camera.zoom = 25.0f;
+        }
+        speed = fmaxf(500 / state.camera.zoom, 10);
+
+        if (IsKeyDown(KEY_LEFT_SHIFT)) {
+            speed *= 0.5;
+        }
+
         if (IsKeyDown(KEY_W)) {
             state.camera.target.y -= GetFrameTime() * speed;
         }
@@ -69,13 +92,6 @@ int main() {
         if (IsKeyDown(KEY_D)) {
             state.camera.target.x += GetFrameTime() * speed;
         }
-        
-        state.camera.zoom += GetMouseWheelMoveV().y * 0.02f;
-        if (state.camera.zoom <= 0.02f) {
-            state.camera.zoom = 0.02f;
-        }
-        speed = 500 / state.camera.zoom;
-
 
         BeginDrawing();
         ClearBackground(BACKGROUND_COLOR);
@@ -110,7 +126,7 @@ int main() {
                         continue;
                     }
                     tile_texture = tiles[zone.texture];
-                    if (state.camera.zoom > 0.4) {
+                    if (state.camera.zoom > 0.4 || zone.texture != TEXTURE_NONE) {
                         for (int x_off = 0; x_off <= zone.width; x_off += tile_texture.width) {
                             for (int y_off = 0; y_off <= zone.height; y_off += tile_texture.height) {
                                 DrawTexturePro(
