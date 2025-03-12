@@ -93,6 +93,12 @@ int main() {
             state.camera.target.x += GetFrameTime() * speed;
         }
 
+        Vector2 mouse_over = GetScreenToWorld2D(GetMousePosition(), state.camera);
+        Area* closest_area_left = NULL;
+        Area* closest_area_top = NULL;
+        Area* closest_area_right = NULL;
+        Area* closest_area_bottom = NULL;
+
         BeginDrawing();
         ClearBackground(BACKGROUND_COLOR);
 
@@ -114,6 +120,31 @@ int main() {
             const Region region = state.map.regions[region_index];
             for (int area_index = 0; area_index < region.area_count; area_index++) {
                 const Area area = region.areas[area_index];
+                // Calculate closest area bounds
+                if (area.y <= mouse_over.y && mouse_over.y <= area.y + area.height) {
+                    // Area is aligned with mouse on the y-axis (for left/right)
+                    if (mouse_over.x > area.x + area.width &&
+                        (closest_area_left == NULL || area.x + area.width > closest_area_left->x + closest_area_left->width)) {
+                        closest_area_left = region.areas + area_index;
+                    }
+                    if (mouse_over.x < area.x &&
+                        (closest_area_right == NULL || area.x < closest_area_right->x)) {
+                        closest_area_right = region.areas + area_index;
+                    }
+                }
+
+                if (area.x <= mouse_over.x && mouse_over.x <= area.x + area.width) {
+                    // Area is aligned with mouse on the x-axis (for top/bottom)
+                    if (mouse_over.y > area.y + area.height &&
+                        (closest_area_top == NULL || area.y + area.height > closest_area_top->y + closest_area_top->height)) {
+                        closest_area_top = region.areas + area_index;
+                    }
+                    if (mouse_over.y < area.y &&
+                        (closest_area_bottom == NULL || area.y < closest_area_bottom->y)) {
+                        closest_area_bottom = region.areas + area_index;
+                    }
+                }
+
                 Vector2 area_screen_location = GetWorldToScreen2D((Vector2) {area.x, area.y}, state.camera);
                 Vector2 area_screen_edge = GetWorldToScreen2D((Vector2) {area.x + area.width, area.y + area.height}, state.camera);
                 if (area_screen_location.x > WINDOW_WIDTH || area_screen_edge.x < 0
@@ -146,6 +177,42 @@ int main() {
                 }
             }
         }
+
+        if (IsKeyDown(KEY_LEFT_CONTROL)) {
+            const int scaled_factor = 16 / state.camera.zoom;
+            if (closest_area_left != NULL) {
+                DrawRectangle(closest_area_left->x, closest_area_left->y, closest_area_left->width, closest_area_left->height, (Color) {255, 0, 255, 128});
+                if (closest_area_right != NULL) {
+                    DrawRectangle(closest_area_right->x, closest_area_right->y, closest_area_right->width, closest_area_right->height, (Color) {0, 255, 0, 128});
+                    DrawLine(closest_area_left->x + closest_area_left->width, mouse_over.y, closest_area_right->x, mouse_over.y, RED);
+                    DrawText(TextFormat("%d", closest_area_right->x - closest_area_left->x - closest_area_left->width), mouse_over.x + scaled_factor, mouse_over.y - scaled_factor, scaled_factor, RED);
+                } else {
+                    DrawLine(closest_area_left->x + closest_area_left->width, mouse_over.y, mouse_over.x, mouse_over.y, RED);
+                    DrawText(TextFormat("%.0f", mouse_over.x - closest_area_left->x - closest_area_left->width), mouse_over.x + scaled_factor, mouse_over.y - scaled_factor, scaled_factor, RED);
+                }
+            } else if (closest_area_right != NULL) {
+                DrawRectangle(closest_area_right->x, closest_area_right->y, closest_area_right->width, closest_area_right->height, (Color) {0, 255, 0, 128});
+                DrawLine(mouse_over.x, mouse_over.y, closest_area_right->x, mouse_over.y, RED);
+                DrawText(TextFormat("%.0f", closest_area_right->x - mouse_over.x), mouse_over.x + scaled_factor, mouse_over.y - scaled_factor, scaled_factor, RED);
+            }
+
+            if (closest_area_top != NULL) {
+                DrawRectangle(closest_area_top->x, closest_area_top->y, closest_area_top->width, closest_area_top->height, (Color) {255, 0, 0, 128});
+                if (closest_area_bottom != NULL) {
+                    DrawRectangle(closest_area_bottom->x, closest_area_bottom->y, closest_area_bottom->width, closest_area_bottom->height, (Color) {0, 0, 255, 128});
+                    DrawLine(mouse_over.x, closest_area_top->y + closest_area_top->height, mouse_over.x, closest_area_bottom->y, BLUE);
+                    DrawText(TextFormat("%d", closest_area_bottom->y - closest_area_top->y - closest_area_top->height), mouse_over.x + scaled_factor, mouse_over.y, scaled_factor, BLUE);
+                } else {
+                    DrawLine(mouse_over.x, closest_area_top->y + closest_area_top->height, mouse_over.x, mouse_over.y, BLUE);
+                    DrawText(TextFormat("%.0f", mouse_over.y - closest_area_top->y - closest_area_top->height), mouse_over.x + scaled_factor, mouse_over.y, scaled_factor, BLUE);
+                }
+            } else if (closest_area_bottom != NULL) {
+                DrawRectangle(closest_area_bottom->x, closest_area_bottom->y, closest_area_bottom->width, closest_area_bottom->height, (Color) {0, 0, 255, 128});
+                DrawLine(mouse_over.x, mouse_over.y, mouse_over.x, closest_area_bottom->y, BLUE);
+                DrawText(TextFormat("%.0f", closest_area_bottom->y - mouse_over.y), mouse_over.x + scaled_factor, mouse_over.y, scaled_factor, BLUE);
+            }
+        }
+
         EndMode2D();
 #ifdef DEBUG
         DrawFPS(10, 10);
