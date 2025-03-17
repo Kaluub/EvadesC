@@ -1,5 +1,6 @@
 #include "../src/state.h"
 #include "../src/debug.h"
+#include "../src/gpu_circle.h"
 #include <math.h>
 #include <stdlib.h>
 #include <time.h>
@@ -53,6 +54,7 @@ int main() {
     SetTextureFilter(tiles[TEXTURE_LEAVES], TEXTURE_FILTER_ANISOTROPIC_16X);
 
     init_debug_state();
+    init_circles();
 
     while (!WindowShouldClose()) {
         timing_start(); // Tick time.
@@ -165,8 +167,8 @@ int main() {
                     }
                     tile_texture = tiles[zone.texture];
                     if (state.camera.zoom > 0.4 || zone.texture != TEXTURE_NONE) {
-                        for (int x_off = 0; x_off <= zone.width; x_off += tile_texture.width) {
-                            for (int y_off = 0; y_off <= zone.height; y_off += tile_texture.height) {
+                        for (int x_off = 0; x_off <= (int)zone.width; x_off += tile_texture.width) {
+                            for (int y_off = 0; y_off <= (int)zone.height; y_off += tile_texture.height) {
                                 DrawTexturePro(
                                     tile_texture,
                                     (Rectangle) {0, 0, fmin(tile_texture.width, zone.width - x_off), fmin(tile_texture.height, zone.height - y_off)},
@@ -223,10 +225,7 @@ int main() {
         }
 
         if (IsKeyDown(KEY_V)) {
-            // Shader circle drawing performance test (TODO)
-            for (int i = 0; i < 10000; i += 1) {
-                DrawCircle(500 * i, 500 * i, 75, RED);
-            }
+            draw_circles();
         }
 
         EndMode2D();
@@ -238,6 +237,7 @@ int main() {
         EndDrawing();
     }
 
+    cleanup_circles();
     CloseWindow();
     destroy_map(&state.map);
     return 0;

@@ -11,7 +11,7 @@ debug:
 	make evades EXTRA='-g -DDEBUG'
 
 evades: targets/evades.c $(SRC) $(HEADERS) 
-	gcc -o evades targets/evades.c $(SRC) -Wall $(LIB) $(EXTRA)
+	gcc -o evades targets/evades.c $(SRC) -Wall -Wextra $(LIB) $(EXTRA)
 
 web: targets/evades.c $(SRC) $(HEADERS)
 	emcc -o evades.html targets/evades.c $(SRC) -Os -Wall ./lib/libraylib.web.a -I. -I./include -L. -L./lib \

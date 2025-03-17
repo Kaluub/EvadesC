@@ -53,7 +53,6 @@ void tick_end() {
         state.tick_time_sum += new_time;
         state.tick_time_index++;
         if (state.tick_time_index >= MAX_TIMINGS) {
-            printf("filled tick time buf\n");
             state.filled_tick_times = 1;
         }
     }
