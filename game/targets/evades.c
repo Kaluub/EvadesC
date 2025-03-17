@@ -222,6 +222,13 @@ int main() {
             }
         }
 
+        if (IsKeyDown(KEY_V)) {
+            // Shader circle drawing performance test (TODO)
+            for (int i = 0; i < 10000; i += 1) {
+                DrawCircle(500 * i, 500 * i, 75, RED);
+            }
+        }
+
         EndMode2D();
 #ifdef DEBUG
         DrawFPS(10, 10);
