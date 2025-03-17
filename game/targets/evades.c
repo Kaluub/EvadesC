@@ -1,4 +1,5 @@
 #include "../src/state.h"
+#include "../src/debug.h"
 #include <math.h>
 #include <stdlib.h>
 #include <time.h>
@@ -51,7 +52,10 @@ int main() {
     tiles[TEXTURE_LEAVES] = LoadTexture("assets/leaves.png");
     SetTextureFilter(tiles[TEXTURE_LEAVES], TEXTURE_FILTER_ANISOTROPIC_16X);
 
+    init_debug_state();
+
     while (!WindowShouldClose()) {
+        timing_start(); // Tick time.
         if (current_monitor != GetCurrentMonitor()) {
             current_monitor = GetCurrentMonitor();
             SetTargetFPS(GetMonitorRefreshRate(current_monitor));
@@ -98,6 +102,9 @@ int main() {
         Area* closest_area_top = NULL;
         Area* closest_area_right = NULL;
         Area* closest_area_bottom = NULL;
+
+        tick_end();
+        timing_start(); // Render time.
 
         BeginDrawing();
         ClearBackground(BACKGROUND_COLOR);
@@ -175,6 +182,8 @@ int main() {
                         DrawRectangle(zone.x, zone.y, zone.width, zone.height, GetColor(zone.background_color));
                     }
                 }
+
+                DrawText(TextFormat("%d x %d", area.width, area.height), area.x + 10, area.y, 96, BLACK);
             }
         }
 
@@ -217,6 +226,8 @@ int main() {
 #ifdef DEBUG
         DrawFPS(10, 10);
 #endif
+        render_end();
+        draw_timings();
         EndDrawing();
     }
 
