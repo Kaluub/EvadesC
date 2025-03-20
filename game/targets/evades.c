@@ -1,6 +1,6 @@
 #include "../src/state.h"
 #include "../src/debug.h"
-#include "../src/gpu_circle.h"
+#include "../src/circle.h"
 #include <math.h>
 #include <stdlib.h>
 #include <time.h>
@@ -54,7 +54,7 @@ int main() {
     SetTextureFilter(tiles[TEXTURE_LEAVES], TEXTURE_FILTER_ANISOTROPIC_16X);
 
     init_debug_state();
-    init_circles();
+    // init_circles();
 
     while (!WindowShouldClose()) {
         timing_start(); // Tick time.
@@ -224,9 +224,9 @@ int main() {
             }
         }
 
-        if (IsKeyDown(KEY_V)) {
-            draw_circles();
-        }
+        // if (IsKeyDown(KEY_V)) {
+        //     draw_circles();
+        // }
 
         EndMode2D();
 #ifdef DEBUG
@@ -237,7 +237,7 @@ int main() {
         EndDrawing();
     }
 
-    cleanup_circles();
+    // cleanup_circles();
     CloseWindow();
     destroy_map(&state.map);
     return 0;
