@@ -72,6 +72,8 @@ void load_map(Map* map, FILE* file) {
             area->zones = (Zone*) malloc(sizeof(Zone) * area->zone_count);
             for (int zone_index = 0; zone_index < area->zone_count; zone_index++) {
                 Zone* zone = area->zones + zone_index;
+                zone->spawner_count = 0;
+                zone->spawners = NULL;
                 fread(&zone->type, sizeof(zone->type), 1, file);
                 fread(&zone->x, sizeof(zone->x), 1, file);
                 fread(&zone->y, sizeof(zone->y), 1, file);
@@ -88,6 +90,18 @@ void load_map(Map* map, FILE* file) {
                 }
                 if (zone_flags & (1 << HAS_TEXTURE)) {
                     fread(&zone->texture, sizeof(zone->texture), 1, file);
+                }
+                if (zone_flags & (1 << HAS_SPAWNER)) {
+                    fread(&zone->spawner_count, sizeof(zone->spawner_count), 1, file);
+                    zone->spawners = (Spawner*) malloc(sizeof(Spawner) * zone->spawner_count);
+                    for (int spawner_index = 0; spawner_index < zone->spawner_count; spawner_index++) {
+                        Spawner* spawner = zone->spawners + spawner_index;
+                        fread(&spawner->enemy_type_count, sizeof(spawner->enemy_type_count), 1, file);
+                        spawner->enemy_types = (uint8_t*) malloc(sizeof(uint8_t) * spawner->enemy_type_count);
+                        fread(spawner->enemy_types, sizeof(uint8_t), spawner->enemy_type_count, file);
+                        fread(&spawner->speed, sizeof(spawner->speed), 1, file);
+                        fread(&spawner->count, sizeof(spawner->count), 1, file);
+                    }
                 }
 
                 if (area->width < (zone->x - area->x) + zone->width) {
@@ -120,6 +134,16 @@ void destroy_map(Map* map) {
             Area* area = region->areas + area_index;
             if (area->zones == NULL) {
                 continue;
+            }
+            for (int zone_index = 0; zone_index < area->zone_count; zone_index++) {
+                Zone* zone = area->zones + zone_index;
+                if (zone->spawners == NULL) {
+                    continue;
+                }
+                for (int spawner_index = 0; spawner_index < zone->spawner_count; spawner_index++) {
+                    free(zone->spawners[spawner_index].enemy_types);
+                }
+                free(zone->spawners);
             }
             free(area->zones);
         }
