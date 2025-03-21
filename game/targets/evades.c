@@ -10,14 +10,14 @@
 #define WINDOW_HEIGHT 720
 
 const Color ZONE_COLORS[] = {
-    (Color) {0, 0, 0, 255},
-    (Color) {195, 195, 195, 255},
-    (Color) {255, 255, 255, 255},
-    (Color) {255, 244, 108, 255},
-    (Color) {106, 208, 222, 255},
-    (Color) {255, 244, 108, 255},
-    (Color) {255, 249, 186, 255},
-    (Color) {255, 255, 255, 255},
+    {0, 0, 0, 255},
+    {195, 195, 195, 255},
+    {255, 255, 255, 255},
+    {255, 244, 108, 255},
+    {106, 208, 222, 255},
+    {255, 244, 108, 255},
+    {255, 249, 186, 255},
+    {255, 255, 255, 255},
 };
 
 int is_zone_on_screen(Camera2D camera, const Zone zone) {
@@ -29,18 +29,19 @@ int is_zone_on_screen(Camera2D camera, const Zone zone) {
     Vector2 top_left = GetWorldToScreen2D((Vector2) {zone.x, zone.y}, camera);
     Vector2 bottom_right = GetWorldToScreen2D((Vector2) {zone.x + zone.width, zone.y + zone.height}, camera);
 
-    return ((bottom_right.x >= 0 && top_left.x <= WINDOW_WIDTH) && (bottom_right.y >= 0 && top_left.y <= WINDOW_HEIGHT));
+    return ((bottom_right.x >= 0 && top_left.x <= GetScreenWidth()) && (bottom_right.y >= 0 && top_left.y <= GetScreenHeight()));
 }
 
 int main() {
     GameState state;
     open_map(&state);
 
+    SetConfigFlags(FLAG_WINDOW_RESIZABLE | FLAG_MSAA_4X_HINT);
     InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Evades");
     int current_monitor = GetCurrentMonitor();
     SetTargetFPS(GetMonitorRefreshRate(current_monitor));
 
-    state.camera.offset = (Vector2) {WINDOW_WIDTH/2, WINDOW_HEIGHT/2};
+    state.camera.offset = (Vector2) {GetScreenWidth()/2, GetScreenHeight()/2};
     state.camera.rotation = 0;
     state.camera.target = (Vector2) {0, 0};
     state.camera.zoom = 1;
@@ -65,6 +66,7 @@ int main() {
 
         const float frame_time = GetFrameTime();
 
+        state.camera.offset = (Vector2) {GetScreenWidth()/2, GetScreenHeight()/2};
         state.camera.zoom += GetMouseWheelMoveV().y * 0.05f * state.camera.zoom;
 
         if (IsKeyDown(KEY_I)) {
@@ -113,7 +115,7 @@ int main() {
 
 #ifdef DEBUG
         if (IsKeyDown(KEY_B)) {
-            DrawRectangleLinesEx((Rectangle) {WINDOW_WIDTH/4, WINDOW_HEIGHT/4, WINDOW_WIDTH/2, WINDOW_HEIGHT/2}, 5, ColorAlpha(RED, 0.7));
+            DrawRectangleLinesEx((Rectangle) {GetScreenWidth()/4, GetScreenHeight()/4, GetScreenWidth()/2, GetScreenHeight()/2}, 5, ColorAlpha(RED, 0.7));
         }
 
         if (IsKeyPressed(KEY_L)) {
@@ -156,8 +158,8 @@ int main() {
 
                 Vector2 area_screen_location = GetWorldToScreen2D((Vector2) {area.x, area.y}, state.camera);
                 Vector2 area_screen_edge = GetWorldToScreen2D((Vector2) {area.x + area.width, area.y + area.height}, state.camera);
-                if (area_screen_location.x > WINDOW_WIDTH || area_screen_edge.x < 0
-                    || area_screen_location.y > WINDOW_HEIGHT || area_screen_edge.y < 0) {
+                if (area_screen_location.x > GetScreenWidth() || area_screen_edge.x < 0
+                    || area_screen_location.y > GetScreenHeight() || area_screen_edge.y < 0) {
                     continue;
                 }
                 for (int zone_index = 0; zone_index < area.zone_count; zone_index++) {
