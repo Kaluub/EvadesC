@@ -57,6 +57,10 @@ int main() {
     init_debug_state();
     // init_circles();
 
+    // Buffers for CTRL measuring.
+    char measure_x[16];
+    char measure_y[16];
+
     while (!WindowShouldClose()) {
         timing_start(); // Tick time.
         if (current_monitor != GetCurrentMonitor()) {
@@ -191,22 +195,26 @@ int main() {
             }
         }
 
+        bool draw_measure_x = false;
+        bool draw_measure_y = false;
         if (IsKeyDown(KEY_LEFT_CONTROL)) {
-            const int scaled_factor = 16 / state.camera.zoom;
             if (closest_area_left != NULL) {
                 DrawRectangle(closest_area_left->x, closest_area_left->y, closest_area_left->width, closest_area_left->height, (Color) {255, 0, 255, 128});
                 if (closest_area_right != NULL) {
                     DrawRectangle(closest_area_right->x, closest_area_right->y, closest_area_right->width, closest_area_right->height, (Color) {0, 255, 0, 128});
                     DrawLine(closest_area_left->x + closest_area_left->width, mouse_over.y, closest_area_right->x, mouse_over.y, RED);
-                    DrawText(TextFormat("%d", closest_area_right->x - closest_area_left->x - closest_area_left->width), mouse_over.x + scaled_factor, mouse_over.y - scaled_factor, scaled_factor, RED);
+                    TextCopy(measure_x, TextFormat("%d", closest_area_right->x - closest_area_left->x - closest_area_left->width));
+                    draw_measure_x = true;
                 } else {
                     DrawLine(closest_area_left->x + closest_area_left->width, mouse_over.y, mouse_over.x, mouse_over.y, RED);
-                    DrawText(TextFormat("%.0f", mouse_over.x - closest_area_left->x - closest_area_left->width), mouse_over.x + scaled_factor, mouse_over.y - scaled_factor, scaled_factor, RED);
+                    TextCopy(measure_x, TextFormat("%.0f", mouse_over.x - closest_area_left->x - closest_area_left->width));
+                    draw_measure_x = true;
                 }
             } else if (closest_area_right != NULL) {
                 DrawRectangle(closest_area_right->x, closest_area_right->y, closest_area_right->width, closest_area_right->height, (Color) {0, 255, 0, 128});
                 DrawLine(mouse_over.x, mouse_over.y, closest_area_right->x, mouse_over.y, RED);
-                DrawText(TextFormat("%.0f", closest_area_right->x - mouse_over.x), mouse_over.x + scaled_factor, mouse_over.y - scaled_factor, scaled_factor, RED);
+                TextCopy(measure_x, TextFormat("%.0f", closest_area_right->x - mouse_over.x));
+                draw_measure_x = true;
             }
 
             if (closest_area_top != NULL) {
@@ -214,15 +222,18 @@ int main() {
                 if (closest_area_bottom != NULL) {
                     DrawRectangle(closest_area_bottom->x, closest_area_bottom->y, closest_area_bottom->width, closest_area_bottom->height, (Color) {0, 0, 255, 128});
                     DrawLine(mouse_over.x, closest_area_top->y + closest_area_top->height, mouse_over.x, closest_area_bottom->y, BLUE);
-                    DrawText(TextFormat("%d", closest_area_bottom->y - closest_area_top->y - closest_area_top->height), mouse_over.x + scaled_factor, mouse_over.y, scaled_factor, BLUE);
+                    TextCopy(measure_y, TextFormat("%d", closest_area_bottom->y - closest_area_top->y - closest_area_top->height));
+                    draw_measure_y = true;
                 } else {
                     DrawLine(mouse_over.x, closest_area_top->y + closest_area_top->height, mouse_over.x, mouse_over.y, BLUE);
-                    DrawText(TextFormat("%.0f", mouse_over.y - closest_area_top->y - closest_area_top->height), mouse_over.x + scaled_factor, mouse_over.y, scaled_factor, BLUE);
+                    TextCopy(measure_y, TextFormat("%.0f", mouse_over.y - closest_area_top->y - closest_area_top->height));
+                    draw_measure_y = true;
                 }
             } else if (closest_area_bottom != NULL) {
                 DrawRectangle(closest_area_bottom->x, closest_area_bottom->y, closest_area_bottom->width, closest_area_bottom->height, (Color) {0, 0, 255, 128});
                 DrawLine(mouse_over.x, mouse_over.y, mouse_over.x, closest_area_bottom->y, BLUE);
-                DrawText(TextFormat("%.0f", closest_area_bottom->y - mouse_over.y), mouse_over.x + scaled_factor, mouse_over.y, scaled_factor, BLUE);
+                TextCopy(measure_y, TextFormat("%.0f", closest_area_bottom->y - mouse_over.y));
+                draw_measure_y = true;
             }
         }
 
@@ -231,6 +242,13 @@ int main() {
         // }
 
         EndMode2D();
+        Vector2 mouse_pos = GetMousePosition();
+        if (draw_measure_x) {
+            DrawText(measure_x, mouse_pos.x + 16, mouse_pos.y - 16, 16, RED);
+        }
+        if (draw_measure_y) {
+            DrawText(measure_y, mouse_pos.x + 16, mouse_pos.y, 16, BLUE);
+        }
 #ifdef DEBUG
         DrawFPS(10, 10);
 #endif
