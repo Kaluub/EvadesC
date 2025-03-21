@@ -1412,3 +1412,533 @@ areas:
     translate:
       x: 211352
       y: 41600
+# Deeps Woods 1
+- x: last_right + 768
+  y: last_y
+  name: Deep Woods 1
+  properties:
+    lighting: 0.3
+    background_color:
+    - 78
+    - 39
+    - 0
+    - 180
+  zones:
+  - x: 0
+    y: 0
+    height: 320
+    width: 64
+    type: teleport
+    translate:
+      x: -968
+      y: 0
+  - x: last_right
+    y: 0
+    width: 236
+    height: 320
+    type: safe
+  - x: last_right
+    y: 0
+    width: 5120
+    height: 320
+    type: active
+    spawner:
+    - count: 25
+      radius: 26
+      speed: 60
+      types:
+      - mutating
+    - count: 20
+      radius: 17
+      speed: 90
+      types:
+      - pumpkin
+    - count: 40
+      radius: 15
+      types:
+      - fake_pumpkin
+  - x: last_right
+    y: 0
+    width: 236
+    height: 320
+    type: safe
+  - x: last_right
+    y: 0
+    width: 64
+    height: 320
+    type: exit
+    translate:
+      x: 160
+      y: 0
+# Deeps Woods 2
+- x: last_right
+  y: last_y
+  name: Deep Woods 2
+  properties:
+    lighting: 0.26
+    background_color:
+    - 74
+    - 35
+    - 0
+    - 183
+  zones:
+  - x: 0
+    y: 0
+    height: 320
+    width: 64
+    type: exit
+    translate:
+      x: -160
+      y: 0
+  - x: last_right
+    y: 0
+    width: 236
+    height: 320
+    type: safe
+  - x: last_right
+    y: 0
+    width: 5120
+    height: 320
+    type: active
+    spawner:
+    - count: 25
+      radius: 26
+      speed: 60
+      types:
+      - mutating
+    - count: 20
+      radius: 22
+      speed: 90
+      types:
+      - pumpkin
+    - count: 40
+      radius: 18
+      types:
+      - fake_pumpkin
+  - x: last_right
+    y: 0
+    width: 236
+    height: 320
+    type: safe
+  - x: last_right
+    y: 0
+    width: 64
+    height: 320
+    type: exit
+    translate:
+      x: 160
+      y: 0
+# Deeps Woods 3
+- x: last_right
+  y: last_y
+  name: Deep Woods 3
+  properties:
+    lighting: 0.23
+    background_color:
+    - 73
+    - 34
+    - 0
+    - 183
+  zones:
+  - x: 0
+    y: 0
+    height: 320
+    width: 64
+    type: exit
+    translate:
+      x: -160
+      y: 0
+  - x: last_right
+    y: 0
+    width: 236
+    height: 320
+    type: safe
+  - x: last_right
+    y: 0
+    width: 5120
+    height: 320
+    type: active
+    spawner:
+    - count: 25
+      radius: 10
+      speed: 150
+      types:
+      - mutating
+    - count: 18
+      radius: 30
+      speed: 90
+      types:
+      - pumpkin
+    - count: 42
+      radius: 28
+      types:
+      - fake_pumpkin
+    - count: 4
+      radius: 70
+      speed: 60
+      angle: [0, 180]
+      types:
+      - tree
+  - x: last_right
+    y: 0
+    width: 236
+    height: 320
+    type: safe
+  - x: last_right
+    y: 0
+    width: 64
+    height: 320
+    type: exit
+    translate:
+      x: 160
+      y: 0
+# Deeps Woods 4
+- x: last_right
+  y: last_y
+  name: Deep Woods 4
+  properties:
+    lighting: 0.2
+    background_color:
+    - 72
+    - 31
+    - 0
+    - 183
+  zones:
+  - x: 0
+    y: 0
+    height: 320
+    width: 64
+    type: exit
+    translate:
+      x: -160
+      y: 0
+  - x: last_right
+    y: 0
+    width: 236
+    height: 320
+    type: safe
+  - x: last_right
+    y: 0
+    width: 5120
+    height: 320
+    type: active
+    spawner:
+    - count: 25
+      radius: 12
+      speed: 150
+      types:
+      - mutating
+    - count: 12
+      radius: 28
+      speed: 195
+      types:
+      - pumpkin
+    - count: 78
+      radius: 18
+      types:
+      - fake_pumpkin
+    - count: 6
+      radius: 65
+      speed: 90
+      angle: [0, 180]
+      types:
+      - tree
+  - x: last_right
+    y: 0
+    width: 236
+    height: 320
+    type: safe
+  - x: last_right
+    y: 0
+    width: 64
+    height: 320
+    type: exit
+    translate:
+      x: 160
+      y: 0
+# Deeps Woods 5
+- x: last_right
+  y: last_y
+  name: Deep Woods 5
+  properties:
+    lighting: 0.2
+    background_color:
+    - 69
+    - 30
+    - 0
+    - 183
+  zones:
+  - x: 0
+    y: 0
+    height: 320
+    width: 64
+    type: exit
+    translate:
+      x: -160
+      y: 0
+  - x: last_right
+    y: 0
+    width: 236
+    height: 320
+    type: safe
+  - x: last_right
+    y: 0
+    width: 5120
+    height: 320
+    type: active
+    spawner:
+    - count: 25
+      radius: 20
+      speed: 30
+      types:
+      - mutating
+    - count: 3
+      radius: 18
+      speed: 220
+      types:
+      - pumpkin
+    - count: 67
+      radius: 15
+      types:
+      - fake_pumpkin
+    - count: 5
+      radius: 70
+      speed: 60
+      angle: [0, 180]
+      types:
+      - tree
+    - count: 14
+      radius: 30
+      speed: 90
+      angle: [0, 180]
+      types:
+      - tree
+  - x: last_right
+    y: 0
+    width: 236
+    height: 320
+    type: safe
+  - x: last_right
+    y: 0
+    width: 64
+    height: 320
+    type: exit
+    translate:
+      x: 160
+      y: 0
+# Deeps Woods 6
+- x: last_right
+  y: last_y
+  name: Deep Woods 6
+  properties:
+    lighting: 0.2
+    background_color:
+    - 66
+    - 28
+    - 0
+    - 183
+  zones:
+  - x: 0
+    y: 0
+    height: 320
+    width: 64
+    type: exit
+    translate:
+      x: -160
+      y: 0
+  - x: last_right
+    y: 0
+    width: 236
+    height: 320
+    type: safe
+  - x: last_right
+    y: 0
+    width: 5120
+    height: 320
+    type: active
+    spawner:
+    - count: 12
+      radius: 30
+      speed: 75
+      types:
+      - mutating
+    - count: 7
+      radius: 33
+      speed: 220
+      types:
+      - pumpkin
+    - count: 13
+      radius: 26
+      types:
+      - fake_pumpkin
+    - count: 8
+      radius: 65
+      speed: 165
+      angle: [0, 180]
+      y: 160
+      types:
+      - tree
+    - count: 18
+      radius: 28
+      speed: 120
+      angle: [0, 180]
+      types:
+      - tree
+  - x: last_right
+    y: 0
+    width: 236
+    height: 320
+    type: safe
+  - x: last_right
+    y: 0
+    width: 64
+    height: 320
+    type: exit
+    translate:
+      x: 160
+      y: 0
+# Deeps Woods 7
+- x: last_right
+  y: last_y
+  name: Deep Woods 7
+  properties:
+    lighting: 0.2
+    background_color:
+    - 63
+    - 26
+    - 0
+    - 183
+  zones:
+  - x: 0
+    y: 0
+    height: 320
+    width: 64
+    type: exit
+    translate:
+      x: -160
+      y: 0
+  - x: last_right
+    y: 0
+    width: 236
+    height: 320
+    type: safe
+  - x: last_right
+    y: 0
+    width: 5120
+    height: 320
+    type: active
+    spawner:
+    - count: 25
+      radius: 26
+      speed: 60
+      types:
+      - mutating
+    - count: 20
+      radius: 30
+      speed: 90
+      types:
+      - pumpkin
+    - count: 40
+      radius: 28
+      types:
+      - fake_pumpkin
+  - x: last_right
+    y: 0
+    width: 236
+    height: 320
+    type: safe
+  - x: last_right
+    y: 0
+    width: 64
+    height: 320
+    type: exit
+    translate:
+      x: 160
+      y: 0
+# Deeps Woods 8
+- x: last_right
+  y: last_y
+  name: Deep Woods 8
+  properties:
+    lighting: 0.2
+    background_color:
+    - 60
+    - 24
+    - 0
+    - 183
+  zones:
+  - x: 0
+    y: 0
+    height: 320
+    width: 64
+    type: exit
+    translate:
+      x: -160
+      y: 0
+  - x: last_right
+    y: 0
+    width: 236
+    height: 320
+    type: safe
+  - x: last_right
+    y: 0
+    width: 5120
+    height: 320
+    type: active
+    spawner:
+    - count: 25
+      radius: 26
+      speed: 60
+      types:
+      - mutating
+    - count: 20
+      radius: 30
+      speed: 90
+      types:
+      - pumpkin
+    - count: 40
+      radius: 28
+      types:
+      - fake_pumpkin
+  - x: last_right
+    y: 0
+    width: 236
+    height: 320
+    type: safe
+  - x: last_right
+    y: 0
+    width: 64
+    height: 320
+    type: exit
+    translate:
+      x: 160
+      y: 0
+# Deeps Woods Victory
+- x: last_right
+  y: last_y
+  properties:
+    lighting: 0.1
+    background_color:
+    - 74
+    - 35
+    - 0
+    - 183
+  zones:
+  - x: 0
+    y: 0
+    height: 320
+    width: 64
+    type: exit
+    translate:
+      x: -160
+      y: 0
+  - x: last_right
+    y: 0
+    width: 2976
+    height: 320
+    type: victory
+  - x: last_right
+    y: 0
+    width: 160
+    height: 320
+    type: removal
