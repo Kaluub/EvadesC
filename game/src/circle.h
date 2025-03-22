@@ -14,6 +14,8 @@ typedef struct CircleCollection {
     int capacity;
 } CircleCollection;
 
+void init_circle_texture();
 void init_circles(CircleCollection *collection, int capacity);
-void draw_circles(CircleCollection *collection);
+void add_circle(CircleCollection* collection, Circle circle);
+void draw_circles(const CircleCollection *collection);
 void cleanup_circles(CircleCollection *collection);

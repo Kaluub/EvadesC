@@ -1,11 +1,15 @@
 #include "map.h"
+#include "enemy_type.h"
 #include <malloc.h>
+#include <assert.h>
+
+#define MAX_SPAWNER_COUNT 256
 
 void load_map(Map* map, FILE* file) {
     // Spawn region name.
     uint8_t spawn_region_length = 0;
     fread(&spawn_region_length, sizeof(spawn_region_length), 1, file);
-    map->spawn_region = (char *) malloc(spawn_region_length);
+    map->spawn_region = (char*) malloc(spawn_region_length);
     fread(map->spawn_region, 1, spawn_region_length, file);
 
     // Regions.
@@ -50,6 +54,11 @@ void load_map(Map* map, FILE* file) {
             fread(&area->y, sizeof(area->y), 1, file);
             area->width = 0;
             area->height = 0;
+
+            Spawner* spawners[MAX_SPAWNER_COUNT]; // basic cache
+            Zone* spawner_zone_references[MAX_SPAWNER_COUNT];
+            int spawner_list_size = 0;
+            int enemy_count = 0;
 
             // Area properties.
             uint8_t area_flags = 0;
@@ -97,10 +106,15 @@ void load_map(Map* map, FILE* file) {
                     for (int spawner_index = 0; spawner_index < zone->spawner_count; spawner_index++) {
                         Spawner* spawner = zone->spawners + spawner_index;
                         fread(&spawner->enemy_type_count, sizeof(spawner->enemy_type_count), 1, file);
+                        assert(spawner->enemy_type_count != 0);
                         spawner->enemy_types = (uint8_t*) malloc(sizeof(uint8_t) * spawner->enemy_type_count);
                         fread(spawner->enemy_types, sizeof(uint8_t), spawner->enemy_type_count, file);
                         fread(&spawner->speed, sizeof(spawner->speed), 1, file);
                         fread(&spawner->count, sizeof(spawner->count), 1, file);
+                        fread(&spawner->radius, sizeof(spawner->radius), 1, file);
+                        spawner_zone_references[spawner_list_size] = zone;
+                        spawners[spawner_list_size++] = spawner;
+                        enemy_count += spawner->count;
                     }
                 }
 
@@ -109,6 +123,25 @@ void load_map(Map* map, FILE* file) {
                 }
                 if (area->height < (zone->y - area->y) + zone->height) {
                     area->height = (zone->y - area->y) + zone->height;
+                }
+            }
+
+            // Enemy spawning.
+            assert(spawner_list_size < MAX_SPAWNER_COUNT);
+            init_circles(&area->enemies, enemy_count);
+            for (int i = 0; i < spawner_list_size; i++) {
+                Zone* zone = spawner_zone_references[i];
+                Spawner* spawner = spawners[i];
+                for (int j = 0; j < spawner->count; j++) {
+                    uint8_t enemy_type = spawner->enemy_types[GetRandomValue(0, spawner->enemy_type_count - 1)];
+                    add_circle(&area->enemies, (Circle) {
+                        (Vector2) {
+                            GetRandomValue(zone->x + spawner->radius, zone->x + zone->width - spawner->radius),
+                            GetRandomValue(zone->y + spawner->radius, zone->y + zone->height - spawner->radius)
+                        },
+                        spawner->radius,
+                        GetColor(enemy_colors[enemy_type])
+                    });
                 }
             }
         }
@@ -146,6 +179,7 @@ void destroy_map(Map* map) {
                 free(zone->spawners);
             }
             free(area->zones);
+            cleanup_circles(&area->enemies);
         }
         free(region->areas);
     }

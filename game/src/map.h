@@ -1,5 +1,6 @@
 #pragma once
 
+#include "circle.h"
 #include <stdio.h>
 #include <stdint.h>
 
@@ -31,6 +32,7 @@ typedef struct Region {
 } Region;
 
 typedef struct Area {
+    CircleCollection enemies;
     struct Zone* zones;
     int32_t x;
     int32_t y;
@@ -55,8 +57,9 @@ typedef struct Zone {
 
 typedef struct Spawner {
     uint8_t* enemy_types;
-    uint32_t count;
     float speed;
+    uint16_t count;
+    uint16_t radius;
     uint8_t enemy_type_count;
 } Spawner;
 

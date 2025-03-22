@@ -68,7 +68,8 @@ def write_spawners(spawners: list, out):
                 raise ValueError(spawner_types, enemy_type)
             out.write(enemy_type_num.to_bytes(1, "little"))
         out.write(struct.pack("<f", spawner.get("speed", 0)))
-        out.write(spawner.get("count", 1).to_bytes(4, "little"))
+        out.write(spawner.get("count", 1).to_bytes(2, "little"))
+        out.write(spawner["radius"].to_bytes(2, "little"))
         
         
 enemy_types = {

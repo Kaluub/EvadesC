@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdint.h>
+
 enum EnemyType {
     ENEMY_TYPE_NONE,
     ENEMY_TYPE_WALL,
@@ -129,4 +131,134 @@ enum EnemyType {
     ENEMY_TYPE_SUMMONER,
     ENEMY_TYPE_SLASHER,
     ENEMY_TYPE_LOTUS_FLOWER
+};
+
+static const uint32_t enemy_colors[] = {
+    0x0,
+    0x222222ff, // wall_enemy
+    0x939393ff, // normal_enemy
+    0x966e14ff, // homing_enemy
+    0x694d0eff, // homing_switch_enemy
+    0x003c66ff, // dasher_enemy
+    0x00243dff, // dasher_switch_enemy
+    0xff0000ff, // slowing_enemy
+    0xb19cd9ff, // experience_drain_enemy
+    0x4d0163ff, // enlarging_enemy
+    0x0000ffff, // draining_enemy
+    0x78148cff, // gravity_enemy
+    0x7b9db2ff, // repelling_enemy
+    0x336600ff, // turning_enemy
+    0xf27743ff, // sizing_enemy
+    0xa05353ff, // sniper_enemy
+    0x64c1b9ff, // freezing_enemy
+    0xecc4efff, // teleporting_enemy
+    0xdd2606ff, // wavy_enemy
+    0xfa5336ff, // wavy_switch_enemy
+    0xb371f2ff, // zigzag_enemy
+    0xe0c6f9ff, // zigzag_switch_enemy
+    0x8771f2ff, // confectioner_enemy
+    0xcfc6f9ff, // confectioner_switch_enemy
+    0xa03811ff, // zoning_enemy
+    0xb35f40ff, // zoning_switch_enemy
+    0xe8b500ff, // spiral_enemy
+    0xf5e199ff, // spiral_switch_enemy
+    0x869e0fff, // oscillating_enemy
+    0xb6c46fff, // oscillating_switch_enemy
+    0x565656ff, // switch_enemy
+    0x05dad1ff, // dorito_enemy
+    0x9bf0ecff, // dorito_switch_enemy
+    0xc38b32ff, // penny_enemy
+    0xd9b67fff, // penny_switch_enemy
+    0xff69c5ff, // infinity_enemy
+    0xffb4e2ff, // infinity_switch_enemy
+    0x6789efff, // liquid_enemy
+    0xadf8ffff, // icicle_enemy
+    0x1aacbfff, // slippery_enemy
+    0x8300ffff, // ice_sniper_enemy
+    0xa87c86ff, // disabling_enemy
+    0xff9000ff, // speed_sniper_enemy
+    0x00cc8eff, // regen_sniper_enemy
+    0xd3134fff, // radiating_bullets_enemy
+    0x000000ff, // immune_enemy
+    0xe26110ff, // pumpkin_enemy
+    0x4e2700ff, // tree_enemy
+    0x7e7cd6ff, // frost_giant_enemy
+    0xffffffff, // snowman_enemy
+    0x00eb00ff, // corrosive_enemy
+    0x00c700ff, // toxic_enemy
+    0x61ff61ff, // corrosive_sniper_enemy
+    0x8c01b7ff, // poison_sniper_enemy
+    0xbd67d2ff, // magnetic_reduction_enemy
+    0x642374ff, // magnetic_nullification_enemy
+    0xff3852ff, // positive_magnetic_sniper_enemy
+    0xa496ffff, // negative_magnetic_sniper_enemy
+    0x675327ff, // residue_enemy
+    0xcf5504ff, // fire_trail_enemy
+    0xbe89ffff, // ice_ghost_enemy
+    0x590174ff, // poison_ghost_enemy
+    0xe3001eff, // positive_magnetic_ghost_enemy
+    0x6f59ffff, // negative_magnetic_ghost_enemy
+    0x9de3c6ff, // wind_ghost_enemy
+    0xc88250ff, // lunging_enemy
+    0xf78306ff, // lava_enemy
+    0x78148cff, // gravity_ghost_enemy
+    0x7b9db2ff, // repelling_ghost_enemy
+    0xfaf46eff, // star_enemy
+    0x75eb26ff, // grass_enemy
+    0x259c55ff, // seedling_enemy
+    0xe8e584ff, // flower_enemy
+    0xffbfce7f, // disabling_ghost_enemy
+    0xede658ff, // glowy_enemy
+    0xf0841fff, // firefly_enemy
+    0xb686dbff, // mist_enemy
+    0x86d7dbff, // phantom_enemy
+    0x926be3ff, // cybot_enemy
+    0xb07331ff, // eabot_enemy
+    0x319bb0ff, // wabot_enemy
+    0xe88409ff, // fibot_enemy
+    0x00b585ff, // aibot_enemy
+    0x9de3c6ff, // wind_sniper_enemy
+    0xd5ae7fff, // sand_enemy
+    0xa57a6dff, // sandrock_enemy
+    0x6c541eff, // quicksand_enemy
+    0xbd9476ff, // crumbling_enemy
+    0xc90000ff, // radar_enemy
+    0x29ffc6ff, // barrier_enemy
+    0xfca330ff, // speed_ghost_enemy
+    0x32e3aeff, // regen_ghost_enemy
+    0x5b8e28ff, // cactus_enemy
+    0x91bbffff, // cycling_enemy
+    0x1bc8e3ff, // icbot_enemy
+    0xdaff1fff, // elbot_enemy
+    0x18ed3fff, // plbot_enemy
+    0xb55b31ff, // mebot_enemy
+    0xfff9bdff, // libot_enemy
+    0x3d006eff, // dabot_enemy
+    0xffbe6eff, // sparking_enemy
+    0xf4ff8cff, // thunderbolt_enemy
+    0xf5a462ff, // static_enemy
+    0xffff00ff, // electrical_enemy
+    0xd14f84ff, // prediction_sniper_enemy
+    0xb5deebff, // ring_sniper_enemy
+    0x374037ff, // charging_enemy
+    0x2d3237ff, // reducing_enemy
+    0x788898ff, // lead_sniper_enemy
+    0x302519ff, // stalactite_enemy
+    0xbf5213ff, // blocking_enemy
+    0x0a5557ff, // force_sniper_a_enemy
+    0x914d83ff, // force_sniper_b_enemy
+    0x332233ff, // wacky_wall_enemy
+    0xaa2f2fff, // flaming_enemy
+    0x7d487fff, // stumbling_enemy
+    0xa377a3ff, // disarming_enemy
+    0x5d4d5dff, // lurching_enemy
+    0xeb00ebff, // infectious_enemy
+    0x211513ff, // mutating_enemy
+    0x96b1b3ff, // vengeful_soul_enemy
+    0xbed0d1ff, // lost_soul_enemy
+    0x96c6ecff, // blind_enemy
+    0xdededeff, // ninja_star_sniper_enemy
+    0x91bbffff, // summoner_enemy
+    0x363636ff, // slasher_enemy
+    0xdededeff, // lotus_flower_enemy
 };

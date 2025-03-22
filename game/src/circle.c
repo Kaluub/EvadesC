@@ -1,6 +1,7 @@
 #include "circle.h"
 #include "raymath.h"
 #include <stdlib.h>
+#include <assert.h>
 
 static Texture2D circle_texture = {0};
 static Rectangle circle_rect = {0, 0, 4096, 4096};
@@ -20,21 +21,27 @@ static Rectangle circle_rect = {0, 0, 4096, 4096};
 //     collection->stored_circles += n;
 // }
 
+void init_circle_texture() {
+    Image circle_image = GenImageColor(4096, 4096, GetColor(0));
+    ImageDrawCircle(&circle_image, circle_image.width/2, circle_image.height/2, circle_image.width/2, WHITE);
+    circle_texture = LoadTextureFromImage(circle_image);
+    GenTextureMipmaps(&circle_texture);
+    UnloadImage(circle_image);
+}
+
 void init_circles(CircleCollection *collection, int capacity) {
-    if (circle_texture.id == 0) {
-        Image circle_image = GenImageColor(4096, 4096, GetColor(0));
-        ImageDrawCircle(&circle_image, circle_image.width/2, circle_image.height/2, circle_image.width/2, WHITE);
-        circle_texture = LoadTextureFromImage(circle_image);
-        GenTextureMipmaps(&circle_texture);
-        UnloadImage(circle_image);
-    }
     collection->circles = (Circle*) malloc(sizeof(Circle) * capacity);
     collection->stored_circles = 0;
     collection->capacity = capacity;
     // populate_with_debug_circles(collection);
 }
 
-void draw_circles(CircleCollection *collection) {
+void add_circle(CircleCollection* collection, Circle circle) {
+    assert(collection->stored_circles < collection->capacity);
+    collection->circles[collection->stored_circles++] = circle;
+}
+
+void draw_circles(const CircleCollection *collection) {
     for (int i = 0; i < collection->stored_circles; i++) {
         Circle circle = collection->circles[i];
         DrawTexturePro(

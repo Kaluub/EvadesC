@@ -33,6 +33,8 @@ int is_zone_on_screen(Camera2D camera, const Zone zone) {
 }
 
 int main() {
+    SetRandomSeed(0);
+
     GameState state;
     open_map(&state);
 
@@ -55,7 +57,7 @@ int main() {
     SetTextureFilter(tiles[TEXTURE_LEAVES], TEXTURE_FILTER_ANISOTROPIC_16X);
 
     init_debug_state();
-    // init_circles();
+    init_circle_texture();
 
     // Buffers for CTRL measuring.
     char measure_x[16];
@@ -192,6 +194,7 @@ int main() {
                 }
 
                 DrawText(TextFormat("%d x %d", area.width, area.height), area.x + 10, area.y, 96, BLACK);
+                draw_circles(&area.enemies);
             }
         }
 
