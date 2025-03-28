@@ -953,6 +953,8 @@ areas:
   - height: 16
     translate: {x: 432, y: 7040}
     type: teleport
+    requirements:
+    - cybot_defeated
     width: 16
     x: 288
     y: 240
@@ -961,6 +963,8 @@ areas:
   - height: 16
     translate: {x: 432, y: 7040}
     type: teleport
+    requirements:
+    - cybot_defeated
     width: 16
     x: 304
     y: 240
@@ -969,6 +973,8 @@ areas:
   - height: 16
     translate: {x: 432, y: 7040}
     type: teleport
+    requirements:
+    - cybot_defeated
     width: 16
     x: 288
     y: 224
@@ -977,6 +983,8 @@ areas:
   - height: 16
     translate: {x: 432, y: 7040}
     type: teleport
+    requirements:
+    - cybot_defeated
     width: 16
     x: 304
     y: 224

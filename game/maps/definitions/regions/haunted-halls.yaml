@@ -1390,6 +1390,13 @@ areas:
     - 39
     - 0
     - 130
+  assets:
+  - type: wall
+    texture:
+    x: 608
+    y: -352
+    width: 704
+    height: 1184
   zones:
   - height: 480
     translate:
@@ -1412,8 +1419,24 @@ areas:
     translate:
       x: 211352
       y: 41600
+  - x: 1312
+    y: last_y
+    height: 320
+    width: 64
+    type: teleport
+    translate:
+      x: 160
+      y: 0
+  - x: 1312
+    y: 320
+    height: 160
+    width: 64
+    type: teleport
+    translate:
+      x: 160
+      y: -160
 # Deeps Woods 1
-- x: last_right + 768
+- x: last_right
   y: last_y
   name: Deep Woods 1
   properties:
@@ -1828,20 +1851,31 @@ areas:
     height: 320
     type: active
     spawner:
-    - count: 25
-      radius: 26
-      speed: 60
+    - count: 16
+      radius: 5
+      speed: 75
       types:
       - mutating
-    - count: 20
-      radius: 30
-      speed: 90
+    - count: 15
+      radius: 22
+      speed: 250
       types:
       - pumpkin
-    - count: 40
-      radius: 28
+    - count: 22
+      radius: 15
       types:
       - fake_pumpkin
+    - count: 13
+      radius: 18
+      speed: 210
+      angle: [0, 180]
+      types:
+      - tree
+    - count: 9
+      radius: 23
+      speed: 90
+      types:
+      - turning
   - x: last_right
     y: 0
     width: 236
@@ -1887,19 +1921,42 @@ areas:
     type: active
     spawner:
     - count: 25
-      radius: 26
-      speed: 60
+      radius: 5
+      speed: 150
       types:
       - mutating
-    - count: 20
-      radius: 30
-      speed: 90
+    - count: 18
+      radius: 16
+      speed: 250
       types:
       - pumpkin
-    - count: 40
-      radius: 28
+    - count: 22
+      radius: 12
       types:
       - fake_pumpkin
+    - count: 7
+      radius: 19
+      speed: 210
+      angle: [0, 180]
+      types:
+      - tree
+    - count: 8
+      radius: 55
+      speed: 120
+      angle: [0, 180]
+      y: 160
+      types:
+      - tree
+    - count: 8
+      radius: 35
+      speed: 45
+      types:
+      - turning
+    - count: 19
+      radius: 16
+      speed: 90
+      types:
+      - turning
   - x: last_right
     y: 0
     width: 236
