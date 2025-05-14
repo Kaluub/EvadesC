@@ -92,6 +92,8 @@ int main() {
 
         if (IsKeyDown(KEY_LEFT_SHIFT)) {
             speed *= 0.5;
+        } else if (IsKeyDown(KEY_LEFT_ALT)) {
+            speed *= 2;
         }
 
         if (IsKeyDown(KEY_W)) {

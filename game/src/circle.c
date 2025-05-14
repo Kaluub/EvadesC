@@ -15,6 +15,9 @@ void init_circle_texture() {
 }
 
 void draw_circle(Vector2 position, float radius, Color color) {
+    if (IsKeyDown(KEY_V)) {
+        color = ColorAlpha(color, 0.3f);
+    }
     DrawTexturePro(
         circle_texture,
         circle_rect,

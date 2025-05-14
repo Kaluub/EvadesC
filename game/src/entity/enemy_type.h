@@ -142,8 +142,6 @@ static const uint32_t enemy_colors[] = {
     0x003c66ff, // dasher_enemy
     0x00243dff, // dasher_switch_enemy
     0xff0000ff, // slowing_enemy
-    0xb19cd9ff, // experience_drain_enemy
-    0x4d0163ff, // enlarging_enemy
     0x0000ffff, // draining_enemy
     0x78148cff, // gravity_enemy
     0x7b9db2ff, // repelling_enemy
@@ -176,11 +174,14 @@ static const uint32_t enemy_colors[] = {
     0x1aacbfff, // slippery_enemy
     0x8300ffff, // ice_sniper_enemy
     0xa87c86ff, // disabling_enemy
+    0xb19cd9ff, // experience_drain_enemy
+    0x4d0163ff, // enlarging_enemy
     0xff9000ff, // speed_sniper_enemy
     0x00cc8eff, // regen_sniper_enemy
     0xd3134fff, // radiating_bullets_enemy
     0x000000ff, // immune_enemy
     0xe26110ff, // pumpkin_enemy
+    0xe26110ff, // fake_pumpkin_enemy
     0x4e2700ff, // tree_enemy
     0x7e7cd6ff, // frost_giant_enemy
     0xffffffff, // snowman_enemy

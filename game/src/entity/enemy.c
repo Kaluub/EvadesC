@@ -66,19 +66,55 @@ void enemy_set_draw(const EnemySet* enemy_set) {
 
 // Enemy implementation
 
-Enemy* enemy_init(uint8_t type, Vector2 position, float base_speed, float radius) {
+Vector2 generate_enemy_position(Zone* zone, Spawner* spawner, uint8_t enemy_type, int spawn_index) {
+    switch (enemy_type) {
+        case ENEMY_TYPE_WALL:
+        case ENEMY_TYPE_WACKY_WALL:
+            uint16_t spawn_width = zone->width - 2*spawner->radius;
+            uint16_t spawn_height = zone->height - 2*spawner->radius;
+            double spawn_length = 2*spawn_width + 2*spawn_height;
+            double spawn_spot = spawn_length * spawn_index / spawner->count;
+            float x = zone->x + zone->width/2;
+            float y = zone->y + spawner->radius;
+            if (spawn_spot < 0.5*spawn_width) {
+                x -= spawn_spot;
+            } else if (spawn_spot < 0.5*spawn_width + spawn_height) {
+                x = zone->x + spawner->radius;
+                y += spawn_spot - 0.5*spawn_width;
+            } else if (spawn_spot < 1.5*spawn_width + spawn_height) {
+                x = zone->x + (spawn_spot - spawn_height - 0.5*spawn_width) + spawner->radius;
+                y = zone->y + spawn_height + spawner->radius;
+            } else if (spawn_spot < 1.5*spawn_width + 2*spawn_height) {
+                x = zone->x + spawn_width + spawner->radius;
+                y = zone->y + spawn_height + spawner->radius - (spawn_spot - spawn_height - 1.5*spawn_width);
+            } else {
+                x = zone->x + spawn_width + spawner->radius - (spawn_spot - 1.5*spawn_width - 2*spawn_height);
+            }
+            return (Vector2) {x, y};
+        default:
+            return (Vector2) {
+                GetRandomValue(zone->x + spawner->radius, zone->x + zone->width - spawner->radius),
+                GetRandomValue(zone->y + spawner->radius, zone->y + zone->height - spawner->radius)
+            };
+    }
+}
+
+Enemy* enemy_init(Zone* zone, Spawner* spawner, int spawn_index) {
+    assert(zone != NULL);
+    assert(spawner != NULL);
     Enemy* enemy = malloc(sizeof(Enemy));
     if (enemy == NULL) {
         TraceLog(LOG_FATAL, MEMFAIL"enemy_init");
         return NULL;
     }
-    enemy->movement_function = get_movement_function(type);
+    uint8_t enemy_type = spawner->enemy_types[GetRandomValue(0, spawner->enemy_type_count - 1)];
+    enemy->movement_function = get_movement_function(enemy_type);
     enemy->movement_data = NULL;
-    enemy->position = position;
-    enemy->color = GetColor(enemy_colors[type]);
-    enemy->base_speed = base_speed;
-    enemy->radius = radius;
-    enemy->type = type;
+    enemy->position = generate_enemy_position(zone, spawner, enemy_type, spawn_index);
+    enemy->color = GetColor(enemy_colors[enemy_type]);
+    enemy->base_speed = spawner->speed;
+    enemy->radius = spawner->radius;
+    enemy->type = enemy_type;
     return enemy;
 }
 

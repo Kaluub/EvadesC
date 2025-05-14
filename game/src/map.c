@@ -116,6 +116,9 @@ void load_map(Map* map, FILE* file) {
                         spawners[spawner_list_size++] = spawner;
                         enemy_count += spawner->count;
                     }
+                    // Set active zone pointer.
+                    // TODO: Support multiple active zones?
+                    area->active_zone = zone;
                 }
 
                 if (area->width < (zone->x - area->x) + zone->width) {
@@ -133,16 +136,7 @@ void load_map(Map* map, FILE* file) {
                 Zone* zone = spawner_zone_references[i];
                 Spawner* spawner = spawners[i];
                 for (int j = 0; j < spawner->count; j++) {
-                    uint8_t enemy_type = spawner->enemy_types[GetRandomValue(0, spawner->enemy_type_count - 1)];
-                    Enemy* enemy = enemy_init(
-                        enemy_type,
-                        (Vector2) {
-                            GetRandomValue(zone->x + spawner->radius, zone->x + zone->width - spawner->radius),
-                            GetRandomValue(zone->y + spawner->radius, zone->y + zone->height - spawner->radius)
-                        },
-                        spawner->speed,
-                        spawner->radius
-                    );
+                    Enemy* enemy = enemy_init(zone, spawner, j);
                     enemy_set_add(&area->enemy_set, enemy);
                 }
             }

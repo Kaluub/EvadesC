@@ -5,3 +5,5 @@
 
 movement_function get_movement_function(uint8_t enemy_type);
 void normal_movement(Area* area, Enemy* enemy);
+void wall_movement(Area* area, Enemy* enemy);
+void teleporting_movement(Area* area, Enemy* enemy);

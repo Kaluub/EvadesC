@@ -10,6 +10,8 @@
 typedef struct Area Area;
 typedef struct Enemy Enemy;
 typedef void (*movement_function)(Area* area, Enemy* enemy);
+typedef struct Zone Zone;
+typedef struct Spawner Spawner;
 
 typedef struct Enemy {
     movement_function movement_function;
@@ -34,5 +36,5 @@ void enemy_set_destroy(EnemySet* enemy_set);
 void enemy_set_update(EnemySet* enemy_set, Area* area);
 void enemy_set_draw(const EnemySet* enemy_set);
 
-Enemy* enemy_init(uint8_t type, Vector2 position, float base_speed, float radius);
-void enemy_destroy(Enemy* enemy); 
+Enemy* enemy_init(Zone* zone, Spawner* spawner, int spawn_index);
+void enemy_destroy(Enemy* enemy);

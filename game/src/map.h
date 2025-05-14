@@ -34,6 +34,7 @@ typedef struct Region {
 typedef struct Area {
     EnemySet enemy_set;
     struct Zone* zones;
+    struct Zone* active_zone;
     int32_t x;
     int32_t y;
     uint32_t width;
