@@ -134,7 +134,7 @@ enum EnemyType {
 };
 
 static const uint32_t enemy_colors[] = {
-    0x0,
+    0x0, // none
     0x222222ff, // wall_enemy
     0x939393ff, // normal_enemy
     0x966e14ff, // homing_enemy

@@ -1,5 +1,4 @@
 #include "map.h"
-#include "enemy_type.h"
 #include <malloc.h>
 #include <assert.h>
 
@@ -55,7 +54,8 @@ void load_map(Map* map, FILE* file) {
             area->width = 0;
             area->height = 0;
 
-            Spawner* spawners[MAX_SPAWNER_COUNT]; // basic cache
+            // Cache for fast spawning algorithm.
+            Spawner* spawners[MAX_SPAWNER_COUNT];
             Zone* spawner_zone_references[MAX_SPAWNER_COUNT];
             int spawner_list_size = 0;
             int enemy_count = 0;
@@ -128,20 +128,22 @@ void load_map(Map* map, FILE* file) {
 
             // Enemy spawning.
             assert(spawner_list_size < MAX_SPAWNER_COUNT);
-            init_circles(&area->enemies, enemy_count);
+            enemy_set_init(&area->enemy_set, enemy_count);
             for (int i = 0; i < spawner_list_size; i++) {
                 Zone* zone = spawner_zone_references[i];
                 Spawner* spawner = spawners[i];
                 for (int j = 0; j < spawner->count; j++) {
                     uint8_t enemy_type = spawner->enemy_types[GetRandomValue(0, spawner->enemy_type_count - 1)];
-                    add_circle(&area->enemies, (Circle) {
+                    Enemy* enemy = enemy_init(
+                        enemy_type,
                         (Vector2) {
                             GetRandomValue(zone->x + spawner->radius, zone->x + zone->width - spawner->radius),
                             GetRandomValue(zone->y + spawner->radius, zone->y + zone->height - spawner->radius)
                         },
-                        spawner->radius,
-                        GetColor(enemy_colors[enemy_type])
-                    });
+                        spawner->speed,
+                        spawner->radius
+                    );
+                    enemy_set_add(&area->enemy_set, enemy);
                 }
             }
         }
@@ -179,7 +181,7 @@ void destroy_map(Map* map) {
                 free(zone->spawners);
             }
             free(area->zones);
-            cleanup_circles(&area->enemies);
+            enemy_set_destroy(&area->enemy_set);
         }
         free(region->areas);
     }

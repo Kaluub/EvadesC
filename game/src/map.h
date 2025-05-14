@@ -1,6 +1,6 @@
 #pragma once
 
-#include "circle.h"
+#include "entity/enemy.h"
 #include <stdio.h>
 #include <stdint.h>
 
@@ -32,7 +32,7 @@ typedef struct Region {
 } Region;
 
 typedef struct Area {
-    CircleCollection enemies;
+    EnemySet enemy_set;
     struct Zone* zones;
     int32_t x;
     int32_t y;

@@ -194,7 +194,8 @@ int main() {
                 }
 
                 DrawText(TextFormat("%d x %d", area.width, area.height), area.x + 10, area.y, 96, BLACK);
-                draw_circles(&area.enemies);
+                enemy_set_update(&region.areas[area_index].enemy_set, region.areas + area_index);
+                enemy_set_draw(&area.enemy_set);
             }
         }
 
@@ -240,10 +241,6 @@ int main() {
             }
         }
 
-        // if (IsKeyDown(KEY_V)) {
-        //     draw_circles();
-        // }
-
         EndMode2D();
         Vector2 mouse_pos = GetMousePosition();
         if (draw_measure_x) {
@@ -260,8 +257,7 @@ int main() {
         EndDrawing();
     }
 
-    // cleanup_circles();
     CloseWindow();
     destroy_map(&state.map);
-    return 0;
+    return EXIT_SUCCESS;
 }
