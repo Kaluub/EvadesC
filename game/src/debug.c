@@ -95,6 +95,4 @@ void draw_timings() {
     strcpy(buff, TextFormat("render: %.5fms", (double) state.render_time_sum / divisor));
     DrawTextEx(debug_font, buff, (Vector2) {GetScreenWidth() - 148, 30}, 16, 1, BLACK);
     DrawTextEx(debug_font, buff, (Vector2) {GetScreenWidth() - 150, 28}, 16, 1, WHITE);
-
-    DrawText(TextFormat("vals:\nticksum: %lld\nrendersum: %lld", state.tick_time_sum, state.render_time_sum), GetScreenWidth() - 200, 28+18, 16, RED);
 }

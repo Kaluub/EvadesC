@@ -1,6 +1,6 @@
 #pragma once
 
-#include "entity/enemy.h"
+#include "../entity/enemy.h"
 #include <stdio.h>
 #include <stdint.h>
 

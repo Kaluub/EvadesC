@@ -162,7 +162,7 @@ regions:
     y: 149392
   - file: regions/dusty-depths.yaml
     x: 70208
-    y: 5456
+    y: 5472
   - file: regions/withering-wasteland.yaml
     x: 1952
     y: 173712

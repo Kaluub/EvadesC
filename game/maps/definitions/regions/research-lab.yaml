@@ -432,8 +432,8 @@ areas:
   zones:
   - height: 480
     type: safe
-    width: 256
-    x: 64
+    width: 320
+    x: 0
     y: 0
   - height: last_height
     spawner:

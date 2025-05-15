@@ -9,9 +9,9 @@
 // Do not use any extra dynamic allocation in movement_data.
 typedef struct Area Area;
 typedef struct Enemy Enemy;
-typedef void (*movement_function)(Area* area, Enemy* enemy);
 typedef struct Zone Zone;
 typedef struct Spawner Spawner;
+typedef void (*movement_function)(Area* area, Enemy* enemy);
 
 typedef struct Enemy {
     movement_function movement_function;

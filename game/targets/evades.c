@@ -57,6 +57,7 @@ int main() {
     SetTextureFilter(tiles[TEXTURE_LEAVES], TEXTURE_FILTER_ANISOTROPIC_16X);
 
     init_debug_state();
+    init_splash_messages(&state.splash_messages);
     init_circle_texture();
 
     // Buffers for CTRL measuring.
@@ -130,6 +131,7 @@ int main() {
             Map old_map = state.map;
             open_map(&state);
             destroy_map(&old_map);
+            add_splash_message(&state.splash_messages, "Reloaded map");
         }
 #endif
 
@@ -195,7 +197,8 @@ int main() {
                     }
                 }
 
-                DrawText(TextFormat("%d x %d", area.width, area.height), area.x + 10, area.y, 96, BLACK);
+                DrawText(TextFormat("Area %d", area_index + 1), area.x + 10, area.y, 64, BLACK);
+                DrawText(TextFormat("%d x %d", area.width, area.height), area.x + 10, area.y + 64, 64, BLACK);
                 enemy_set_update(&region.areas[area_index].enemy_set, region.areas + area_index);
                 enemy_set_draw(&area.enemy_set);
             }
@@ -246,14 +249,17 @@ int main() {
         EndMode2D();
         Vector2 mouse_pos = GetMousePosition();
         if (draw_measure_x) {
+            DrawText(measure_x, mouse_pos.x + 17, mouse_pos.y - 15, 16, BLACK);
             DrawText(measure_x, mouse_pos.x + 16, mouse_pos.y - 16, 16, RED);
         }
         if (draw_measure_y) {
+            DrawText(measure_y, mouse_pos.x + 17, mouse_pos.y + 1, 16, BLACK);
             DrawText(measure_y, mouse_pos.x + 16, mouse_pos.y, 16, BLUE);
         }
 #ifdef DEBUG
         DrawFPS(10, 10);
 #endif
+        process_splash_messages(&state.splash_messages);
         render_end();
         draw_timings();
         EndDrawing();

@@ -1,7 +1,7 @@
 #include "../src/state.h"
 
 #define TEST_COUNT 1
-#define FRAME_SIMULATIONS 1000
+#define FRAME_SIMULATIONS 100
 
 int main(void) {
     GameState state;

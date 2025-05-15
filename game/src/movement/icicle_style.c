@@ -3,47 +3,43 @@
 #include <math.h>
 #include <malloc.h>
 
-typedef struct NormalMovementData {
-    float angle;
-    float vx;
+typedef struct IcicleMovementData {
     float vy;
-} NormalMovementData;
+    float wall_time;
+} IcicleMovementData;
 
-void set_angle(NormalMovementData* data, float angle) {
-    if (angle > 2*PI) {
-        angle -= 2*PI;
-    }
-    data->angle = angle;
-    data->vx = cosf(angle);
-    data->vy = sinf(angle);
-}
-
-void normal_movement(Area* area, Enemy* enemy) {
+void icicle_movement(Area* area, Enemy* enemy) {
     if (enemy->movement_data == NULL) {
-        NormalMovementData* movement_data = malloc(sizeof(NormalMovementData));
-        set_angle(movement_data, uniform_random(0, 2*PI));
+        IcicleMovementData* movement_data = malloc(sizeof(IcicleMovementData));
+        movement_data->vy = uniform_random(0, 1) < 0.5 ? -1 : 1;
+        movement_data->wall_time = 0;
         enemy->movement_data = movement_data;
     }
 
-    NormalMovementData* movement_data = (NormalMovementData*) enemy->movement_data;
+    IcicleMovementData* movement_data = (IcicleMovementData*) enemy->movement_data;
+
+    if (movement_data->wall_time > 0) {
+        movement_data->wall_time -= 1000 * GetFrameTime();
+        return;
+    }
+
     const float frame_speed = enemy->base_speed * GetFrameTime();
-    enemy->position.x += movement_data->vx * frame_speed;
     enemy->position.y += movement_data->vy * frame_speed;
 
     if (enemy->position.x < area->active_zone->x + enemy->radius) {
         enemy->position.x = area->active_zone->x + enemy->radius;
-        set_angle(movement_data, PI - movement_data->angle);
     }
     if (enemy->position.x > area->active_zone->x + area->active_zone->width - enemy->radius) {
         enemy->position.x = area->active_zone->x + area->active_zone->width - enemy->radius;
-        set_angle(movement_data, PI - movement_data->angle);
     }
     if (enemy->position.y < area->active_zone->y + enemy->radius) {
         enemy->position.y = area->active_zone->y + enemy->radius;
-        set_angle(movement_data, 2*PI - movement_data->angle);
+        movement_data->wall_time = 1000;
+        movement_data->vy *= -1;
     }
     if (enemy->position.y > area->active_zone->y + area->active_zone->height - enemy->radius) {
         enemy->position.y = area->active_zone->y + area->active_zone->height - enemy->radius;
-        set_angle(movement_data, 2*PI - movement_data->angle);
+        movement_data->wall_time = 1000;
+        movement_data->vy *= -1;
     }
 }
