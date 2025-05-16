@@ -1,6 +1,7 @@
 #include "../src/state.h"
 #include "../src/debug.h"
 #include "../src/circle.h"
+#include "../src/util/random.h"
 #include <math.h>
 #include <stdlib.h>
 #include <time.h>
@@ -33,7 +34,7 @@ int is_zone_on_screen(Camera2D camera, const Zone zone) {
 }
 
 int main() {
-    SetRandomSeed(0);
+    init_random();
 
     GameState state;
     open_map(&state);

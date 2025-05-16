@@ -21,5 +21,8 @@ web: targets/evades.c $(SRC) $(HEADERS)
 memory_test: targets/memory_test.c $(SRC) $(HEADERS)
 	gcc -o memory_test targets/memory_test.c $(SRC) -g -Wall $(LIB) $(EXTRA)
 
+rng_test: targets/rng_test.c src/util/random.c src/util/random.h
+	gcc -o rng_test targets/rng_test.c src/util/random.c -g -Wall -lm
+
 clean:
-	rm -f evades memory_test evades.wasm evades.html evades.data evades.js
+	rm -f evades memory_test rng_test evades.wasm evades.html evades.data evades.js

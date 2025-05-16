@@ -1,9 +1,12 @@
 #include "../src/state.h"
+#include "../src/util/random.h"
+#include <stdlib.h>
 
 #define TEST_COUNT 1
 #define FRAME_SIMULATIONS 100
 
 int main(void) {
+    init_random();
     GameState state;
     for (int i = 0; i < TEST_COUNT; i++) {
         open_map(&state);
@@ -19,5 +22,5 @@ int main(void) {
         destroy_map(&state.map);
     }
     printf("Map created and destroyed.\n");
-    return 0;
+    return EXIT_SUCCESS;
 }

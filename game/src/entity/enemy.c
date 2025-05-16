@@ -2,6 +2,7 @@
 #include "enemy_type.h"
 #include "../movement/movement.h"
 #include "../util/common.h"
+#include "../util/random.h"
 #include "../circle.h"
 #include "raymath.h"
 #include <assert.h>
@@ -93,8 +94,8 @@ Vector2 generate_enemy_position(Zone* zone, Spawner* spawner, uint8_t enemy_type
             return (Vector2) {x, y};
         default:
             return (Vector2) {
-                GetRandomValue(zone->x + spawner->radius, zone->x + zone->width - spawner->radius),
-                GetRandomValue(zone->y + spawner->radius, zone->y + zone->height - spawner->radius)
+                uniform_random(zone->x + spawner->radius, zone->x + zone->width - spawner->radius),
+                uniform_random(zone->y + spawner->radius, zone->y + zone->height - spawner->radius)
             };
     }
 }
@@ -107,7 +108,7 @@ Enemy* enemy_init(Zone* zone, Spawner* spawner, int spawn_index) {
         TraceLog(LOG_FATAL, MEMFAIL"enemy_init");
         return NULL;
     }
-    uint8_t enemy_type = spawner->enemy_types[GetRandomValue(0, spawner->enemy_type_count - 1)];
+    uint8_t enemy_type = spawner->enemy_types[discrete_random(0, spawner->enemy_type_count)];
     enemy->movement_function = get_movement_function(enemy_type);
     enemy->movement_data = NULL;
     enemy->position = generate_enemy_position(zone, spawner, enemy_type, spawn_index);
