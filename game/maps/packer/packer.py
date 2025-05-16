@@ -58,7 +58,7 @@ def handle_common_properties(target: dict, previous_properties: dict | None, out
     if flags & (1 << ComponentFlags.HAS_TEXTURE):
         out.write(texture.to_bytes(1, "little"))
     if flags & (1 << ComponentFlags.HAS_NAME):
-        encoded_name = f"{name}\0".replace("\u200b", "").replace("\u221e", "inf").encode("ascii")
+        encoded_name = f"{name}\0".replace("\u200b", "").replace("\u221e", "inf").encode("ascii", errors="ignore")
         out.write(len(encoded_name).to_bytes(1, "little"))
         out.write(encoded_name)
     if flags & (1 << ComponentFlags.HAS_SPAWNER):
@@ -226,7 +226,7 @@ textures = {
 }
 
 out = open("maps/world.bin", "wb")
-with open("maps/definitions/world.yaml") as world_file:
+with open("maps/definitions/world.yaml", encoding="utf-8") as world_file:
     world = yaml.load(world_file, yaml.CLoader)
     spawn_name = f"{world['spawn']}\0".encode("ascii")
     out.write(len(spawn_name).to_bytes(1, "little"))

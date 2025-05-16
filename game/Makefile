@@ -1,6 +1,10 @@
 SRC = src/*.c src/**/*.c
 HEADERS = src/*.h src/**/*.h
-LIB = -L lib/ -I include/ -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
+LINK = -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
+ifeq ($(OS), Windows_NT)
+	LINK = -DWINDOWS -lraylib -lgdi32 -lwinmm
+endif
+LIB = -L lib/ -I include/ $(LINK)
 
 default: maps/world.bin debug
 
@@ -22,7 +26,10 @@ memory_test: targets/memory_test.c $(SRC) $(HEADERS)
 	gcc -o memory_test targets/memory_test.c $(SRC) -g -Wall $(LIB) $(EXTRA)
 
 rng_test: targets/rng_test.c src/util/random.c src/util/random.h
-	gcc -o rng_test targets/rng_test.c src/util/random.c -g -Wall -lm
+	gcc -o rng_test targets/rng_test.c src/util/random.c -g -Wall $(LIB) $(EXTRA)
 
 clean:
 	rm -f evades memory_test rng_test evades.wasm evades.html evades.data evades.js
+ifeq ($(OS), Windows_NT)
+	rm -f evades.exe memory_test.exe rng_test.exe
+endif

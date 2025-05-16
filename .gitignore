@@ -3,8 +3,11 @@ raylib/
 game/lib/
 game/maps/world.bin
 game/evades
+game/evades.exe
 game/memory_test
+game/memory_test.exe
 game/rng_test
+game/rng_test.exe
 game/evades.data
 game/evades.html
 game/evades.js
