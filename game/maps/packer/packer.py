@@ -6,7 +6,8 @@ from enum import IntEnum
 class ComponentFlags(IntEnum):
     HAS_BACKGROUND_COLOR = 0
     HAS_TEXTURE = 1
-    HAS_SPAWNER = 2
+    HAS_NAME = 2
+    HAS_SPAWNER = 3
 
 def parse_variable(definition: str, state: dict[str, int]) -> int:
     value = definition
@@ -45,6 +46,9 @@ def handle_common_properties(target: dict, previous_properties: dict | None, out
             texture = textures[properties["texture"]]
             if previous_properties is None or previous_properties["texture"] != texture:
                 flags |= 1 << ComponentFlags.HAS_TEXTURE
+    name = target.get("name", None)
+    if name is not None:
+        flags |= 1 << ComponentFlags.HAS_NAME
     spawners = target.get("spawner", None)
     if spawners is not None:
         flags |= 1 << ComponentFlags.HAS_SPAWNER
@@ -53,6 +57,10 @@ def handle_common_properties(target: dict, previous_properties: dict | None, out
         out.write(background_color.to_bytes(4, "little"))
     if flags & (1 << ComponentFlags.HAS_TEXTURE):
         out.write(texture.to_bytes(1, "little"))
+    if flags & (1 << ComponentFlags.HAS_NAME):
+        encoded_name = f"{name}\0".replace("\u200b", "").replace("\u221e", "inf").encode("ascii")
+        out.write(len(encoded_name).to_bytes(1, "little"))
+        out.write(encoded_name)
     if flags & (1 << ComponentFlags.HAS_SPAWNER):
         write_spawners(spawners, out)
     return {"background_color": background_color, "texture": texture}
@@ -230,10 +238,6 @@ with open("maps/definitions/world.yaml") as world_file:
         region_y = region_meta["y"]
         with open(f"maps/definitions/{region_meta['file']}") as region_file:
             region = yaml.load(region_file, yaml.CLoader)
-            region_name = f"{region['name']}\0".encode("ascii")
-            out.write(len(region_name).to_bytes(1, "little"))
-            out.write(region_name)
-
             region_properties = handle_common_properties(region, None, out)
 
             # Write out areas

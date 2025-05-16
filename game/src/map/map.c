@@ -21,22 +21,24 @@ void load_map(Map* map, FILE* file) {
 
     for (int region_index = 0; region_index < map->region_count; region_index++) {
         Region* region = map->regions + region_index;
-        // Region name.
-        uint8_t region_name_length = 0;
-        fread(&region_name_length, sizeof(region_name_length), 1, file);
-        region->region_name = (char *) malloc(region_name_length);
-        fread(region->region_name, 1, region_name_length, file);
+        region->background_color = 0;
+        region->texture = 0;
+        region->region_name = NULL;
 
         // Region properties.
         uint8_t region_flags = 0;
-        region->background_color = 0;
-        region->texture = 0;
         fread(&region_flags, sizeof(region_flags), 1, file);
         if (region_flags & (1 << HAS_BACKGROUND_COLOR)) {
             fread(&region->background_color, sizeof(region->background_color), 1, file);
         }
         if (region_flags & (1 << HAS_TEXTURE)) {
             fread(&region->texture, sizeof(region->texture), 1, file);
+        }
+        if (region_flags & (1 << HAS_NAME)) {
+            uint8_t region_name_length = 0;
+            fread(&region_name_length, sizeof(region_name_length), 1, file);
+            region->region_name = (char*) malloc(region_name_length);
+            fread(region->region_name, 1, region_name_length, file);
         }
 
         // Areas.
@@ -53,6 +55,7 @@ void load_map(Map* map, FILE* file) {
             fread(&area->y, sizeof(area->y), 1, file);
             area->width = 0;
             area->height = 0;
+            area->area_name = NULL;
 
             // Cache for fast spawning algorithm.
             Spawner* spawners[MAX_SPAWNER_COUNT];
@@ -70,6 +73,12 @@ void load_map(Map* map, FILE* file) {
             }
             if (area_flags & (1 << HAS_TEXTURE)) {
                 fread(&area->texture, sizeof(area->texture), 1, file);
+            }
+            if (area_flags & (1 << HAS_NAME)) {
+                uint8_t area_name_length = 0;
+                fread(&area_name_length, sizeof(area_name_length), 1, file);
+                area->area_name = (char*) malloc(area_name_length);
+                fread(area->area_name, 1, area_name_length, file);
             }
             
             // Zones.
@@ -161,6 +170,9 @@ void destroy_map(Map* map) {
         }
         for (int area_index = 0; area_index < region->area_count; area_index++) {
             Area* area = region->areas + area_index;
+            if (area->area_name != NULL) {
+                free(area->area_name);
+            }
             if (area->zones == NULL) {
                 continue;
             }

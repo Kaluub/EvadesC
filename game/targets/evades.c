@@ -66,12 +66,14 @@ int main() {
 
     while (!WindowShouldClose()) {
         timing_start(); // Tick time.
+        const float frame_time = GetFrameTime();
+
         if (current_monitor != GetCurrentMonitor()) {
             current_monitor = GetCurrentMonitor();
-            SetTargetFPS(GetMonitorRefreshRate(current_monitor));
+            int target_refresh_rate = GetMonitorRefreshRate(current_monitor);
+            SetTargetFPS(target_refresh_rate);
+            add_splash_message(&state.splash_messages, TextFormat("Target framerate adjusted to %d", target_refresh_rate));
         }
-
-        const float frame_time = GetFrameTime();
 
         state.camera.offset = (Vector2) {GetScreenWidth()/2, GetScreenHeight()/2};
         state.camera.zoom += GetMouseWheelMoveV().y * 0.05f * state.camera.zoom;
@@ -197,7 +199,7 @@ int main() {
                     }
                 }
 
-                DrawText(TextFormat("Area %d", area_index + 1), area.x + 10, area.y, 64, BLACK);
+                DrawText(TextFormat("Area %d%s", area_index + 1, area.area_name != NULL ? TextFormat(" (%s)", area.area_name) : ""), area.x + 10, area.y, 64, BLACK);
                 DrawText(TextFormat("%d x %d", area.width, area.height), area.x + 10, area.y + 64, 64, BLACK);
                 enemy_set_update(&region.areas[area_index].enemy_set, region.areas + area_index);
                 enemy_set_draw(&area.enemy_set);

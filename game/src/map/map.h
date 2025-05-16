@@ -4,12 +4,11 @@
 #include <stdio.h>
 #include <stdint.h>
 
-#define STRING_MAX 64
-
 enum ComponentProperties {
     HAS_BACKGROUND_COLOR = 0,
     HAS_TEXTURE = 1,
-    HAS_SPAWNER = 2,
+    HAS_NAME = 2,
+    HAS_SPAWNER = 3,
 };
 
 enum TextureType {
@@ -35,6 +34,7 @@ typedef struct Area {
     EnemySet enemy_set;
     struct Zone* zones;
     struct Zone* active_zone;
+    char* area_name;
     int32_t x;
     int32_t y;
     uint32_t width;
