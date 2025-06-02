@@ -7,20 +7,28 @@
 // If it requires extra data, eg. an angle or timer, it can
 // use movement_data. It is freed when enemy_destroy is called.
 // Do not use any extra dynamic allocation in movement_data.
+
+// Enemy behaviour is optional and used for non-movement behaviour, eg. switch, sizing.
+// Same as above applies for behaviour_data.
+
 typedef struct Area Area;
 typedef struct Enemy Enemy;
 typedef struct Zone Zone;
 typedef struct Spawner Spawner;
 typedef void (*movement_function)(Area* area, Enemy* enemy);
+typedef void (*behaviour_function)(Area* area, Enemy* enemy);
 
 typedef struct Enemy {
     movement_function movement_function;
     void* movement_data;
+    behaviour_function behaviour_function;
+    void* behaviour_data;
     Vector2 position;
     Color color;
     float base_speed;
     float radius;
     uint8_t type;
+    bool harmless : 1;
 } Enemy;
 
 typedef struct EnemySet {
@@ -38,3 +46,4 @@ void enemy_set_draw(const EnemySet* enemy_set);
 
 Enemy* enemy_init(Zone* zone, Spawner* spawner, int spawn_index);
 void enemy_destroy(Enemy* enemy);
+void enemy_reset_effects(Enemy* enemy);

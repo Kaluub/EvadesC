@@ -1,6 +1,7 @@
 #include "enemy.h"
 #include "enemy_type.h"
 #include "movement/movement.h"
+#include "behaviour/behaviour.h"
 #include "../util/common.h"
 #include "../util/random.h"
 #include "../circle.h"
@@ -54,14 +55,22 @@ void enemy_set_remove(EnemySet* enemy_set, uint16_t index) {
 void enemy_set_update(EnemySet* enemy_set, Area* area) {
     for (int i = 0; i < enemy_set->stored; i++) {
         Enemy* enemy = enemy_set->enemies[i];
+        enemy_reset_effects(enemy);
         enemy->movement_function(area, enemy);
+        if (enemy->behaviour_function != NULL) {
+            enemy->behaviour_function(area, enemy);
+        }
     }
 }
 
 void enemy_set_draw(const EnemySet* enemy_set) {
     for (int i = 0; i < enemy_set->stored; i++) {
         Enemy* enemy = enemy_set->enemies[i];
-        draw_circle(enemy->position, enemy->radius, enemy->color);
+        float alpha = 1;
+        if (enemy->harmless) {
+            alpha *= 0.4;
+        }
+        draw_circle(enemy->position, enemy->radius, ColorAlpha(enemy->color, alpha));
     }
 }
 
@@ -111,11 +120,14 @@ Enemy* enemy_init(Zone* zone, Spawner* spawner, int spawn_index) {
     uint8_t enemy_type = spawner->enemy_types[discrete_random(0, spawner->enemy_type_count)];
     enemy->movement_function = get_movement_function(enemy_type);
     enemy->movement_data = NULL;
+    enemy->behaviour_function = get_behaviour_function(enemy_type);
+    enemy->behaviour_data = NULL;
     enemy->position = generate_enemy_position(zone, spawner, enemy_type, spawn_index);
     enemy->color = GetColor(enemy_colors[enemy_type]);
     enemy->base_speed = spawner->speed;
     enemy->radius = spawner->radius;
     enemy->type = enemy_type;
+    enemy->harmless = false;
     return enemy;
 }
 
@@ -124,5 +136,13 @@ void enemy_destroy(Enemy* enemy) {
     if (enemy->movement_data != NULL) {
         free(enemy->movement_data);
     }
+    if (enemy->behaviour_data != NULL) {
+        free(enemy->behaviour_data);
+    }
     free(enemy);
+}
+
+void enemy_reset_effects(Enemy* enemy) {
+    assert(enemy != NULL);
+    enemy->harmless = false;
 }

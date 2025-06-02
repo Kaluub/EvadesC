@@ -39,7 +39,7 @@ void init_random() {
 #endif
 }
 
-float uniform_random(float min, float max) {
+double uniform_random(double min, double max) {
     return (double)(WELLRNG512() & 0x001FFFFFFFFFFFFF) / (1l<<53l) * (max - min) + min;
 }
 

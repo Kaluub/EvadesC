@@ -17,9 +17,9 @@ int main() {
         printf("%d ", discrete_random(0, 2));
     }
     printf("\nRandom unit test: calling uniform_random(-1, 1) -> [-1, 1) value expected\n");
-    float sum = 0;
+    double sum = 0;
     for (int i = 0; i < TEST_COUNT; i++) {
-        float value = uniform_random(-1, 1);
+        double value = uniform_random(-1, 1);
         printf("%f ", value);
         sum += value;
     }
