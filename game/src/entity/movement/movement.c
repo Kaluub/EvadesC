@@ -1,5 +1,5 @@
 #include "movement.h"
-#include "../entity/enemy_type.h"
+#include "../enemy_type.h"
 
 movement_function get_movement_function(uint8_t enemy_type) {
     switch (enemy_type) {

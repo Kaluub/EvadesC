@@ -40,9 +40,9 @@ void init_random() {
 }
 
 float uniform_random(float min, float max) {
-    return ((double)WELLRNG512() / UINT64_MAX) * (max - min) + min;
+    return (double)(WELLRNG512() & 0x001FFFFFFFFFFFFF) / (1l<<53l) * (max - min) + min;
 }
 
 int32_t discrete_random(int32_t min, int32_t max) {
-    return floorf(uniform_random(min, max));
+    return WELLRNG512() % (max - min) + min;
 }

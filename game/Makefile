@@ -1,5 +1,5 @@
-SRC = src/*.c src/**/*.c
-HEADERS = src/*.h src/**/*.h
+SRC = src/*.c src/**/*.c src/**/**/*.c
+HEADERS = src/*.h src/**/*.h src/**/**/*.h
 LINK = -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
 ifeq ($(OS), Windows_NT)
 	LINK = -DWINDOWS -lraylib -lgdi32 -lwinmm

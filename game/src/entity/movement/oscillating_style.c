@@ -1,16 +1,15 @@
 #include "movement.h"
-#include "../util/random.h"
 #include <math.h>
 #include <malloc.h>
 
-typedef struct StarMovementData {
+typedef struct OscillatingMovementData {
     float angle;
     float vx;
     float vy;
-    float pause_time;
-} StarMovementData;
+    float switch_time;
+} OscillatingMovementData;
 
-void star_set_angle(StarMovementData* data, float angle) {
+void oscillating_set_angle(OscillatingMovementData* data, float angle) {
     if (angle > 2*PI) {
         angle -= 2*PI;
     }
@@ -19,41 +18,40 @@ void star_set_angle(StarMovementData* data, float angle) {
     data->vy = sinf(angle);
 }
 
-void star_movement(Area* area, Enemy* enemy) {
+void oscillating_movement(Area* area, Enemy* enemy) {
     if (enemy->movement_data == NULL) {
-        StarMovementData* movement_data = malloc(sizeof(StarMovementData));
-        star_set_angle(movement_data, uniform_random(0, 2*PI));
-        movement_data->pause_time = 0;
+        OscillatingMovementData* movement_data = malloc(sizeof(OscillatingMovementData));
+        oscillating_set_angle(movement_data, uniform_random(0, 2*PI));
+        movement_data->switch_time = uniform_random(0, 1000);
         enemy->movement_data = movement_data;
     }
 
-    StarMovementData* movement_data = (StarMovementData*) enemy->movement_data;
-    const float pause_interval = 350.0f;
-    if (movement_data->pause_time < pause_interval) {
-        movement_data->pause_time += 1000 * GetFrameTime();
-        return;
+    OscillatingMovementData* movement_data = (OscillatingMovementData*) enemy->movement_data;
+
+    movement_data->switch_time -= 1000 * GetFrameTime();
+    if (movement_data->switch_time <= 0) {
+        movement_data->switch_time = 1000;
+        oscillating_set_angle(movement_data, movement_data->angle + PI);
     }
 
-    star_set_angle(movement_data, movement_data->angle + PI);
-    movement_data->pause_time = 0;
-    const float frame_speed = 42;
+    const float frame_speed = enemy->base_speed * GetFrameTime();
     enemy->position.x += movement_data->vx * frame_speed;
     enemy->position.y += movement_data->vy * frame_speed;
 
     if (enemy->position.x < area->active_zone->x + enemy->radius) {
         enemy->position.x = area->active_zone->x + enemy->radius;
-        star_set_angle(movement_data, PI - movement_data->angle);
+        oscillating_set_angle(movement_data, PI - movement_data->angle);
     }
     if (enemy->position.x > area->active_zone->x + area->active_zone->width - enemy->radius) {
         enemy->position.x = area->active_zone->x + area->active_zone->width - enemy->radius;
-        star_set_angle(movement_data, PI - movement_data->angle);
+        oscillating_set_angle(movement_data, PI - movement_data->angle);
     }
     if (enemy->position.y < area->active_zone->y + enemy->radius) {
         enemy->position.y = area->active_zone->y + enemy->radius;
-        star_set_angle(movement_data, 2*PI - movement_data->angle);
+        oscillating_set_angle(movement_data, 2*PI - movement_data->angle);
     }
     if (enemy->position.y > area->active_zone->y + area->active_zone->height - enemy->radius) {
         enemy->position.y = area->active_zone->y + area->active_zone->height - enemy->radius;
-        star_set_angle(movement_data, 2*PI - movement_data->angle);
+        oscillating_set_angle(movement_data, 2*PI - movement_data->angle);
     }
 }

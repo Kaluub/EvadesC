@@ -1,6 +1,6 @@
 #include "enemy.h"
 #include "enemy_type.h"
-#include "../movement/movement.h"
+#include "movement/movement.h"
 #include "../util/common.h"
 #include "../util/random.h"
 #include "../circle.h"
@@ -14,10 +14,19 @@ void enemy_set_init(EnemySet* enemy_set, uint16_t min_capacity) {
     assert(enemy_set != NULL);
     enemy_set->stored = 0;
     enemy_set->capacity = min_capacity + min_capacity / 4;
-    enemy_set->enemies = malloc(sizeof(Enemy*) * enemy_set->capacity);
+    enemy_set->enemies = (Enemy**) malloc(sizeof(Enemy*) * enemy_set->capacity);
     if (enemy_set->enemies == NULL) {
         TraceLog(LOG_FATAL, MEMFAIL"enemy_set_init");
     }
+}
+
+void enemy_set_destroy(EnemySet* enemy_set) {
+    assert(enemy_set != NULL);
+    assert(enemy_set->enemies != NULL);
+    for (int i = 0; i < enemy_set->stored; i++) {
+        enemy_destroy(enemy_set->enemies[i]);
+    }
+    free(enemy_set->enemies);
 }
 
 void enemy_set_add(EnemySet* enemy_set, Enemy* enemy) {
@@ -40,15 +49,6 @@ void enemy_set_remove(EnemySet* enemy_set, uint16_t index) {
     assert(index < enemy_set->capacity);
     enemy_destroy(enemy_set->enemies[index]);
     enemy_set->enemies[index] = enemy_set->enemies[--enemy_set->stored];
-}
-
-void enemy_set_destroy(EnemySet* enemy_set) {
-    assert(enemy_set != NULL);
-    assert(enemy_set->enemies != NULL);
-    for (int i = 0; i < enemy_set->stored; i++) {
-        enemy_destroy(enemy_set->enemies[i]);
-    }
-    free(enemy_set->enemies);
 }
 
 void enemy_set_update(EnemySet* enemy_set, Area* area) {

@@ -1,6 +1,7 @@
 #include "map.h"
 #include <malloc.h>
 #include <assert.h>
+#include <string.h>
 
 #define MAX_SPAWNER_COUNT 256
 
@@ -8,8 +9,8 @@ void load_map(Map* map, FILE* file) {
     // Spawn region name.
     uint8_t spawn_region_length = 0;
     fread(&spawn_region_length, sizeof(spawn_region_length), 1, file);
-    map->spawn_region = (char*) malloc(spawn_region_length);
-    fread(map->spawn_region, 1, spawn_region_length, file);
+    char* spawn_region = (char*) malloc(spawn_region_length);
+    fread(spawn_region, 1, spawn_region_length, file);
 
     // Regions.
     fread(&map->region_count, sizeof(map->region_count), 1, file);
@@ -18,6 +19,7 @@ void load_map(Map* map, FILE* file) {
         return;
     }
     map->regions = (Region*) malloc(sizeof(Region) * map->region_count);
+    map->spawn_area = NULL;
 
     for (int region_index = 0; region_index < map->region_count; region_index++) {
         Region* region = map->regions + region_index;
@@ -56,6 +58,8 @@ void load_map(Map* map, FILE* file) {
             area->width = 0;
             area->height = 0;
             area->area_name = NULL;
+            area->active_zone = NULL;
+            area->spawn_zone = NULL;
 
             // Cache for fast spawning algorithm.
             Spawner* spawners[MAX_SPAWNER_COUNT];
@@ -130,12 +134,20 @@ void load_map(Map* map, FILE* file) {
                     area->active_zone = zone;
                 }
 
+                if (area->spawn_zone == NULL && zone->type == ZONE_SAFE) {
+                    area->spawn_zone = zone;
+                }
+
                 if (area->width < (zone->x - area->x) + zone->width) {
                     area->width = (zone->x - area->x) + zone->width;
                 }
                 if (area->height < (zone->y - area->y) + zone->height) {
                     area->height = (zone->y - area->y) + zone->height;
                 }
+            }
+
+            if (area->spawn_zone == NULL) {
+                area->spawn_zone = area->zones;
             }
 
             // Enemy spawning.
@@ -150,13 +162,21 @@ void load_map(Map* map, FILE* file) {
                 }
             }
         }
+
+        if (spawn_region != NULL && !strncmp(spawn_region, region->region_name, spawn_region_length)) {
+            map->spawn_area = region->areas;
+            free(spawn_region);
+            spawn_region = NULL;
+        }
+    }
+
+    if (spawn_region != NULL) {
+        free(spawn_region);
+        map->spawn_area = map->regions->areas;
     }
 }
 
 void destroy_map(Map* map) {
-    if (map->spawn_region != NULL) {
-        free(map->spawn_region);
-    }
     if (map->regions == NULL) {
         return;
     }
@@ -192,7 +212,7 @@ void destroy_map(Map* map) {
         free(region->areas);
     }
     free(map->regions);
-    map->spawn_region = NULL;
+    map->spawn_area = NULL;
     map->regions = NULL;
     map->region_count = 0;
 }

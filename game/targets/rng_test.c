@@ -34,5 +34,16 @@ int main() {
     for (int i = 0; i < DISTRIBUTION_COUNT; i++) {
         printf(" - %d: %d\n", i, results[i]);
     }
+
+    // Random chance test
+    int successes = 0;
+    int rolls = 0;
+    while (rolls < 10000000) {
+        rolls++;
+        if (uniform_random(0, 1) < 0.005) {
+            successes++;
+        }
+    }
+    printf("Random chance test: %d successes/%d rolls (%.5f)\n", successes, rolls, (double)successes/rolls);
     return EXIT_SUCCESS;
 }

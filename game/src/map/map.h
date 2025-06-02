@@ -16,9 +16,19 @@ enum TextureType {
     TEXTURE_LEAVES = 1,
 };
 
+enum ZoneType {
+    ZONE_SAFE = 1,
+    ZONE_ACTIVE = 2,
+    ZONE_EXIT = 3,
+    ZONE_TELEPORT = 4,
+    ZONE_VICTORY = 5,
+    ZONE_REMOVAL = 6,
+    ZONE_DUMMY = 7,
+};
+
 typedef struct Map {
-    char* spawn_region;
     struct Region* regions;
+    struct Area* spawn_area;
     uint8_t region_count;
 } Map;
 
@@ -34,6 +44,7 @@ typedef struct Area {
     EnemySet enemy_set;
     struct Zone* zones;
     struct Zone* active_zone;
+    struct Zone* spawn_zone;
     char* area_name;
     int32_t x;
     int32_t y;
