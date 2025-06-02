@@ -27,15 +27,19 @@ void process_splash_messages(SplashMessages* splash_messages) {
     }
     // Update and draw splash messages
     int y = 30;
-    for (int i = 0; i < splash_messages->stored_messages; i++) {
+    for (int i = splash_messages->stored_messages - 1; i >= 0; i--) {
         int index = (splash_messages->start + i) % MAX_SPLASH_MESSAGES;
-        splash_messages->messages[index].duration -= GetFrameTime() * 1000;
-        if (splash_messages->messages[index].duration <= 0) {
+        SplashMessage* message = splash_messages->messages + index;
+        message->duration -= GetFrameTime() * 1000;
+        if (message->duration <= 0) {
             continue;
         }
-        float alpha = (splash_messages->messages[index].duration > 500) ? 1 : (splash_messages->messages[index].duration / 500);
-        DrawText(splash_messages->messages[index].text, 12, y + 2, 20, ColorAlpha(BLACK, alpha));
-        DrawText(splash_messages->messages[index].text, 10, y, 20, ColorAlpha(WHITE, alpha));
+        uint8_t alpha = (message->duration > 500) ? 255 : (message->duration * 0.51);
+        uint8_t value = 200 + (message->duration > 2000 ? (message->duration - 2000)*0.11 : 0);
+        Color text_color = {value, value, value, alpha};
+        Color shadow_color = {0, 0, 0, alpha};
+        DrawText(message->text, 12, y + 2, 20, shadow_color);
+        DrawText(message->text, 10, y, 20, text_color);
         y += 24;
     }
 }
