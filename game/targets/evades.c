@@ -42,6 +42,7 @@ int main() {
     SetConfigFlags(FLAG_WINDOW_RESIZABLE | FLAG_MSAA_4X_HINT);
     InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Evades");
     int current_monitor = GetCurrentMonitor();
+    bool capped_framerate = true;
     SetTargetFPS(GetMonitorRefreshRate(current_monitor));
 
     state.camera.offset = (Vector2) {GetScreenWidth()/2, GetScreenHeight()/2};
@@ -69,11 +70,22 @@ int main() {
         timing_start(); // Tick time.
         const float frame_time = GetFrameTime();
 
-        if (current_monitor != GetCurrentMonitor()) {
+        if (capped_framerate && current_monitor != GetCurrentMonitor()) {
             current_monitor = GetCurrentMonitor();
             int target_refresh_rate = GetMonitorRefreshRate(current_monitor);
             SetTargetFPS(target_refresh_rate);
             add_splash_message(&state.splash_messages, TextFormat("Target framerate adjusted to %d", target_refresh_rate));
+        }
+
+        if (IsKeyPressed(KEY_F7)) {
+            capped_framerate = !capped_framerate;
+            if (!capped_framerate) {
+                SetTargetFPS(0);
+            } else {
+                SetTargetFPS(GetMonitorRefreshRate(current_monitor));
+            }
+            const char* options[] = {"uncapped", "capped"};
+            add_splash_message(&state.splash_messages, TextFormat("Framerate is now %s.", options[capped_framerate]));
         }
 
         state.camera.offset = (Vector2) {GetScreenWidth()/2, GetScreenHeight()/2};
@@ -141,9 +153,9 @@ int main() {
         BeginMode2D(state.camera);
         Texture2D tile_texture;
         for (int region_index = 0; region_index < state.map.region_count; region_index++) {
-            const Region region = state.map.regions[region_index];
+            Region region = state.map.regions[region_index];
             for (int area_index = 0; area_index < region.area_count; area_index++) {
-                const Area area = region.areas[area_index];
+                Area area = region.areas[area_index];
                 // Calculate closest area bounds
                 if (area.y <= mouse_over.y && mouse_over.y <= area.y + area.height) {
                     // Area is aligned with mouse on the y-axis (for left/right)
@@ -176,7 +188,7 @@ int main() {
                     continue;
                 }
                 for (int zone_index = 0; zone_index < area.zone_count; zone_index++) {
-                    const Zone zone = area.zones[zone_index];
+                    Zone zone = area.zones[zone_index];
                     if (!is_zone_on_screen(state.camera, zone)) {
                         continue;
                     }
@@ -202,8 +214,8 @@ int main() {
 
                 DrawText(TextFormat("Area %d%s", area_index + 1, area.area_name != NULL ? TextFormat(" (%s)", area.area_name) : ""), area.x + 10, area.y, 64, BLACK);
                 DrawText(TextFormat("%d x %d", area.width, area.height), area.x + 10, area.y + 64, 64, BLACK);
-                enemy_set_update(&region.areas[area_index].enemy_set, region.areas + area_index);
-                enemy_set_draw(&area.enemy_set);
+                enemy_set_update(area.enemy_set, region.areas + area_index);
+                enemy_set_draw(area.enemy_set);
             }
         }
 

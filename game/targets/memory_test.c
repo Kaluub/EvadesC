@@ -15,7 +15,7 @@ int main(void) {
                 Region* region = state.map.regions + region_index;
                 for (int area_index = 0; area_index < region->area_count; area_index++) {
                     Area* area = region->areas + area_index;
-                    enemy_set_update(&area->enemy_set, area);
+                    enemy_set_update(area->enemy_set, area);
                 }
             }
         }

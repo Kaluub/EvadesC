@@ -18,6 +18,11 @@ typedef struct Spawner Spawner;
 typedef void (*movement_function)(Area* area, Enemy* enemy);
 typedef void (*behaviour_function)(Area* area, Enemy* enemy);
 
+enum WallBehaviour {
+    WALL_BEHAVIOUR_BOUNCE,
+    WALL_BEHAVIOUR_REMOVE,
+};
+
 typedef struct Enemy {
     movement_function movement_function;
     void* movement_data;
@@ -27,8 +32,11 @@ typedef struct Enemy {
     Color color;
     float base_speed;
     float radius;
+    float duration;
     uint8_t type;
+    uint8_t wall_behaviour;
     bool harmless : 1;
+    bool removed : 1;
 } Enemy;
 
 typedef struct EnemySet {
@@ -37,7 +45,7 @@ typedef struct EnemySet {
     uint16_t capacity;
 } EnemySet;
 
-void enemy_set_init(EnemySet* enemy_set, uint16_t min_capacity);
+void enemy_set_init(EnemySet** enemy_set, uint16_t min_capacity);
 void enemy_set_destroy(EnemySet* enemy_set);
 void enemy_set_add(EnemySet* enemy_set, Enemy* enemy);
 void enemy_set_remove(EnemySet* enemy_set, uint16_t index);
@@ -45,5 +53,6 @@ void enemy_set_update(EnemySet* enemy_set, Area* area);
 void enemy_set_draw(const EnemySet* enemy_set);
 
 Enemy* enemy_init(Zone* zone, Spawner* spawner, int spawn_index);
+Enemy* enemy_manual_init(movement_function movement_function, Color color);
 void enemy_destroy(Enemy* enemy);
 void enemy_reset_effects(Enemy* enemy);

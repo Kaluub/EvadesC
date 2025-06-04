@@ -2,12 +2,6 @@
 #include <math.h>
 #include <malloc.h>
 
-typedef struct NormalMovementData {
-    float angle;
-    float vx;
-    float vy;
-} NormalMovementData;
-
 void set_angle(NormalMovementData* data, float angle) {
     if (angle > 2*PI) {
         angle -= 2*PI;
@@ -29,20 +23,29 @@ void normal_movement(Area* area, Enemy* enemy) {
     enemy->position.x += movement_data->vx * frame_speed;
     enemy->position.y += movement_data->vy * frame_speed;
 
+    bool bounced = false;
     if (enemy->position.x < area->active_zone->x + enemy->radius) {
         enemy->position.x = area->active_zone->x + enemy->radius;
         set_angle(movement_data, PI - movement_data->angle);
+        bounced = true;
     }
     if (enemy->position.x > area->active_zone->x + area->active_zone->width - enemy->radius) {
         enemy->position.x = area->active_zone->x + area->active_zone->width - enemy->radius;
         set_angle(movement_data, PI - movement_data->angle);
+        bounced = true;
     }
     if (enemy->position.y < area->active_zone->y + enemy->radius) {
         enemy->position.y = area->active_zone->y + enemy->radius;
         set_angle(movement_data, 2*PI - movement_data->angle);
+        bounced = true;
     }
     if (enemy->position.y > area->active_zone->y + area->active_zone->height - enemy->radius) {
         enemy->position.y = area->active_zone->y + area->active_zone->height - enemy->radius;
         set_angle(movement_data, 2*PI - movement_data->angle);
+        bounced = true;
+    }
+
+    if (bounced && enemy->wall_behaviour == WALL_BEHAVIOUR_REMOVE) {
+        enemy->removed = true;
     }
 }

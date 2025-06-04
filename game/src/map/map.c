@@ -158,7 +158,7 @@ void load_map(Map* map, FILE* file) {
                 Spawner* spawner = spawners[i];
                 for (int j = 0; j < spawner->count; j++) {
                     Enemy* enemy = enemy_init(zone, spawner, j);
-                    enemy_set_add(&area->enemy_set, enemy);
+                    enemy_set_add(area->enemy_set, enemy);
                 }
             }
         }
@@ -207,7 +207,7 @@ void destroy_map(Map* map) {
                 free(zone->spawners);
             }
             free(area->zones);
-            enemy_set_destroy(&area->enemy_set);
+            enemy_set_destroy(area->enemy_set);
         }
         free(region->areas);
     }

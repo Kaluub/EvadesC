@@ -16,6 +16,10 @@ behaviour_function get_behaviour_function(uint8_t enemy_type) {
         case ENEMY_TYPE_OSCILLATING_SWITCH:
         case ENEMY_TYPE_CONFECTIONER_SWITCH:
             return switch_behaviour;
+        case ENEMY_TYPE_SIZING:
+            return sizing_behaviour;
+        case ENEMY_TYPE_RADIATING_BULLETS:
+            return radiating_bullets_behaviour;
         default:
             return NULL;
     }

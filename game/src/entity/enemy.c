@@ -11,14 +11,16 @@
 
 // EnemySet implementation
 
-void enemy_set_init(EnemySet* enemy_set, uint16_t min_capacity) {
+void enemy_set_init(EnemySet** enemy_set, uint16_t min_capacity) {
     assert(enemy_set != NULL);
-    enemy_set->stored = 0;
-    enemy_set->capacity = min_capacity + min_capacity / 4;
-    enemy_set->enemies = (Enemy**) malloc(sizeof(Enemy*) * enemy_set->capacity);
-    if (enemy_set->enemies == NULL) {
+    EnemySet* new_enemy_set = malloc(sizeof(EnemySet));
+    new_enemy_set->stored = 0;
+    new_enemy_set->capacity = min_capacity + min_capacity / 4;
+    new_enemy_set->enemies = (Enemy**) malloc(sizeof(Enemy*) * new_enemy_set->capacity);
+    if (new_enemy_set->enemies == NULL) {
         TraceLog(LOG_FATAL, MEMFAIL"enemy_set_init");
     }
+    *enemy_set = new_enemy_set;
 }
 
 void enemy_set_destroy(EnemySet* enemy_set) {
@@ -28,6 +30,7 @@ void enemy_set_destroy(EnemySet* enemy_set) {
         enemy_destroy(enemy_set->enemies[i]);
     }
     free(enemy_set->enemies);
+    free(enemy_set);
 }
 
 void enemy_set_add(EnemySet* enemy_set, Enemy* enemy) {
@@ -59,6 +62,17 @@ void enemy_set_update(EnemySet* enemy_set, Area* area) {
         enemy->movement_function(area, enemy);
         if (enemy->behaviour_function != NULL) {
             enemy->behaviour_function(area, enemy);
+        }
+
+        if (enemy->duration > 0) {
+            enemy->duration -= GetFrameTime();
+            if (enemy->duration <= 0) {
+                enemy->removed = true;
+            }
+        }
+
+        if (enemy->removed) {
+            enemy_set_remove(enemy_set, i--);
         }
     }
 }
@@ -126,8 +140,29 @@ Enemy* enemy_init(Zone* zone, Spawner* spawner, int spawn_index) {
     enemy->color = GetColor(enemy_colors[enemy_type]);
     enemy->base_speed = spawner->speed;
     enemy->radius = spawner->radius;
+    enemy->duration = 0;
     enemy->type = enemy_type;
+    enemy->wall_behaviour = WALL_BEHAVIOUR_BOUNCE;
     enemy->harmless = false;
+    enemy->removed = false;
+    return enemy;
+}
+
+Enemy* enemy_manual_init(movement_function movement_function, Color color) {
+    // Used for spawning enemies from other enemies, for example.
+    Enemy* enemy = malloc(sizeof(Enemy));
+    enemy->movement_function = movement_function;
+    enemy->movement_data = NULL;
+    enemy->behaviour_function = NULL;
+    enemy->behaviour_data = NULL;
+    enemy->color = color;
+    enemy->base_speed = 0;
+    enemy->radius = 0;
+    enemy->duration = 0;
+    enemy->type = ENEMY_TYPE_NORMAL;
+    enemy->wall_behaviour = WALL_BEHAVIOUR_BOUNCE;
+    enemy->harmless = false;
+    enemy->removed = false;
     return enemy;
 }
 

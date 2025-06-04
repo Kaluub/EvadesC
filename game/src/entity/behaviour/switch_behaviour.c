@@ -6,7 +6,6 @@ typedef struct SwitchBehaviourData {
     float switch_time;
 } SwitchBehaviourData;
 
-
 void switch_behaviour(Area* area, Enemy* enemy) {
     if (enemy->behaviour_data == NULL) {
         SwitchBehaviourData* behaviour_data = (SwitchBehaviourData*) malloc(sizeof(SwitchBehaviourData));
