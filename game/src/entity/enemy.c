@@ -77,9 +77,12 @@ void enemy_set_update(EnemySet* enemy_set, Area* area) {
     }
 }
 
-void enemy_set_draw(const EnemySet* enemy_set) {
+void enemy_set_draw(const EnemySet* enemy_set, float camera_zoom) {
     for (int i = 0; i < enemy_set->stored; i++) {
         Enemy* enemy = enemy_set->enemies[i];
+        if (camera_zoom * enemy->radius < 0.1f) {
+            continue;
+        }
         float alpha = 1;
         if (enemy->harmless) {
             alpha *= 0.4;

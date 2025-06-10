@@ -58,6 +58,7 @@ void tick_end() {
         state.tick_time_index++;
         if (state.tick_time_index >= MAX_TIMINGS) {
             state.filled_tick_times = 1;
+            state.tick_time_index--;
         }
     }
 }
@@ -78,6 +79,7 @@ void render_end() {
         state.render_time_index++;
         if (state.render_time_index >= MAX_TIMINGS) {
             state.filled_render_times = 1;
+            state.render_time_index--;
         }
     }
 }

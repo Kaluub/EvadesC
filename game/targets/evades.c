@@ -66,15 +66,22 @@ int main() {
     char measure_x[16];
     char measure_y[16];
 
+    float check_monitor_time = 0;
+
     while (!WindowShouldClose()) {
         timing_start(); // Tick time.
         const float frame_time = GetFrameTime();
+        check_monitor_time -= frame_time;
 
-        if (capped_framerate && current_monitor != GetCurrentMonitor()) {
-            current_monitor = GetCurrentMonitor();
-            int target_refresh_rate = GetMonitorRefreshRate(current_monitor);
-            SetTargetFPS(target_refresh_rate);
-            add_splash_message(&state.splash_messages, TextFormat("Target framerate adjusted to %d", target_refresh_rate));
+        if (capped_framerate && check_monitor_time <= 0) {
+            check_monitor_time = 0.2f;
+            int monitor_check = GetCurrentMonitor();
+            if (current_monitor != monitor_check) {
+                current_monitor = monitor_check;
+                int target_refresh_rate = GetMonitorRefreshRate(current_monitor);
+                SetTargetFPS(target_refresh_rate);
+                add_splash_message(&state.splash_messages, TextFormat("Target framerate adjusted to %d", target_refresh_rate));
+            }
         }
 
         if (IsKeyPressed(KEY_F7)) {
@@ -212,10 +219,11 @@ int main() {
                     }
                 }
 
-                DrawText(TextFormat("Area %d%s", area_index + 1, area.area_name != NULL ? TextFormat(" (%s)", area.area_name) : ""), area.x + 10, area.y, 64, BLACK);
-                DrawText(TextFormat("%d x %d", area.width, area.height), area.x + 10, area.y + 64, 64, BLACK);
+                if (IsKeyDown(KEY_TAB)) {
+                    DrawText(TextFormat("Area %d%s\n%d x %d", area_index + 1, area.area_name != NULL ? TextFormat(" (%s)", area.area_name) : "", area.width, area.height), area.x + 10, area.y, 64, BLACK);
+                }
                 enemy_set_update(area.enemy_set, region.areas + area_index);
-                enemy_set_draw(area.enemy_set);
+                enemy_set_draw(area.enemy_set, state.camera.zoom);
             }
         }
 
@@ -272,7 +280,7 @@ int main() {
             DrawText(measure_y, mouse_pos.x + 16, mouse_pos.y, 16, BLUE);
         }
 #ifdef DEBUG
-        DrawFPS(10, 10);
+        DrawText(TextFormat("Debug build\nFPS: %d", GetFPS()), 10, 10, 20, LIME);
 #endif
         process_splash_messages(&state.splash_messages);
         render_end();

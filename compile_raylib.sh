@@ -5,3 +5,6 @@ cd raylib/src
 make clean
 make PLATFORM=PLATFORM_DESKTOP
 cp -v libraylib.a ../../game/lib
+make clean
+make PLATFORM=PLATFORM_WEB
+cp -v libraylib.web.a ../../game/lib

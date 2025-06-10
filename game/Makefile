@@ -14,15 +14,15 @@ maps/world.bin: maps/definitions/regions/*.yaml maps/definitions/world.yaml maps
 	python3 maps/packer/packer.py
 
 debug:
-	make $(OUT) EXTRA='-g -DDEBUG'
+	make $(OUT) EXTRA='-g -DDEBUG -fsanitize=undefined'
 
 $(OUT): maps/world.bin targets/evades.c $(SRC) $(HEADERS) 
 	gcc -o evades targets/evades.c $(SRC) -Wall -Wextra $(LIB) $(EXTRA)
 
-web: targets/evades.c $(SRC) $(HEADERS)
-	emcc -o evades.html targets/evades.c $(SRC) -Os -Wall ./lib/libraylib.web.a -I. -I./include -L. -L./lib \
+web: maps/world.bin targets/evades.c $(SRC) $(HEADERS)
+	emcc -o evades.html targets/evades.c $(SRC) -Os -Wall -Wextra ./lib/libraylib.web.a -I. -I./include -L. -L./lib \
 	-DPLATFORM_WEB -s USE_GLFW=3 -s ASYNCIFY -s TOTAL_MEMORY=128mb -s STACK_SIZE=32mb -s ASSERTIONS=1 --preload-file assets \
-	--shell-file minshell.html
+	--preload-file maps/world.bin --shell-file minshell.html -DDEBUG
 
 memory_test: targets/memory_test.c $(SRC) $(HEADERS)
 	gcc -o memory_test targets/memory_test.c $(SRC) -g -Wall $(LIB) $(EXTRA)
