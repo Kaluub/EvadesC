@@ -280,7 +280,7 @@ int main() {
             DrawText(measure_y, mouse_pos.x + 16, mouse_pos.y, 16, BLUE);
         }
 #ifdef DEBUG
-        DrawText(TextFormat("Debug build\nFPS: %d", GetFPS()), 10, 10, 20, LIME);
+        DrawText(TextFormat("Debug build. FPS: %d", GetFPS()), 10, 10, 20, LIME);
 #endif
         process_splash_messages(&state.splash_messages);
         render_end();
