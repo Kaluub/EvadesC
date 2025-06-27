@@ -96,6 +96,7 @@ void load_map(Map* map, FILE* file) {
                 Zone* zone = area->zones + zone_index;
                 zone->spawner_count = 0;
                 zone->spawners = NULL;
+                zone->applies_translate = false;
                 fread(&zone->type, sizeof(zone->type), 1, file);
                 fread(&zone->x, sizeof(zone->x), 1, file);
                 fread(&zone->y, sizeof(zone->y), 1, file);
@@ -132,6 +133,11 @@ void load_map(Map* map, FILE* file) {
                     // Set active zone pointer.
                     // TODO: Support multiple active zones?
                     area->active_zone = zone;
+                }
+                if (zone_flags & (1 << HAS_TRANSLATE)) {
+                    fread(&zone->translate_x, sizeof(zone->translate_x), 1, file);
+                    fread(&zone->translate_y, sizeof(zone->translate_y), 1, file);
+                    zone->applies_translate = true;
                 }
 
                 if (area->spawn_zone == NULL && zone->type == ZONE_SAFE) {

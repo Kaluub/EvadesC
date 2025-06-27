@@ -130,7 +130,11 @@ enum EnemyType {
     ENEMY_TYPE_NINJA_STAR_SNIPER,
     ENEMY_TYPE_SUMMONER,
     ENEMY_TYPE_SLASHER,
-    ENEMY_TYPE_LOTUS_FLOWER
+    ENEMY_TYPE_LOTUS_FLOWER,
+    ENEMY_TYPE_WAVERING,
+    ENEMY_TYPE_CURSED,
+    ENEMY_TYPE_EXPANDER,
+    ENEMY_TYPE_SILENCE,
 };
 
 static const uint32_t enemy_colors[] = {
@@ -262,4 +266,8 @@ static const uint32_t enemy_colors[] = {
     0x91bbffff, // summoner_enemy
     0x363636ff, // slasher_enemy
     0xdededeff, // lotus_flower_enemy
+    0x921818ff, // wavering_enemy
+    0x57121fff, // cursed_enemy
+    0xffbf7cff, // expander_enemy
+    0x420808ff, // silence_enemy
 };

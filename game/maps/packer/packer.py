@@ -2,12 +2,14 @@ import os.path
 import struct
 import yaml
 from enum import IntEnum
+from io import BufferedWriter
 
 class ComponentFlags(IntEnum):
     HAS_BACKGROUND_COLOR = 0
     HAS_TEXTURE = 1
     HAS_NAME = 2
     HAS_SPAWNER = 3
+    HAS_TRANSLATE = 4
 
 def parse_variable(definition: str, state: dict[str, int]) -> int:
     value = definition
@@ -32,7 +34,7 @@ def get_color(properties: dict) -> int:
     vec: list[int] = properties["background_color"]
     return vec[0] << 24 | vec[1] << 16 | vec[2] << 8 | vec[3]
 
-def handle_common_properties(target: dict, previous_properties: dict | None, out):
+def handle_common_properties(target: dict, previous_properties: dict | None, out: BufferedWriter):
     flags = 0
     background_color = 0
     texture = None
@@ -52,6 +54,9 @@ def handle_common_properties(target: dict, previous_properties: dict | None, out
     spawners = target.get("spawner", None)
     if spawners is not None:
         flags |= 1 << ComponentFlags.HAS_SPAWNER
+    translate = target.get("translate", None)
+    if translate is not None:
+        flags |= 1 << ComponentFlags.HAS_TRANSLATE
     out.write(flags.to_bytes(1, "little"))
     if flags & (1 << ComponentFlags.HAS_BACKGROUND_COLOR):
         out.write(background_color.to_bytes(4, "little"))
@@ -63,6 +68,11 @@ def handle_common_properties(target: dict, previous_properties: dict | None, out
         out.write(encoded_name)
     if flags & (1 << ComponentFlags.HAS_SPAWNER):
         write_spawners(spawners, out)
+    if flags & (1 << ComponentFlags.HAS_TRANSLATE):
+        x: int = translate["x"]
+        y: int = translate["y"]
+        out.write(x.to_bytes(4, "little", signed=True))
+        out.write(y.to_bytes(4, "little", signed=True))
     return {"background_color": background_color, "texture": texture}
 
 def write_spawners(spawners: list, out):
@@ -208,6 +218,10 @@ enemy_types = {
     "summoner": 125,
     "slasher": 126,
     "lotus_flower": 127,
+    "wavering": 128,
+    "cursed": 129,
+    "expander": 130,
+    "silence": 131,
 }
 
 
@@ -226,7 +240,11 @@ textures = {
 }
 
 out = open("maps/world.bin", "wb")
-with open("maps/definitions/world.yaml", encoding="utf-8") as world_file:
+
+directory = os.environ.get("WORLD_DIR") or "maps/definitions"
+print(f"Using directory '{directory}'.")
+
+with open(f"{directory}/world.yaml", encoding="utf-8") as world_file:
     world = yaml.load(world_file, yaml.CLoader)
     spawn_name = f"{world['spawn']}\0".encode("ascii")
     out.write(len(spawn_name).to_bytes(1, "little"))
@@ -236,7 +254,7 @@ with open("maps/definitions/world.yaml", encoding="utf-8") as world_file:
     for region_meta in world["regions"]:
         region_x = region_meta["x"]
         region_y = region_meta["y"]
-        with open(f"maps/definitions/{region_meta['file']}") as region_file:
+        with open(f"{directory}/{region_meta['file']}") as region_file:
             region = yaml.load(region_file, yaml.CLoader)
             region_properties = handle_common_properties(region, None, out)
 

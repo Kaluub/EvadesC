@@ -35,7 +35,7 @@ void process_splash_messages(SplashMessages* splash_messages) {
             continue;
         }
         uint8_t alpha = (message->duration > 500) ? 255 : (message->duration * 0.51);
-        uint8_t value = 200 + (message->duration > 2000 ? (message->duration - 2000)*0.11 : 0);
+        uint8_t value = 220 + (message->duration > 2000 ? (message->duration - 2000)*0.06 : 0);
         Color text_color = {value, value, value, alpha};
         Color shadow_color = {0, 0, 0, alpha};
         DrawText(message->text, 12, y + 2, 20, shadow_color);

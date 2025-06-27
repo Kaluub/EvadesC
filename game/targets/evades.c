@@ -5,6 +5,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <time.h>
+#include <pthread.h>
 
 #define BACKGROUND_COLOR (Color) {0x33, 0x33, 0x33, 0xFF}
 #define WINDOW_WIDTH 1280
@@ -21,7 +22,7 @@ const Color ZONE_COLORS[] = {
     {255, 255, 255, 255},
 };
 
-int is_zone_on_screen(Camera2D camera, const Zone zone) {
+bool is_zone_on_screen(Camera2D camera, const Zone zone) {
 #ifdef DEBUG
     if (IsKeyDown(KEY_B)) {
         camera.zoom *= 2;
@@ -32,6 +33,23 @@ int is_zone_on_screen(Camera2D camera, const Zone zone) {
 
     return ((bottom_right.x >= 0 && top_left.x <= GetScreenWidth()) && (bottom_right.y >= 0 && top_left.y <= GetScreenHeight()));
 }
+
+bool is_rect_on_screen(Camera2D camera, const Rectangle rect) {
+    Vector2 top_left = GetWorldToScreen2D((Vector2) {rect.x, rect.y}, camera);
+    Vector2 bottom_right = GetWorldToScreen2D((Vector2) {rect.x + rect.width, rect.y + rect.height}, camera);
+    return ((bottom_right.x >= 0 && top_left.x <= GetScreenWidth()) && (bottom_right.y >= 0 && top_left.y <= GetScreenHeight()));
+}
+
+#ifdef DEBUG
+bool writing_map = false;
+bool done_writing_map = false;
+pthread_t writing_thread;
+void* write_map(void* _) {
+    system("WORLD_DIR=~/EvadesClassic/server/maps/definitions python3 maps/packer/packer.py");
+    done_writing_map = true;
+    return NULL;
+}
+#endif
 
 int main() {
     init_random();
@@ -68,6 +86,8 @@ int main() {
 
     float check_monitor_time = 0;
 
+    bool render_translations = false;
+
     while (!WindowShouldClose()) {
         timing_start(); // Tick time.
         const float frame_time = GetFrameTime();
@@ -93,6 +113,12 @@ int main() {
             }
             const char* options[] = {"uncapped", "capped"};
             add_splash_message(&state.splash_messages, TextFormat("Framerate is now %s.", options[capped_framerate]));
+        }
+
+        if (IsKeyPressed(KEY_SPACE)) {
+            render_translations = !render_translations;
+            const char* options[] = {"no longer displayed", "now displayed"};
+            add_splash_message(&state.splash_messages, TextFormat("Zone translations are %s.", options[render_translations]));
         }
 
         state.camera.offset = (Vector2) {GetScreenWidth()/2, GetScreenHeight()/2};
@@ -150,10 +176,25 @@ int main() {
         }
 
         if (IsKeyPressed(KEY_L)) {
+            if (IsKeyDown(KEY_LEFT_SHIFT) && !writing_map) {
+                // Requires dev environment.
+                writing_map = true;
+                add_splash_message(&state.splash_messages, "Writing world.bin...");
+                pthread_create(&writing_thread, NULL, write_map, &state);
+            } else {
+                Map old_map = state.map;
+                open_map(&state);
+                destroy_map(&old_map);
+                add_splash_message(&state.splash_messages, "Reloaded map");
+            }
+        }
+        if (writing_map && done_writing_map) {
             Map old_map = state.map;
             open_map(&state);
             destroy_map(&old_map);
             add_splash_message(&state.splash_messages, "Reloaded map");
+            writing_map = false;
+            done_writing_map = false;
         }
 #endif
 
@@ -227,6 +268,35 @@ int main() {
             }
         }
 
+        if (render_translations) {
+            for (int region_index = 0; region_index < state.map.region_count; region_index++) {
+                Region region = state.map.regions[region_index];
+                for (int area_index = 0; area_index < region.area_count; area_index++) {
+                    Area area = region.areas[area_index];
+                    for (int zone_index = 0; zone_index < area.zone_count; zone_index++) {
+                        Zone zone = area.zones[zone_index];
+                        if (zone.applies_translate) {
+                            Rectangle zone_rect = {zone.x, zone.y, zone.width, zone.height};
+                            Rectangle zone_translate_rect = {zone.x + zone.translate_x, zone.y + zone.translate_y, zone.width, zone.height};
+                            bool zone_rect_visible = is_rect_on_screen(state.camera, zone_rect);
+                            bool zone_translate_rect_visible = is_rect_on_screen(state.camera, zone_translate_rect);
+                            if (zone_rect_visible) {
+                                DrawRectanglePro(zone_rect, (Vector2) {0, 0}, 0.0f, ColorAlpha(BLUE, 0.2f));
+                                DrawRectangleLinesEx(zone_rect, 2.0f, BLUE);
+                            }
+                            if (zone_translate_rect_visible) {
+                                DrawRectanglePro(zone_translate_rect, (Vector2) {0, 0}, 0.0f, ColorAlpha(PINK, 0.2f));
+                                DrawRectangleLinesEx(zone_translate_rect, 2.0f, PINK);
+                            }
+                            Vector2 line_start = {zone.x + zone.width/2, zone.y + zone.height/2};
+                            Vector2 line_end = {line_start.x + zone.translate_x, line_start.y + zone.translate_y};
+                            DrawLineEx(line_start, line_end, 4.0f, (Color) {255, 0, 255, 255});
+                        }
+                    }
+                }
+            }
+        }
+
         bool draw_measure_x = false;
         bool draw_measure_y = false;
         if (IsKeyDown(KEY_LEFT_CONTROL)) {
@@ -280,7 +350,9 @@ int main() {
             DrawText(measure_y, mouse_pos.x + 16, mouse_pos.y, 16, BLUE);
         }
 #ifdef DEBUG
-        DrawText(TextFormat("Debug build. FPS: %d", GetFPS()), 10, 10, 20, LIME);
+        const char* text = TextFormat("Debug build. FPS: %d", GetFPS());
+        DrawText(text, 12, 12, 20, BLACK);
+        DrawText(text, 10, 10, 20, LIME);
 #endif
         process_splash_messages(&state.splash_messages);
         render_end();

@@ -9,6 +9,7 @@ enum ComponentProperties {
     HAS_TEXTURE = 1,
     HAS_NAME = 2,
     HAS_SPAWNER = 3,
+    HAS_TRANSLATE = 4,
 };
 
 enum TextureType {
@@ -62,6 +63,9 @@ typedef struct Zone {
     uint32_t width;
     uint32_t height;
     uint32_t background_color;
+    int32_t translate_x;
+    int32_t translate_y;
+    uint8_t applies_translate;
     uint8_t type;
     uint8_t texture;
     uint8_t spawner_count;
