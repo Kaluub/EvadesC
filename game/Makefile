@@ -10,8 +10,10 @@ LIB = -L lib/ -I include/ $(LINK)
 
 default: debug
 
-maps/world.bin: maps/definitions/regions/*.yaml maps/definitions/world.yaml maps/packer/packer.py
-	python3 maps/packer/packer.py
+.PHONY: release debug web clean
+
+maps/world.bin: maps/definitions/regions/*.yaml maps/definitions/world.yaml maps/packer.py
+	python3 maps/packer.py
 
 debug:
 	make $(OUT) EXTRA='-g -DDEBUG -fsanitize=undefined'
@@ -20,9 +22,12 @@ $(OUT): maps/world.bin targets/evades.c $(SRC) $(HEADERS)
 	gcc -o evades targets/evades.c $(SRC) -Wall -Wextra $(LIB) $(EXTRA)
 
 web: maps/world.bin targets/evades.c $(SRC) $(HEADERS)
-	emcc -o evades.html targets/evades.c $(SRC) -Os -Wall -Wextra ./lib/libraylib.web.a -I. -I./include -L. -L./lib \
-	-DPLATFORM_WEB -s USE_GLFW=3 -s ASYNCIFY -s TOTAL_MEMORY=128mb -s STACK_SIZE=32mb -s ASSERTIONS=1 --preload-file assets \
-	--preload-file maps/world.bin --shell-file minshell.html -DDEBUG
+	emcc -o index.html targets/evades.c $(SRC) -Os -Wall -Wextra ./lib/libraylib.web.a -I. -I./include -L. -L./lib \
+		-DPLATFORM_WEB -s USE_GLFW=3 -s TOTAL_MEMORY=128mb -s STACK_SIZE=32mb -s ASSERTIONS=1 \
+		-sEXPORTED_FUNCTIONS=_main,_resize_game -sEXPORTED_RUNTIME_METHODS=ccall,cwrap \
+		--preload-file assets --preload-file maps/world.bin --shell-file shell.html -DDEBUG
+	mkdir -p release/web
+	mv -v index.* release/web
 
 memory_test: targets/memory_test.c $(SRC) $(HEADERS)
 	gcc -o memory_test targets/memory_test.c $(SRC) -g -Wall $(LIB) $(EXTRA)
@@ -31,11 +36,12 @@ rng_test: targets/rng_test.c src/util/random.c src/util/random.h
 	gcc -o rng_test targets/rng_test.c src/util/random.c -g -Wall $(LIB) $(EXTRA)
 
 clean:
-	rm -f evades memory_test rng_test evades.wasm evades.html evades.data evades.js evades.zip
+	rm -f evades memory_test rng_test
 ifeq ($(OS), Windows_NT)
 	rm -f evades.exe memory_test.exe rng_test.exe
 endif
 
 release:
 	make $(OUT) EXTRA='-O2'
-	zip -r evades.zip $(OUT) maps/world.bin assets
+	mkdir -p release/native
+	zip -r release/native/evades.zip $(OUT) maps/world.bin assets

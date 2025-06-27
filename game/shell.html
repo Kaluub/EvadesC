@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="EN-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Evades</title>
+    <style>
+        body { margin: 0px; overflow: hidden; background-color: black; }
+        canvas.emscripten { border: 0px none; background-color: black; }
+    </style>
+    </head>
+    <body>
+        <canvas class=emscripten id=canvas oncontextmenu=event.preventDefault() tabindex=-1></canvas>
+        <p id="output" />
+        <script>
+            var Module = {
+                print: (function() {
+                    return function(text) {
+                        if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
+                        console.log(text);
+                    };
+                })(),
+                canvas: (function() {
+                    var canvas = document.getElementById('canvas');
+                    return canvas;
+                })(),
+            };
+
+            const ignoreKeys = ["Space", "Tab", "ControlLeft"];
+            document.addEventListener("keydown", (e) => {
+                if (ignoreKeys.includes(e.code)) {
+                    e.preventDefault();
+                }
+            });
+
+            function js_resize() {
+                Module.ccall("resize_game", "number", ["number", "number"], [window.innerWidth, window.innerHeight]);
+            }
+        </script>
+        {{{ SCRIPT }}}
+    </body>
+</html>

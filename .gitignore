@@ -6,8 +6,4 @@ game/evades
 game/memory_test
 game/rng_test
 game/*.exe
-game/evades.data
-game/evades.html
-game/evades.js
-game/evades.wasm
-game/evades.zip
+game/release
