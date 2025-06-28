@@ -39,11 +39,11 @@ void init_debug_state() {
 }
 
 void timing_start() {
-    clock_gettime(CLOCK_MONOTONIC_RAW, &start);
+    clock_gettime(CLOCK_MONOTONIC, &start);
 }
 
 void tick_end() {
-    clock_gettime(CLOCK_MONOTONIC_RAW, &end);
+    clock_gettime(CLOCK_MONOTONIC, &end);
     if (state.filled_tick_times) {
         int64_t old_time = state.tick_times[state.tick_time_index];
         state.tick_time_sum -= old_time;
@@ -64,7 +64,7 @@ void tick_end() {
 }
 
 void render_end() {
-    clock_gettime(CLOCK_MONOTONIC_RAW, &end);
+    clock_gettime(CLOCK_MONOTONIC, &end);
     if (state.filled_render_times) {
         int64_t old_time = state.render_times[state.render_time_index];
         state.render_time_sum -= old_time;
