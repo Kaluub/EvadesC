@@ -11,7 +11,7 @@
 #define CLOCK_MONOTONIC_RAW CLOCK_MONOTONIC
 #endif
 
-struct {
+static struct {
     int64_t tick_times[MAX_TIMINGS];
     int64_t render_times[MAX_TIMINGS];
     int64_t tick_time_sum;
