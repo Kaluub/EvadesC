@@ -5,6 +5,19 @@
 
 #define MAX_SPAWNER_COUNT 256
 
+uint32_t read_greedy_uint(FILE* file) {
+    // Greedy uint: guaranteed 1 byte, and can increase up to 4 as needed.
+    // First 2 bytes are how many extra bytes there are. (0, 1, 2, 3 extra bytes.)
+    // Reduces file size rather significantly though has a slight performance hit when loading it.
+    // For the web I think that's better.
+    uint8_t header = 0;
+    fread(&header, 1, 1, file);
+    uint8_t extra_bytes = (header & 0xC0) >> 6;
+    uint32_t data = 0;
+    fread(&data, extra_bytes, 1, file);
+    return (data << 6) | (header & 0x3F);
+}
+
 void load_map(Map* map, FILE* file) {
     // Spawn region name.
     uint8_t spawn_region_length = 0;
@@ -100,8 +113,8 @@ void load_map(Map* map, FILE* file) {
                 fread(&zone->type, sizeof(zone->type), 1, file);
                 fread(&zone->x, sizeof(zone->x), 1, file);
                 fread(&zone->y, sizeof(zone->y), 1, file);
-                fread(&zone->width, sizeof(zone->width), 1, file);
-                fread(&zone->height, sizeof(zone->height), 1, file);
+                zone->width = read_greedy_uint(file);
+                zone->height = read_greedy_uint(file);
                 
                 // Zone properties.
                 uint8_t zone_flags = 0;
@@ -124,8 +137,8 @@ void load_map(Map* map, FILE* file) {
                         spawner->enemy_types = (uint8_t*) malloc(sizeof(uint8_t) * spawner->enemy_type_count);
                         fread(spawner->enemy_types, sizeof(uint8_t), spawner->enemy_type_count, file);
                         fread(&spawner->speed, sizeof(spawner->speed), 1, file);
-                        fread(&spawner->count, sizeof(spawner->count), 1, file);
-                        fread(&spawner->radius, sizeof(spawner->radius), 1, file);
+                        spawner->count = read_greedy_uint(file);
+                        spawner->radius = read_greedy_uint(file);
                         spawner_zone_references[spawner_list_size] = zone;
                         spawners[spawner_list_size++] = spawner;
                         enemy_count += spawner->count;

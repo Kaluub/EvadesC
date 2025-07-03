@@ -47,12 +47,12 @@ void tick_end() {
     if (state.filled_tick_times) {
         int64_t old_time = state.tick_times[state.tick_time_index];
         state.tick_time_sum -= old_time;
-        int64_t new_time = (end.tv_sec - start.tv_sec) * 1000000000 + (end.tv_nsec - start.tv_nsec);
+        int64_t new_time = (end.tv_sec - start.tv_sec) * 1e9 + (end.tv_nsec - start.tv_nsec);
         state.tick_times[state.tick_time_index] = new_time;
         state.tick_time_sum += new_time;
         state.tick_time_index = (state.tick_time_index + 1) % MAX_TIMINGS;
     } else {
-        int64_t new_time = (end.tv_sec - start.tv_sec) * 1000000000 + (end.tv_nsec - start.tv_nsec);
+        int64_t new_time = (end.tv_sec - start.tv_sec) * 1e9 + (end.tv_nsec - start.tv_nsec);
         state.tick_times[state.tick_time_index] = new_time;
         state.tick_time_sum += new_time;
         state.tick_time_index++;
@@ -68,12 +68,12 @@ void render_end() {
     if (state.filled_render_times) {
         int64_t old_time = state.render_times[state.render_time_index];
         state.render_time_sum -= old_time;
-        int64_t new_time = (end.tv_sec - start.tv_sec) * 1000000000 + (end.tv_nsec - start.tv_nsec);
+        int64_t new_time = (end.tv_sec - start.tv_sec) * 1e9 + (end.tv_nsec - start.tv_nsec);
         state.render_times[state.render_time_index] = new_time;
         state.render_time_sum += new_time;
         state.render_time_index = (state.render_time_index + 1) % MAX_TIMINGS;
     } else {
-        int64_t new_time = (end.tv_sec - start.tv_sec) * 1000000000 + (end.tv_nsec - start.tv_nsec);
+        int64_t new_time = (end.tv_sec - start.tv_sec) * 1e9 + (end.tv_nsec - start.tv_nsec);
         state.render_times[state.render_time_index] = new_time;
         state.render_time_sum += new_time;
         state.render_time_index++;
@@ -94,7 +94,7 @@ void draw_timings() {
     }
     
     char buff[40] = {0};
-    int64_t divisor = (state.filled_tick_times ? MAX_TIMINGS : state.tick_time_index) * 1000000;
+    int64_t divisor = (state.filled_tick_times ? MAX_TIMINGS : state.tick_time_index) * 1e6;
     strcpy(buff, TextFormat("tick: %.5fms", (double) state.tick_time_sum / divisor));
     DrawTextEx(debug_font, buff, (Vector2) {GetScreenWidth() - 148, 12}, 16, 1, BLACK);
     DrawTextEx(debug_font, buff, (Vector2) {GetScreenWidth() - 150, 10}, 16, 1, WHITE);

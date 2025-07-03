@@ -75,7 +75,7 @@ def handle_common_properties(target: dict, previous_properties: dict | None, out
         out.write(y.to_bytes(4, "little", signed=True))
     return {"background_color": background_color, "texture": texture}
 
-def write_spawners(spawners: list, out):
+def write_spawners(spawners: list, out: BufferedWriter):
     out.write(len(spawners).to_bytes(1, "little"))
     for spawner in spawners:
         spawner_types = spawner["types"]
@@ -86,10 +86,37 @@ def write_spawners(spawners: list, out):
                 raise ValueError(spawner_types, enemy_type)
             out.write(enemy_type_num.to_bytes(1, "little"))
         out.write(struct.pack("<f", spawner.get("speed", 0)))
-        out.write(spawner.get("count", 1).to_bytes(2, "little"))
-        out.write(spawner["radius"].to_bytes(2, "little"))
-        
-        
+        write_greedy_uint(spawner.get("count", 1), out)
+        write_greedy_uint(spawner["radius"], out)
+
+def write_greedy_uint(number: int, out: BufferedWriter):
+    assert number >= 0 and number < 1<<30
+    extra_bytes = 0
+    if number >= 1<<22:
+        extra_bytes = 3
+    elif number >= 1<<14:
+        extra_bytes = 2
+    elif number >= 1<<6:
+        extra_bytes = 1
+
+    data = ((number & 0xFFFFFFC0) << 2) | (extra_bytes << 6) | (number & 0x3F)
+    out.write(data.to_bytes(extra_bytes + 1, "little"))
+
+# def write_greedy_int(number: int, out: BufferedWriter):
+#     assert number >= -(1<<29) and number < 1<<29
+#     extra_bytes = 0
+#     if number >= 1<<21 or number < -(1<<21):
+#         extra_bytes = 3
+#     elif number >= 1<<13 or number < -(1<<13):
+#         extra_bytes = 2
+#     elif number >= 1<<5 or number < -(1<<5):
+#         extra_bytes = 1
+    
+#     data_offset = extra_bytes * 8 + 6
+#     data = number | (extra_bytes << data_offset)
+#     print(data.to_bytes(extra_bytes, "little"))
+#     # out.write(data.to_bytes(extra_bytes, "little"))
+
 enemy_types = {
     "wall": 1,
     "normal": 2,
@@ -224,7 +251,6 @@ enemy_types = {
     "silence": 131,
 }
 
-
 zone_types = {
     "safe": 1,
     "active": 2,
@@ -239,77 +265,80 @@ textures = {
     "leaves": 1,
 }
 
-out = open("maps/world.bin", "wb")
+def main():
+    out = open("maps/world.bin", "wb")
 
-directory = os.environ.get("WORLD_DIR") or "maps/definitions"
-print(f"Using directory '{directory}'.")
+    directory = os.environ.get("WORLD_DIR") or "maps/definitions"
+    print(f"Using directory '{directory}'.")
 
-with open(f"{directory}/world.yaml", encoding="utf-8") as world_file:
-    world = yaml.load(world_file, yaml.CLoader)
-    spawn_name = f"{world['spawn']}\0".encode("ascii")
-    out.write(len(spawn_name).to_bytes(1, "little"))
-    out.write(spawn_name)
-    out.write(len(world["regions"]).to_bytes(1, "little"))
+    with open(f"{directory}/world.yaml", encoding="utf-8") as world_file:
+        world = yaml.load(world_file, yaml.CLoader)
+        spawn_name = f"{world['spawn']}\0".encode("ascii")
+        out.write(len(spawn_name).to_bytes(1, "little"))
+        out.write(spawn_name)
+        out.write(len(world["regions"]).to_bytes(1, "little"))
 
-    for region_meta in world["regions"]:
-        region_x = region_meta["x"]
-        region_y = region_meta["y"]
-        with open(f"{directory}/{region_meta['file']}") as region_file:
-            region = yaml.load(region_file, yaml.CLoader)
-            region_properties = handle_common_properties(region, None, out)
+        for region_meta in world["regions"]:
+            region_x = region_meta["x"]
+            region_y = region_meta["y"]
+            with open(f"{directory}/{region_meta['file']}") as region_file:
+                region = yaml.load(region_file, yaml.CLoader)
+                region_properties = handle_common_properties(region, None, out)
 
-            # Write out areas
-            out.write(len(region["areas"]).to_bytes(2, "little"))
-            area_state = {"var x": region_x, "var y": region_y}
-            for area in region["areas"]:
-                # Write out area absolute position
-                area_x = parse_variable(area["x"], area_state)
-                area_y = parse_variable(area["y"], area_state)
-                area_width = 0
-                area_height = 0
-                out.write(area_x.to_bytes(4, "little", signed=True))
-                out.write(area_y.to_bytes(4, "little", signed=True))
+                # Write out areas
+                out.write(len(region["areas"]).to_bytes(2, "little"))
+                area_state = {"var x": region_x, "var y": region_y}
+                for area in region["areas"]:
+                    # Write out area absolute position
+                    area_x = parse_variable(area["x"], area_state)
+                    area_y = parse_variable(area["y"], area_state)
+                    area_width = 0
+                    area_height = 0
+                    out.write(area_x.to_bytes(4, "little", signed=True))
+                    out.write(area_y.to_bytes(4, "little", signed=True))
 
-                area_properties = handle_common_properties(area, region_properties, out)
+                    area_properties = handle_common_properties(area, region_properties, out)
 
-                # Write out zones
-                out.write(len(area["zones"]).to_bytes(1, "little"))
-                zone_state = {}
-                for zone in area["zones"]:
-                    zone_type = zone_types[zone["type"]]
-                    zone_x = parse_variable(zone["x"], zone_state)
-                    zone_y = parse_variable(zone["y"], zone_state)
-                    zone_width = parse_variable(zone["width"], zone_state)
-                    zone_height = parse_variable(zone["height"], zone_state)
+                    # Write out zones
+                    out.write(len(area["zones"]).to_bytes(1, "little"))
+                    zone_state = {}
+                    for zone in area["zones"]:
+                        zone_type = zone_types[zone["type"]]
+                        zone_x = parse_variable(zone["x"], zone_state)
+                        zone_y = parse_variable(zone["y"], zone_state)
+                        zone_width = parse_variable(zone["width"], zone_state)
+                        zone_height = parse_variable(zone["height"], zone_state)
 
-                    # Write out zone absolute dimensions
-                    out.write(zone_type.to_bytes(1, "little"))
-                    out.write((area_x + zone_x).to_bytes(4, "little", signed=True))
-                    out.write((area_y + zone_y).to_bytes(4, "little", signed=True))
-                    out.write(zone_width.to_bytes(4, "little"))
-                    out.write(zone_height.to_bytes(4, "little"))
+                        # Write out zone absolute dimensions
+                        out.write(zone_type.to_bytes(1, "little"))
+                        out.write((area_x + zone_x).to_bytes(4, "little", signed=True))
+                        out.write((area_y + zone_y).to_bytes(4, "little", signed=True))
+                        write_greedy_uint(zone_width, out)
+                        write_greedy_uint(zone_height, out)
 
-                    handle_common_properties(zone, area_properties, out)
+                        handle_common_properties(zone, area_properties, out)
 
-                    # Update area size
-                    if zone_x + zone_width > area_width:
-                        area_width = zone_x + zone_width
-                    if zone_y + zone_height > area_height:
-                        area_height = zone_y + zone_height
-                    # Store previous zone states
-                    zone_state["last_x"] = zone_x
-                    zone_state["last_y"] = zone_y
-                    zone_state["last_width"] = zone_width
-                    zone_state["last_height"] = zone_height
-                    zone_state["last_right"] = zone_x + zone_width
-                    zone_state["last_bottom"] = zone_y + zone_height
-                # Store previous area states
-                area_state["last_x"] = area_x
-                area_state["last_y"] = area_y
-                area_state["last_width"] = area_width
-                area_state["last_height"] = area_height
-                area_state["last_right"] = area_x + area_width
-                area_state["last_bottom"] = area_y + area_height
+                        # Update area size
+                        if zone_x + zone_width > area_width:
+                            area_width = zone_x + zone_width
+                        if zone_y + zone_height > area_height:
+                            area_height = zone_y + zone_height
+                        # Store previous zone states
+                        zone_state["last_x"] = zone_x
+                        zone_state["last_y"] = zone_y
+                        zone_state["last_width"] = zone_width
+                        zone_state["last_height"] = zone_height
+                        zone_state["last_right"] = zone_x + zone_width
+                        zone_state["last_bottom"] = zone_y + zone_height
+                    # Store previous area states
+                    area_state["last_x"] = area_x
+                    area_state["last_y"] = area_y
+                    area_state["last_width"] = area_width
+                    area_state["last_height"] = area_height
+                    area_state["last_right"] = area_x + area_width
+                    area_state["last_bottom"] = area_y + area_height
 
-out.close()
-print(f"Wrote world.bin -> {os.path.getsize('maps/world.bin') / 1024:.3f} KiB.")
+    out.close()
+    print(f"Wrote world.bin -> {os.path.getsize('maps/world.bin') / 1024:.3f} KiB.")
+
+main()
