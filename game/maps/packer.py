@@ -10,6 +10,7 @@ class ComponentFlags(IntEnum):
     HAS_NAME = 2
     HAS_SPAWNER = 3
     HAS_TRANSLATE = 4
+    USES_PREVIOUS_AREA_DIMENSIONS = 5
 
 def parse_variable(definition: str, state: dict[str, int]) -> int:
     value = definition
@@ -34,10 +35,36 @@ def get_color(properties: dict) -> int:
     vec: list[int] = properties["background_color"]
     return vec[0] << 24 | vec[1] << 16 | vec[2] << 8 | vec[3]
 
-def handle_common_properties(target: dict, previous_properties: dict | None, out: BufferedWriter):
+def are_area_dimensions_shared(area: dict, previous_area: dict):
+    zones: list[dict] = area["zones"]
+    previous_zones: list[dict] = previous_area["zones"]
+
+    if len(zones) != len(previous_zones):
+        return False
+    
+    for i in range(len(zones)):
+        if (
+            zones[i]["width"] != previous_zones[i]["width"]
+            or zones[i]["height"] != previous_zones[i]["height"]
+            or zones[i]["x"] != previous_zones[i]["x"]
+            or zones[i]["y"] != previous_zones[i]["y"]
+            or zones[i]["type"] != previous_zones[i]["type"]
+        ):
+            return False
+
+    return True
+
+
+def handle_common_properties(
+        target: dict,
+        previous_properties: dict | None,
+        out: BufferedWriter,
+        previous_area: dict = None,
+    ):
     flags = 0
     background_color = 0
     texture = None
+    only_write_spawner = False
     properties = target.get("properties", None)
     if properties is not None:
         if "background_color" in properties:
@@ -57,6 +84,10 @@ def handle_common_properties(target: dict, previous_properties: dict | None, out
     translate = target.get("translate", None)
     if translate is not None:
         flags |= 1 << ComponentFlags.HAS_TRANSLATE
+    if previous_area is not None:
+        if are_area_dimensions_shared(target, previous_area):
+            flags |= 1 << ComponentFlags.USES_PREVIOUS_AREA_DIMENSIONS
+            only_write_spawner = True
     out.write(flags.to_bytes(1, "little"))
     if flags & (1 << ComponentFlags.HAS_BACKGROUND_COLOR):
         out.write(background_color.to_bytes(4, "little"))
@@ -71,9 +102,9 @@ def handle_common_properties(target: dict, previous_properties: dict | None, out
     if flags & (1 << ComponentFlags.HAS_TRANSLATE):
         x: int = translate["x"]
         y: int = translate["y"]
-        out.write(x.to_bytes(4, "little", signed=True))
-        out.write(y.to_bytes(4, "little", signed=True))
-    return {"background_color": background_color, "texture": texture}
+        write_greedy_int(x, out)
+        write_greedy_int(y, out)
+    return {"background_color": background_color, "texture": texture, "only_write_spawner": only_write_spawner}
 
 def write_spawners(spawners: list, out: BufferedWriter):
     out.write(len(spawners).to_bytes(1, "little"))
@@ -102,20 +133,22 @@ def write_greedy_uint(number: int, out: BufferedWriter):
     data = ((number & 0xFFFFFFC0) << 2) | (extra_bytes << 6) | (number & 0x3F)
     out.write(data.to_bytes(extra_bytes + 1, "little"))
 
-# def write_greedy_int(number: int, out: BufferedWriter):
-#     assert number >= -(1<<29) and number < 1<<29
-#     extra_bytes = 0
-#     if number >= 1<<21 or number < -(1<<21):
-#         extra_bytes = 3
-#     elif number >= 1<<13 or number < -(1<<13):
-#         extra_bytes = 2
-#     elif number >= 1<<5 or number < -(1<<5):
-#         extra_bytes = 1
-    
-#     data_offset = extra_bytes * 8 + 6
-#     data = number | (extra_bytes << data_offset)
-#     print(data.to_bytes(extra_bytes, "little"))
-#     # out.write(data.to_bytes(extra_bytes, "little"))
+def write_greedy_int(number: int, out: BufferedWriter=None):
+    assert number > -(1<<29) and number < 1<<29
+    extra_bytes = 0
+    if number >= 1<<21 or number <= -(1<<21):
+        extra_bytes = 3
+    elif number >= 1<<13 or number <= -(1<<13):
+        extra_bytes = 2
+    elif number >= 1<<5 or number <= -(1<<5):
+        extra_bytes = 1
+
+    sign = 0
+    if number < 0:
+        sign = 1
+        number *= -1
+    data = ((number & 0xFFFFFFE0) << 3) | (extra_bytes << 6) | (sign << 5) | (number & 0x1F)
+    out.write(data.to_bytes(extra_bytes + 1, "little"))
 
 enemy_types = {
     "wall": 1,
@@ -268,6 +301,9 @@ textures = {
 def main():
     out = open("maps/world.bin", "wb")
 
+    total_areas = 0
+    same_areas = 0
+
     directory = os.environ.get("WORLD_DIR") or "maps/definitions"
     print(f"Using directory '{directory}'.")
 
@@ -284,6 +320,8 @@ def main():
             with open(f"{directory}/{region_meta['file']}") as region_file:
                 region = yaml.load(region_file, yaml.CLoader)
                 region_properties = handle_common_properties(region, None, out)
+                
+                previous_area = None
 
                 # Write out areas
                 out.write(len(region["areas"]).to_bytes(2, "little"))
@@ -294,42 +332,59 @@ def main():
                     area_y = parse_variable(area["y"], area_state)
                     area_width = 0
                     area_height = 0
-                    out.write(area_x.to_bytes(4, "little", signed=True))
-                    out.write(area_y.to_bytes(4, "little", signed=True))
 
-                    area_properties = handle_common_properties(area, region_properties, out)
+                    if previous_area is None:
+                        write_greedy_int(area_x, out)
+                        write_greedy_int(area_y, out)
+                    else:
+                        write_greedy_int(area_x - area_state["last_x"], out)
+                        write_greedy_int(area_y - area_state["last_y"], out)
 
-                    # Write out zones
-                    out.write(len(area["zones"]).to_bytes(1, "little"))
-                    zone_state = {}
-                    for zone in area["zones"]:
-                        zone_type = zone_types[zone["type"]]
-                        zone_x = parse_variable(zone["x"], zone_state)
-                        zone_y = parse_variable(zone["y"], zone_state)
-                        zone_width = parse_variable(zone["width"], zone_state)
-                        zone_height = parse_variable(zone["height"], zone_state)
+                    area_properties = handle_common_properties(area, region_properties, out, previous_area=previous_area)
 
-                        # Write out zone absolute dimensions
-                        out.write(zone_type.to_bytes(1, "little"))
-                        out.write((area_x + zone_x).to_bytes(4, "little", signed=True))
-                        out.write((area_y + zone_y).to_bytes(4, "little", signed=True))
-                        write_greedy_uint(zone_width, out)
-                        write_greedy_uint(zone_height, out)
+                    if area_properties["only_write_spawner"]:
+                        spawners = None
+                        for zone in area["zones"]:
+                            s = zone.get("spawner", None)
+                            if s is not None:
+                                spawners = s
+                                break
+                        write_spawners(spawners, out)
+                        area_width = area_state["last_width"]
+                        area_height = area_state["last_height"]
+                        same_areas += 1
+                    else:
+                        # Write out zones
+                        out.write(len(area["zones"]).to_bytes(1, "little"))
+                        zone_state = {}
+                        for zone in area["zones"]:
+                            zone_type = zone_types[zone["type"]]
+                            zone_x = parse_variable(zone["x"], zone_state)
+                            zone_y = parse_variable(zone["y"], zone_state)
+                            zone_width = parse_variable(zone["width"], zone_state)
+                            zone_height = parse_variable(zone["height"], zone_state)
 
-                        handle_common_properties(zone, area_properties, out)
+                            # Write out zone dimensions
+                            out.write(zone_type.to_bytes(1, "little"))
+                            write_greedy_int(zone_x, out)
+                            write_greedy_int(zone_y, out)
+                            write_greedy_uint(zone_width, out)
+                            write_greedy_uint(zone_height, out)
 
-                        # Update area size
-                        if zone_x + zone_width > area_width:
-                            area_width = zone_x + zone_width
-                        if zone_y + zone_height > area_height:
-                            area_height = zone_y + zone_height
-                        # Store previous zone states
-                        zone_state["last_x"] = zone_x
-                        zone_state["last_y"] = zone_y
-                        zone_state["last_width"] = zone_width
-                        zone_state["last_height"] = zone_height
-                        zone_state["last_right"] = zone_x + zone_width
-                        zone_state["last_bottom"] = zone_y + zone_height
+                            handle_common_properties(zone, area_properties, out)
+
+                            # Update area size
+                            if zone_x + zone_width > area_width:
+                                area_width = zone_x + zone_width
+                            if zone_y + zone_height > area_height:
+                                area_height = zone_y + zone_height
+                            # Store previous zone states
+                            zone_state["last_x"] = zone_x
+                            zone_state["last_y"] = zone_y
+                            zone_state["last_width"] = zone_width
+                            zone_state["last_height"] = zone_height
+                            zone_state["last_right"] = zone_x + zone_width
+                            zone_state["last_bottom"] = zone_y + zone_height
                     # Store previous area states
                     area_state["last_x"] = area_x
                     area_state["last_y"] = area_y
@@ -337,8 +392,11 @@ def main():
                     area_state["last_height"] = area_height
                     area_state["last_right"] = area_x + area_width
                     area_state["last_bottom"] = area_y + area_height
+                    previous_area = area
+                    total_areas += 1
 
     out.close()
     print(f"Wrote world.bin -> {os.path.getsize('maps/world.bin') / 1024:.3f} KiB.")
+    print(f"Areas written: {total_areas}. Same area shapes: {same_areas}. ({same_areas/total_areas*100:.3f}%)")
 
 main()

@@ -10,6 +10,7 @@ enum ComponentProperties {
     HAS_NAME = 2,
     HAS_SPAWNER = 3,
     HAS_TRANSLATE = 4,
+    USES_PREVIOUS_AREA_DIMENSIONS = 5,
 };
 
 enum TextureType {

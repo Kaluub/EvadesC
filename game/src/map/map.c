@@ -7,7 +7,7 @@
 
 uint32_t read_greedy_uint(FILE* file) {
     // Greedy uint: guaranteed 1 byte, and can increase up to 4 as needed.
-    // First 2 bytes are how many extra bytes there are. (0, 1, 2, 3 extra bytes.)
+    // First 2 bits are how many extra bytes there are. (0, 1, 2, 3 extra bytes.)
     // Reduces file size rather significantly though has a slight performance hit when loading it.
     // For the web I think that's better.
     uint8_t header = 0;
@@ -16,6 +16,31 @@ uint32_t read_greedy_uint(FILE* file) {
     uint32_t data = 0;
     fread(&data, extra_bytes, 1, file);
     return (data << 6) | (header & 0x3F);
+}
+
+int32_t read_greedy_int(FILE* file) {
+    // Greedy int: same concept as above, but also includes 
+    // First 2 bits are how many extra bytes there are. (0, 1, 2, 3 extra bytes.)
+    // Next bit is a simple sign bit. This is uint representation but with a sign bit because 2s complement doesn't
+    // work well with this kind of packing -- negative small numbers will have a lot of prepended '1' bits.
+    uint8_t header = 0;
+    fread(&header, 1, 1, file);
+    uint8_t extra_bytes = (header & 0xC0) >> 6;
+    int8_t sign = (header & 0x20) ? -1 : 1;
+    uint32_t data = 0;
+    fread(&data, extra_bytes, 1, file);
+    return ((data << 5) | (header & 0x1F)) * sign;
+}
+
+Spawner* load_spawner(Spawner* spawner, FILE* file) {
+    fread(&spawner->enemy_type_count, sizeof(spawner->enemy_type_count), 1, file);
+    assert(spawner->enemy_type_count != 0);
+    spawner->enemy_types = (uint8_t*) malloc(sizeof(uint8_t) * spawner->enemy_type_count);
+    fread(spawner->enemy_types, sizeof(uint8_t), spawner->enemy_type_count, file);
+    fread(&spawner->speed, sizeof(spawner->speed), 1, file);
+    spawner->count = read_greedy_uint(file);
+    spawner->radius = read_greedy_uint(file);
+    return spawner;
 }
 
 void load_map(Map* map, FILE* file) {
@@ -39,6 +64,8 @@ void load_map(Map* map, FILE* file) {
         region->background_color = 0;
         region->texture = 0;
         region->region_name = NULL;
+
+        Area* previous_area = NULL;
 
         // Region properties.
         uint8_t region_flags = 0;
@@ -66,8 +93,12 @@ void load_map(Map* map, FILE* file) {
 
         for (int area_index = 0; area_index < region->area_count; area_index++) {
             Area* area = region->areas + area_index;
-            fread(&area->x, sizeof(area->x), 1, file);
-            fread(&area->y, sizeof(area->y), 1, file);
+            area->x = read_greedy_int(file);
+            area->y = read_greedy_int(file);
+            if (previous_area != NULL) {
+                area->x += previous_area->x;
+                area->y += previous_area->y;
+            }
             area->width = 0;
             area->height = 0;
             area->area_name = NULL;
@@ -97,71 +128,97 @@ void load_map(Map* map, FILE* file) {
                 area->area_name = (char*) malloc(area_name_length);
                 fread(area->area_name, 1, area_name_length, file);
             }
-            
+
             // Zones.
-            fread(&area->zone_count, sizeof(area->zone_count), 1, file);
-            if (area->zone_count <= 0) {
-                area->zones = NULL;
-                continue;
-            }
-            area->zones = (Zone*) malloc(sizeof(Zone) * area->zone_count);
-            for (int zone_index = 0; zone_index < area->zone_count; zone_index++) {
-                Zone* zone = area->zones + zone_index;
-                zone->spawner_count = 0;
-                zone->spawners = NULL;
-                zone->applies_translate = false;
-                fread(&zone->type, sizeof(zone->type), 1, file);
-                fread(&zone->x, sizeof(zone->x), 1, file);
-                fread(&zone->y, sizeof(zone->y), 1, file);
-                zone->width = read_greedy_uint(file);
-                zone->height = read_greedy_uint(file);
-                
-                // Zone properties.
-                uint8_t zone_flags = 0;
-                zone->background_color = area->background_color;
-                zone->texture = area->texture;
-                fread(&zone_flags, sizeof(zone_flags), 1, file);
-                if (zone_flags & (1 << HAS_BACKGROUND_COLOR)) {
-                    fread(&zone->background_color, sizeof(zone->background_color), 1, file);
-                }
-                if (zone_flags & (1 << HAS_TEXTURE)) {
-                    fread(&zone->texture, sizeof(zone->texture), 1, file);
-                }
-                if (zone_flags & (1 << HAS_SPAWNER)) {
-                    fread(&zone->spawner_count, sizeof(zone->spawner_count), 1, file);
-                    zone->spawners = (Spawner*) malloc(sizeof(Spawner) * zone->spawner_count);
-                    for (int spawner_index = 0; spawner_index < zone->spawner_count; spawner_index++) {
-                        Spawner* spawner = zone->spawners + spawner_index;
-                        fread(&spawner->enemy_type_count, sizeof(spawner->enemy_type_count), 1, file);
-                        assert(spawner->enemy_type_count != 0);
-                        spawner->enemy_types = (uint8_t*) malloc(sizeof(uint8_t) * spawner->enemy_type_count);
-                        fread(spawner->enemy_types, sizeof(uint8_t), spawner->enemy_type_count, file);
-                        fread(&spawner->speed, sizeof(spawner->speed), 1, file);
-                        spawner->count = read_greedy_uint(file);
-                        spawner->radius = read_greedy_uint(file);
-                        spawner_zone_references[spawner_list_size] = zone;
-                        spawners[spawner_list_size++] = spawner;
-                        enemy_count += spawner->count;
+            if (area_flags & (1 << USES_PREVIOUS_AREA_DIMENSIONS)) {
+                // Use the previous area template and read only the spawners for the active zone.
+                assert(previous_area != NULL);
+                area->zone_count = previous_area->zone_count;
+                area->zones = (Zone*) malloc(sizeof(Zone) * area->zone_count);
+                area->width = previous_area->width;
+                area->height = previous_area->height;
+                int diff_x = area->x - previous_area->x;
+                int diff_y = area->y - previous_area->y;
+                for (int zone_index = 0; zone_index < area->zone_count; zone_index++) {
+                    area->zones[zone_index] = previous_area->zones[zone_index];
+                    Zone* zone = area->zones + zone_index;
+                    zone->x += diff_x;
+                    zone->y += diff_y;
+                    if (zone->type == ZONE_SAFE && area->spawn_zone == NULL) {
+                        area->spawn_zone = zone;
                     }
-                    // Set active zone pointer.
-                    // TODO: Support multiple active zones?
-                    area->active_zone = zone;
+                    if (zone->type == ZONE_ACTIVE) {
+                        fread(&zone->spawner_count, sizeof(zone->spawner_count), 1, file);
+                        zone->spawners = (Spawner*) malloc(sizeof(Spawner) * zone->spawner_count);
+                        for (int spawner_index = 0; spawner_index < zone->spawner_count; spawner_index++) {
+                            Spawner* spawner = zone->spawners + spawner_index;
+                            load_spawner(spawner, file);
+                            spawner_zone_references[spawner_list_size] = zone;
+                            spawners[spawner_list_size++] = spawner;
+                            enemy_count += spawner->count;
+                        }
+                        area->active_zone = zone;
+                    }
                 }
-                if (zone_flags & (1 << HAS_TRANSLATE)) {
-                    fread(&zone->translate_x, sizeof(zone->translate_x), 1, file);
-                    fread(&zone->translate_y, sizeof(zone->translate_y), 1, file);
-                    zone->applies_translate = true;
+            } else {
+                fread(&area->zone_count, sizeof(area->zone_count), 1, file);
+                if (area->zone_count <= 0) {
+                    area->zones = NULL;
+                    continue;
                 }
+                area->zones = (Zone*) malloc(sizeof(Zone) * area->zone_count);
+                for (int zone_index = 0; zone_index < area->zone_count; zone_index++) {
+                    Zone* zone = area->zones + zone_index;
+                    zone->spawner_count = 0;
+                    zone->spawners = NULL;
+                    zone->applies_translate = false;
+                    fread(&zone->type, sizeof(zone->type), 1, file);
+                    zone->x = read_greedy_int(file) + area->x;
+                    zone->y = read_greedy_int(file) + area->y;
+                    zone->width = read_greedy_uint(file);
+                    zone->height = read_greedy_uint(file);
+                    
+                    // Zone properties.
+                    uint8_t zone_flags = 0;
+                    zone->background_color = area->background_color;
+                    zone->texture = area->texture;
+                    fread(&zone_flags, sizeof(zone_flags), 1, file);
+                    if (zone_flags & (1 << HAS_BACKGROUND_COLOR)) {
+                        fread(&zone->background_color, sizeof(zone->background_color), 1, file);
+                    }
+                    if (zone_flags & (1 << HAS_TEXTURE)) {
+                        fread(&zone->texture, sizeof(zone->texture), 1, file);
+                    }
+                    if (zone_flags & (1 << HAS_SPAWNER)) {
+                        fread(&zone->spawner_count, sizeof(zone->spawner_count), 1, file);
+                        zone->spawners = (Spawner*) malloc(sizeof(Spawner) * zone->spawner_count);
+                        for (int spawner_index = 0; spawner_index < zone->spawner_count; spawner_index++) {
+                            Spawner* spawner = zone->spawners + spawner_index;
+                            load_spawner(spawner, file);
+                            spawner_zone_references[spawner_list_size] = zone;
+                            spawners[spawner_list_size++] = spawner;
+                            enemy_count += spawner->count;
+                        }
+                        // Set active zone pointer.
+                        // TODO: Support multiple active zones?
+                        area->active_zone = zone;
+                    }
+                    if (zone_flags & (1 << HAS_TRANSLATE)) {
+                        zone->translate_x = read_greedy_int(file);
+                        zone->translate_y = read_greedy_int(file);
+                        zone->applies_translate = true;
+                    }
 
-                if (area->spawn_zone == NULL && zone->type == ZONE_SAFE) {
-                    area->spawn_zone = zone;
-                }
+                    if (area->spawn_zone == NULL && zone->type == ZONE_SAFE) {
+                        area->spawn_zone = zone;
+                    }
 
-                if (area->width < (zone->x - area->x) + zone->width) {
-                    area->width = (zone->x - area->x) + zone->width;
-                }
-                if (area->height < (zone->y - area->y) + zone->height) {
-                    area->height = (zone->y - area->y) + zone->height;
+                    if (area->width < (zone->x - area->x) + zone->width) {
+                        area->width = (zone->x - area->x) + zone->width;
+                    }
+                    if (area->height < (zone->y - area->y) + zone->height) {
+                        area->height = (zone->y - area->y) + zone->height;
+                    }
                 }
             }
 
@@ -180,6 +237,8 @@ void load_map(Map* map, FILE* file) {
                     enemy_set_add(area->enemy_set, enemy);
                 }
             }
+
+            previous_area = area;
         }
 
         if (spawn_region != NULL && !strncmp(spawn_region, region->region_name, spawn_region_length)) {
