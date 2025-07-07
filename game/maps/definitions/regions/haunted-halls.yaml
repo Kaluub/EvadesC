@@ -1457,7 +1457,7 @@ areas:
       y: 0
   - x: last_right
     y: 0
-    width: 236
+    width: 256
     height: 320
     type: safe
   - x: last_right
@@ -1482,7 +1482,7 @@ areas:
       - fake_pumpkin
   - x: last_right
     y: 0
-    width: 236
+    width: 256
     height: 320
     type: safe
   - x: last_right
@@ -1515,7 +1515,7 @@ areas:
       y: 0
   - x: last_right
     y: 0
-    width: 236
+    width: 256
     height: 320
     type: safe
   - x: last_right
@@ -1540,7 +1540,7 @@ areas:
       - fake_pumpkin
   - x: last_right
     y: 0
-    width: 236
+    width: 256
     height: 320
     type: safe
   - x: last_right
@@ -1573,7 +1573,7 @@ areas:
       y: 0
   - x: last_right
     y: 0
-    width: 236
+    width: 256
     height: 320
     type: safe
   - x: last_right
@@ -1604,7 +1604,7 @@ areas:
       - tree
   - x: last_right
     y: 0
-    width: 236
+    width: 256
     height: 320
     type: safe
   - x: last_right
@@ -1637,7 +1637,7 @@ areas:
       y: 0
   - x: last_right
     y: 0
-    width: 236
+    width: 256
     height: 320
     type: safe
   - x: last_right
@@ -1668,7 +1668,7 @@ areas:
       - tree
   - x: last_right
     y: 0
-    width: 236
+    width: 256
     height: 320
     type: safe
   - x: last_right
@@ -1701,7 +1701,7 @@ areas:
       y: 0
   - x: last_right
     y: 0
-    width: 236
+    width: 256
     height: 320
     type: safe
   - x: last_right
@@ -1738,7 +1738,7 @@ areas:
       - tree
   - x: last_right
     y: 0
-    width: 236
+    width: 256
     height: 320
     type: safe
   - x: last_right
@@ -1771,7 +1771,7 @@ areas:
       y: 0
   - x: last_right
     y: 0
-    width: 236
+    width: 256
     height: 320
     type: safe
   - x: last_right
@@ -1809,7 +1809,7 @@ areas:
       - tree
   - x: last_right
     y: 0
-    width: 236
+    width: 256
     height: 320
     type: safe
   - x: last_right
@@ -1842,7 +1842,7 @@ areas:
       y: 0
   - x: last_right
     y: 0
-    width: 236
+    width: 256
     height: 320
     type: safe
   - x: last_right
@@ -1878,7 +1878,7 @@ areas:
       - turning
   - x: last_right
     y: 0
-    width: 236
+    width: 256
     height: 320
     type: safe
   - x: last_right
@@ -1911,7 +1911,7 @@ areas:
       y: 0
   - x: last_right
     y: 0
-    width: 236
+    width: 256
     height: 320
     type: safe
   - x: last_right
@@ -1959,7 +1959,7 @@ areas:
       - turning
   - x: last_right
     y: 0
-    width: 236
+    width: 256
     height: 320
     type: safe
   - x: last_right

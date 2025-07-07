@@ -133,7 +133,7 @@ def write_greedy_uint(number: int, out: BufferedWriter):
     data = ((number & 0xFFFFFFC0) << 2) | (extra_bytes << 6) | (number & 0x3F)
     out.write(data.to_bytes(extra_bytes + 1, "little"))
 
-def write_greedy_int(number: int, out: BufferedWriter=None):
+def write_greedy_int(number: int, out: BufferedWriter):
     assert number > -(1<<29) and number < 1<<29
     extra_bytes = 0
     if number >= 1<<21 or number <= -(1<<21):
@@ -368,8 +368,10 @@ def main():
                             out.write(zone_type.to_bytes(1, "little"))
                             write_greedy_int(zone_x, out)
                             write_greedy_int(zone_y, out)
-                            write_greedy_uint(zone_width, out)
-                            write_greedy_uint(zone_height, out)
+                            assert zone_width % 16 == 0, f"{region["name"]}: {zone_width}"
+                            assert zone_height % 16 == 0, f"{region["name"]}: {zone_height}"
+                            write_greedy_uint(zone_width // 16, out)
+                            write_greedy_uint(zone_height // 16, out)
 
                             handle_common_properties(zone, area_properties, out)
 

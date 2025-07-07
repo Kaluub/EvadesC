@@ -175,8 +175,8 @@ void load_map(Map* map, FILE* file) {
                     fread(&zone->type, sizeof(zone->type), 1, file);
                     zone->x = read_greedy_int(file) + area->x;
                     zone->y = read_greedy_int(file) + area->y;
-                    zone->width = read_greedy_uint(file);
-                    zone->height = read_greedy_uint(file);
+                    zone->width = read_greedy_uint(file) * 16;
+                    zone->height = read_greedy_uint(file) * 16;
                     
                     // Zone properties.
                     uint8_t zone_flags = 0;
