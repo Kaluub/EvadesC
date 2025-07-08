@@ -16,7 +16,7 @@ areas:
     width: 64
     height: 384
     translate:
-      x: 848
+      x: 832
       y: 384
     properties:
       background_color:
@@ -30,7 +30,7 @@ areas:
     width: 64
     height: 448
     translate:
-      x: 848
+      x: 832
       y: 0
     properties:
       background_color:
@@ -44,7 +44,7 @@ areas:
     width: 64
     height: 384
     translate:
-      x: 848
+      x: 832
       y: -384
     properties:
       background_color:

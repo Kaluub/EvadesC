@@ -40,7 +40,7 @@ areas:
     height: 32
     translate:
       x: 0
-      y: -1280
+      y: -1344
   - type: teleport
     x: 32
     y: 160
@@ -90,7 +90,7 @@ areas:
     y: 0
   - height: 32
     translate:
-      x: -1472
+      x: -1440
       y: 7072
     type: exit
     width: 32
@@ -1845,8 +1845,8 @@ areas:
     y: 0
 # Dipole 1
 - name: Dipole 1
-  x: 1952
-  y: 112480
+  x: var x
+  y: var y + 4000
   zones:
   - height: 352
     type: safe

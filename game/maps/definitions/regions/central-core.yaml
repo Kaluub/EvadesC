@@ -12,7 +12,7 @@ areas:
     height: 64
     translate:
       x: 0
-      y: 175456
+      y: 175472
   - type: teleport
     x: 32
     y: 416
@@ -27,7 +27,7 @@ areas:
     width: 32
     height: 480
     translate:
-      x: 133196
+      x: 134496
       y: 0
     properties:
       background_color:

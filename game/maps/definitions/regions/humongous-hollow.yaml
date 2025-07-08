@@ -17,7 +17,7 @@ areas:
   - height: 736
     properties:
       background_color: [0, 0, 0, 100]
-    translate: {x: 268300, y: 240}
+    translate: {x: 262452, y: 112}
     type: teleport
     width: 32
     x: 0

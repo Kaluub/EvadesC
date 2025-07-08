@@ -51,6 +51,13 @@ def are_area_dimensions_shared(area: dict, previous_area: dict):
             or zones[i]["type"] != previous_zones[i]["type"]
         ):
             return False
+        translate = zones[i].get("translate", None)
+        previous_translate = previous_zones[i].get("translate", None)
+        if translate is not None and (
+            translate["x"] != previous_translate["x"]
+            or translate["y"] != previous_translate["y"]
+        ):
+            return False
 
     return True
 
@@ -333,12 +340,15 @@ def main():
                     area_width = 0
                     area_height = 0
 
+                    #assert area_x % 16 == 0, f"{region["name"]}: {area_x}"
+                    #assert area_y % 16 == 0, f"{region["name"]}: {area_y}"
+
                     if previous_area is None:
                         write_greedy_int(area_x, out)
                         write_greedy_int(area_y, out)
                     else:
-                        write_greedy_int(area_x - area_state["last_x"], out)
-                        write_greedy_int(area_y - area_state["last_y"], out)
+                        write_greedy_int((area_x - area_state["last_x"]), out)
+                        write_greedy_int((area_y - area_state["last_y"]), out)
 
                     area_properties = handle_common_properties(area, region_properties, out, previous_area=previous_area)
 
@@ -366,10 +376,12 @@ def main():
 
                             # Write out zone dimensions
                             out.write(zone_type.to_bytes(1, "little"))
-                            write_greedy_int(zone_x, out)
-                            write_greedy_int(zone_y, out)
+                            assert zone_x % 16 == 0, f"{region["name"]}: {zone_x}"
+                            assert zone_y % 16 == 0, f"{region["name"]}: {zone_y}"
                             assert zone_width % 16 == 0, f"{region["name"]}: {zone_width}"
                             assert zone_height % 16 == 0, f"{region["name"]}: {zone_height}"
+                            write_greedy_int(zone_x // 16, out)
+                            write_greedy_int(zone_y // 16, out)
                             write_greedy_uint(zone_width // 16, out)
                             write_greedy_uint(zone_height // 16, out)
 

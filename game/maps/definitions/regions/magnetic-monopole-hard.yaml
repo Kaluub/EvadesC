@@ -59,7 +59,7 @@ areas:
     y: 0
   - height: 32
     translate:
-      x: -1472
+      x: -1440
       y: 7072
     type: exit
     width: 32
@@ -1814,8 +1814,8 @@ areas:
     y: 0
 # Dipole 1
 - name: Dipole 1
-  x: 96672
-  y: 112480
+  x: var x
+  y: var y + 4000
   zones:
   - height: 352
     type: safe

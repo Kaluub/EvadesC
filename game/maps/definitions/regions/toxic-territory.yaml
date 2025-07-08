@@ -18,7 +18,7 @@ areas:
     height: 32
     translate:
       x: -1952
-      y: -63672
+      y: -63648
   - type: teleport
     x: 32
     y: 160
@@ -26,7 +26,7 @@ areas:
     height: 32
     translate:
       x: 0
-      y: 1280
+      y: 1344
   - type: teleport
     x: 0
     y: 0

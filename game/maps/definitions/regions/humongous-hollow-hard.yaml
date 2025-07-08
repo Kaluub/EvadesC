@@ -10,7 +10,7 @@ areas:
       - 0
       - 100
     translate:
-      x: -268108
+      x: -262208
       y: 0
     type: teleport
     width: 64
@@ -24,7 +24,7 @@ areas:
       - 0
       - 100
     translate:
-      x: -268108
+      x: -262208
       y: -224
     type: teleport
     width: 64

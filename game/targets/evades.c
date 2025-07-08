@@ -58,7 +58,11 @@ bool writing_map = false;
 bool done_writing_map = false;
 pthread_t writing_thread;
 void* write_map(void* _) {
-    system("WORLD_DIR=~/EvadesClassic/server/maps/definitions python3 maps/packer.py");
+    if (IsKeyDown(KEY_LEFT_CONTROL)) {
+        system("WORLD_DIR=~/EvadesClassic/server/maps/definitions python3 maps/packer.py");
+    } else {
+        system("python3 maps/packer.py");
+    }
     done_writing_map = true;
     return NULL;
 }
@@ -256,6 +260,10 @@ void game_tick() {
                 if (zone.background_color != 0) {
                     DrawRectangle(zone.x, zone.y, zone.width, zone.height, GetColor(zone.background_color));
                 }
+            }
+
+            if (area.x % 32 != 0 || area.y % 32 != 0) {
+                DrawRectangle(area.x, area.y, area.width, area.height, ColorAlpha(RED, 0.6));
             }
 
             if (IsKeyDown(KEY_TAB)) {

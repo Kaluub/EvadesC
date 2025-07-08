@@ -36,7 +36,7 @@ areas:
     type: teleport
     translate:
       x: 0
-      y: 23952
+      y: 24000
   
   - x: 0
     y: 64

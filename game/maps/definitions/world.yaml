@@ -11,7 +11,7 @@ regions:
     x: 1952
     y: 0
   - file: regions/central-core-hard.yaml
-    x: 135052
+    x: 136352
     y: 0
   - file: regions/catastrophic-core.yaml
     x: 272608
@@ -29,34 +29,31 @@ regions:
     x: 1952
     y: 16000
   - file: regions/wacky-wonderland-hard.yaml
-    x: 270104
-    y: 16000
-  - file: regions/switch-station.yaml
-    x: 540208
+    x: 256576
     y: 16000
   - file: regions/glacial-gorge.yaml
     x: 1952
     y: 17440
   - file: regions/glacial-gorge-hard.yaml
-    x: 135052
+    x: 136352
     y: 17440
   - file: regions/vicious-valley.yaml
     x: 1952
     y: 18880
   - file: regions/vicious-valley-hard.yaml
-    x: 135052
+    x: 136352
     y: 18880
   - file: regions/humongous-hollow.yaml
     x: 1952
     y: 20320
   - file: regions/humongous-hollow-hard.yaml
-    x: 270104
+    x: 264256
     y: 20320
   - file: regions/elite-expanse.yaml
     x: 1952
     y: 21760
   - file: regions/elite-expanse-hard.yaml
-    x: 270104
+    x: 264256
     y: 21760
   - file: regions/endless-echo.yaml
     x: 1952
@@ -68,13 +65,13 @@ regions:
     x: 1952
     y: 24640
   - file: regions/dangerous-district-hard.yaml
-    x: 270104
+    x: 264256
     y: 24640
   - file: regions/quiet-quarry.yaml
     x: 1952
     y: 26080
   - file: regions/quiet-quarry-hard.yaml
-    x: 135052
+    x: 136352
     y: 26080
   - file: regions/monumental-migration.yaml
     x: 1952
@@ -86,7 +83,7 @@ regions:
     x: 1952
     y: 28960
   - file: regions/ominous-occult-hard.yaml
-    x: 135052
+    x: 136352
     y: 28928
   # These placeholders were previously the location of CC/VV/GG hard map variants.
   # Find an easier way to move maps like RR, BB & PP up/down in the world
@@ -98,7 +95,7 @@ regions:
     x: 1952
     y: 31840
   - file: regions/frozen-fjord-hard.yaml
-    x: 135052
+    x: 136352
     y: 31840
   - file: regions/restless-ridge.yaml
     x: 0
@@ -119,31 +116,31 @@ regions:
     x: 1952
     y: 107040
   - file: regions/toxic-territory-hard.yaml
-    x: 96652
+    x: 92832
     y: 107040
   - file: regions/magnetic-monopole.yaml
     x: 1952
     y: 108480
   - file: regions/magnetic-monopole-hard.yaml
-    x: 96652
+    x: 86560
     y: 108480
   #- file: regions/assorted-alcove.yaml
   #  x: 1952
   #  y: 117152
   #- file: regions/assorted-alcove-hard.yaml
-  #  x: 96652
+  #  x: 97952
   #  y: 117152
   - file: regions/burning-bunker.yaml
     x: 0
     y: 119592
   - file: regions/burning-bunker-hard.yaml
-    x: 96652
+    x: 86560
     y: 119592
   - file: regions/grand-garden.yaml
     x: 1952
     y: 137192
   - file: regions/grand-garden-hard.yaml
-    x: 96652
+    x: 97952
     y: 137192
   - file: regions/cyber-castle.yaml
     x: 1952
