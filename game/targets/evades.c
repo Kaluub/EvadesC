@@ -262,10 +262,6 @@ void game_tick() {
                 }
             }
 
-            if (area.x % 32 != 0 || area.y % 32 != 0) {
-                DrawRectangle(area.x, area.y, area.width, area.height, ColorAlpha(RED, 0.6));
-            }
-
             if (IsKeyDown(KEY_TAB)) {
                 DrawText(
                     TextFormat(

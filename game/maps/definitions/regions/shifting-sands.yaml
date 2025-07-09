@@ -2434,7 +2434,6 @@ areas:
     x: 0
     y: 0
   - height: 480
-    translate: {x: 160, y: 0}
     type: removal
     width: 160
     x: 3040

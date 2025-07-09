@@ -18,7 +18,7 @@ areas:
     width: 32
     height: 192
     translate:
-      x: 94796
+      x: 84704
       y: 0
     properties:
       background_color:

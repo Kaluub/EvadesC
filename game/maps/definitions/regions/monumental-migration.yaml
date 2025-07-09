@@ -22265,9 +22265,6 @@ areas:
     x: 64
     y: 0
   - height: last_height
-    translate:
-      x: 160
-      y: 0
     type: removal
     width: 160
     x: last_right
