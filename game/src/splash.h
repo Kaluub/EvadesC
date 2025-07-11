@@ -3,7 +3,7 @@
 #include <stdint.h>
 
 #define MAX_SPLASH_MESSAGES 8
-#define MAX_SPLASH_LENGTH 64
+#define MAX_SPLASH_LENGTH 128
 
 // Splash messages data structure:
 

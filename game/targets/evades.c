@@ -54,16 +54,27 @@ void reload_map(GameState* state) {
 
 #ifdef DEBUG
 #ifndef PLATFORM_WEB
-bool writing_map = false;
-bool done_writing_map = false;
+enum WriteMapState {
+    NOT_WRITING,
+    WRITING,
+    WRITING_SUCCESS,
+    WRITING_FAILED,
+};
+
+uint8_t write_map_state = NOT_WRITING;
 pthread_t writing_thread;
 void* write_map(void* _) {
+    int result = 0;
     if (IsKeyDown(KEY_LEFT_CONTROL)) {
-        system("WORLD_DIR=~/EvadesClassic/server/maps/definitions python3 maps/packer.py");
+        result = system("WORLD_DIR=~/EvadesClassic/server/maps/definitions python3 maps/packer.py");
     } else {
-        system("python3 maps/packer.py");
+        result = system("python3 maps/packer.py");
     }
-    done_writing_map = true;
+    if (result != 0) {
+        write_map_state = WRITING_FAILED;
+    } else {
+        write_map_state = WRITING_SUCCESS;
+    }
     return NULL;
 }
 #endif
@@ -179,22 +190,24 @@ void game_tick() {
 
     if (IsKeyPressed(KEY_L)) {
 #ifndef PLATFORM_WEB
-        if (IsKeyDown(KEY_LEFT_SHIFT) && !writing_map) {
+        if (IsKeyDown(KEY_LEFT_SHIFT) && write_map_state == NOT_WRITING) {
             // Requires dev environment.
-            writing_map = true;
+            write_map_state = WRITING;
             add_splash_message(&state.splash_messages, "Writing world.bin...");
-            pthread_create(&writing_thread, NULL, write_map, &state);
+            pthread_create(&writing_thread, NULL, write_map, NULL);
         } else {
             reload_map(&state);
         }
     }
-    if (writing_map && done_writing_map) {
+    if (write_map_state == WRITING_SUCCESS) {
         reload_map(&state);
-        writing_map = false;
-        done_writing_map = false;
+        write_map_state = NOT_WRITING;
     }
-#endif
-#ifdef PLATFORM_WEB
+    if (write_map_state == WRITING_FAILED) {
+        add_splash_message(&state.splash_messages, "Writing failed, see console for error. Continuing with currently loaded world.");
+        write_map_state = NOT_WRITING;
+    }
+#else
         reload_map(&state);
     }
 #endif

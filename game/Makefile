@@ -18,7 +18,8 @@ maps/world.bin: maps/definitions/regions/*.yaml maps/definitions/world.yaml maps
 debug:
 	make $(OUT) EXTRA='-g -DDEBUG -fsanitize=undefined'
 
-$(OUT): maps/world.bin targets/evades.c $(SRC) $(HEADERS) 
+$(OUT): targets/evades.c $(SRC) $(HEADERS)
+	make maps/world.bin
 	gcc -o evades targets/evades.c $(SRC) -Wall -Wextra $(LIB) $(EXTRA)
 
 web: maps/world.bin targets/evades.c $(SRC) $(HEADERS)
