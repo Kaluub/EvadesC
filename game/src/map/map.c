@@ -173,8 +173,8 @@ void load_map(Map* map, FILE* file) {
                     zone->spawners = NULL;
                     zone->applies_translate = false;
                     fread(&zone->type, sizeof(zone->type), 1, file);
-                    zone->x = read_greedy_int(file) * 16 + area->x;
-                    zone->y = read_greedy_int(file) * 16 + area->y;
+                    zone->x = read_greedy_int(file) * 8 + area->x;
+                    zone->y = read_greedy_int(file) * 8 + area->y;
                     zone->width = read_greedy_uint(file) * 16;
                     zone->height = read_greedy_uint(file) * 16;
                     

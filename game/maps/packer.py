@@ -113,6 +113,7 @@ def handle_common_properties(
         write_greedy_int(y, out)
     return {"background_color": background_color, "texture": texture, "only_write_spawner": only_write_spawner}
 
+missing_enemy_types = set()
 def write_spawners(spawners: list, out: BufferedWriter):
     out.write(len(spawners).to_bytes(1, "little"))
     for spawner in spawners:
@@ -121,7 +122,10 @@ def write_spawners(spawners: list, out: BufferedWriter):
         for enemy_type in spawner_types:
             enemy_type_num = enemy_types.get(enemy_type, None)
             if enemy_type_num is None:
-                raise ValueError(f"{enemy_type} is not implemented")
+                if enemy_type not in missing_enemy_types:
+                    print(f"WARNING: Enemy {enemy_type} is not implemented, defaulting to normal.")
+                    missing_enemy_types.add(enemy_type)
+                enemy_type_num = 2
             out.write(enemy_type_num.to_bytes(1, "little"))
         out.write(struct.pack("<f", spawner.get("speed", 0)))
         write_greedy_uint(spawner.get("count", 1), out)
@@ -225,12 +229,12 @@ def main():
 
                             # Write out zone dimensions
                             out.write(zone_type.to_bytes(1, "little"))
-                            assert zone_x % 16 == 0, f"{region["name"]}: {zone_x}"
-                            assert zone_y % 16 == 0, f"{region["name"]}: {zone_y}"
+                            assert zone_x % 8 == 0, f"{region["name"]}: {zone_x}"
+                            assert zone_y % 8 == 0, f"{region["name"]}: {zone_y}"
                             assert zone_width % 16 == 0, f"{region["name"]}: {zone_width}"
                             assert zone_height % 16 == 0, f"{region["name"]}: {zone_height}"
-                            write_greedy_int(zone_x // 16, out)
-                            write_greedy_int(zone_y // 16, out)
+                            write_greedy_int(zone_x // 8, out)
+                            write_greedy_int(zone_y // 8, out)
                             write_greedy_uint(zone_width // 16, out)
                             write_greedy_uint(zone_height // 16, out)
 

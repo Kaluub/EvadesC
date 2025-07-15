@@ -143,6 +143,7 @@ zone_types = {
     "victory": 5,
     "removal": 6,
     "dummy": 7,
+    "powered_switch": 7,
 }
 
 textures = {

@@ -1,5 +1,6 @@
 .vscode/
 raylib/
+__pycache__/
 game/lib/
 game/maps/world.bin
 game/evades
