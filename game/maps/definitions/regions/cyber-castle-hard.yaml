@@ -425,9 +425,24 @@ areas:
       speed: 90
       types:
       - thunderbolt
-    - count: 14
-      radius: 18
-      speed: 150
+    - count: 1
+      radius: 48
+      speed: 90
+      angle: 90
+      x: 368
+      y: 240
+      electrical_id: 1
+      projectile_path: [1, all_the_way_to, 2]
+      types:
+      - electrical
+    - count: 1
+      radius: 48
+      speed: 90
+      angle: 270
+      x: 2832
+      y: 240
+      electrical_id: 2
+      projectile_path: [1, all_the_way_to, 2]
       types:
       - electrical
     - count: 8

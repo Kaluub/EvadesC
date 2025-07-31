@@ -12,14 +12,13 @@ default: debug
 
 .PHONY: release debug web clean
 
-maps/world.bin: maps/definitions/regions/*.yaml maps/definitions/world.yaml maps/packer.py
+maps/world.bin: maps/definitions/regions/*.yaml maps/definitions/world.yaml maps/packer.py maps/packer_data.py
 	python3 maps/packer.py
 
 debug:
 	make $(OUT) EXTRA='-g -DDEBUG -fsanitize=undefined'
 
-$(OUT): targets/evades.c $(SRC) $(HEADERS)
-	make maps/world.bin
+$(OUT): maps/world.bin targets/evades.c $(SRC) $(HEADERS)
 	gcc -o evades targets/evades.c $(SRC) -Wall -Wextra $(LIB) $(EXTRA)
 
 web: maps/world.bin targets/evades.c $(SRC) $(HEADERS)

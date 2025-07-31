@@ -44,12 +44,6 @@ areas:
       speed: 90
       types:
       - normal
-    - count: 3
-      move_clockwise: false
-      radius: 0
-      speed: 0
-      types:
-      - wall
     type: active
     width: 5120
     x: last_right
@@ -90,12 +84,6 @@ areas:
       speed: 120
       types:
       - normal
-    - count: 3
-      move_clockwise: false
-      radius: 0
-      speed: 0
-      types:
-      - wall
     type: active
     width: 5120
     x: last_right
@@ -2535,12 +2523,6 @@ areas:
       speed: 192
       types:
       - normal
-    - count: 3
-      move_clockwise: false
-      radius: 0
-      speed: 0
-      types:
-      - wall
     type: active
     width: 5120
     x: last_right

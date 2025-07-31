@@ -108,6 +108,7 @@ enum EnemyType {
     ENEMY_TYPE_THUNDERBOLT,
     ENEMY_TYPE_STATIC,
     ENEMY_TYPE_ELECTRICAL,
+    ENEMY_TYPE_POWERED,
     ENEMY_TYPE_PREDICTION_SNIPER,
     ENEMY_TYPE_RING_SNIPER,
     ENEMY_TYPE_CHARGING,
@@ -131,10 +132,13 @@ enum EnemyType {
     ENEMY_TYPE_SUMMONER,
     ENEMY_TYPE_SLASHER,
     ENEMY_TYPE_LOTUS_FLOWER,
-    ENEMY_TYPE_WAVERING,
-    ENEMY_TYPE_CURSED,
-    ENEMY_TYPE_EXPANDER,
-    ENEMY_TYPE_SILENCE,
+    ENEMY_TYPE_VOID_CRAWLER,
+    ENEMY_TYPE_VOID_SWARM,
+    ENEMY_TYPE_VOID_SNIPER,
+    ENEMY_TYPE_DRIPPING,
+    ENEMY_TYPE_VOID_DRAIN,
+    ENEMY_TYPE_WITHERING,
+    ENEMY_TYPE_SUPERSTAR,
 };
 
 static const uint32_t enemy_colors[] = {
@@ -242,7 +246,8 @@ static const uint32_t enemy_colors[] = {
     0xffbe6eff, // sparking_enemy
     0xf4ff8cff, // thunderbolt_enemy
     0xf5a462ff, // static_enemy
-    0xffff00ff, // electrical_enemy
+    0x2fded7ff, // electrical_enemy
+    0xc2c2c2ff, // powered_enemy
     0xd14f84ff, // prediction_sniper_enemy
     0xb5deebff, // ring_sniper_enemy
     0x374037ff, // charging_enemy
@@ -266,8 +271,11 @@ static const uint32_t enemy_colors[] = {
     0x91bbffff, // summoner_enemy
     0x363636ff, // slasher_enemy
     0xdededeff, // lotus_flower_enemy
-    0x921818ff, // wavering_enemy
-    0x57121fff, // cursed_enemy
-    0xffbf7cff, // expander_enemy
-    0x420808ff, // silence_enemy
+    0x1c0a2dff, // void_crawler_enemy
+    0x393042ff, // void_swarm_enemy
+    0x40144bff, // void_sniper_enemy
+    0x100812ff, // dripping_enemy
+    0x261235ff, // void_drain_enemy
+    0x752656ff, // withering_enemy
+    0xffffffff, // superstar_enemy
 };

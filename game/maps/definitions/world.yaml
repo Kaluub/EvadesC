@@ -148,7 +148,7 @@ regions:
   - file: regions/cyber-castle-hard.yaml
     x: 24352
     y: 147952
-  - file: regions/research-lab.yaml
+  - file: regions/lonely-laboratory.yaml
     x: 5632
     y: 147952
   - file: regions/shifting-sands.yaml
@@ -166,3 +166,15 @@ regions:
   - file: regions/terrifying-temple.yaml
     x: 1952
     y: 175152
+  # - file: regions/powered-plains.yaml
+  #   x: 1952
+  #   y: 176592
+  - file: regions/ancient-abyss.yaml
+    x: 1952
+    y: 178032
+  - file: regions/vast-void.yaml
+    x: 1952
+    y: 179472
+  - file: regions/pristine-purgatory.yaml
+    x: 1952
+    y: 180912

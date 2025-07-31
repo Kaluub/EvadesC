@@ -10,6 +10,7 @@ areas:
 - x: var x
   y: var y
   zones:
+  # To Infinite Inferno
   - x: 0
     y: 0
     width: 320
@@ -18,6 +19,7 @@ areas:
     translate:
       x: 0
       y: -24000
+  # To Terrifying Temple
   - x: 0
     y: 416
     width: 320

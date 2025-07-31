@@ -9854,3 +9854,124 @@ areas:
     width: 160
     x: 3040
     y: 0
+- x: last_right + 3200
+  y: last_y
+  zones:
+  - height: 480
+    type: safe
+    width: 256
+    x: 0
+    y: 0
+  - height: last_height
+    type: active
+    width: 1280
+    x: last_right
+    y: 0
+    spawner:
+    - count: 1
+      radius: 40
+      pattern: quadspiral
+      immune: false
+      speed: 0
+      turn_speed: 150
+      shot_interval: 20
+      turn_acceleration: 5
+      types:
+      - frost_giant
+  - height: 480
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: 480
+    type: exit
+    width: 64
+    translate:
+      x: 160
+      y: 0
+    x: last_right
+    y: 0
+- x: last_right
+  y: last_y
+  zones:
+  - height: 480
+    type: exit
+    width: 64
+    translate:
+      x: -160
+      y: 0
+    x: 0
+    y: 0
+  - height: 480
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    type: active
+    width: 1280
+    x: last_right
+    y: 0
+    spawner:
+    - count: 1
+      radius: 40
+      pattern: quadspiral
+      immune: false
+      speed: 0
+      turn_speed: 30
+      projectile_radius: 30
+      shot_interval: 20
+      turn_acceleration: 2
+      types:
+      - frost_giant
+  - height: 480
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: 480
+    type: exit
+    width: 64
+    translate:
+      x: 160
+      y: 0
+    x: last_right
+    y: 0
+- x: last_right
+  y: last_y
+  zones:
+  - height: 480
+    type: exit
+    width: 64
+    translate:
+      x: -160
+      y: 0
+    x: 0
+    y: 0
+  - height: 480
+    type: safe
+    width: 64
+    x: last_right
+    y: 0
+  - height: last_height
+    type: active
+    width: 1280
+    x: last_right
+    y: 0
+    spawner:
+    - count: 1
+      radius: 40
+      pattern: quadspiral
+      immune: false
+      speed: 0
+      turn_speed: 150
+      projectile_radius: 3
+      shot_interval: 20
+      turn_acceleration: 5
+      types:
+      - frost_giant
+  - height: 480
+    type: safe
+    width: 256
+    x: last_right
+    y: 0

@@ -4,7 +4,7 @@ areas:
   y: var y
   zones:
   - height: 128
-    translate: {x: -160, y: 0}
+    translate: {x: -176, y: 0}
     type: teleport
     width: 64
     x: 0
