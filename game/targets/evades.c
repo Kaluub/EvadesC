@@ -98,6 +98,10 @@ float check_monitor_time = 0.0f;
 float speed = 500.0f;
 
 Texture2D tiles[2];
+Texture2D help_texture;
+
+float help_texture_alpha = 1.0f;
+float help_texture_fade_time = 10.0f;
 
 void game_tick() {
     timing_start(); // Tick time.
@@ -127,6 +131,23 @@ void game_tick() {
         add_splash_message(&state.splash_messages, TextFormat("Framerate is now %s.", options[capped_framerate]));
     }
 #endif
+
+    if (help_texture_fade_time > 0.0f) {
+        help_texture_fade_time -= frame_time;
+    } else if (help_texture_alpha > 0.0f) {
+        // Help texture fades over 0.75s
+        help_texture_alpha -= frame_time / (3.0f/4);
+    }
+
+    if (IsKeyPressed(KEY_H)) {
+        if (help_texture_alpha < 1.0f) {
+            help_texture_alpha = 1.0f;
+            help_texture_fade_time = 15.0f;
+        } else {
+            help_texture_alpha = 0.0f;
+            help_texture_fade_time = 0.0f;
+        }
+    }
 
     if (IsKeyPressed(KEY_T)) {
         render_translations = !render_translations;
@@ -379,6 +400,10 @@ void game_tick() {
     DrawText(text, 10, 10, 20, LIME);
 #endif
     process_splash_messages(&state.splash_messages);
+    if (help_texture_alpha > 0) {
+        float help_scale = fminf(1.0, (0.5 * GetScreenHeight()) / (float)help_texture.height);
+        DrawTextureEx(help_texture, (Vector2) {2, (GetScreenHeight() - help_texture.height * help_scale)/2}, 0, help_scale, ColorAlpha(WHITE, help_texture_alpha));
+    }
     render_end();
     draw_timings();
     EndDrawing();
@@ -412,8 +437,13 @@ int main() {
     state.camera.zoom = 1;
     tiles[TEXTURE_NONE] = LoadTexture("assets/tile.png");
     SetTextureFilter(tiles[TEXTURE_NONE], TEXTURE_FILTER_ANISOTROPIC_16X);
+    GenTextureMipmaps(&tiles[TEXTURE_NONE]);
     tiles[TEXTURE_LEAVES] = LoadTexture("assets/leaves.png");
     SetTextureFilter(tiles[TEXTURE_LEAVES], TEXTURE_FILTER_ANISOTROPIC_16X);
+    GenTextureMipmaps(&tiles[TEXTURE_LEAVES]);
+
+    help_texture = LoadTexture("assets/help.png");
+    SetTextureFilter(help_texture, TEXTURE_FILTER_ANISOTROPIC_16X);
 
     init_debug_state();
     init_splash_messages(&state.splash_messages);

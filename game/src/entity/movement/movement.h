@@ -10,6 +10,7 @@ typedef struct NormalMovementData {
     float vx;
     float vy;
 } NormalMovementData;
+
 void set_angle(NormalMovementData* data, float angle);
 
 movement_function get_movement_function(uint8_t enemy_type);
