@@ -1245,6 +1245,16 @@ areas:
     width: 64
     x: last_right
     y: 0
+  - type: teleport
+    height: 32
+    width: 32
+    x: 4160
+    y: 224
+    requirements:
+    - haunted_halls_victory
+    translate:
+      x: 4896
+      y: -80
   assets:
   - type: light_region
     x: 0
@@ -1380,6 +1390,7 @@ areas:
   - {type: torch, upside_down: true, x: 8080, y: 480}
   - {type: torch, x: 8300, y: -36}
   - {type: torch, upside_down: true, x: 8300, y: 480}
+  - {type: torch, x: 4170, y: 222}
 # Victory
 - x: last_right
   y: last_y
@@ -1390,13 +1401,6 @@ areas:
     - 39
     - 0
     - 130
-  assets:
-  - type: wall
-    texture:
-    x: 608
-    y: -352
-    width: 704
-    height: 1184
   zones:
   - height: 480
     translate:
@@ -1417,24 +1421,8 @@ areas:
     x: last_right
     y: 0
     translate:
-      x: 211352
+      x: 211416
       y: 41600
-  - x: 1312
-    y: last_y
-    height: 320
-    width: 64
-    type: teleport
-    translate:
-      x: 160
-      y: 0
-  - x: 1312
-    y: 320
-    height: 160
-    width: 64
-    type: teleport
-    translate:
-      x: 160
-      y: -160
 # Deeps Woods 1
 - x: last_right
   y: last_y
@@ -1453,8 +1441,8 @@ areas:
     width: 64
     type: teleport
     translate:
-      x: -968
-      y: 0
+      x: -8736
+      y: 80
   - x: last_right
     y: 0
     width: 256

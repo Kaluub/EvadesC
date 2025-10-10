@@ -1,7 +1,8 @@
 name: Lonely Laboratory
+warping_requirements:
+- research_lab_discovered
 properties:
   friction: 0.75
-  warping_disabled: True
   background_color: [38, 92, 255, 125]
 areas:
 - name: Research Facility

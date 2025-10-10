@@ -4,7 +4,7 @@ areas:
   y: var y
   zones:
   - height: 128
-    translate: {x: -176, y: 0}
+    translate: {x: -160, y: 0}
     type: teleport
     width: 64
     x: 0
@@ -2440,7 +2440,7 @@ areas:
     y: 0
   - {height: 480, type: victory, width: 2976, x: 64, y: 0}
 name: Shifting Sands
+warping_disabled: true
 properties:
-  warping_disabled: true
   background_color: [255, 159, 15, 100]
   friction: 0.75

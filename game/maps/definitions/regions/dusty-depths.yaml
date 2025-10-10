@@ -1,4 +1,5 @@
 name: Dusty Depths
+warping_disabled: true
 properties:
   background_color:
     - 255
@@ -6,7 +7,6 @@ properties:
     - 0
     - 140
   friction: 0.75
-  warping_disabled: true
 areas:
   - name: Dune Sinkhole
     properties:

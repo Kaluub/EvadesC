@@ -19,7 +19,7 @@ areas:
     height: 64
     translate:
       x: 0
-      y: -2624
+      y: -2720
   - type: teleport
     x: 32
     y: 416

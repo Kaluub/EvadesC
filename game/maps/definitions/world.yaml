@@ -178,3 +178,6 @@ regions:
   - file: regions/pristine-purgatory.yaml
     x: 1952
     y: 180912
+  - file: regions/voidborne.yaml
+    x: 1952
+    y: 182352

@@ -1,11 +1,11 @@
 name: Coupled Corridors
+warping_disabled: true
 properties:
   background_color:
     - 187
     - 170
     - 85
     - 80
-  warping_disabled: true
   death_timer: 60000
   friction: 0.75
 areas:

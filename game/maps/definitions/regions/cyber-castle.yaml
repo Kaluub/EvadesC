@@ -938,14 +938,14 @@ areas:
     pellet_count: 0
   zones:
   - height: 480
-    translate: {x: -176, y: 0}
+    translate: {x: -160, y: 0}
     type: exit
     width: 64
     x: 0
     y: 0
   - {height: 480, type: safe, width: 480, x: 64, y: 0}
   - height: 480
-    translate: {x: 176, y: 0}
+    translate: {x: 160, y: 0}
     type: exit
     width: 64
     x: 544
@@ -1014,6 +1014,13 @@ areas:
       y: 480
       types:
       - aibot
+    - count: 1
+      radius: 0
+      speed: 0
+      x: 480
+      y: 480
+      types:
+      - network_error
     type: active
     width: 960
     x: 0
@@ -1053,6 +1060,13 @@ areas:
       y: 480
       types:
       - wabot
+    - count: 1
+      radius: 0
+      speed: 0
+      x: 480
+      y: 480
+      types:
+      - network_error
     type: active
     width: 960
     x: 0
@@ -1092,6 +1106,13 @@ areas:
       y: 480
       types:
       - eabot
+    - count: 1
+      radius: 0
+      speed: 0
+      x: 480
+      y: 480
+      types:
+      - network_error
     type: active
     width: 960
     x: 0
@@ -1131,6 +1152,13 @@ areas:
       y: 480
       types:
       - fibot
+    - count: 1
+      radius: 0
+      speed: 0
+      x: 480
+      y: 480
+      types:
+      - network_error
     type: active
     width: 960
     x: 0
@@ -1170,6 +1198,13 @@ areas:
       y: 576
       types:
       - cybot
+    - count: 1
+      radius: 0
+      speed: 0
+      x: 576
+      y: 576
+      types:
+      - network_error
     - count: 1
       radius: 18
       speed: 0

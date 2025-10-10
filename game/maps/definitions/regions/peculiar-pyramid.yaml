@@ -51,7 +51,7 @@ areas:
     x: 2880
     y: 416
   - height: 128
-    translate: {x: 128, y: 0}
+    translate: {x: 160, y: 0}
     type: teleport
     width: 64
     x: 3072

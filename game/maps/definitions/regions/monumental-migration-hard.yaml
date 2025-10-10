@@ -1,11 +1,11 @@
 name: Monumental Migration Hard
+warping_disabled: true
 properties:
   background_color:
   - 183
   - 133
   - 230
   - 70
-  warping_disabled: true
   max_level: 1000
   friction: 0.75
 areas:

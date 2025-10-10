@@ -1,7 +1,7 @@
 name: Assorted Alcove Hard
+warping_disabled: true
 properties:
   friction: 0.75
-  warping_disabled: true
   background_color:
   - 105
   - 70

@@ -1,8 +1,8 @@
-share_to_drive: false
 name: Switch Station
+share_to_drive: false
+warping_disabled: true
 properties:
   friction: 0.75
-  warping_disabled: true
 areas:
 - x: var x
   y: var y

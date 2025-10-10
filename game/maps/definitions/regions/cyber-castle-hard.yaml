@@ -230,7 +230,7 @@ areas:
   zones:
   - height: 480
     translate:
-      x: -176
+      x: -160
       y: 0
     type: exit
     width: 64
@@ -243,7 +243,7 @@ areas:
     y: 64
   - height: 480
     translate:
-      x: 176
+      x: 160
       y: 0
     type: exit
     width: 64
@@ -1416,7 +1416,7 @@ areas:
     y: 0
   - height: 480
     translate:
-      x: -176
+      x: -160
       y: 0
     type: exit
     width: 64
@@ -1424,7 +1424,7 @@ areas:
     y: 0
   - height: 480
     translate:
-      x: 176
+      x: 160
       y: 0
     type: exit
     width: 64
@@ -1556,6 +1556,13 @@ areas:
       - icbot
       x: 480
       y: 480
+    - count: 1
+      radius: 0
+      speed: 0
+      types:
+      - network_error
+      x: 480
+      y: 480
     type: active
     width: 960
     x: 0
@@ -1602,6 +1609,13 @@ areas:
       speed: 240
       types:
       - elbot
+      x: 480
+      y: 480
+    - count: 1
+      radius: 0
+      speed: 0
+      types:
+      - network_error
       x: 480
       y: 480
     type: active
@@ -1652,6 +1666,13 @@ areas:
       - plbot
       x: 480
       y: 480
+    - count: 1
+      radius: 0
+      speed: 0
+      types:
+      - network_error
+      x: 480
+      y: 480
     type: active
     width: 960
     x: 0
@@ -1698,6 +1719,13 @@ areas:
       speed: 240
       types:
       - mebot
+      x: 480
+      y: 480
+    - count: 1
+      radius: 0
+      speed: 0
+      types:
+      - network_error
       x: 480
       y: 480
     type: active
@@ -1748,6 +1776,13 @@ areas:
       - libot
       x: 480
       y: 480
+    - count: 1
+      radius: 0
+      speed: 0
+      types:
+      - network_error
+      x: 480
+      y: 480
     type: active
     width: 960
     x: 0
@@ -1796,6 +1831,13 @@ areas:
       - dabot
       x: 480
       y: 480
+    - count: 1
+      radius: 0
+      speed: 0
+      types:
+      - network_error
+      x: 480
+      y: 480
     type: active
     width: 960
     x: 0
@@ -1837,6 +1879,13 @@ areas:
       speed: 120
       types:
       - cybot
+      x: 576
+      y: 576
+    - count: 1
+      radius: 0
+      speed: 0
+      types:
+      - network_error
       x: 576
       y: 576
     - count: 1

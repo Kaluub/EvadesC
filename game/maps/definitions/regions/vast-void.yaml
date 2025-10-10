@@ -1,7 +1,9 @@
 name: Vast Void
+warping_requirements:
+- abyss_completed
 properties:
   friction: 0.75
-  warping_disabled: True
+  pellet_multiplier: 3
   background_color:
   - 8
   - 2
@@ -12,10 +14,38 @@ areas:
 - x: var x
   y: var y
   zones:
-  - type: safe
-    x: 0
+  - x: 0
     y: 0
-    width: 320
+    width: 32
+    height: 192
+    type: teleport
+    translate:
+      x: 96
+      y: -1296
+    properties:
+      background_color:
+      - 0
+      - 0
+      - 0
+      - 200
+  - x: 0
+    y: 288
+    width: 32
+    height: 192
+    type: teleport
+    translate:
+      x: 96
+      y: 1296
+    properties:
+      background_color:
+      - 0
+      - 0
+      - 0
+      - 150
+  - type: safe
+    x: 32
+    y: 0
+    width: 288
     height: 480
     properties:
       minimum_speed: 300
@@ -26,17 +56,11 @@ areas:
     height: 480
     spawner:
     - types:
-      - void_drain
-      count: 1
-      radius: 30
-      speed: 0
-      x: 600
-      y: 240
-    - types:
       - homing
-      count: 60
+      count: 45
       radius: 6
       speed: 90
+      increment: 3
   - type: safe
     x: last_right
     y: 0
@@ -50,6 +74,13 @@ areas:
     translate:
       x: 160
       y: 0
+  - height: 96
+    properties:
+      minimum_speed: 300
+    type: safe
+    width: 32
+    x: 0
+    y: 192
 # 2
 - x: last_right
   y: last_y
@@ -100,14 +131,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 3
 - x: last_right
   y: last_y
@@ -163,14 +199,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 4
 - x: last_right
   y: last_y
@@ -226,14 +267,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 5
 - x: last_right
   y: last_y
@@ -294,14 +340,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 6
 - x: last_right
   y: last_y
@@ -362,14 +413,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 7
 - x: last_right
   y: last_y
@@ -425,14 +481,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 8
 - x: last_right
   y: last_y
@@ -493,14 +554,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 9
 - x: last_right
   y: last_y
@@ -556,14 +622,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 10
 - x: last_right
   y: last_y
@@ -624,14 +695,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
   boss: true
 # 11
 - x: last_right
@@ -688,14 +764,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 12
 - x: last_right
   y: last_y
@@ -756,14 +837,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 13
 - x: last_right
   y: last_y
@@ -824,14 +910,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 14
 - x: last_right
   y: last_y
@@ -892,14 +983,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 15
 - x: last_right
   y: last_y
@@ -960,14 +1056,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 16
 - x: last_right
   y: last_y
@@ -1028,14 +1129,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 17
 - x: last_right
   y: last_y
@@ -1096,14 +1202,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 18
 - x: last_right
   y: last_y
@@ -1159,14 +1270,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 19
 - x: last_right
   y: last_y
@@ -1227,14 +1343,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 20
 - x: last_right
   y: last_y
@@ -1300,14 +1421,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
   boss: true
 # 21
 - x: last_right
@@ -1359,14 +1485,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 22
 - x: last_right
   y: last_y
@@ -1427,14 +1558,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 23
 - x: last_right
   y: last_y
@@ -1495,14 +1631,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 24
 - x: last_right
   y: last_y
@@ -1558,14 +1699,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 25
 - x: last_right
   y: last_y
@@ -1621,14 +1767,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 26
 - x: last_right
   y: last_y
@@ -1684,14 +1835,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 27
 - x: last_right
   y: last_y
@@ -1752,14 +1908,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 28
 - x: last_right
   y: last_y
@@ -1820,14 +1981,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 29
 - x: last_right
   y: last_y
@@ -1888,14 +2054,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 30
 - x: last_right
   y: last_y
@@ -1956,14 +2127,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
   boss: true
 # 31
 - x: last_right
@@ -2025,14 +2201,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 32
 - x: last_right
   y: last_y
@@ -2093,14 +2274,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 33
 - x: last_right
   y: last_y
@@ -2156,14 +2342,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 34
 - x: last_right
   y: last_y
@@ -2224,14 +2415,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 35
 - x: last_right
   y: last_y
@@ -2292,14 +2488,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 36
 - x: last_right
   y: last_y
@@ -2365,14 +2566,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 37
 - x: last_right
   y: last_y
@@ -2433,14 +2639,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 38
 - x: last_right
   y: last_y
@@ -2501,14 +2712,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 39
 - x: last_right
   y: last_y
@@ -2579,14 +2795,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 40
 - boss: true
   x: last_right
@@ -2658,14 +2879,19 @@ areas:
     y: 0
     width: 64
     height: last_height
+    requirements:
+    - void_locked
+    translate:
+      x: 160
+      y: 0
+  - type: teleport
+    x: last_x
+    y: 0
+    width: 64
+    height: last_height
     translate:
       x: 160
       y: -1440
-    requirements:
-    - void_locked
-    second_translate:
-      x: 160
-      y: 0
 # 41
 - x: last_right
   y: last_y
@@ -3323,9 +3549,23 @@ areas:
       radius: 36
       speed: 0
       x: 2904
+      y: 18
+      types:
+      - wind_ghost
+    - count: 1
+      radius: 36
+      speed: 0
+      x: 2904
       y: 474
       types:
       - void_swarm
+    - count: 1
+      radius: 36
+      speed: 0
+      x: 2904
+      y: 474
+      types:
+      - wind_ghost
     - count: 10
       radius: 30
       speed: 480

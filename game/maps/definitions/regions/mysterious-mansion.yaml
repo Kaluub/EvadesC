@@ -1,11 +1,12 @@
 name: Mysterious Mansion
+warping_requirements:
+- mansion_discovered
 properties:
   background_color:
     - 78
     - 39
     - 0
     - 80
-  warping_disabled: True
   friction: 0.75
 areas:
   - assets:
@@ -123,8 +124,18 @@ areas:
     y: 43040
     zones:
       - height: 480
+        type: teleport
+        width: 64
+        x: 0
+        y: 0
         translate:
-          x: -267904
+          x: -211416
+          y: -41600
+        requirements:
+        - haunted_halls_victory
+      - height: 480
+        translate:
+          x: -268032
           y: -41600
         type: teleport
         width: 64
