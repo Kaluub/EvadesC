@@ -1,10 +1,13 @@
 mkdir -p game/lib
 git clone git@github.com:raysan5/raylib.git
-git checkout 305c7a2ef98cf3fa6adde14a3804e1e315994e34
-cd raylib/src
+cd raylib
+git pull
+git checkout 9f831428e6be0eba8762a154e3e9139d4f071970
+cd src
 make clean
 make PLATFORM=PLATFORM_DESKTOP
 cp -v libraylib.a ../../game/lib
 make clean
 make PLATFORM=PLATFORM_WEB
 cp -v libraylib.web.a ../../game/lib
+cp -v raylib.h raymath.h rcamera.h rlgl.h ../../game/include
