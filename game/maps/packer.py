@@ -13,6 +13,9 @@ class ComponentFlags(IntEnum):
     HAS_TRANSLATE = 4
     USES_PREVIOUS_AREA_DIMENSIONS = 5
 
+class SpawnerProperties(IntEnum):
+    MOVES_COUNTER_CLOCKWISE = 0
+
 def parse_variable(definition: str, state: dict[str, int]) -> int:
     value = definition
     if isinstance(value, int):
@@ -117,6 +120,10 @@ missing_enemy_types = set()
 def write_spawners(spawners: list, out: BufferedWriter):
     out.write(len(spawners).to_bytes(1, "little"))
     for spawner in spawners:
+        spawner_properties = 0
+        if not spawner.get("move_clockwise", True):
+            spawner_properties |= 1 << SpawnerProperties.MOVES_COUNTER_CLOCKWISE
+        out.write(spawner_properties.to_bytes(1, "little"))
         spawner_types = spawner["types"]
         out.write(len(spawner_types).to_bytes(1, "little"))
         for enemy_type in spawner_types:

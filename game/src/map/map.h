@@ -13,6 +13,10 @@ enum ComponentProperties {
     USES_PREVIOUS_AREA_DIMENSIONS = 5,
 };
 
+enum SpawnerProperties {
+    MOVE_COUNTER_CLOCKWISE = 0,
+};
+
 enum TextureType {
     TEXTURE_NONE = 0,
     TEXTURE_LEAVES = 1,
@@ -78,6 +82,7 @@ typedef struct Spawner {
     uint16_t count;
     uint16_t radius;
     uint8_t enemy_type_count;
+    uint8_t spawner_properties;
 } Spawner;
 
 void load_map(Map* map, FILE* file);

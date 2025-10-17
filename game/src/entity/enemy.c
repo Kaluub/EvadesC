@@ -101,6 +101,9 @@ Vector2 generate_enemy_position(Zone* zone, Spawner* spawner, uint8_t enemy_type
             uint16_t spawn_height = zone->height - 2*spawner->radius;
             double spawn_length = 2*spawn_width + 2*spawn_height;
             double spawn_spot = spawn_length * spawn_index / spawner->count;
+            if (spawner->spawner_properties & (1 << MOVE_COUNTER_CLOCKWISE)) {
+                spawn_spot = spawn_length - spawn_spot;
+            }
             float x = zone->x + zone->width/2;
             float y = zone->y + spawner->radius;
             if (spawn_spot < 0.5*spawn_width) {
@@ -126,7 +129,7 @@ Vector2 generate_enemy_position(Zone* zone, Spawner* spawner, uint8_t enemy_type
     }
 }
 
-Enemy* enemy_init(Zone* zone, Spawner* spawner, int spawn_index) {
+Enemy* enemy_init(Area* area, Zone* zone, Spawner* spawner, int spawn_index) {
     assert(zone != NULL);
     assert(spawner != NULL);
     Enemy* enemy = malloc(sizeof(Enemy));
@@ -148,6 +151,11 @@ Enemy* enemy_init(Zone* zone, Spawner* spawner, int spawn_index) {
     enemy->wall_behaviour = WALL_BEHAVIOUR_BOUNCE;
     enemy->harmless = false;
     enemy->removed = false;
+
+    if (spawner->spawner_properties & (1 << MOVE_COUNTER_CLOCKWISE)) {
+        set_wall_movement_data(area, enemy, -1);
+    }
+
     return enemy;
 }
 

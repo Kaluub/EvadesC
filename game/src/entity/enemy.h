@@ -52,7 +52,7 @@ void enemy_set_remove(EnemySet* enemy_set, uint16_t index);
 void enemy_set_update(EnemySet* enemy_set, Area* area);
 void enemy_set_draw(const EnemySet* enemy_set, float camera_zoom);
 
-Enemy* enemy_init(Zone* zone, Spawner* spawner, int spawn_index);
+Enemy* enemy_init(Area* area, Zone* zone, Spawner* spawner, int spawn_index);
 Enemy* enemy_manual_init(movement_function movement_function, Color color);
 void enemy_destroy(Enemy* enemy);
 void enemy_reset_effects(Enemy* enemy);

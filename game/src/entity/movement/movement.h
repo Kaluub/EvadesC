@@ -13,6 +13,8 @@ typedef struct NormalMovementData {
 
 void set_angle(NormalMovementData* data, float angle);
 
+void set_wall_movement_data(Area* area, Enemy* enemy, int8_t movement_direction);
+
 movement_function get_movement_function(uint8_t enemy_type);
 void normal_movement(Area* area, Enemy* enemy);
 void wall_movement(Area* area, Enemy* enemy);

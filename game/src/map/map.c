@@ -33,6 +33,7 @@ int32_t read_greedy_int(FILE* file) {
 }
 
 Spawner* load_spawner(Spawner* spawner, FILE* file) {
+    fread(&spawner->spawner_properties, sizeof(spawner->spawner_properties), 1, file);
     fread(&spawner->enemy_type_count, sizeof(spawner->enemy_type_count), 1, file);
     assert(spawner->enemy_type_count != 0);
     spawner->enemy_types = (uint8_t*) malloc(sizeof(uint8_t) * spawner->enemy_type_count);
@@ -233,7 +234,7 @@ void load_map(Map* map, FILE* file) {
                 Zone* zone = spawner_zone_references[i];
                 Spawner* spawner = spawners[i];
                 for (int j = 0; j < spawner->count; j++) {
-                    Enemy* enemy = enemy_init(zone, spawner, j);
+                    Enemy* enemy = enemy_init(area, zone, spawner, j);
                     enemy_set_add(area->enemy_set, enemy);
                 }
             }
