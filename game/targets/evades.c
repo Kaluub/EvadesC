@@ -38,7 +38,7 @@ bool is_zone_on_screen(Camera2D camera, const Zone zone) {
     }
 #endif
     Vector2 top_left = GetWorldToScreen2D((Vector2) {zone.x, zone.y}, camera);
-    Vector2 bottom_right = GetWorldToScreen2D((Vector2) {zone.x + zone.width, zone.y + zone.height}, camera);
+    Vector2 bottom_right = GetWorldToScreen2D((Vector2) {zone.x + (int32_t)zone.width, zone.y + (int32_t)zone.height}, camera);
 
     return ((bottom_right.x >= 0 && top_left.x <= GetScreenWidth()) && (bottom_right.y >= 0 && top_left.y <= GetScreenHeight()));
 }
