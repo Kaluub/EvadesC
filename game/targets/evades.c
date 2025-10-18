@@ -5,6 +5,10 @@
 #include <math.h>
 #include <stdlib.h>
 #include <time.h>
+
+#include "raylib.h"
+#include "raymath.h"
+
 #ifndef PLATFORM_WEB
 #include <pthread.h>
 #else
@@ -151,8 +155,8 @@ void game_tick() {
 
     if (IsKeyPressed(KEY_T)) {
         render_translations = !render_translations;
-        const char* options[] = {"no longer displayed", "now displayed"};
-        add_splash_message(&state.splash_messages, TextFormat("Zone translations are %s.", options[render_translations]));
+        const char* options[] = {"no longer", "now"};
+        add_splash_message(&state.splash_messages, TextFormat("Zone translations are %s displayed.", options[render_translations]));
     }
 
     state.camera.offset = (Vector2) {GetScreenWidth()/2, GetScreenHeight()/2};
@@ -190,6 +194,16 @@ void game_tick() {
     }
     if (IsKeyDown(KEY_D)) {
         state.camera.target.x += GetFrameTime() * speed;
+    }
+    
+    int gesture = GetGestureDetected();
+    if (gesture == GESTURE_PINCH_OUT) {
+        state.camera.zoom += 2 * frame_time * state.camera.zoom;
+    } else if (gesture == GESTURE_PINCH_IN) {
+        state.camera.zoom -= 2 * frame_time * state.camera.zoom;
+    } else if (GetTouchPointCount() > 0) {
+        Vector2 touch_position = Vector2Scale(Vector2Add(GetTouchPosition(0), (Vector2) {-GetScreenWidth()/2, -GetScreenHeight()/2}), 1.0f/fminf(GetScreenHeight()/3, GetScreenWidth()/3));
+        state.camera.target = Vector2Add(state.camera.target, Vector2Scale(touch_position, GetFrameTime() * speed));
     }
 
     Vector2 mouse_over = GetScreenToWorld2D(GetMousePosition(), state.camera);
