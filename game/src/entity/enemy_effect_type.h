@@ -115,7 +115,7 @@ static const EnemyEffectConfig enemy_effect_configs[] = {
     {.color = 0, .radius = 0.0f}, // prediction_sniper_enemy
     {.color = 0, .radius = 0.0f}, // ring_sniper_enemy
     {.color = 0, .radius = 0.0f}, // charging_enemy
-    {.color = 0, .radius = 0.0f}, // reducing_enemy
+    {.color = 0x2D323726, .radius = 140.0f}, // reducing_enemy
     {.color = 0, .radius = 0.0f}, // lead_sniper_enemy
     {.color = 0, .radius = 0.0f}, // stalactite_enemy
     {.color = 0xBF52134D, .radius = 150.0f}, // blocking_enemy
