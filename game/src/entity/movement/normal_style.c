@@ -14,7 +14,11 @@ void set_angle(NormalMovementData* data, float angle) {
 void normal_movement(Area* area, Enemy* enemy) {
     if (enemy->movement_data == NULL) {
         NormalMovementData* movement_data = malloc(sizeof(NormalMovementData));
-        set_angle(movement_data, uniform_random(0, 2*PI));
+        if (enemy->angle >= 0) {
+            set_angle(movement_data, enemy->angle);
+        } else {
+            set_angle(movement_data, uniform_random(0, 2*PI));
+        }
         enemy->movement_data = movement_data;
     }
 

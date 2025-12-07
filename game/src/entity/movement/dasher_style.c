@@ -21,7 +21,11 @@ void dasher_set_angle(DasherMovementData* data, float angle) {
 void dasher_movement(Area* area, Enemy* enemy) {
     if (enemy->movement_data == NULL) {
         DasherMovementData* movement_data = malloc(sizeof(DasherMovementData));
-        dasher_set_angle(movement_data, uniform_random(0, 2*PI));
+        if (enemy->angle >= 0) {
+            dasher_set_angle(movement_data, enemy->angle);
+        } else {
+            dasher_set_angle(movement_data, uniform_random(0, 2*PI));
+        }
         movement_data->timer = 0;
         enemy->movement_data = movement_data;
     }

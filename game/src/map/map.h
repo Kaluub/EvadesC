@@ -15,6 +15,10 @@ enum ComponentProperties {
 
 enum SpawnerProperties {
     MOVE_COUNTER_CLOCKWISE = 0,
+    HAS_X = 1,
+    HAS_Y = 2,
+    HAS_ANGLE = 3,
+    HAS_EFFECT_RADIUS = 4,
 };
 
 enum TextureType {
@@ -79,6 +83,10 @@ typedef struct Zone {
 typedef struct Spawner {
     uint8_t* enemy_types;
     float speed;
+    uint32_t spawn_x;
+    uint32_t spawn_y;
+    uint32_t angle;
+    uint32_t effect_radius;
     uint16_t count;
     uint16_t radius;
     uint8_t enemy_type_count;

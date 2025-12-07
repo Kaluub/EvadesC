@@ -15,6 +15,10 @@ class ComponentFlags(IntEnum):
 
 class SpawnerProperties(IntEnum):
     MOVES_COUNTER_CLOCKWISE = 0
+    HAS_X = 1
+    HAS_Y = 2
+    HAS_ANGLE = 3
+    HAS_EFFECT_RADIUS = 4
 
 def parse_variable(definition: str, state: dict[str, int]) -> int:
     value = definition
@@ -119,10 +123,20 @@ def handle_common_properties(
 missing_enemy_types = set()
 def write_spawners(spawners: list, out: BufferedWriter):
     out.write(len(spawners).to_bytes(1, "little"))
+    last_x = 0
+    last_y = 0
     for spawner in spawners:
         spawner_properties = 0
         if not spawner.get("move_clockwise", True):
             spawner_properties |= 1 << SpawnerProperties.MOVES_COUNTER_CLOCKWISE
+        if "x" in spawner:
+            spawner_properties |= 1 << SpawnerProperties.HAS_X
+        if "y" in spawner:
+            spawner_properties |= 1 << SpawnerProperties.HAS_Y
+        if "angle" in spawner:
+            spawner_properties |= 1 << SpawnerProperties.HAS_ANGLE
+        if "effect_radius" in spawner:
+            spawner_properties |= 1 << SpawnerProperties.HAS_EFFECT_RADIUS
         out.write(spawner_properties.to_bytes(1, "little"))
         spawner_types = spawner["types"]
         out.write(len(spawner_types).to_bytes(1, "little"))
@@ -137,6 +151,31 @@ def write_spawners(spawners: list, out: BufferedWriter):
         out.write(struct.pack("<f", spawner.get("speed", 0)))
         write_greedy_uint(spawner.get("count", 1), out)
         write_greedy_uint(spawner["radius"], out)
+        if spawner_properties & (1 << SpawnerProperties.HAS_X):
+            x = spawner.get("x")
+            if isinstance(x, str) and "," in x:
+                x = x.split(",")[0].strip()
+            x = parse_variable(x, {"last_x": last_x})
+            write_greedy_uint(int(x), out)
+            last_x = int(x)
+        if spawner_properties & (1 << SpawnerProperties.HAS_Y):
+            y = spawner.get("y")
+            if isinstance(y, str) and "," in y:
+                y = y.split(",")[0].strip()
+            y = parse_variable(y, {"last_y": last_y})
+            write_greedy_uint(int(y), out)
+            last_y = int(y)
+        if spawner_properties & (1 << SpawnerProperties.HAS_ANGLE):
+            angle = spawner.get("angle")
+            if isinstance(angle, list):
+                angle = angle[0]
+            if isinstance(angle, str):
+                angle = int(angle.split(",")[0].strip())
+            while angle < 0:
+                angle += 360
+            write_greedy_uint(angle, out)
+        if spawner_properties & (1 << SpawnerProperties.HAS_EFFECT_RADIUS):
+            write_greedy_uint(int(spawner.get("effect_radius")), out)
 
 def write_greedy_uint(number: int, out: BufferedWriter):
     assert number >= 0 and number < 1<<30

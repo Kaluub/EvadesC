@@ -33,6 +33,8 @@ typedef struct Enemy {
     float base_speed;
     float radius;
     float duration;
+    float effect_radius;
+    float angle;
     uint8_t type;
     uint8_t wall_behaviour;
     bool harmless : 1;

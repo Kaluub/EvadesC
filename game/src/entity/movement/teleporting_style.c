@@ -21,7 +21,11 @@ void teleporting_set_angle(TeleportingMovementData* data, float angle) {
 void teleporting_movement(Area* area, Enemy* enemy) {
     if (enemy->movement_data == NULL) {
         TeleportingMovementData* movement_data = malloc(sizeof(TeleportingMovementData));
-        teleporting_set_angle(movement_data, uniform_random(0, 2*PI));
+        if (enemy->angle >= 0) {
+            teleporting_set_angle(movement_data, enemy->angle);
+        } else {
+            teleporting_set_angle(movement_data, uniform_random(0, 2*PI));
+        }
         movement_data->pause_time = 0;
         enemy->movement_data = movement_data;
     }

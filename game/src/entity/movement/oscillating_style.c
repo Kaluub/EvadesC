@@ -21,7 +21,11 @@ void oscillating_set_angle(OscillatingMovementData* data, float angle) {
 void oscillating_movement(Area* area, Enemy* enemy) {
     if (enemy->movement_data == NULL) {
         OscillatingMovementData* movement_data = malloc(sizeof(OscillatingMovementData));
-        oscillating_set_angle(movement_data, uniform_random(0, 2*PI));
+        if (enemy->angle >= 0) {
+            oscillating_set_angle(movement_data, enemy->angle);
+        } else {
+            oscillating_set_angle(movement_data, uniform_random(0, 2*PI));
+        }
         movement_data->switch_time = uniform_random(0, 1000);
         enemy->movement_data = movement_data;
     }

@@ -1,5 +1,6 @@
 #include "enemy.h"
 #include "enemy_type.h"
+#include "enemy_effect_type.h"
 #include "movement/movement.h"
 #include "behaviour/behaviour.h"
 #include "../util/common.h"
@@ -80,6 +81,15 @@ void enemy_set_update(EnemySet* enemy_set, Area* area) {
 void enemy_set_draw(const EnemySet* enemy_set, float camera_zoom) {
     for (int i = 0; i < enemy_set->stored; i++) {
         Enemy* enemy = enemy_set->enemies[i];
+        EnemyEffectConfig effect_config = enemy_effect_configs[enemy->type];
+        float radius = enemy->effect_radius >= 0.0f ? enemy->effect_radius : effect_config.radius;
+        if (camera_zoom * radius < 0.1f) {
+            continue;
+        }
+        draw_circle(enemy->position, radius, GetColor(effect_config.color));
+    }
+    for (int i = 0; i < enemy_set->stored; i++) {
+        Enemy* enemy = enemy_set->enemies[i];
         if (camera_zoom * enemy->radius < 0.1f) {
             continue;
         }
@@ -147,6 +157,8 @@ Enemy* enemy_init(Area* area, Zone* zone, Spawner* spawner, int spawn_index) {
     enemy->base_speed = spawner->speed;
     enemy->radius = spawner->radius;
     enemy->duration = 0;
+    enemy->effect_radius = -1.0f;
+    enemy->angle = -1.0f;
     enemy->type = enemy_type;
     enemy->wall_behaviour = WALL_BEHAVIOUR_BOUNCE;
     enemy->harmless = false;
@@ -154,6 +166,18 @@ Enemy* enemy_init(Area* area, Zone* zone, Spawner* spawner, int spawn_index) {
 
     if (spawner->spawner_properties & (1 << MOVE_COUNTER_CLOCKWISE)) {
         set_wall_movement_data(area, enemy, -1);
+    }
+    if (spawner->spawner_properties & (1 << HAS_X)) {
+        enemy->position.x = area->x + (int32_t) spawner->spawn_x;
+    }
+    if (spawner->spawner_properties & (1 << HAS_Y)) {
+        enemy->position.y = area->y + (int32_t) spawner->spawn_y;
+    }
+    if (spawner->spawner_properties & (1 << HAS_ANGLE)) {
+        enemy->angle = DEG2RAD * spawner->angle;
+    }
+    if (spawner->spawner_properties & (1 << HAS_EFFECT_RADIUS)) {
+        enemy->effect_radius = spawner->effect_radius;
     }
 
     return enemy;

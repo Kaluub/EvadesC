@@ -19,7 +19,7 @@ uint32_t read_greedy_uint(FILE* file) {
 }
 
 int32_t read_greedy_int(FILE* file) {
-    // Greedy int: same concept as above, but also includes 
+    // Greedy int: same concept as above, but also includes sign.
     // First 2 bits are how many extra bytes there are. (0, 1, 2, 3 extra bytes.)
     // Next bit is a simple sign bit. This is uint representation but with a sign bit because 2s complement doesn't
     // work well with this kind of packing -- negative small numbers will have a lot of prepended '1' bits.
@@ -41,6 +41,18 @@ Spawner* load_spawner(Spawner* spawner, FILE* file) {
     fread(&spawner->speed, sizeof(spawner->speed), 1, file);
     spawner->count = read_greedy_uint(file);
     spawner->radius = read_greedy_uint(file);
+    if (spawner->spawner_properties & (1 << HAS_X)) {
+        spawner->spawn_x = read_greedy_uint(file);
+    }
+    if (spawner->spawner_properties & (1 << HAS_Y)) {
+        spawner->spawn_y = read_greedy_uint(file);
+    }
+    if (spawner->spawner_properties & (1 << HAS_ANGLE)) {
+        spawner->angle = read_greedy_uint(file);
+    }
+    if (spawner->spawner_properties & (1 << HAS_EFFECT_RADIUS)) {
+        spawner->effect_radius = read_greedy_uint(file);
+    }
     return spawner;
 }
 
