@@ -323,7 +323,10 @@ void game_tick() {
                     ), area.x + 10, area.y, 64, BLACK);
             }
             enemy_set_update(area.enemy_set, region.areas + area_index);
+            Vector2 area_screen = GetWorldToScreen2D((Vector2) {area.x, area.y}, state.camera);
+            BeginScissorMode(area_screen.x, area_screen.y, ceilf(area.width * state.camera.zoom), ceilf(area.height * state.camera.zoom));
             enemy_set_draw(area.enemy_set, state.camera.zoom);
+            EndScissorMode();
         }
     }
 
