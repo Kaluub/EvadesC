@@ -11,10 +11,15 @@
 
 #ifndef PLATFORM_WEB
 #include <pthread.h>
+#define CIRCLE_SHADER_FILE "circle.fs"
 #else
 #include <emscripten/emscripten.h>
 #include <emscripten/html5.h>
+#define CIRCLE_SHADER_FILE "circle_web.fs"
 #endif
+
+#define RAYLIB_NUKLEAR_IMPLEMENTATION
+#include "raylib-nuklear.h"
 
 #define BACKGROUND_COLOR (Color) {0x33, 0x33, 0x33, 0xFF}
 #define WINDOW_WIDTH 1280
@@ -65,7 +70,7 @@ enum WriteMapState {
     WRITING_FAILED,
 };
 
-uint8_t write_map_state = NOT_WRITING;
+volatile uint8_t write_map_state = NOT_WRITING;
 pthread_t writing_thread;
 void* write_map(void* _) {
     int result = 0;
@@ -106,6 +111,32 @@ Texture2D help_texture;
 
 float help_texture_alpha = 1.0f;
 float help_texture_fade_time = 10.0f;
+
+bool use_circle_shader = false;
+Shader circle_shader;
+int shader_gradient_max_loc;
+int shader_gradient_intensity_loc;
+int shader_gradient_color_loc;
+
+float shader_gradient_max = 0.3f;
+float shader_gradient_intensity = 0.3f;
+float shader_gradient_color[3] = {1.0f, 1.0f, 1.0f};
+
+struct nk_context *ctx;
+
+void set_circle_shader_values() {
+    SetShaderValue(circle_shader, shader_gradient_max_loc, &shader_gradient_max, SHADER_UNIFORM_FLOAT);
+    SetShaderValue(circle_shader, shader_gradient_intensity_loc, &shader_gradient_intensity, SHADER_UNIFORM_FLOAT);
+    SetShaderValue(circle_shader, shader_gradient_color_loc, &shader_gradient_color, SHADER_UNIFORM_VEC3);
+}
+
+void load_circle_shader() {
+    circle_shader = LoadShader(NULL, "shader/"CIRCLE_SHADER_FILE);
+    shader_gradient_max_loc = GetShaderLocation(circle_shader, "gradient_max");
+    shader_gradient_intensity_loc = GetShaderLocation(circle_shader, "gradient_intensity");
+    shader_gradient_color_loc = GetShaderLocation(circle_shader, "gradient_color");
+    set_circle_shader_values();
+}
 
 void game_tick() {
     timing_start(); // Tick time.
@@ -212,6 +243,34 @@ void game_tick() {
     Area* closest_area_right = NULL;
     Area* closest_area_bottom = NULL;
 
+    UpdateNuklear(ctx);
+    if (nk_begin(ctx, "Circle shader config", nk_rect(GetScreenWidth() - 230, 10, 220, 280),
+            NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE)) {
+        nk_layout_row_static(ctx, 0, 190, 1);
+        nk_checkbox_label(ctx, "Enabled", &use_circle_shader);
+        if (use_circle_shader) {
+            nk_layout_row_dynamic(ctx, 0, 2);
+            nk_label(ctx, "Brightness:", NK_LEFT);
+            nk_slider_float(ctx, 0.0f, &shader_gradient_max, 1.0f, 0.01f);
+            nk_label(ctx, "Intensity:", NK_LEFT);
+            nk_slider_float(ctx, 0.0f, &shader_gradient_intensity, 1.0f, 0.01f);
+            nk_layout_row_static(ctx, 0, 190, 1);
+            nk_label(ctx, "Color effect:", NK_LEFT);
+            nk_layout_row_dynamic(ctx, 0, 2);
+            nk_label(ctx, "R:", NK_LEFT);
+            nk_slider_float(ctx, 0.0f, shader_gradient_color, 2.0f, 0.01f);
+            nk_label(ctx, "G:", NK_LEFT);
+            nk_slider_float(ctx, 0.0f, shader_gradient_color + 1, 2.0f, 0.01f);
+            nk_label(ctx, "B:", NK_LEFT);
+            nk_slider_float(ctx, 0.0f, shader_gradient_color + 2, 2.0f, 0.01f);
+            nk_layout_row_static(ctx, 0, 190, 1);
+            if (nk_button_label(ctx, "Apply")) {
+                set_circle_shader_values();
+            }
+        }
+    }
+    nk_end(ctx);
+
     tick_end();
     timing_start(); // Render time.
 
@@ -246,6 +305,11 @@ void game_tick() {
         reload_map(&state);
     }
 #endif
+
+    if (IsKeyDown(KEY_Y)) {
+        UnloadShader(circle_shader);
+        load_circle_shader();
+    }
 #endif
 
     BeginMode2D(state.camera);
@@ -423,6 +487,7 @@ void game_tick() {
     }
     render_end();
     draw_timings();
+    DrawNuklear(ctx);
     EndDrawing();
 }
 
@@ -465,6 +530,10 @@ int main() {
     init_debug_state();
     init_splash_messages(&state.splash_messages);
     init_circle_texture();
+
+    load_circle_shader();
+
+    ctx = InitNuklear(10);
 
 #ifndef PLATFORM_WEB
     while (!WindowShouldClose()) {

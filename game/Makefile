@@ -25,7 +25,7 @@ web: maps/world.bin targets/evades.c $(SRC) $(HEADERS)
 	emcc -o index.html targets/evades.c $(SRC) -Os -Wall -Wextra ./lib/libraylib.web.a -I. -I./include -L. -L./lib \
 		-DPLATFORM_WEB -s USE_GLFW=3 -s TOTAL_MEMORY=128mb -s STACK_SIZE=32mb -s ASSERTIONS=1 \
 		-sEXPORTED_FUNCTIONS=_main,_resize_game -sEXPORTED_RUNTIME_METHODS=ccall,cwrap \
-		--preload-file assets --preload-file maps/world.bin --shell-file shell.html -DDEBUG
+		--preload-file assets --preload-file shader --preload-file maps/world.bin --shell-file shell.html -DDEBUG
 	mkdir -p release/web
 	mv -v index.* release/web
 

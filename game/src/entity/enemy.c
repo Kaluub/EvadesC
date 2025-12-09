@@ -12,6 +12,9 @@
 
 // EnemySet implementation
 
+extern Shader circle_shader;
+extern bool use_circle_shader;
+
 void enemy_set_init(EnemySet** enemy_set, uint16_t min_capacity) {
     assert(enemy_set != NULL);
     EnemySet* new_enemy_set = malloc(sizeof(EnemySet));
@@ -88,17 +91,19 @@ void enemy_set_draw(const EnemySet* enemy_set, float camera_zoom) {
         }
         draw_circle(enemy->position, radius, GetColor(effect_config.color));
     }
+    if (use_circle_shader) BeginShaderMode(circle_shader);
     for (int i = 0; i < enemy_set->stored; i++) {
         Enemy* enemy = enemy_set->enemies[i];
         if (camera_zoom * enemy->radius < 0.1f) {
             continue;
         }
-        float alpha = 1;
+        float alpha = (float)enemy->color.a / 255;
         if (enemy->harmless) {
             alpha *= 0.4;
         }
         draw_circle(enemy->position, enemy->radius, ColorAlpha(enemy->color, alpha));
     }
+    if (use_circle_shader) EndShaderMode();
 }
 
 // Enemy implementation

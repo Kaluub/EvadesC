@@ -203,20 +203,20 @@ static const uint32_t enemy_colors[] = {
     0xa496ffff, // negative_magnetic_sniper_enemy
     0x675327ff, // residue_enemy
     0xcf5504ff, // fire_trail_enemy
-    0xbe89ffff, // ice_ghost_enemy
-    0x590174ff, // poison_ghost_enemy
-    0xe3001eff, // positive_magnetic_ghost_enemy
-    0x6f59ffff, // negative_magnetic_ghost_enemy
-    0x9de3c6ff, // wind_ghost_enemy
+    0xbe89ff66, // ice_ghost_enemy
+    0x59017466, // poison_ghost_enemy
+    0xe3001e66, // positive_magnetic_ghost_enemy
+    0x6f59ff66, // negative_magnetic_ghost_enemy
+    0x9de3c666, // wind_ghost_enemy
     0xc88250ff, // lunging_enemy
     0xf78306ff, // lava_enemy
-    0x78148cff, // gravity_ghost_enemy
-    0x7b9db2ff, // repelling_ghost_enemy
+    0x78148c66, // gravity_ghost_enemy
+    0x7b9db266, // repelling_ghost_enemy
     0xfaf46eff, // star_enemy
     0x75eb26ff, // grass_enemy
     0x259c55ff, // seedling_enemy
     0xe8e584ff, // flower_enemy
-    0xffbfce7f, // disabling_ghost_enemy
+    0xffbfce33, // disabling_ghost_enemy
     0xede658ff, // glowy_enemy
     0xf0841fff, // firefly_enemy
     0xb686dbff, // mist_enemy
@@ -233,8 +233,8 @@ static const uint32_t enemy_colors[] = {
     0xbd9476ff, // crumbling_enemy
     0xc90000ff, // radar_enemy
     0x29ffc6ff, // barrier_enemy
-    0xfca330ff, // speed_ghost_enemy
-    0x32e3aeff, // regen_ghost_enemy
+    0xfca33066, // speed_ghost_enemy
+    0x32e3ae66, // regen_ghost_enemy
     0x5b8e28ff, // cactus_enemy
     0x91bbffff, // cycling_enemy
     0x1bc8e3ff, // icbot_enemy
