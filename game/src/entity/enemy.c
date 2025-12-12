@@ -85,7 +85,7 @@ void enemy_set_draw(const EnemySet* enemy_set, float camera_zoom) {
     for (int i = 0; i < enemy_set->stored; i++) {
         Enemy* enemy = enemy_set->enemies[i];
         EnemyEffectConfig effect_config = enemy_effect_configs[enemy->type];
-        float radius = enemy->effect_radius >= 0.0f ? enemy->effect_radius : effect_config.radius;
+        float radius = enemy->effect_radius;
         if (camera_zoom * radius < 0.1f) {
             continue;
         }
@@ -162,7 +162,7 @@ Enemy* enemy_init(Area* area, Zone* zone, Spawner* spawner, int spawn_index) {
     enemy->base_speed = spawner->speed;
     enemy->radius = spawner->radius;
     enemy->duration = 0;
-    enemy->effect_radius = -1.0f;
+    enemy->effect_radius = enemy_effect_configs[enemy_type].radius;
     enemy->angle = -1.0f;
     enemy->type = enemy_type;
     enemy->wall_behaviour = WALL_BEHAVIOUR_BOUNCE;
