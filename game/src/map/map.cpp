@@ -1,4 +1,4 @@
-#include "map.h"
+#include "map.hpp"
 #include <malloc.h>
 #include <assert.h>
 #include <string.h>
@@ -56,7 +56,7 @@ Spawner* load_spawner(Spawner* spawner, FILE* file) {
     return spawner;
 }
 
-void load_map(Map* map, FILE* file) {
+void Map::load(FILE* file) {
     // Spawn region name.
     uint8_t spawn_region_length = 0;
     fread(&spawn_region_length, sizeof(spawn_region_length), 1, file);
@@ -64,16 +64,17 @@ void load_map(Map* map, FILE* file) {
     fread(spawn_region, 1, spawn_region_length, file);
 
     // Regions.
-    fread(&map->region_count, sizeof(map->region_count), 1, file);
-    if (map->region_count <= 0) {
-        map->regions = NULL;
+    fread(&region_count, sizeof(region_count), 1, file);
+    if (region_count <= 0) {
+        regions = NULL;
         return;
     }
-    map->regions = (Region*) malloc(sizeof(Region) * map->region_count);
-    map->spawn_area = NULL;
 
-    for (int region_index = 0; region_index < map->region_count; region_index++) {
-        Region* region = map->regions + region_index;
+    regions = (Region*) malloc(sizeof(Region) * region_count);
+    spawn_area = NULL;
+
+    for (int region_index = 0; region_index < region_count; region_index++) {
+        Region* region = regions + region_index;
         region->background_color = 0;
         region->texture = 0;
         region->region_name = NULL;
@@ -255,7 +256,7 @@ void load_map(Map* map, FILE* file) {
         }
 
         if (spawn_region != NULL && !strncmp(spawn_region, region->region_name, spawn_region_length)) {
-            map->spawn_area = region->areas;
+            spawn_area = region->areas;
             free(spawn_region);
             spawn_region = NULL;
         }
@@ -263,16 +264,16 @@ void load_map(Map* map, FILE* file) {
 
     if (spawn_region != NULL) {
         free(spawn_region);
-        map->spawn_area = map->regions->areas;
+        spawn_area = regions->areas;
     }
 }
 
-void destroy_map(Map* map) {
-    if (map->regions == NULL) {
+void Map::destroy() {
+    if (regions == NULL) {
         return;
     }
-    for (int region_index = 0; region_index < map->region_count; region_index++) {
-        Region* region = map->regions + region_index;
+    for (int region_index = 0; region_index < region_count; region_index++) {
+        Region* region = regions + region_index;
         if (region->region_name != NULL) {
             free(region->region_name);
         }
@@ -302,8 +303,8 @@ void destroy_map(Map* map) {
         }
         free(region->areas);
     }
-    free(map->regions);
-    map->spawn_area = NULL;
-    map->regions = NULL;
-    map->region_count = 0;
+    free(regions);
+    spawn_area = NULL;
+    regions = NULL;
+    region_count = 0;
 }

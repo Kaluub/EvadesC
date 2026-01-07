@@ -1,8 +1,6 @@
-#include "enemy.h"
+#include "enemy.hpp"
 #include "enemy_type.h"
 #include "enemy_effect_type.h"
-#include "movement/movement.h"
-#include "behaviour/behaviour.h"
 #include "../util/common.h"
 #include "../util/random.h"
 #include "../circle.h"
@@ -15,58 +13,45 @@
 extern Shader circle_shader;
 extern bool use_circle_shader;
 
-void enemy_set_init(EnemySet** enemy_set, uint16_t min_capacity) {
-    assert(enemy_set != NULL);
-    EnemySet* new_enemy_set = malloc(sizeof(EnemySet));
-    new_enemy_set->stored = 0;
-    new_enemy_set->capacity = min_capacity + min_capacity / 4;
-    new_enemy_set->enemies = (Enemy**) malloc(sizeof(Enemy*) * new_enemy_set->capacity);
-    if (new_enemy_set->enemies == NULL) {
+EnemySet::EnemySet(uint16_t min_capacity) {
+    stored = 0;
+    capacity = min_capacity + min_capacity / 4;
+    enemies = (Enemy**) malloc(sizeof(Enemy*) * capacity);
+    if (enemies == NULL) {
         TraceLog(LOG_FATAL, MEMFAIL"enemy_set_init");
     }
-    *enemy_set = new_enemy_set;
 }
 
-void enemy_set_destroy(EnemySet* enemy_set) {
-    assert(enemy_set != NULL);
-    assert(enemy_set->enemies != NULL);
-    for (int i = 0; i < enemy_set->stored; i++) {
-        enemy_destroy(enemy_set->enemies[i]);
+EnemySet::~EnemySet() {
+    for (int i = 0; i < stored; i++) {
+        enemy_destroy(enemies[i]);
     }
-    free(enemy_set->enemies);
-    free(enemy_set);
+    free(enemies);
 }
 
-void enemy_set_add(EnemySet* enemy_set, Enemy* enemy) {
-    assert(enemy_set != NULL);
-    assert(enemy != NULL);
-    if (enemy_set->stored >= enemy_set->capacity) {
-        enemy_set->capacity *= 1.5;
-        Enemy** enemies = realloc(enemy_set->enemies, sizeof(Enemy*) * enemy_set->capacity);
+void EnemySet::add(Enemy* enemy) {
+    if (stored >= capacity) {
+        capacity *= 1.5;
+        Enemy** enemies = (Enemy**) realloc(enemies, sizeof(Enemy*) * capacity);
         if (enemies == NULL) {
             TraceLog(LOG_FATAL, MEMFAIL"enemy_set_add");
             return;
         }
-        enemy_set->enemies = enemies;
+        enemies = enemies;
     }
-    enemy_set->enemies[enemy_set->stored++] = enemy;
+    enemies[stored++] = enemy;
 }
 
-void enemy_set_remove(EnemySet* enemy_set, uint16_t index) {
-    assert(enemy_set != NULL);
-    assert(index < enemy_set->capacity);
-    enemy_destroy(enemy_set->enemies[index]);
-    enemy_set->enemies[index] = enemy_set->enemies[--enemy_set->stored];
+void EnemySet::remove(uint16_t index) {
+    enemy_destroy(enemies[index]);
+    enemies[index] = enemies[--stored];
 }
 
-void enemy_set_update(EnemySet* enemy_set, Area* area) {
-    for (int i = 0; i < enemy_set->stored; i++) {
-        Enemy* enemy = enemy_set->enemies[i];
-        enemy_reset_effects(enemy);
-        enemy->movement_function(area, enemy);
-        if (enemy->behaviour_function != NULL) {
-            enemy->behaviour_function(area, enemy);
-        }
+void EnemySet::update(Area* area) {
+    for (int i = 0; i < stored; i++) {
+        Enemy* enemy = enemies[i];
+        enemy->reset_effects();
+        enemy->update(area);
 
         if (enemy->duration > 0) {
             enemy->duration -= GetFrameTime();
@@ -76,14 +61,14 @@ void enemy_set_update(EnemySet* enemy_set, Area* area) {
         }
 
         if (enemy->removed) {
-            enemy_set_remove(enemy_set, i--);
+            remove(i--);
         }
     }
 }
 
-void enemy_set_draw(const EnemySet* enemy_set, float camera_zoom) {
-    for (int i = 0; i < enemy_set->stored; i++) {
-        Enemy* enemy = enemy_set->enemies[i];
+void EnemySet::draw(float camera_zoom) {
+    for (int i = 0; i < stored; i++) {
+        Enemy* enemy = enemies[i];
         EnemyEffectConfig effect_config = enemy_effect_configs[enemy->type];
         float radius = enemy->effect_radius;
         if (camera_zoom * radius < 0.1f) {
@@ -92,8 +77,8 @@ void enemy_set_draw(const EnemySet* enemy_set, float camera_zoom) {
         draw_circle(enemy->position, radius, GetColor(effect_config.color));
     }
     if (use_circle_shader) BeginShaderMode(circle_shader);
-    for (int i = 0; i < enemy_set->stored; i++) {
-        Enemy* enemy = enemy_set->enemies[i];
+    for (int i = 0; i < stored; i++) {
+        Enemy* enemy = enemies[i];
         if (camera_zoom * enemy->radius < 0.1f) {
             continue;
         }

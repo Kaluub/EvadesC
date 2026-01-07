@@ -1,5 +1,5 @@
-#include "../src/state.h"
-#include "../src/debug.h"
+#include "../src/state.hpp"
+#include "../src/debug.hpp"
 #include "../src/circle.h"
 #include "../src/util/random.h"
 #include <math.h>
@@ -11,11 +11,15 @@
 
 #ifndef PLATFORM_WEB
 #include <pthread.h>
+
 #define CIRCLE_SHADER_FILE "circle.fs"
+#define POST_SHADER_FILE "post.fs"
 #else
 #include <emscripten/emscripten.h>
 #include <emscripten/html5.h>
+
 #define CIRCLE_SHADER_FILE "circle_web.fs"
+#define POST_SHADER_FILE "post_web.fs"
 #endif
 
 #define RAYLIB_NUKLEAR_IMPLEMENTATION
@@ -56,9 +60,9 @@ bool is_rect_on_screen(Camera2D camera, const Rectangle rect) {
 
 void reload_map(GameState* state) {
     Map old_map = state->map;
-    open_map(state);
-    destroy_map(&old_map);
-    add_splash_message(&state->splash_messages, "Reloaded map");
+    state->read_map();
+    old_map.destroy();
+    state->splash_messages.add("Reloaded map");
 }
 
 #ifdef DEBUG
@@ -131,7 +135,7 @@ void set_circle_shader_values() {
 }
 
 void load_circle_shader() {
-    circle_shader = LoadShader(NULL, "shader/"CIRCLE_SHADER_FILE);
+    circle_shader = LoadShader(NULL, TextFormat("shader/%s", CIRCLE_SHADER_FILE));
     shader_gradient_max_loc = GetShaderLocation(circle_shader, "gradient_max");
     shader_gradient_intensity_loc = GetShaderLocation(circle_shader, "gradient_intensity");
     shader_gradient_color_loc = GetShaderLocation(circle_shader, "gradient_color");
@@ -139,7 +143,7 @@ void load_circle_shader() {
 }
 
 void game_tick() {
-    timing_start(); // Tick time.
+    state.debug_state.start_timing(); // Tick time.
     const float frame_time = GetFrameTime();
 
 #ifndef PLATFORM_WEB
@@ -151,7 +155,7 @@ void game_tick() {
             current_monitor = monitor_check;
             int target_refresh_rate = GetMonitorRefreshRate(current_monitor);
             SetTargetFPS(target_refresh_rate);
-            add_splash_message(&state.splash_messages, TextFormat("Target framerate adjusted to %d", target_refresh_rate));
+            state.splash_messages.add(TextFormat("Target framerate adjusted to %d", target_refresh_rate));
         }
     }
 
@@ -163,7 +167,7 @@ void game_tick() {
             SetTargetFPS(GetMonitorRefreshRate(current_monitor));
         }
         const char* options[] = {"uncapped", "capped"};
-        add_splash_message(&state.splash_messages, TextFormat("Framerate is now %s.", options[capped_framerate]));
+        state.splash_messages.add(TextFormat("Framerate is now %s.", options[capped_framerate]));
     }
 #endif
 
@@ -187,7 +191,7 @@ void game_tick() {
     if (IsKeyPressed(KEY_T)) {
         render_translations = !render_translations;
         const char* options[] = {"no longer", "now"};
-        add_splash_message(&state.splash_messages, TextFormat("Zone translations are %s displayed.", options[render_translations]));
+        state.splash_messages.add(TextFormat("Zone translations are %s displayed.", options[render_translations]));
     }
 
     state.camera.offset = (Vector2) {GetScreenWidth()/2, GetScreenHeight()/2};
@@ -271,8 +275,8 @@ void game_tick() {
     }
     nk_end(ctx);
 
-    tick_end();
-    timing_start(); // Render time.
+    state.debug_state.end_tick();
+    state.debug_state.start_timing(); // Render time.
 
     BeginDrawing();
     ClearBackground(BACKGROUND_COLOR);
@@ -282,34 +286,35 @@ void game_tick() {
         DrawRectangleLinesEx((Rectangle) {GetScreenWidth()/4, GetScreenHeight()/4, GetScreenWidth()/2, GetScreenHeight()/2}, 5, ColorAlpha(RED, 0.7));
     }
 
+    if (IsKeyPressed(KEY_Y)) {
+        UnloadShader(circle_shader);
+        load_circle_shader();
+        state.splash_messages.add("Reloaded circle shader...");
+    }
+
     if (IsKeyPressed(KEY_L)) {
 #ifndef PLATFORM_WEB
         if (IsKeyDown(KEY_LEFT_SHIFT) && write_map_state == NOT_WRITING) {
             // Requires dev environment.
             write_map_state = WRITING;
-            add_splash_message(&state.splash_messages, "Writing world.bin...");
+            state.splash_messages.add("Writing world.bin...");
             pthread_create(&writing_thread, NULL, write_map, NULL);
         } else {
-            reload_map(&state);
+            state.read_map();
         }
     }
     if (write_map_state == WRITING_SUCCESS) {
-        reload_map(&state);
+        state.read_map();
         write_map_state = NOT_WRITING;
     }
     if (write_map_state == WRITING_FAILED) {
-        add_splash_message(&state.splash_messages, "Writing failed, see console for error. Continuing with currently loaded world.");
+        state.splash_messages.add("Writing failed, see console for error. Continuing with currently loaded world.");
         write_map_state = NOT_WRITING;
     }
 #else
-        reload_map(&state);
+        state.read_map();
     }
 #endif
-
-    if (IsKeyDown(KEY_Y)) {
-        UnloadShader(circle_shader);
-        load_circle_shader();
-    }
 #endif
 
     BeginMode2D(state.camera);
@@ -480,13 +485,13 @@ void game_tick() {
     DrawText(text, 12, 12, 20, BLACK);
     DrawText(text, 10, 10, 20, LIME);
 #endif
-    process_splash_messages(&state.splash_messages);
+    state.splash_messages.process();
     if (help_texture_alpha > 0) {
         float help_scale = fminf(1.0, (0.5 * GetScreenHeight()) / (float)help_texture.height);
         DrawTextureEx(help_texture, (Vector2) {2, (GetScreenHeight() - help_texture.height * help_scale)/2}, 0, help_scale, ColorAlpha(WHITE, help_texture_alpha));
     }
-    render_end();
-    draw_timings();
+    state.debug_state.end_render();
+    state.debug_state.draw();
     DrawNuklear(ctx);
     EndDrawing();
 }
@@ -504,7 +509,7 @@ void resize_game(int width, int height) {
 
 int main() {
     init_random();
-    open_map(&state);
+    state.read_map();
 
     SetConfigFlags(FLAG_WINDOW_RESIZABLE | FLAG_MSAA_4X_HINT);
     InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Evades");
@@ -527,8 +532,6 @@ int main() {
     help_texture = LoadTexture("assets/help.png");
     SetTextureFilter(help_texture, TEXTURE_FILTER_ANISOTROPIC_16X);
 
-    init_debug_state();
-    init_splash_messages(&state.splash_messages);
     init_circle_texture();
 
     load_circle_shader();
@@ -546,6 +549,6 @@ int main() {
 #endif
 
     CloseWindow();
-    destroy_map(&state.map);
+    state.map.destroy();
     return EXIT_SUCCESS;
 }
