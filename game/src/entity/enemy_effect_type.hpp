@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdint.h>
+
 typedef struct EnemyEffectConfig {
     uint32_t color;
     float radius;

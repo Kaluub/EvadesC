@@ -1,6 +1,6 @@
 #include "enemy.hpp"
-#include "enemy_type.h"
-#include "enemy_effect_type.h"
+#include "enemy_type.hpp"
+#include "enemy_effect_type.hpp"
 #include "../util/common.h"
 #include "../util/random.h"
 #include "../circle.h"

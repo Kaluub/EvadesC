@@ -1,5 +1,5 @@
-#include "behaviour.h"
-#include "../enemy_type.h"
+#include "behaviour.hpp"
+#include "../enemy_type.hpp"
 
 behaviour_function get_behaviour_function(uint8_t enemy_type) {
     switch (enemy_type) {

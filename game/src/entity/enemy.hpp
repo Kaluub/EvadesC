@@ -6,9 +6,13 @@
 class Area;
 class Zone;
 class Spawner;
+class EnemyBehaviour;
+class EnemyMovement;
 
 class Enemy {
 public:
+    EnemyBehaviour* behaviour;
+    EnemyMovement* movement;
     Vector2 position;
     Color color;
     float base_speed;
