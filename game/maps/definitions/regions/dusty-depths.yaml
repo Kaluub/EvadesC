@@ -54,7 +54,7 @@ areas:
     properties:
       lighting: 0.85
       pellet_count: 15
-      pellet_multiplier: 4
+      map_exp_multiplier: 4
     x: last_right-224
     y: last_y+960
     zones:
@@ -91,7 +91,7 @@ areas:
     properties:
       lighting: 0.85
       pellet_count: 15
-      pellet_multiplier: 4
+      map_exp_multiplier: 4
     x: last_right
     y: last_y
     zones:
@@ -136,7 +136,7 @@ areas:
     properties:
       lighting: 0.85
       pellet_count: 15
-      pellet_multiplier: 4
+      map_exp_multiplier: 4
     x: last_right
     y: last_y
     zones:
@@ -181,7 +181,7 @@ areas:
     properties:
       lighting: 0.85
       pellet_count: 15
-      pellet_multiplier: 4
+      map_exp_multiplier: 4
     x: last_right
     y: last_y
     zones:

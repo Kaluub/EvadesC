@@ -58,9 +58,6 @@ regions:
   - file: regions/endless-echo.yaml
     x: 1952
     y: 23200
-  - file: regions/endless-echo-hard.yaml
-    x: -1248
-    y: 23200
   - file: regions/dangerous-district.yaml
     x: 1952
     y: 24640

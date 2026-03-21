@@ -456,9 +456,6 @@ areas:
   name: Level 28
 - x: 100812
   y: 118632
-  properties:
-    pellet_count: 1
-    pellet_multiplier: 15
   zones:
   - type: exit
     x: 0
@@ -776,9 +773,6 @@ areas:
   name: Level 27
 - x: 108620
   y: 118632
-  properties:
-    pellet_count: 1
-    pellet_multiplier: 15
   zones:
   - type: exit
     x: 0
@@ -2970,9 +2964,6 @@ areas:
   name: Level 25
 - x: 117900
   y: 118632
-  properties:
-    pellet_count: 1
-    pellet_multiplier: 15
   zones:
   - type: exit
     x: 0
@@ -3593,9 +3584,6 @@ areas:
   name: Level 24
 - x: 122380
   y: 118632
-  properties:
-    pellet_count: 1
-    pellet_multiplier: 15
   zones:
   - type: exit
     x: 0
@@ -4509,9 +4497,6 @@ areas:
   name: Level 23
 - x: 126860
   y: 118632
-  properties:
-    pellet_count: 1
-    pellet_multiplier: 15
   zones:
   - type: exit
     x: 0
@@ -5633,9 +5618,6 @@ areas:
   boss: true
 - x: 131340
   y: 118632
-  properties:
-    pellet_count: 1
-    pellet_multiplier: 15
   zones:
   - type: exit
     x: 0

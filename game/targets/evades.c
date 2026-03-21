@@ -75,7 +75,7 @@ pthread_t writing_thread;
 void* write_map(void* _) {
     int result = 0;
     if (IsKeyDown(KEY_LEFT_CONTROL)) {
-        result = system("WORLD_DIR=~/EvadesClassic/server/maps/definitions python3 maps/packer.py");
+        result = system("WORLD_DIR=~/Documents/EvadesClassic/server/maps/definitions python3 maps/packer.py");
     } else {
         result = system("python3 maps/packer.py");
     }
@@ -96,7 +96,7 @@ char measure_y[16];
 
 bool render_translations = false;
 
-static GameState state;
+GameState state;
 
 #ifndef PLATFORM_WEB
 int current_monitor = 0;

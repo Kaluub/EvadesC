@@ -1,0 +1,68 @@
+share_to_drive: false
+name: Performance
+properties:
+  friction: 0.75
+areas:
+- x: var x
+  y: var y
+  zones:
+  - type: safe
+    x: 0
+    y: 0
+    width: 320
+    height: 480
+  - type: active
+    x: last_right
+    y: 0
+    width: 2048
+    height: 480
+    spawner:
+    - radius: 40
+      x: 400
+      y: 240
+      pattern: quadspiral
+      immune: false
+      speed: 0
+      turn_speed: 150
+      shot_interval: 20
+      turn_acceleration: 5
+      types:
+      - frost_giant
+    - radius: 40
+      x: 800
+      y: 240
+      pattern: quadspiral
+      immune: false
+      speed: 0
+      turn_speed: 150
+      shot_interval: 20
+      turn_acceleration: 5
+      types:
+      - frost_giant
+    - radius: 40
+      x: 1200
+      y: 240
+      pattern: quadspiral
+      immune: false
+      speed: 0
+      turn_speed: 150
+      shot_interval: 20
+      turn_acceleration: 5
+      types:
+      - frost_giant
+    - radius: 40
+      x: 1600
+      y: 240
+      pattern: quadspiral
+      immune: false
+      speed: 0
+      turn_speed: 150
+      shot_interval: 20
+      turn_acceleration: 5
+      types:
+      - frost_giant
+  - type: safe
+    x: last_right
+    y: 0
+    width: 320
+    height: 480

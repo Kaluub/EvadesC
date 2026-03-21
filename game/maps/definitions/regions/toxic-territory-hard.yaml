@@ -1,6 +1,7 @@
 name: Toxic Territory Hard
 properties:
   friction: 0.75
+  map_exp_multiplier: 4
   background_color:
   - 0
   - 0
@@ -321,9 +322,9 @@ areas:
       speed: 90
     - types:
       - corrosive_sniper
-      count: 2
+      count: 3
       radius: 12
-      speed: 90
+      speed: 72
     - types:
       - wall
       count: 5
@@ -377,9 +378,9 @@ areas:
       speed: 300
     - types:
       - corrosive_sniper
-      count: 4
+      count: 5
       radius: 24
-      speed: 150
+      speed: 120
     - types:
       - wall
       count: 5
@@ -428,14 +429,14 @@ areas:
       speed: 210
     - types:
       - corrosive_sniper
-      count: 4
+      count: 5
       radius: 12
-      speed: 150
+      speed: 120
     - types:
       - corrosive_sniper
-      count: 3
+      count: 4
       radius: 6
-      speed: 180
+      speed: 144
     - types:
       - wall
       count: 5
@@ -489,9 +490,9 @@ areas:
       speed: 210
     - types:
       - corrosive_sniper
-      count: 3
+      count: 4
       radius: 32
-      speed: 300
+      speed: 240
     - types:
       - wall
       count: 5
@@ -551,9 +552,9 @@ areas:
       speed: 90
     - types:
       - corrosive_sniper
-      count: 6
+      count: 8
       radius: 12
-      speed: 60
+      speed: 48
   - type: safe
     x: last_right
     y: 0
@@ -648,9 +649,9 @@ areas:
       speed: 270
     - types:
       - corrosive_sniper
-      count: 4
+      count: 5
       radius: 12
-      speed: 300
+      speed: 240
     - types:
       - enlarging
       count: 4
@@ -755,14 +756,14 @@ areas:
     spawner:
     - types:
       - corrosive_sniper
-      count: 3
+      count: 4
       radius: 12
-      speed: 390
+      speed: 312
     - types:
       - corrosive_sniper
-      count: 4
+      count: 5
       radius: 30
-      speed: 90
+      speed: 72
     - types:
       - enlarging
       count: 16
@@ -822,9 +823,9 @@ areas:
       speed: 150
     - types:
       - corrosive_sniper
-      count: 4
+      count: 5
       radius: 12
-      speed: 150
+      speed: 120
     - types:
       - enlarging
       count: 15
@@ -878,7 +879,7 @@ areas:
       speed: 270
     - types:
       - poison_ghost
-      count: 10
+      count: 20
       radius: 24
       speed: 126
     - types:
@@ -934,7 +935,7 @@ areas:
       speed: 420
     - types:
       - poison_ghost
-      count: 8
+      count: 16
       radius: 60
       speed: 126
     - types:
@@ -990,7 +991,7 @@ areas:
       speed: 90
     - types:
       - poison_ghost
-      count: 16
+      count: 32
       radius: 36
       speed: 210
     - types:
@@ -1041,9 +1042,9 @@ areas:
       speed: 90
     - types:
       - corrosive_sniper
-      count: 4
+      count: 5
       radius: 12
-      speed: 150
+      speed: 120
     - types:
       - enlarging
       count: 10
@@ -1051,7 +1052,7 @@ areas:
       speed: 90
     - types:
       - poison_ghost
-      count: 8
+      count: 16
       radius: 52
       speed: 294
     - types:
@@ -1113,14 +1114,14 @@ areas:
       speed: 270
     - types:
       - poison_ghost
-      count: 6
-      radius: 36
-      speed: 220.5
+      count: 8
+      radius: 72
+      speed: 150
     - types:
       - poison_ghost
-      count: 9
-      radius: 12
-      speed: 378
+      count: 12
+      radius: 24
+      speed: 270
   - type: safe
     x: last_right
     y: 0

@@ -3,6 +3,7 @@ warping_requirements:
 - abyss_completed
 properties:
   friction: 0.75
+  map_exp_multiplier: 4
   background_color:
     - 190
     - 90

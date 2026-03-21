@@ -1,6 +1,7 @@
 name: Magnetic Monopole
 properties:
   friction: 0.75
+  map_exp_multiplier: 2
   magnetism: true
   background_color:
   - 191
@@ -1889,7 +1890,7 @@ areas:
     y: 0
   properties:
     pellet_count: 50
-    pellet_multiplier: 5
+    map_exp_multiplier: 5
     background_color:
     - 225
     - 225
@@ -1965,7 +1966,7 @@ areas:
     x: last_right
     y: 0
   properties:
-    pellet_multiplier: 5
+    map_exp_multiplier: 5
     background_color:
     - 225
     - 225
@@ -2041,7 +2042,7 @@ areas:
     x: last_right
     y: 0
   properties:
-    pellet_multiplier: 5
+    map_exp_multiplier: 5
     background_color:
     - 225
     - 225
@@ -2117,7 +2118,7 @@ areas:
     x: last_right
     y: 0
   properties:
-    pellet_multiplier: 5
+    map_exp_multiplier: 5
     background_color:
     - 225
     - 225
@@ -2193,7 +2194,7 @@ areas:
     x: last_right
     y: 0
   properties:
-    pellet_multiplier: 5
+    map_exp_multiplier: 5
     background_color:
     - 225
     - 225
@@ -2274,7 +2275,7 @@ areas:
     x: last_right
     y: 0
   properties:
-    pellet_multiplier: 5
+    map_exp_multiplier: 5
     background_color:
     - 225
     - 225
@@ -2355,7 +2356,7 @@ areas:
     x: last_right
     y: 0
   properties:
-    pellet_multiplier: 5
+    map_exp_multiplier: 5
     background_color:
     - 225
     - 225

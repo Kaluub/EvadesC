@@ -8,7 +8,7 @@ properties:
     - 190
     - 90
     - 190
-    - 100
+    - 150
 areas:
   # 1
   - x: var x
@@ -99,7 +99,7 @@ areas:
         - 171
         - 81
         - 171
-        - 100
+        - 150
     zones:
       - height: 480
         type: safe
@@ -148,7 +148,7 @@ areas:
         - 171
         - 81
         - 171
-        - 100
+        - 150
     zones:
       - height: 480
         type: safe
@@ -202,7 +202,7 @@ areas:
         - 171
         - 81
         - 171
-        - 100
+        - 150
     zones:
       - height: 480
         type: safe
@@ -256,7 +256,7 @@ areas:
         - 152
         - 72
         - 150
-        - 100
+        - 150
     zones:
       - height: 480
         type: safe
@@ -317,7 +317,7 @@ areas:
         - 152
         - 72
         - 150
-        - 100
+        - 150
     zones:
       - height: 480
         type: safe
@@ -378,7 +378,7 @@ areas:
         - 152
         - 72
         - 150
-        - 100
+        - 150
     zones:
       - height: 480
         type: safe
@@ -443,7 +443,7 @@ areas:
         - 152
         - 72
         - 150
-        - 100
+        - 150
     zones:
       - height: 480
         type: safe
@@ -508,7 +508,7 @@ areas:
         - 133
         - 63
         - 133
-        - 100
+        - 150
     zones:
       - height: 480
         type: safe
@@ -584,7 +584,7 @@ areas:
         - 133
         - 63
         - 133
-        - 100
+        - 150
     zones:
       - height: 480
         type: safe
@@ -649,7 +649,7 @@ areas:
         - 133
         - 63
         - 133
-        - 100
+        - 150
     zones:
       - height: 480
         type: safe
@@ -714,7 +714,7 @@ areas:
         - 114
         - 54
         - 114
-        - 110
+        - 160
     zones:
       - height: 480
         type: safe
@@ -779,7 +779,7 @@ areas:
         - 114
         - 54
         - 114
-        - 110
+        - 160
     zones:
       - height: 480
         type: safe
@@ -849,7 +849,7 @@ areas:
         - 114
         - 54
         - 114
-        - 110
+        - 160
     zones:
       - height: 480
         type: safe
@@ -919,7 +919,7 @@ areas:
         - 95
         - 45
         - 95
-        - 120
+        - 170
     zones:
       - height: 480
         type: safe
@@ -994,7 +994,7 @@ areas:
         - 95
         - 45
         - 95
-        - 120
+        - 170
     zones:
       - height: 480
         type: safe
@@ -1049,7 +1049,7 @@ areas:
         - 95
         - 45
         - 95
-        - 120
+        - 170
     zones:
       - height: 480
         type: safe
@@ -1104,7 +1104,7 @@ areas:
         - 57
         - 13
         - 57
-        - 130
+        - 180
     zones:
       - height: 480
         type: safe
@@ -1175,7 +1175,7 @@ areas:
         - 57
         - 13
         - 57
-        - 130
+        - 180
     zones:
       - height: 480
         type: safe

@@ -29,7 +29,7 @@ areas:
     type: teleport
     translate:
       x: 0
-      y: 23952
+      y: 24000
   - x: 0
     y: 64
     width: 320
@@ -99,6 +99,11 @@ areas:
       speed: 120
       count: 4
       radius: 15
+    - types:
+      - enforcing
+      speed: 60
+      count: 4
+      radius: 20
   - x: last_right
     y: 0
     width: 256
@@ -146,10 +151,10 @@ areas:
       count: 2
       radius: 22
     - types:
-      - stumbling
+      - trisniper
       speed: 60
-      count: 15
-      radius: 12
+      count: 4
+      radius: 100
     - types:
       - wall
       speed: 180
@@ -199,18 +204,13 @@ areas:
     - types:
       - stumbling
       speed: 210
-      count: 9
+      count: 5
       radius: 18
     - types:
-      - immune
+      - multisniper
       speed: 105
       count: 4
       radius: 30
-    - types:
-      - immune
-      speed: 120
-      count: 9
-      radius: 22
     - types:
       - wall
       speed: 180

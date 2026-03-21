@@ -4,6 +4,7 @@ properties:
   crumble_reduced: true
   pellet_count: 50
   pellet_multiplier: 5
+  map_exp_multiplier: 5
   background_color:
   - 91
   - 122

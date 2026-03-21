@@ -69,9 +69,6 @@ areas:
 - name: Tunnel 2
   x: 4832
   y: 4800
-  properties:
-    pellet_count: 5
-    pellet_multiplier: 2.5
   zones:
   - height: 64
     translate: {x: 0, y: -160}
@@ -102,9 +99,6 @@ areas:
 - name: Tunnel 3
   x: 4832
   y: 5760
-  properties:
-    pellet_count: 10
-    pellet_multiplier: 1.5
   zones:
   - height: 64
     translate: {x: 0, y: -160}
@@ -143,9 +137,6 @@ areas:
 - name: Tunnel 4
   x: 6144
   y: 4640
-  properties:
-    pellet_count: 5
-    pellet_multiplier: 2.5
   zones:
   - height: 160
     translate: {x: 160, y: 0}

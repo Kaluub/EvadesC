@@ -1,6 +1,7 @@
 name: Toxic Territory
 properties:
   friction: 0.75
+  map_exp_multiplier: 4
   background_color:
   - 0
   - 0

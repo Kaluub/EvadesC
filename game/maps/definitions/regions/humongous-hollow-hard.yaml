@@ -4943,3 +4943,4 @@ properties:
   - 75
   friction: 0.75
   pellet_count: 100
+  map_exp_multiplier: 2

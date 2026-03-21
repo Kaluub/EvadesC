@@ -1,6 +1,7 @@
 name: Grand Garden Hard
 properties:
   friction: 0.75
+  map_exp_multiplier: 2
   background_color:
   - 100
   - 200

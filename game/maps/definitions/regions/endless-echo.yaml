@@ -12,39 +12,25 @@ areas:
   y: var y
   zones:
   - type: teleport
-    x: 32
+    x: 0
     y: 0
-    width: 288
+    width: 320
     height: 64
     translate:
       x: 0
       y: -1120
   - type: teleport
-    x: 32
+    x: 0
     y: 416
-    width: 288
+    width: 320
     height: 64
     translate:
       x: 0
       y: 1120
-  - type: teleport
-    x: 0
-    y: 0
-    width: 32
-    height: 480
-    translate:
-      x: -160
-      y: 0
-    properties:
-      background_color:
-      - 0
-      - 0
-      - 0
-      - 100
   - type: safe
-    x: 32
+    x: 0
     y: 64
-    width: 288
+    width: 320
     height: 352
     properties:
       minimum_speed: 300
