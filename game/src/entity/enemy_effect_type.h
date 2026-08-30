@@ -142,4 +142,11 @@ static const EnemyEffectConfig enemy_effect_configs[] = {
     {.color = 0x26123526, .radius = 150.0f}, // void_drain_enemy
     {.color = 0x75265626, .radius = 100.0f}, // withering_enemy
     {.color = 0, .radius = 0.0f}, // superstar_enemy
+    {.color = 0, .radius = 0.0f}, // enforcing_enemy
+    {.color = 0, .radius = 0.0f}, // trisniper_enemy
+    {.color = 0, .radius = 0.0f}, // multisniper_enemy
+    {.color = 0, .radius = 0.0f}, // crystal_giant_enemy
+    {.color = 0, .radius = 0.0f}, // crystal_ghost_enemy
+    {.color = 0, .radius = 0.0f}, // growing_enemy
+    {.color = 0, .radius = 0.0f}, // crystal_wall_enemy
 };

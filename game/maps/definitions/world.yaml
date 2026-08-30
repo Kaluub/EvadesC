@@ -178,3 +178,9 @@ regions:
   - file: regions/voidborne.yaml
     x: 1952
     y: 182352
+  - file: regions/sparkling-shrine.yaml
+    x: 1952
+    y: 183792
+  - file: regions/sparkling-shrine-hard.yaml
+    x: 140000
+    y: 183792

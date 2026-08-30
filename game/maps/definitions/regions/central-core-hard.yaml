@@ -1728,7 +1728,7 @@ areas:
     y: 0
   - height: last_height
     spawner:
-    - count: 25
+    - count: 10
       radius: 12
       speed: 30
       types:

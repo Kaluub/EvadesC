@@ -745,7 +745,178 @@ areas:
     x: 64
     y: 0
   - height: last_height
-    type: removal
-    width: 160
-    x: 3040
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
     y: 0
+    properties:
+      background_color:
+      - 255
+      - 0
+      - 0
+      - 125
+- name: Death Row 
+  x: last_right
+  y: last_y
+  properties:
+    trial_duration: 60000
+    death_timer: 15000
+  zones:
+  - height: 320
+    spawner:
+    - count: 135
+      speed: 240
+      radius: 12
+      types:
+      - immune
+    - count: 25
+      speed: 180
+      radius: 30
+      types:
+      - disabling
+    type: active
+    width: 5120
+    x: 0
+    y: 0
+  - height: 320
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: 320
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: 5056
+    y: 0
+- name: Ghostly Altar
+  x: last_right
+  y: last_y
+  properties:
+    lighting: 0.7
+    pellet_count: 0
+  zones:
+  - height: 320
+    translate:
+      x: -160
+      y: 0
+    type: teleport
+    width: 64
+    requirements:
+    - death_row_passed
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+    properties:
+      minimum_speed: 300
+  - height: last_height
+    spawner:
+    - count: 2
+      speed: 0
+      radius: 0
+      x: 800
+      y: 160
+      effect_radius: 120
+      types:
+      - toxic
+    - count: 2
+      speed: 0
+      radius: 0
+      x: 580
+      y: 120
+      effect_radius: 100
+      types:
+      - toxic
+    - count: 2
+      speed: 0
+      radius: 0
+      x: 1020
+      y: 120
+      effect_radius: 100
+      types:
+      - toxic
+    - count: 2
+      speed: 0
+      radius: 0
+      x: 400
+      y: 80
+      effect_radius: 80
+      types:
+      - toxic
+    - count: 2
+      speed: 0
+      radius: 0
+      x: 1200
+      y: 80
+      effect_radius: 80
+      types:
+      - toxic
+    - count: 1
+      speed: 180
+      radius: 24
+      x: 500
+      y: 160
+      angle: 90
+      types:
+      - immune
+    - count: 1
+      speed: 180
+      radius: 24
+      x: 1100
+      y: 160
+      angle: 90
+      types:
+      - immune
+    type: active
+    width: 960
+    x: last_right
+    y: 0
+    properties:
+      minimum_speed: 300
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+    properties:
+      minimum_speed: 300
+  - height: last_height
+    translate:
+      x: 32544
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+    properties:
+      minimum_speed: 300
+  assets:
+  - type: light_region
+    x: 736
+    y: 192
+    width: 128
+    height: 128
+  - type: image_background
+    image_name: cursed_altar2
+    alpha: .75
+    x: 704
+    y: 56
+    width: 192
+    height: 224
+  - type: amulet_spawner
+    x: 784
+    y: 64
+
+

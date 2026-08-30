@@ -137,6 +137,13 @@ enemy_types = {
     "void_drain": 133,
     "withering": 134,
     "superstar": 135,
+    "enforcing": 136,
+    "trisniper": 137,
+    "multisniper": 138,
+    "crystal_giant": 139,
+    "crystal_ghost": 140,
+    "growing": 141,
+    "crystal_wall": 142,
 }
 
 zone_types = {

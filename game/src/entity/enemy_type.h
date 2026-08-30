@@ -139,6 +139,13 @@ enum EnemyType {
     ENEMY_TYPE_VOID_DRAIN,
     ENEMY_TYPE_WITHERING,
     ENEMY_TYPE_SUPERSTAR,
+    ENEMY_TYPE_ENFORCING,
+    ENEMY_TYPE_TRISNIPER,
+    ENEMY_TYPE_MULTISNIPER,
+    ENEMY_TYPE_CRYSTAL_GIANT,
+    ENEMY_TYPE_CRYSTAL_GHOST,
+    ENEMY_TYPE_GROWING,
+    ENEMY_TYPE_CRYSTAL_WALL,
 };
 
 static const uint32_t enemy_colors[] = {
@@ -278,4 +285,11 @@ static const uint32_t enemy_colors[] = {
     0x261235ff, // void_drain_enemy
     0x752656ff, // withering_enemy
     0xffffffff, // superstar_enemy
+    0x590016ff, // enforcing_enemy
+    0x63464bff, // trisniper_enemy
+    0x8a8769ff, // multisniper_enemy
+    0xc0297aff, // crystal_giant_enemy
+    0xc0297a66, // crystal_ghost_enemy
+    0xbe4db2ff, // growing_enemy
+    0x5a0078ff, // crystal_wall_enemy
 };

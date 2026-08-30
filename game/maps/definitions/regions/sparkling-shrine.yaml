@@ -1,0 +1,5398 @@
+name: Sparkling Shrine
+properties:
+  friction: 0.75
+  background_color:
+  - 51
+  - 37
+  - 203
+  - 140
+areas:
+# 1
+- x: var x
+  y: var y
+  zones:
+  - type: teleport
+    x: 32
+    y: 0
+    width: 288
+    height: 64
+    translate:
+      x: 0
+      y: -5440
+  - type: teleport
+    x: 32
+    y: 416
+    width: 288
+    height: 64
+    translate:
+      x: 0
+      y: -184112
+  - type: teleport
+    x: 0
+    y: 0
+    width: 32
+    height: 224
+    translate:
+      x: 138144
+      y: 0
+    properties:
+      background_color:
+        - 0
+        - 0
+        - 0
+        - 100
+  - type: teleport
+    x: 0
+    y: 256
+    width: 32
+    height: 224
+    translate:
+      x: 135136
+      y: 0
+    properties:
+      background_color:
+      - 250
+      - 0
+      - 0
+      - 100
+    requirements: 
+    - crystal_unlocked
+  - type: safe
+    x: 32
+    y: 64
+    width: 288
+    height: 352
+    properties:
+      minimum_speed: 300
+  - type: safe
+    x: 0
+    y: 224
+    width: 32
+    height: 32
+    properties:
+      minimum_speed: 300
+  - type: active
+    x: 320
+    y: 0
+    width: 2560
+    height: 480
+    spawner:
+    - count: 6
+      radius: 30
+      speed: 90
+      types:
+      - growing
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 2
+- x: last_right
+  y: last_y
+  zones:
+  - height: 480
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 8
+      radius: 45
+      speed: 120
+      types:
+      - growing
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 3
+- x: last_right
+  y: last_y
+  zones:
+  - height: 480
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 12
+      radius: 40
+      speed: 90
+      types:
+      - growing
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 4
+- x: last_right
+  y: last_y
+  zones:
+  - height: 480
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 10
+      radius: 50
+      speed: 120
+      types:
+      - growing
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 5
+- x: last_right
+  y: last_y
+  zones:
+  - height: 480
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 8
+      radius: 15
+      speed: 150
+      types:
+      - growing
+    - count: 2
+      radius: 60
+      speed: 150
+      types:
+      - growing
+    - count: 1
+      radius: 50
+      x: 700
+      y: 25
+      angle: 90
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1300
+      y: 455
+      angle: 270
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1900
+      y: 25
+      angle: 90
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2600
+      y: 455
+      angle: 270
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 6
+- x: last_right
+  y: last_y
+  zones:
+  - height: 544
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 14
+      radius: 30
+      speed: 195
+      types:
+      - growing
+    - count: 1
+      radius: 50
+      x: 700
+      y: 25
+      angle: 90
+      node_count: 13
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1300
+      y: 519
+      angle: 270
+      node_count: 13
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1900
+      y: 25
+      angle: 90
+      node_count: 13
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2600
+      y: 519
+      angle: 270
+      node_count: 13
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 7
+- x: last_right
+  y: last_y
+  zones:
+  - height: 608
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 8
+      radius: 45
+      speed: 105
+      types:
+      - growing
+    - count: 8
+      radius: 20
+      speed: 240
+      types:
+      - growing
+    - count: 1
+      radius: 50
+      x: 700
+      y: 25
+      angle: 90
+      node_count: 15
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1300
+      y: 583
+      angle: 270
+      node_count: 15
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1900
+      y: 25
+      angle: 90
+      node_count: 15
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2600
+      y: 583
+      angle: 270
+      node_count: 15
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 8
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 8
+      radius: 30
+      speed: 150
+      types:
+      - growing
+    - count: 4
+      radius: 45
+      speed: 99
+      types:
+      - growing
+    - count: 1
+      radius: 50
+      x: 700
+      y: 25
+      angle: 90
+      node_count: 15
+      root_radius: 27
+      node_radius_min: 23
+      node_radius_max: 33
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1300
+      y: 647
+      angle: 270
+      node_count: 15
+      root_radius: 27
+      node_radius_min: 23
+      node_radius_max: 33
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1900
+      y: 25
+      angle: 90
+      node_count: 15
+      root_radius: 27
+      node_radius_min: 23
+      node_radius_max: 33
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2600
+      y: 647
+      angle: 270
+      node_count: 15
+      root_radius: 27
+      node_radius_min: 23
+      node_radius_max: 33
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 9
+- x: last_right
+  y: last_y
+  zones:
+  - height: 736
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 18
+      radius: 40
+      speed: 180
+      types:
+      - growing
+    - count: 1
+      radius: 50
+      x: 700
+      y: 25
+      angle: 90
+      node_count: 14
+      root_radius: 35
+      node_radius_min: 27
+      node_radius_max: 37
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1300
+      y: 711
+      angle: 270
+      node_count: 14
+      root_radius: 35
+      node_radius_min: 27
+      node_radius_max: 37
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1900
+      y: 25
+      angle: 90
+      node_count: 14
+      root_radius: 35
+      node_radius_min: 27
+      node_radius_max: 37
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2600
+      y: 711
+      angle: 270
+      node_count: 14
+      root_radius: 35
+      node_radius_min: 27
+      node_radius_max: 37
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 10
+- x: last_right
+  y: last_y
+  zones:
+  - height: 800
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 16
+      radius: 30
+      speed: 120
+      types:
+      - growing
+    - count: 1
+      radius: 160
+      speed: 210
+      types:
+      - growing
+    - count: 4
+      radius: 60
+      speed: 195
+      types:
+      - growing
+    - count: 1
+      radius: 50
+      x: 700
+      y: 25
+      angle: 90
+      node_count: 21
+      root_radius: 35
+      node_radius_min: 27
+      node_radius_max: 37
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1300
+      y: 775
+      angle: 270
+      node_count: 21
+      root_radius: 35
+      node_radius_min: 27
+      node_radius_max: 37
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1900
+      y: 25
+      angle: 90
+      node_count: 21
+      root_radius: 35
+      node_radius_min: 27
+      node_radius_max: 37
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2600
+      y: 775
+      angle: 270
+      node_count: 21
+      root_radius: 35
+      node_radius_min: 27
+      node_radius_max: 37
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+  boss: true
+# 11
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 14
+      radius: 15
+      speed: 120
+      types:
+      - growing
+    - count: 2
+      radius: 80
+      speed: 60
+      types:
+      - crystal_giant
+    - count: 1
+      radius: 50
+      x: 1000
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      node_count: 16
+      node_count: 14
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1600
+      y: 336
+      branch_after_nodes: 0
+      branch_parallel: 4
+      branch_angle_offset: 100
+      node_count: 10
+      root_radius: 60
+      node_radius_min: 30
+      node_radius_max: 35
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2300
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      node_count: 16
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 12
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 4
+      radius: 40
+      speed: 30
+      types:
+      - crystal_giant
+    - count: 10
+      radius: 40
+      speed: 210
+      types:
+      - growing
+    - count: 1
+      radius: 50
+      x: 1000
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      node_count: 16
+      node_count: 14
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1600
+      y: 336
+      branch_after_nodes: 0
+      branch_parallel: 4
+      branch_angle_offset: 100
+      node_count: 10
+      root_radius: 60
+      node_radius_min: 30
+      node_radius_max: 35
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2300
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      node_count: 16
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 13
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 7
+      radius: 40
+      speed: 30
+      types:
+      - crystal_giant
+    - count: 12
+      radius: 50
+      speed: 210
+      types:
+      - growing
+    - count: 1
+      radius: 50
+      x: 1000
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      node_count: 16
+      node_count: 14
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1600
+      y: 336
+      branch_after_nodes: 0
+      branch_parallel: 4
+      branch_angle_offset: 100
+      node_count: 10
+      root_radius: 60
+      node_radius_min: 30
+      node_radius_max: 35
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2300
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      node_count: 16
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 14
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 3
+      radius: 60
+      speed: 90
+      types:
+      - crystal_giant
+    - count: 20
+      radius: 25
+      speed: 180
+      types:
+      - growing
+    - count: 1
+      radius: 50
+      x: 1000
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      node_count: 16
+      node_count: 14
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1600
+      y: 336
+      branch_after_nodes: 0
+      branch_parallel: 4
+      branch_angle_offset: 100
+      node_count: 10
+      root_radius: 60
+      node_radius_min: 30
+      node_radius_max: 35
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2300
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      node_count: 16
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 15
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 8
+      radius: 20
+      speed: 180
+      types:
+      - growing
+    - count: 6
+      radius: 50
+      speed: 100
+      types:
+      - growing
+    - count: 2
+      radius: 120
+      speed: 30
+      types:
+      - crystal_giant
+      angle: 90
+    - count: 1
+      radius: 50
+      x: 1000
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      node_count: 16
+      node_count: 14
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1600
+      y: 336
+      branch_after_nodes: 0
+      branch_parallel: 4
+      branch_angle_offset: 100
+      node_count: 10
+      root_radius: 60
+      node_radius_min: 30
+      node_radius_max: 35
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2300
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      node_count: 16
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 16
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 18
+      radius: 25
+      speed: 240
+      types:
+      - growing
+    - count: 4
+      radius: 70
+      speed: 45
+      types:
+      - crystal_giant
+    - count: 1
+      radius: 50
+      x: 700
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1000
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      node_count: 16
+      node_count: 14
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1600
+      y: 336
+      branch_after_nodes: 0
+      branch_parallel: 4
+      branch_angle_offset: 100
+      node_count: 10
+      root_radius: 60
+      node_radius_min: 30
+      node_radius_max: 35
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2300
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      node_count: 16
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2600
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 17
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 10
+      radius: 40
+      speed: 240
+      types:
+      - crystal_giant
+    - count: 1
+      radius: 50
+      x: 700
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1000
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      node_count: 16
+      node_count: 14
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1600
+      y: 336
+      branch_after_nodes: 0
+      branch_parallel: 4
+      branch_angle_offset: 100
+      node_count: 10
+      root_radius: 60
+      node_radius_min: 30
+      node_radius_max: 35
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2300
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      node_count: 16
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2600
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 18
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 8
+      radius: 45
+      speed: 360
+      types:
+      - growing
+    - count: 3
+      radius: 80
+      speed: 90
+      types:
+      - crystal_giant
+    - count: 1
+      radius: 50
+      x: 700
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1000
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      node_count: 16
+      node_count: 14
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1600
+      y: 336
+      branch_after_nodes: 0
+      branch_parallel: 4
+      branch_angle_offset: 100
+      node_count: 10
+      root_radius: 60
+      node_radius_min: 30
+      node_radius_max: 35
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2300
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      node_count: 16
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2600
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 19
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 5
+      radius: 60
+      speed: 240
+      types:
+      - crystal_giant
+    - count: 24
+      radius: 14
+      speed: 60
+      types:
+      - growing
+    - count: 1
+      radius: 50
+      x: 700
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1000
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      node_count: 16
+      node_count: 14
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1600
+      y: 336
+      branch_after_nodes: 0
+      branch_parallel: 4
+      branch_angle_offset: 100
+      node_count: 10
+      root_radius: 60
+      node_radius_min: 30
+      node_radius_max: 35
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2300
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      node_count: 16
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2600
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 20
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 3
+      radius: 90
+      speed: 150
+      types:
+      - crystal_giant
+    - count: 20
+      radius: 30
+      speed: 90
+      types:
+      - growing
+    - count: 1
+      radius: 50
+      x: 700
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1000
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      node_count: 16
+      node_count: 14
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1400
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1600
+      y: 336
+      branch_after_nodes: 0
+      branch_parallel: 4
+      branch_angle_offset: 100
+      node_count: 10
+      root_radius: 60
+      node_radius_min: 30
+      node_radius_max: 35
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1950
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2100
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      node_count: 5
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2300
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      node_count: 16
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2600
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+  boss: true
+# 21
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 6
+      radius: 50
+      speed: 120
+      beam_count: 6
+      types:
+      - crystal_ghost
+    - count: 8
+      radius: 18
+      speed: 150
+      types:
+      - growing
+    - count: 1
+      radius: 50
+      x: 600
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 34
+      node_count: 11
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1000
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 20
+      node_count: 14
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1450
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 18
+      node_count: 12
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1850
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 22
+      node_count: 12
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2300
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 21
+      node_count: 13
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2550
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 36
+      node_count: 10
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 22
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 15
+      radius: 20
+      speed: 300
+      types:
+      - crystal_ghost
+      beam_count: 6
+    - count: 6
+      radius: 40
+      speed: 150
+      types:
+      - growing
+    - count: 1
+      radius: 50
+      x: 600
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 34
+      node_count: 11
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1000
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 20
+      node_count: 14
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1450
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 18
+      node_count: 12
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1850
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 22
+      node_count: 12
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2300
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 21
+      node_count: 13
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2550
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 36
+      node_count: 10
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 23
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 13
+      radius: 35
+      speed: 210
+      types:
+      - crystal_ghost
+      beam_count: 6
+    - count: 5
+      radius: 45
+      speed: 60
+      types:
+      - crystal_giant
+    - count: 1
+      radius: 50
+      x: 600
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 34
+      node_count: 11
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1000
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 20
+      node_count: 14
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1450
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 18
+      node_count: 12
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1850
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 22
+      node_count: 12
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2300
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 21
+      node_count: 13
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2550
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 36
+      node_count: 10
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 24
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 19
+      radius: 12
+      speed: 360
+      types:
+      - crystal_ghost
+      beam_count: 6
+    - count: 10
+      radius: 30
+      speed: 150
+      types:
+      - growing
+    - count: 1
+      radius: 50
+      x: 600
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 34
+      node_count: 11
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1000
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 20
+      node_count: 14
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1450
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 18
+      node_count: 12
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1850
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 22
+      node_count: 12
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2300
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 21
+      node_count: 13
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2550
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 36
+      node_count: 10
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 25
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 6
+      radius: 50
+      speed: 120
+      types:
+      - crystal_ghost
+      beam_count: 6
+    - count: 12
+      radius: 30
+      speed: 300
+      types:
+      - growing
+    - count: 4
+      radius: 40
+      speed: 60
+      types:
+      - crystal_giant
+    - count: 1
+      radius: 50
+      x: 600
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 34
+      node_count: 11
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1000
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 20
+      node_count: 14
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1450
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 18
+      node_count: 12
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1850
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 22
+      node_count: 12
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2300
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 21
+      node_count: 13
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2550
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 36
+      node_count: 10
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 26
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 17
+      radius: 30
+      speed: 120
+      types:
+      - crystal_ghost
+      beam_count: 6
+    - count: 20
+      radius: 10
+      speed: 300
+      types:
+      - growing
+    - count: 1
+      radius: 50
+      x: 600
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 34
+      node_count: 11
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1000
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 20
+      node_count: 14
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1450
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 18
+      node_count: 12
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1850
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 22
+      node_count: 12
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2300
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 21
+      node_count: 13
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2550
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 36
+      node_count: 10
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 27
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 15
+      radius: 115
+      speed: 30
+      types:
+      - crystal_ghost
+      beam_count: 6
+    - count: 1
+      radius: 50
+      x: 600
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 34
+      node_count: 11
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1000
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 20
+      node_count: 14
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1450
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 18
+      node_count: 12
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1850
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 22
+      node_count: 12
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2300
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 21
+      node_count: 13
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2550
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 36
+      node_count: 10
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 28
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 15
+      radius: 35
+      speed: 120
+      types:
+      - crystal_ghost
+      beam_count: 6
+    - count: 10
+      radius: 18
+      speed: 120
+      types:
+      - growing
+    - count: 4
+      radius: 35
+      speed: 150
+      types:
+      - crystal_giant
+    - count: 1
+      radius: 50
+      x: 600
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 34
+      node_count: 11
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1000
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 20
+      node_count: 14
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1450
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 18
+      node_count: 12
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1850
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 22
+      node_count: 12
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2300
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 21
+      node_count: 13
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2550
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 36
+      node_count: 10
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 29
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 20
+      radius: 50
+      speed: 120
+      types:
+      - crystal_ghost
+      beam_count: 6
+    - count: 7
+      radius: 35
+      speed: 30
+      types:
+      - crystal_giant
+    - count: 1
+      radius: 50
+      x: 600
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 34
+      node_count: 11
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1000
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 20
+      node_count: 14
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1450
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 18
+      node_count: 12
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1850
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 22
+      node_count: 12
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2300
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 21
+      node_count: 13
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2550
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 36
+      node_count: 10
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 30
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 16
+      radius: 24
+      speed: 480
+      types:
+      - crystal_ghost
+      beam_count: 6
+    - count: 5
+      radius: 40
+      speed: 150
+      types:
+      - crystal_giant
+    - count: 2
+      radius: 180
+      speed: 75
+      types:
+      - crystal_ghost
+      beam_count: 6
+    - count: 1
+      radius: 50
+      x: 600
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 34
+      node_count: 11
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1000
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 20
+      node_count: 14
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1450
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 18
+      node_count: 12
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1850
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 22
+      node_count: 12
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2300
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 21
+      node_count: 13
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2550
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 36
+      node_count: 10
+      root_radius: 27
+      node_radius_min: 26
+      node_radius_max: 36
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+  boss: true
+# 31
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 4
+      radius: 60
+      speed: 60
+      beam_homing: true
+      types:
+      - crystal_giant
+    - count: 1
+      radius: 50
+      x: 600
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 750
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1150
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1000
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1250
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 5
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1400
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1550
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1950
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1800
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2200
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2350
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2700
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 34
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2600
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 34
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 32
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 6
+      radius: 40
+      speed: 45
+      beam_homing: true
+      types:
+      - crystal_giant
+    - count: 16
+      radius: 18
+      speed: 210
+      types:
+      - crystal_ghost
+      beam_count: 6
+    - count: 1
+      radius: 50
+      x: 600
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 750
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1150
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1000
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1250
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 5
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1400
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1550
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1950
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1800
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2200
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2350
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2700
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 34
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2600
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 34
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 33
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 2
+      radius: 70
+      speed: 45
+      beam_homing: true
+      types:
+      - crystal_giant
+    - count: 3
+      radius: 25
+      speed: 30
+      beam_homing: true
+      types:
+      - crystal_giant
+    - count: 15
+      radius: 30
+      speed: 210
+      types:
+      - growing
+    - count: 1
+      radius: 50
+      x: 600
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 750
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1150
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1000
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1250
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 5
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1400
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1550
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1950
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1800
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2200
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2350
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2700
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 34
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2600
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 34
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 34
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 3
+      radius: 85
+      speed: 150
+      beam_homing: true
+      types:
+      - crystal_giant
+    - count: 13
+      radius: 18
+      speed: 330
+      types:
+      - crystal_ghost
+      beam_count: 6
+    - count: 5
+      radius: 50
+      speed: 120
+      types:
+      - growing
+    - count: 1
+      radius: 50
+      x: 600
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 750
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1150
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1000
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1250
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 5
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1400
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1550
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1950
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1800
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2200
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2350
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2700
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 34
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2600
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 34
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 35
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 4
+      radius: 60
+      speed: 45
+      beam_homing: true
+      types:
+      - crystal_giant
+    - count: 4
+      radius: 60
+      speed: 45
+      types:
+      - crystal_giant
+    - count: 1
+      radius: 50
+      x: 600
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 750
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1150
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1000
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1250
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 5
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1400
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1550
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1950
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1800
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2200
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2350
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2700
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 34
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2600
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 34
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 36
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 6
+      radius: 32
+      speed: 45
+      beam_homing: true
+      types:
+      - crystal_giant
+    - count: 17
+      radius: 70
+      speed: 120
+      types:
+      - crystal_ghost
+      beam_count: 6
+    - count: 1
+      radius: 50
+      x: 600
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 750
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1150
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1000
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1250
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 5
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1400
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1550
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1950
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1800
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2200
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2350
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2700
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 34
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2600
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 34
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 37
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 2
+      radius: 80
+      speed: 45
+      beam_homing: true
+      types:
+      - crystal_giant
+    - count: 2
+      radius: 80
+      speed: 45
+      types:
+      - crystal_giant
+    - count: 15
+      radius: 35
+      speed: 345
+      types:
+      - growing
+    - count: 1
+      radius: 50
+      x: 600
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 750
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1150
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1000
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1250
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 5
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1400
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1550
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1950
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1800
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2200
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2350
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2700
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 34
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2600
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 34
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 38
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 6
+      radius: 30
+      speed: 210
+      beam_homing: true
+      types:
+      - crystal_giant
+    - count: 12
+      radius: 60
+      speed: 270
+      types:
+      - crystal_ghost
+      beam_count: 6
+    - count: 1
+      radius: 50
+      x: 600
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 750
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1150
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1000
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1250
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 5
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1400
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1550
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1950
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1800
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2200
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2350
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2700
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 34
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2600
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 34
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 39
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 6
+      radius: 40
+      speed: 45
+      beam_homing: true
+      types:
+      - crystal_giant
+    - count: 20
+      radius: 40
+      speed: 90
+      types:
+      - growing
+    - count: 1
+      radius: 50
+      x: 600
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 750
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1150
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1000
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1250
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 5
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1400
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1550
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1950
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1800
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2200
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2350
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2700
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 34
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2600
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 34
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+# 40
+- x: last_right
+  y: last_y
+  zones:
+  - height: 672
+    translate:
+      x: -160
+      y: 0
+    type: exit
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    spawner:
+    - count: 5
+      radius: 30
+      speed: 210
+      beam_homing: true
+      types:
+      - crystal_giant
+    - count: 2
+      radius: 90
+      speed: 90
+      types:
+      - crystal_giant
+    - count: 8
+      radius: 50
+      speed: 300
+      types:
+      - growing
+    - count: 16
+      radius: 15
+      speed: 210
+      types:
+      - crystal_ghost
+      beam_count: 6
+    - count: 1
+      radius: 50
+      x: 600
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 750
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1150
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1000
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1250
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 5
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1400
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1550
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1950
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 1800
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2200
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2350
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 32
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2700
+      y: 647
+      angle: 270
+      branch_after_nodes: 1
+      branch_angle_offset: 24
+      node_count: 6
+      root_radius: 27
+      node_radius_min: 34
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    - count: 1
+      radius: 50
+      x: 2600
+      y: 25
+      angle: 90
+      branch_after_nodes: 1
+      branch_angle_offset: 16
+      node_count: 8
+      root_radius: 27
+      node_radius_min: 34
+      node_radius_max: 42
+      types:
+      - crystal_wall
+    type: active
+    width: 2560
+    x: last_right
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+  boss: true
+# 41 (Victory)
+- x: last_right
+  y: last_y
+  properties:
+    pellet_count: 0
+  zones:
+  - type: exit
+    x: 0
+    y: 0
+    width: 64
+    height: 576
+    translate:
+      x: -160
+      y: 0
+  - type: victory
+    x: 64
+    y: 0
+    width: 2976
+    height: last_height
+  - height: last_height
+    type: exit
+    width: 64
+    translate:
+      x: 160
+      y: 0
+    x: 3040
+    y: 0
+    properties:
+      background_color:
+      - 255
+      - 0
+      - 0
+      - 125
+# 42 - Sanctum Trial
+- name: Sanctum Trial
+  x: 133056
+  y: last_y
+  properties:
+    lighting: 0.7
+    trial_duration: 30000
+    death_timer: 15000
+  zones:
+  - height: 864
+    spawner:
+    - count: 8
+      radius: 70
+      speed: 210
+      types:
+      - growing
+    - count: 6
+      radius: 80
+      speed: 120
+      beam_homing: true
+      types:
+      - crystal_giant
+    - count: 6
+      radius: 50
+      speed: 270
+      types:
+      - crystal_giant
+    - count: 24
+      radius: 18
+      speed: 360
+      types:
+      - crystal_ghost
+      beam_count: 6
+    - count: 12
+      radius: 32
+      speed: 300
+      types:
+      - wall
+    type: active
+    width: 2560
+    x: 0
+    y: 0
+  - height: last_height
+    translate:
+      x: -160
+      y: 0
+    type: teleport
+    width: 64
+    x: 0
+    y: 0
+  - height: last_height
+    translate:
+      x: 160
+      y: 0
+    type: teleport
+    width: 64
+    x: 2496
+    y: 0
+# 43 - Sanctum Altar (earlier in index so people can't go backwards)
+- name: Sanctum Altar
+  x: 135616
+  y: last_y
+  properties:
+    lighting: 0.7
+    pellet_count: 0
+  zones:
+  - height: 480
+    translate:
+      x: -160
+      y: 0
+    type: teleport
+    width: 64
+    requirements:
+    - sanctum_trial_passed
+    x: 0
+    y: 0
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+    properties:
+      minimum_speed: 300
+  - height: last_height
+    spawner:
+    - count: 1
+      radius: 0
+      speed: 0
+      effect_radius: 200
+      x: 554
+      y: 90
+      types:
+      - slowing
+    - count: 1
+      radius: 0
+      speed: 0
+      effect_radius: 200
+      x: 352
+      y: 360
+      types:
+      - slowing
+    - count: 1
+      radius: 0
+      speed: 0
+      effect_radius: 200
+      x: 1046
+      y: 90
+      types:
+      - slowing
+    - count: 1
+      radius: 0
+      speed: 0
+      effect_radius: 200
+      x: 1248
+      y: 360
+      types:
+      - slowing
+    - count: 1
+      radius: 0
+      speed: 0
+      effect_radius: 200
+      x: 800
+      y: 0
+      types:
+      - slowing
+    - count: 1
+      radius: 0
+      speed: 0
+      effect_radius: 100
+      x: 554
+      y: 90
+      types:
+      - slowing
+    - count: 1
+      radius: 0
+      speed: 0
+      effect_radius: 100
+      x: 352
+      y: 360
+      types:
+      - slowing
+    - count: 1
+      radius: 0
+      speed: 0
+      effect_radius: 100
+      x: 1046
+      y: 90
+      types:
+      - slowing
+    - count: 1
+      radius: 0
+      speed: 0
+      effect_radius: 100
+      x: 1248
+      y: 360
+      types:
+      - slowing
+    - count: 1
+      radius: 0
+      speed: 0
+      effect_radius: 100
+      x: 800
+      y: 0
+      types:
+      - slowing
+    type: active
+    width: 960
+    x: last_right
+    y: 0
+    properties:
+      minimum_speed: 300
+  - height: last_height
+    type: safe
+    width: 256
+    x: last_right
+    y: 0
+    properties:
+      minimum_speed: 300
+  - height: last_height
+    translate:
+      x: -135136
+      y: 0
+    type: exit
+    width: 64
+    x: last_right
+    y: 0
+  assets:
+  - type: light_region
+    x: 736
+    y: 192
+    width: 128
+    height: 128
+  - type: image_background
+    image_name: cursed_altar
+    alpha: .75
+    x: 704
+    y: 256
+    width: 192
+    height: 224
+  - type: crystal_spawner
+    x: 784
+    y: 240

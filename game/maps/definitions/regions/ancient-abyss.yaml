@@ -44,7 +44,7 @@ areas:
     type: teleport
     translate:
       x: 0
-      y: -178352
+      y: 5440
   - type: safe
     x: 32
     y: 64

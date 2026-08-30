@@ -26,7 +26,7 @@ areas:
   - type: safe
     x: 320
     y: 0
-    width: 4544  # Increase by 96 for each new enemy.
+    width: 5120  # Increase by 96 for each new enemy.
     height: 32
     properties: {minimum_speed: 600}
   - type: safe
@@ -409,6 +409,30 @@ areas:
       y: 240
       angle: 90
       types:
+      - enforcing
+    - count: 1
+      radius: 12
+      speed: 90
+      x: last_x + 96
+      y: 240
+      angle: 90
+      types:
+      - trisniper
+    - count: 1
+      radius: 12
+      speed: 90
+      x: last_x + 96
+      y: 240
+      angle: 90
+      types:
+      - multisniper
+    - count: 1
+      radius: 12
+      speed: 90
+      x: last_x + 96
+      y: 240
+      angle: 90
+      types:
       - grass
     - count: 1
       radius: 12
@@ -442,6 +466,31 @@ areas:
       angle: 90
       types:
       - void_swarm
+    - count: 1
+      radius: 12
+      speed: 90
+      x: last_x + 96
+      y: 240
+      angle: 90
+      types:
+      - crystal_giant
+    - count: 1
+      radius: 12
+      speed: 90
+      beam_homing: true
+      x: last_x + 96
+      y: 240
+      angle: 90
+      types:
+      - crystal_giant
+    - count: 1
+      radius: 12
+      speed: 90
+      x: last_x + 96
+      y: 240
+      angle: 90
+      types:
+      - crystal_ghost
   - type: safe
     x: last_right
     y: 0
