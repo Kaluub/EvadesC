@@ -507,7 +507,7 @@ int main() {
     open_map(&state);
 
     SetConfigFlags(FLAG_WINDOW_RESIZABLE | FLAG_MSAA_4X_HINT);
-    InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Evades");
+    InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Evades Map Viewer");
 #ifndef PLATFORM_WEB
     current_monitor = GetCurrentMonitor();
     SetTargetFPS(GetMonitorRefreshRate(current_monitor));
